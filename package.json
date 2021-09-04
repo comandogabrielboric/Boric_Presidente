@@ -7,6 +7,9 @@
 		"build": "nuxt build",
 		"start": "nuxt start",
 		"generate": "nuxt generate",
+		"deploy": "nuxt generate && firebase deploy --only hosting:produccion",
+		"produccion": "nuxt generate && firebase deploy --only hosting:produccion",
+		"tests": "nuxt generate && firebase deploy --only hosting:tests",
 		"lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
 		"lint": "yarn lint:js"
 	},

@@ -1,0 +1,60 @@
+{
+	"hosting": [
+		{
+			"target": "produccion",
+			"public": "dist",
+			"ignore": [
+				"firebase.json",
+				"*/.",
+				"*/node_modules/*"
+			],
+			"headers": [
+				{
+					"source": "*/",
+					"headers": [
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-FRAME-OPTIONS",
+							"value": "deny"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						}
+					]
+				}
+			]
+		},
+		{
+			"target": "tests",
+			"public": "dist",
+			"ignore": [
+				"firebase.json",
+				"*/.",
+				"*/node_modules/*"
+			],
+			"headers": [
+				{
+					"source": "*/",
+					"headers": [
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-FRAME-OPTIONS",
+							"value": "deny"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						}
+					]
+				}
+			]
+		}
+	]
+}
