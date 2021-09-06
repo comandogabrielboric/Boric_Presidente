@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>holooo</h1>
-    <div v-for="columna in columnas" :key="columna.id">
+    <div v-for="columna in columnas" :key="columna.id" class="columnas">
       <h1>{{ columna.title }}</h1>
       <!-- <img :src="`${process.env.apiURL}/`+columna.Media.url" alt=""> -->
       <p>Descripcion: {{ columna.description }}</p>
@@ -33,3 +33,9 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.columnas {
+	width: 50vw;
+}
+</style>
