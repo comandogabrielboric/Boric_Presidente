@@ -18,21 +18,18 @@ export default {
 			columnas: []
 		}
 	},
-	mounted () {
-		window.vm = this
-		this.cargarcolumnas()
-	},
-	methods: {
-		async cargarcolumnas () {
-			console.log('cargar columa')
-			const solicitud = await fetch('https://gbcms.crishadad.cl/articles').then(res =>
-				res.json()
-			)
-			const columnas = solicitud
-			this.columnas = columnas
 
-			console.log(this.columnas)
-		}
+	async fetch () {
+		console.log('cargar columa')
+		const solicitud = await fetch('https://gbcms.crishadad.cl/articles').then(res =>
+			res.json()
+		)
+		const columnas = solicitud
+		this.columnas = columnas
+
+		console.log('columnas cargadas', columnas)
 	}
+
+
 }
 </script>
