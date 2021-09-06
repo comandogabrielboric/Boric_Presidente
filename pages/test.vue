@@ -2,9 +2,10 @@
   <div>
     <h1>holooo</h1>
     <div v-for="columna in columnas" :key="columna.id">
-      <h1>{{ columna.nombre }}</h1>
-      <img :src="'http://localhost:1337'+columna.Media.url" alt="">
-      <p>{{ columna.contenido }}</p>
+      <h1>{{ columna.title }}</h1>
+      <!-- <img :src="`${process.env.apiURL}/`+columna.Media.url" alt=""> -->
+      <p>Descripcion: {{ columna.description }}</p>
+      <p>Categoria: {{ columna.category }} </p>
       <div />
     </div>
   </div>
@@ -24,7 +25,7 @@ export default {
 	methods: {
 		async cargarcolumnas () {
 			console.log('cargar columa')
-			const solicitud = await fetch('http://localhost:1337/columnas').then(res =>
+			const solicitud = await fetch('https://gbcms.crishadad.cl/articles').then(res =>
 				res.json()
 			)
 			const columnas = solicitud
