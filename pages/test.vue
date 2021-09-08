@@ -27,7 +27,7 @@ export default {
 		const columnas = solicitud
 		this.columnas = columnas
 
-		console.log('columnas cargadas', columnas)
+		// console.log('columnas cargadas', columnas)
 	}
 
 
