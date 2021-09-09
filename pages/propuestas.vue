@@ -10,11 +10,14 @@
       </p>
       <div class="caja-propuestas">
         <div v-for=" propuesta in propuestas" :key="propuesta.id" class="contenedor-propuesta">
-          <img :src="propuesta.imagen.url" alt="" class="img-propuesta">
-          <h2 class="titulo-propuesta">
-            {{ propuesta.titulo }}
-          </h2>
-          <div class="contenido-propuesta">
+          <div @click="mostrando(propuesta) ? 'mostrar':'nomostrar'">
+            <img :src="propuesta.imagen.url" alt="" class="img-propuesta">
+            <h2 class="titulo-propuesta">
+              {{ propuesta.titulo }}
+            </h2>
+          </div>
+
+          <div class="contenido-propuesta" :class="{'mostrando': _.includes(fotosGustadasIDs, foto._id)}">
             {{ propuesta.contenido }}
           </div>
         </div>
@@ -41,7 +44,8 @@ export default {
 		return {
 			propuestas: [],
 			programa: null,
-			src: null
+			src: null,
+			mostrarpropuesta: null
 		}
 	},
 
@@ -68,6 +72,14 @@ export default {
 		// this.src.promise.then(pdf => {
 		// 	this.numPages = pdf.numPages
 		// })
+	},
+
+	methods: {
+		mostrar () {
+			console.log(this.mostrarpropuesta)
+			if (!this.mostrarpropuesta) this.mostrarpropuesta = true
+			else this.mostrarpropuesta = null
+		}
 	}
 
 
@@ -105,9 +117,10 @@ h2 {
 	max-height: 100px;
 }
 .contenido-propuesta {
-	display: none;
-	width: 0;
-	height: 0;
+	border: 5px solid violet;
+	width: 80vw;
+	height: 80vh;
+	overflow: hidden;
 }
 .contenedor-pdf {
 	display: flex;
