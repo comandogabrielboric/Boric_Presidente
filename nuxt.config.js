@@ -2,7 +2,7 @@ const dev = process.env.MODO === 'dev'
 
 export default {
 	env: {
-		apiURL: dev ? 'http://localhost:3001' : 'https://gbcms.crishadad.cl'
+		apiURL: dev ? 'https://gbcms.crishadad.cl' : 'http://localhost:1337'
 	},
 	// Target: https://go.nuxtjs.dev/config-target
 	target: 'static',

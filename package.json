@@ -20,7 +20,7 @@
 		"markdown-it-vue": "^1.1.6",
 		"marked": "^3.0.2",
 		"nuxt": "^2.15.7",
-		"sass-loader": "10.1.1",
+		"vue-pdf": "^4.3.0",
 		"webpack": "^4.46.0"
 	},
 	"devDependencies": {
