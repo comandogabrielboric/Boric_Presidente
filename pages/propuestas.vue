@@ -1,8 +1,10 @@
 <template>
   <div>
     <title>Propuestas Programaticas</title>
-    <div>
+    <div class="pilares">
+      <img :src="imgpilares" alt="" class="img-pilares">
       <p>Pilares / Puntos principales</p>
+      <div v-html="pilaresMarkdown" />
     </div>
     <div class="propuestas">
       <p class="titulo">
@@ -33,9 +35,12 @@
     <div class="contenedor-pdf">
       <!-- <object :data="programa" class="pdf-programa" /> -->
 
-      <p class="descargable-programa">
-        descarga programa completo
-      </p>
+
+      <a :href="programa">
+        <p class="descargable-programa">
+          descarga programa completo
+        </p>
+      </a>
       <!-- <pdf src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/Programa_Completo_8ff9270a64.pdf" class="pdf-programa" /> -->
     </div>
   </div>
@@ -52,9 +57,10 @@ export default {
 			propuestas: [],
 			programa: null,
 			src: null,
-			mostrarpropuesta: null,
 			propuestaseleccionada: null,
-			contenido: null
+			contenido: null,
+			pilares: null,
+			imgpilares: null
 		}
 	},
 
@@ -71,8 +77,18 @@ export default {
 		)
 		const programa = solicitud2.Propuesta
 		this.programa = programa.url
-		console.log('propuestas cargadas', propuestas)
+
+		const solicitud3 = await fetch(`${process.env.apiURL}/pilares`).then(res =>
+			res.json()
+		)
+		this.pilares = solicitud3
+		const img = solicitud3.Imagen.url
+		this.imgpilares = img
+
+		// console.log('Pilares', this.pilares)
+		// console.log('propuestas cargadas', propuestas)
 		console.log('programa ', this.programa)
+		console.log('img pilares ', img)
 	},
 	computed: {
 		propuestasID () {
@@ -80,7 +96,13 @@ export default {
 		},
 		compiledMarkdown () {
 			return marked(this.contenido, { sanitize: true })
+		},
+		pilaresMarkdown () {
+			const contenido = this.pilares
+			const cont = contenido.Contenido
+			return marked(cont, { sanitize: true })
 		}
+
 	},
 	mounted () {
 		// const loadingtask = pdf.createLoadingTask('https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/Programa_Completo_8ff9270a64.pdf')
@@ -96,14 +118,12 @@ export default {
 			console.log('mostrando', this.mostrarpropuesta)
 			if (this.propuestaseleccionada === propuesta._id) {
 				this.propuestaseleccionada = null
-				this.mostrarpropuesta = null
 				this.contenido = null
-				console.log('anulando', this.propuestaseleccionada, this.mostrarpropuesta)
+				console.log('anulando', this.propuestaseleccionada)
 			} else {
-				this.mostrarpropuesta = true
 				this.propuestaseleccionada = propuesta._id
 				this.contenido = propuesta.contenido
-				console.log('mostrando', this.propuestaseleccionada, this.mostrarpropuesta)
+				console.log('mostrando', this.propuestaseleccionada)
 			}
 			console.log('propuestasID', this.propuestasID)
 			console.log('propuesta seleccionada', propuesta._id)
@@ -118,6 +138,9 @@ export default {
 
 <style lang="scss" scoped>
 
+.img-pilares{
+	width: 100vw;
+}
 .propuestas{
 	padding: 10px;
 }
@@ -138,8 +161,6 @@ export default {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	border-style: solid;
-	border-color: crimson;
 	border-width: 5px;
 	margin: 10px;
 	text-align: center;
@@ -158,6 +179,8 @@ h2 {
 	overflow-y: scroll;
 	transition: .5s;
 	top: 50%;
+	background: rgb(255, 255, 255);
+	padding: 20px;
 }
 .mostrando {
 	width: 80vw;
@@ -169,6 +192,17 @@ h2 {
 	left: 8vw;
 	right: 8vw;
 	top: 50%;
+}
+.pilares {
+	text-align: center;
+	justify-content: center;
+	// color: rgba(255, 255, 255, 0.986);
+	&#propuestas {
+		color: rgb(255, 108, 194);
+	}
+}
+h1, #propuestas {
+	color: rgb(255, 108, 194);
 }
 
 
@@ -185,6 +219,7 @@ h2 {
 @media screen and (min-width: 1024px) {
 .descargable-programa {
 	width: 50vw;
+	text-align: center;
 }
 }
 
