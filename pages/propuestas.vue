@@ -155,7 +155,7 @@ h2 {
 .contenido-propuesta {
 	width: 80vw;
 	height: 80vh;
-	overflow: scroll;
+	overflow-y: scroll;
 	transition: .5s;
 	top: 50%;
 }
