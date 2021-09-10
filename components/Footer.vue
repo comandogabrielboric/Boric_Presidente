@@ -67,9 +67,7 @@ export default {
 .link-footer {
 	color: #fff;
 }
-.contenedor {
 
-}
 .logos {
 	display: flex;
 	flex-flow: row;
