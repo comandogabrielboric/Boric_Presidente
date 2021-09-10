@@ -10,21 +10,28 @@
       </p>
       <div class="caja-propuestas">
         <div v-for=" propuesta in propuestas" :key="propuesta.id" class="contenedor-propuesta">
-          <div @click="mostrando(propuesta) ? 'mostrar':'nomostrar'">
+          <div @click="mostrar(propuesta)">
             <img :src="propuesta.imagen.url" alt="" class="img-propuesta">
             <h2 class="titulo-propuesta">
               {{ propuesta.titulo }}
             </h2>
           </div>
-
-          <div class="contenido-propuesta" :class="{'mostrando': _.includes(fotosGustadasIDs, foto._id)}">
-            {{ propuesta.contenido }}
-          </div>
+          <!-- <transition name="contenidoprop">
+            <div class="contenido-propuesta" :class="{'mostrando': _.includes(propuestaseleccionada, propuesta._id)}">
+              {{ propuesta.contenido }}
+              <span class="palito" />
+            </div>
+          </transition> -->
         </div>
+        <transition name="contenidoprop">
+          <div v-if="propuestaseleccionada !== null" class="contenido-propuesta">
+            <div v-html="compiledMarkdown" />
+          </div>
+        </transition>
       </div>
     </div>
     <div class="contenedor-pdf">
-      <object :data="programa" class="pdf-programa" />
+      <!-- <object :data="programa" class="pdf-programa" /> -->
 
       <p class="descargable-programa">
         descarga programa completo
@@ -34,7 +41,7 @@
   </div>
 </template>
 <script>
-// import pdf from 'vue-pdf'
+import marked from 'marked'
 
 export default {
 	// components: {
@@ -45,7 +52,9 @@ export default {
 			propuestas: [],
 			programa: null,
 			src: null,
-			mostrarpropuesta: null
+			mostrarpropuesta: null,
+			propuestaseleccionada: null,
+			contenido: null
 		}
 	},
 
@@ -62,8 +71,16 @@ export default {
 		)
 		const programa = solicitud2.Propuesta
 		this.programa = programa.url
-		console.log('propuestas cargadas', propuestas.length)
+		console.log('propuestas cargadas', propuestas)
 		console.log('programa ', this.programa)
+	},
+	computed: {
+		propuestasID () {
+			return this.propuestas.map(a => a._id)
+		},
+		compiledMarkdown () {
+			return marked(this.contenido, { sanitize: true })
+		}
 	},
 	mounted () {
 		// const loadingtask = pdf.createLoadingTask('https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/Programa_Completo_8ff9270a64.pdf')
@@ -75,10 +92,21 @@ export default {
 	},
 
 	methods: {
-		mostrar () {
-			console.log(this.mostrarpropuesta)
-			if (!this.mostrarpropuesta) this.mostrarpropuesta = true
-			else this.mostrarpropuesta = null
+		mostrar (propuesta) {
+			console.log('mostrando', this.mostrarpropuesta)
+			if (this.propuestaseleccionada === propuesta._id) {
+				this.propuestaseleccionada = null
+				this.mostrarpropuesta = null
+				this.contenido = null
+				console.log('anulando', this.propuestaseleccionada, this.mostrarpropuesta)
+			} else {
+				this.mostrarpropuesta = true
+				this.propuestaseleccionada = propuesta._id
+				this.contenido = propuesta.contenido
+				console.log('mostrando', this.propuestaseleccionada, this.mostrarpropuesta)
+			}
+			console.log('propuestasID', this.propuestasID)
+			console.log('propuesta seleccionada', propuesta._id)
 		}
 	}
 
@@ -88,17 +116,25 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .propuestas{
 	padding: 10px;
 }
 .caja-propuestas {
 	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+
 }
 .contenedor-propuesta {
-	max-width: 250px;
-	max-height: 250px;
+	max-width: 150px;
+	height: 200px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -117,11 +153,25 @@ h2 {
 	max-height: 100px;
 }
 .contenido-propuesta {
-	border: 5px solid violet;
 	width: 80vw;
 	height: 80vh;
-	overflow: hidden;
+	overflow: scroll;
+	transition: .5s;
+	top: 50%;
 }
+.mostrando {
+	width: 80vw;
+	height: 80vh;
+	border: 2px solid rgba(54, 54, 54, 0.863);
+	transition: .5s;
+	display: block;
+	position: relative;
+	left: 8vw;
+	right: 8vw;
+	top: 50%;
+}
+
+
 .contenedor-pdf {
 	display: flex;
 	flex-wrap: wrap;
