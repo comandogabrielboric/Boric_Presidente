@@ -60,7 +60,6 @@ export default {
 	display: flex;
 	flex-flow: row;
 	width: 100vw;
-
 	justify-content: space-around;
 	align-items: center;
 }
