@@ -37,15 +37,11 @@ export default {
 		}
 	},
 	async fetch () {
-		console.log('cargar footer')
 		const solicitud = await fetch(`${process.env.apiURL}/footer`).then(res =>
 			res.json()
 		)
 		this.logosAD = solicitud.logosAD
 		this.rrss = solicitud.RRSS
-		// console.log('footer: ', solicitud)
-		// console.log('logooooooos: ', this.logosAD)
-		console.log('rrss: ', this.rrss)
 	}
 }
 </script>

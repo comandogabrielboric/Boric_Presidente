@@ -11,39 +11,48 @@
         <textarea :value="input" @input="contenido(columna.content)" />
         <div v-html="compiledMarkdown" />
       </div> -->
-  <!-- </div> -->
+    <!-- </div> -->
   </div>
 </template>
 
 <script>
 // import _ from 'lodash'
-// import marked from 'marked'
+import marked from 'marked'
 // import _ from 'lodash'
 
 export default {
 	data () {
 		return {
-			columnas: [],
-			input: 'n'
+			propuestas: [],
+			programa: null,
+			imagen: null,
+			seoimg: null,
+			pilares: []
 		}
 	},
 
 	async fetch () {
-		console.log('cargar columa')
-		const solicitud = await fetch('https://gbcms.crishadad.cl/programa').then(res =>
+		console.log('cargar pagina')
+		const solicitud = await fetch(`${process.env.apiURL}/programa`).then(res =>
 			res.json()
 		)
 		const pag = solicitud
+		this.propuestas = pag.propuestas
+		this.programa = pag.Propuesta.url
+		const imagen = pag.imagen[0]
+		const imagen1 = imagen.imagen[0]
+		this.imagen = imagen1.url
+		this.seoimg = imagen.descripcionSEO
+		this.pilares = pag.pilares.contenido
 
+		console.log('pagina cargada', this.pilares)
+	},
 
-		console.log('pagina cargada', pag)
+	computed: {
+		compiledMarkdown (md) {
+			return marked(md, { sanitize: true })
+		}
 	}
-
-// 	computed: {
-// 		compiledMarkdown () {
-// 			return marked(this.input, { sanitize: true })
-// 		}
-// 	},
 // 	methods: {
 // 		contenido (colco) {
 // 			this.input = colco
