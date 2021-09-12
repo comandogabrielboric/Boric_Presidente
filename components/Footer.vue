@@ -1,7 +1,7 @@
 <template>
   <div class="contenedor-footer">
     <div class="footer">
-      <div class="link-internos contenedor">
+      <div class=" contenedor">
         <nuxt-link class="link-footer" to="/storytelling">
           <p>storytelling</p>
         </nuxt-link>
@@ -12,8 +12,8 @@
           <p>dona</p>
         </nuxt-link>
       </div>
-      <div class="link-rrss contenedor">
-        <div v-for="red in rrss" :key="red._id" class="link-rrss contenedor">
+      <div class="link-rrss">
+        <div v-for="red in rrss" :key="red._id" class="cont-link">
           <a class="link-footer" :href="red.url"><img :src="red.icono.url" alt="" class="logorrss"></a>
         </div>
       </div>
@@ -24,6 +24,7 @@
         </nuxt-link>
       </div>
     </div>
+
     <div v-for="logo in logosAD" :key="logo._id" class="logos contenedor-logos">
       <img :src="logo.formats.thumbnail.url" alt="">
     </div>
@@ -54,7 +55,7 @@ export default {
 
 <style scoped>
 .contenedor-footer {
-	border: 2px solid #fff;
+	margin: 5px;
 }
 .footer {
 	display: flex;
@@ -65,6 +66,7 @@ export default {
 }
 .link-footer {
 	color: #fff;
+	text-decoration: none;
 }
 
 .logos {
@@ -74,15 +76,35 @@ export default {
 	justify-content: center;
 	align-items: center;
 	padding-bottom: 10px;
+	padding-top: 10px;
 }
 .logorrss {
-	color: #fff;
-	width: 30px;
+	width: 35px;
 }
 .link-rrss {
 	padding: 10px;
 	display: flex;
 	flex-flow: row;
+}
+.cont-link {
+	padding: 7px;
+}
+
+.link-footer {
+	text-align: center;
+	padding: 5px;
+}
+@media screen and (max-width: 760px) {
+
+	.footer {
+		flex-flow: column;
+	}
+	.contenedor {
+		padding: 8px;
+	}
+	.contenedor-logos {
+		margin-top: 15px;
+	}
 }
 
 </style>

@@ -1,23 +1,23 @@
 <template>
   <div>
     <h1>holooo</h1>
-    <div v-for="columna in columnas" :key="columna.id" class="columnas">
-      <h1>{{ columna.title }}</h1>
-      <!-- <img :src="`${process.env.apiURL}/`+columna.Media.url" alt=""> -->
-      <p>Descripcion: {{ columna.description }}</p>
+    <!-- <div v-for="columna in columnas" :key="columna.id" class="columnas">
+      <h1>{{ columna.title }}</h1> -->
+    <!-- <img :src="`${process.env.apiURL}/`+columna.Media.url" alt=""> -->
+    <!-- <p>Descripcion: {{ columna.description }}</p>
       <p>Categoria: {{ columna.category }} </p>
       <div />
       <div id="editor">
         <textarea :value="input" @input="contenido(columna.content)" />
         <div v-html="compiledMarkdown" />
-      </div>
-    </div>
+      </div> -->
+  <!-- </div> -->
   </div>
 </template>
 
 <script>
 // import _ from 'lodash'
-import marked from 'marked'
+// import marked from 'marked'
 // import _ from 'lodash'
 
 export default {
@@ -30,25 +30,25 @@ export default {
 
 	async fetch () {
 		console.log('cargar columa')
-		const solicitud = await fetch('https://gbcms.crishadad.cl/articles').then(res =>
+		const solicitud = await fetch('https://gbcms.crishadad.cl/programa').then(res =>
 			res.json()
 		)
-		const columnas = solicitud
-		this.columnas = columnas
+		const pag = solicitud
 
-		console.log('columnas cargadas', columnas)
-	},
 
-	computed: {
-		compiledMarkdown () {
-			return marked(this.input, { sanitize: true })
-		}
-	},
-	methods: {
-		contenido (colco) {
-			this.input = colco
-		}
+		console.log('pagina cargada', pag)
 	}
+
+// 	computed: {
+// 		compiledMarkdown () {
+// 			return marked(this.input, { sanitize: true })
+// 		}
+// 	},
+// 	methods: {
+// 		contenido (colco) {
+// 			this.input = colco
+// 		}
+// 	}
 }
 
 
