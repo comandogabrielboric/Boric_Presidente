@@ -11,6 +11,7 @@
     </div>
     <div>
       <p>Propuesta programatica</p>
+      <mostradorprop />
     </div>
     <div>
       <p>Participacion ciudadana</p>
@@ -21,3 +22,5 @@
 <script>
 export default {}
 </script>
+
+

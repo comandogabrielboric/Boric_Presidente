@@ -1,118 +1,108 @@
 <template>
   <div>
-    <title>Propuestas Programaticas</title>
-    <div class="pilares">
-      <img :src="imgpilares" alt="" class="img-pilares">
-      <p>Pilares / Puntos principales</p>
-      <div v-html="pilaresMarkdown" />
-    </div>
-    <div class="propuestas">
-      <p class="titulo">
-        Propuestas programaticas
-      </p>
-      <div class="caja-propuestas">
-        <div v-for=" propuesta in propuestas" :key="propuesta.id" class="contenedor-propuesta">
-          <div @click="mostrar(propuesta)">
-            <img :src="propuesta.imagen.url" alt="" class="img-propuesta">
-            <h2 class="titulo-propuesta">
-              {{ propuesta.titulo }}
-            </h2>
-          </div>
-          <!-- <transition name="contenidoprop">
+    <div>
+      <title>Propuestas Programaticas</title>
+      <div class="pilares">
+        <img :src="imagen" alt="" class="img-pilares">
+        <p>Pilares / Puntos principales</p>
+        <div v-html="pilaresMarkdown" />
+        <a class="descargable" :href="programa">
+          <p class="descargable-programa">
+            descarga programa completo
+          </p>
+        </a>
+        <div v-html="pilaresMarkdown2" />
+      </div>
+      <div class="propuestas">
+        <p class="titulo">
+          Propuestas programaticas
+        </p>
+        <div class="caja-propuestas">
+          <div v-for=" propuesta in propuestas" :key="propuesta.id" class="contenedor-propuesta">
+            <div @click="mostrar(propuesta)">
+              <img :src="propuesta.imagen.url" alt="" class="img-propuesta">
+              <h2 class="titulo-propuesta">
+                {{ propuesta.titulo }}
+              </h2>
+            </div>
+            <!-- <transition name="contenidoprop">
             <div class="contenido-propuesta" :class="{'mostrando': _.includes(propuestaseleccionada, propuesta._id)}">
               {{ propuesta.contenido }}
               <span class="palito" />
             </div>
           </transition> -->
-        </div>
-        <transition name="contenidoprop">
-          <div v-if="propuestaseleccionada !== null" class="contenido-propuesta">
-            <div v-html="compiledMarkdown" />
           </div>
-        </transition>
+          <transition name="entrar">
+            <div v-if="propuestaseleccionada !== null" class="contenido-propuesta">
+              <div v-html="Markdownpropuesta" />
+            </div>
+          </transition>
+        </div>
       </div>
-    </div>
-    <div class="contenedor-pdf">
-      <!-- <object :data="programa" class="pdf-programa" /> -->
+      <div class="contenedor-pdf">
+        <!-- <object :data="programa" class="pdf-programa" /> -->
 
 
-      <a :href="programa">
-        <p class="descargable-programa">
-          descarga programa completo
-        </p>
-      </a>
-      <!-- <pdf src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/Programa_Completo_8ff9270a64.pdf" class="pdf-programa" /> -->
+        <a :href="programa">
+          <p class="descargable-programa">
+            descarga programa completo
+          </p>
+        </a>
+        <!-- <pdf src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/Programa_Completo_8ff9270a64.pdf" class="pdf-programa" /> -->
+      </div>
     </div>
   </div>
 </template>
+
 <script>
 import marked from 'marked'
 
 export default {
-	// components: {
-	// 	pdf
-	// },
 	data () {
 		return {
 			propuestas: [],
 			programa: null,
-			src: null,
+			imagen: null,
+			seoimg: null,
 			propuestaseleccionada: null,
 			contenido: null,
-			pilares: null,
-			imgpilares: null
+			pilares: []
 		}
 	},
 
 	async fetch () {
-		console.log('cargar propuestas y programa')
-		const solicitud = await fetch(`${process.env.apiURL}/propuestas`).then(res =>
+		console.log('cargar pagina')
+		const solicitud = await fetch(`${process.env.apiURL}/programa`).then(res =>
 			res.json()
 		)
-		const propuestas = solicitud
-		this.propuestas = propuestas
+		const pag = solicitud
+		this.propuestas = pag.propuestas
+		this.programa = pag.Propuesta.url
+		const imagen = pag.imagen[0]
+		const imagen1 = imagen.imagen[0]
+		this.imagen = imagen1.url
+		this.seoimg = imagen.descripcionSEO
+		this.pilares = pag.pilares.contenido
 
-		const solicitud2 = await fetch(`${process.env.apiURL}/programa`).then(res =>
-			res.json()
-		)
-		const programa = solicitud2.Propuesta
-		this.programa = programa.url
-
-		const solicitud3 = await fetch(`${process.env.apiURL}/pilares`).then(res =>
-			res.json()
-		)
-		this.pilares = solicitud3
-		const img = solicitud3.Imagen.url
-		this.imgpilares = img
-
-		// console.log('Pilares', this.pilares)
-		// console.log('propuestas cargadas', propuestas)
-		console.log('programa ', this.programa)
-		console.log('img pilares ', img)
+		console.log('pagina cargada', this.pilares)
 	},
+
 	computed: {
 		propuestasID () {
 			return this.propuestas.map(a => a._id)
 		},
-		compiledMarkdown () {
-			return marked(this.contenido, { sanitize: true })
-		},
 		pilaresMarkdown () {
-			const contenido = this.pilares
-			const cont = contenido.Contenido
-			return marked(cont, { sanitize: true })
+			const pilar = this.pilares[0]
+			return marked(pilar.contenido1, { sanitize: true })
+		},
+		pilaresMarkdown2 () {
+			const pilar = this.pilares[1]
+			return marked(pilar.contenido1, { sanitize: true })
+		},
+		Markdownpropuesta () {
+			return marked(this.contenido, { sanitize: true })
 		}
-
 	},
-	mounted () {
-		// const loadingtask = pdf.createLoadingTask('https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/Programa_Completo_8ff9270a64.pdf')
-		// console.log(loadingtask)
-
-		// this.src.promise.then(pdf => {
-		// 	this.numPages = pdf.numPages
-		// })
-	},
-
 	methods: {
 		mostrar (propuesta) {
 			console.log('mostrando', this.mostrarpropuesta)
@@ -129,11 +119,10 @@ export default {
 			console.log('propuesta seleccionada', propuesta._id)
 		}
 	}
-
-
-
-
 }
+
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -169,13 +158,20 @@ export default {
 h2 {
 	font-size: 1rem;
 }
+.descargable	{
+	display: flex;
+	text-decoration: none;
+	color: #fff;
+	justify-content: center;
+
+}
 .img-propuesta {
 	max-width: 100px;
 	max-height: 100px;
 }
 .contenido-propuesta {
 	width: 80vw;
-	height: 80vh;
+	height: 40vh;
 	overflow-y: scroll;
 	transition: .5s;
 	top: 50%;
@@ -215,13 +211,46 @@ h1, #propuestas {
 	width: 80vw;
 	height: 80vh;
 }
+.contenedor-pdf {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.pdf-programa {
+	width: 80vw;
+	height: 80vh;
+}
+
+.entrar-enter {
+	height: 0;
+	width: 80vw;
+	opacity: 0;
+}
+.entrar-enter-to,
+.entrar-leave {
+	opacity: 1;
+}
+.entrar-enter-active {
+	transition: width 0.7s ease, opacity 0.7s ease;
+}
+.entrar-leave-to {
+	height: 0;
+	width: 80vw;
+	top: 0;
+	right: 0;
+	opacity: 0;
+}
+.entrar-leave-active {
+	transition: width 0.5s ease, height 0.5s ease, opacity 0.4s ease;
+}
 
 @media screen and (min-width: 1024px) {
-.descargable-programa {
-	width: 50vw;
-	text-align: center;
+	.descargable-programa {
+		width: 50vw;
+		text-align: center;
 }
 }
 
 
 </style>
+

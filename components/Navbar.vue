@@ -1,29 +1,32 @@
 <template>
-  <div class="navbar" @scroll="!activa">
-    <div class="contenedor-logo">
-      <nuxt-link to="/" class="nuxt-link">
-        <p>logo</p>
-      </nuxt-link>
-    </div>
-    <transition name="links">
-      <div class="contenedor-links link-interno" :class="{'activa': activa}">
-        <nuxt-link to="/propuestas" class="nuxt-link">
-          <p>propuestas</p>
-        </nuxt-link>
-        <nuxt-link to="/sumate" class="nuxt-link">
-          <p>sumate</p>
-        </nuxt-link>
-        <nuxt-link to="/" class="nuxt-link">
-          <p>dona</p>
+  <div>
+    <div class="navbar" @scroll="!activa">
+      <div class="contenedor-logo">
+        <nuxt-link to="/" class="ppal-link">
+          <p>logo</p>
         </nuxt-link>
       </div>
-    </transition>
-    <div class="link-rrss">
-      <div v-for="red in rrss" :key="red._id" class="cont-link">
-        <a class="link-footer" :href="red.url"><img :src="red.icono.url" alt="" class="logorrss"></a>
+      <transition name="entrar">
+        <div class="contenedor-links link-interno" :class="{'activa': activa}">
+          <nuxt-link to="/propuestas" class="nuxt-link">
+            <p>propuestas</p>
+          </nuxt-link>
+          <nuxt-link to="/sumate" class="nuxt-link">
+            <p>sumate</p>
+          </nuxt-link>
+          <p class="nuxt-link" @click="quierodonar = !quierodonar">
+            dona
+          </p>
+        </div>
+      </transition>
+      <div class="link-rrss">
+        <div v-for="red in rrss" :key="red._id" class="cont-link">
+          <a class="link-footer" :href="red.url"><img :src="red.icono.url" alt="" class="logorrss"></a>
+        </div>
       </div>
+      <span class="menu-icon__line" @click="activa = !activa" />
     </div>
-    <span class="menu-icon__line" @click="activa = !activa" />
+    <dona v-if="quierodonar" />
   </div>
 </template>
 
@@ -33,7 +36,8 @@ export default {
 		return {
 			rrss: [],
 			logosAD: null,
-			activa: null
+			activa: null,
+			quierodonar: null
 		}
 	},
 	async fetch () {
@@ -62,7 +66,7 @@ p {
 	align-items: center;
 	height: 80px;
 }
-.nuxt-link {
+.nuxt-link, .ppal-link {
 	color: #fff;
 	text-decoration: none;
 	padding: 10px;
@@ -75,7 +79,7 @@ p {
 .contenedor-links {
 	display: flex;
 	flex-flow: row;
-	transition: .8s;
+	z-index: 100;
 }
 .menu-icon {
 	&__line {
@@ -83,23 +87,55 @@ p {
 	}
 }
 
+.entrar-enter {
+	height: 0;
+	width: 0;
+	opacity: 0;
+}
+.entrar-enter-to,
+.entrar-leave {
+	opacity: 1;
+}
+.entrar-enter-active {
+	transition: width 0.7s ease, opacity 0.7s ease;
+}
+.entrar-leave-to {
+	height: 0;
+	width: 0;
+	top: 0;
+	right: 0;
+	opacity: 0;
+}
+.entrar-leave-active {
+	transition: width 0.5s ease, height 0.5s ease, opacity 0.4s ease;
+}
+
 	@media screen and (max-width: 760px) {
 
 		.contenedor-links {
-			display: none;
+			// display: none;
+			width: 0;
+			height: 0;
+			position: fixed;
 			transition: 0.8s;
+			right: 10vw;
+			top: 70px;
+
 				&.activa {
 				display: flex;
 				flex-flow: column;
 				position: fixed;
-				right: 10vw;
-				top: 70px;
+				min-height: 200px;
+				width: 15vh;
 				padding: 15px;
 				border: 2px solid #fff;
+				right: 10vw;
 				transition: .8s;
 				background: rgba(0, 0, 0, 0.664);
+				overflow: hidden;
 			}
 		}
+
 
 	// crea icono de menu hamburgesa
 		.menu-icon {
