@@ -3,13 +3,13 @@
     <div class="footer">
       <div class=" contenedor">
         <nuxt-link class="link-footer" to="/storytelling">
-          <p>storytelling</p>
+          storytelling
         </nuxt-link>
         <nuxt-link class="link-footer" to="/sumate">
-          <p>sumate</p>
+          sumate
         </nuxt-link>
         <nuxt-link class="link-footer" to="/dona">
-          <p>dona</p>
+          dona
         </nuxt-link>
       </div>
       <div class="link-rrss">
@@ -50,9 +50,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .contenedor-footer {
 	margin: 5px;
+}
+.contenedor {
+	display: flex;
+	flex-flow: column;
 }
 .footer {
 	display: flex;
@@ -64,6 +68,10 @@ export default {
 .link-footer {
 	color: #fff;
 	text-decoration: none;
+	&:hover {
+		opacity: .8;
+		cursor: pointer;
+	}
 }
 
 .logos {
@@ -98,6 +106,7 @@ export default {
 	}
 	.contenedor {
 		padding: 8px;
+		display: flex;
 	}
 	.contenedor-logos {
 		margin-top: 15px;

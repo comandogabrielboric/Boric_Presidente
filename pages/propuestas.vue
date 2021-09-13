@@ -39,17 +39,6 @@
           </transition>
         </div>
       </div>
-      <div class="contenedor-pdf">
-        <!-- <object :data="programa" class="pdf-programa" /> -->
-
-
-        <a :href="programa">
-          <p class="descargable-programa">
-            descarga programa completo
-          </p>
-        </a>
-        <!-- <pdf src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/Programa_Completo_8ff9270a64.pdf" class="pdf-programa" /> -->
-      </div>
     </div>
   </div>
 </template>

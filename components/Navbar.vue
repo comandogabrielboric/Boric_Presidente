@@ -9,12 +9,16 @@
       <transition name="entrar">
         <div class="contenedor-links link-interno" :class="{'activa': activa}">
           <nuxt-link to="/propuestas" class="nuxt-link">
-            <p>propuestas</p>
+            <p @click="activa = !activa">
+              propuestas
+            </p>
           </nuxt-link>
           <nuxt-link to="/sumate" class="nuxt-link">
-            <p>sumate</p>
+            <p @click="activa = !activa">
+              sumate
+            </p>
           </nuxt-link>
-          <p class="nuxt-link" @click="quierodonar = !quierodonar">
+          <p class="nuxt-link" @click="linkdona()">
             dona
           </p>
         </div>
@@ -51,6 +55,12 @@ export default {
 		)
 		this.logosAD = solicitud.logosAD
 		this.rrss = solicitud.RRSS
+	},
+	methods: {
+		linkdona () {
+			this.activa = !this.activa
+			this.quierodonar = !this.quierodonar
+		}
 	}
 }
 </script>
@@ -75,12 +85,18 @@ p {
 	color: #fff;
 	text-decoration: none;
 	padding: 10px;
+	border-radius: 4px;
+	&:hover {
+		opacity: .8;
+		cursor: pointer;
+	}
 }
 .link-rrss {
 	display: flex;
 	flex-flow: row;
 	padding: 10px;
 	z-index: 100;
+
 }
 .contenedor-links {
 	display: flex;
@@ -96,6 +112,7 @@ p {
 	width: 0;
 	height: 0;
 	transition: .5s;
+
 }
 .activado {
 	top: 0;
@@ -173,18 +190,22 @@ p {
 			right: 10vw;
 			top: 70px;
 			overflow: hidden;
+			text-align: center;
+			justify-content: center;
 
 				&.activa {
 				display: flex;
 				flex-flow: column;
 				position: fixed;
-				min-height: 100px;
-				width: 15vh;
+				height: 200px;
+				width: 150px;
 				padding: 15px;
 				border: 2px solid #fff;
 				right: 10vw;
 				transition: .8s;
 				background: rgba(0, 0, 0, 0.664);
+				backdrop-filter: blur(2px);
+				border-radius: 4px;
 
 			}
 		}
