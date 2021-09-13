@@ -26,7 +26,12 @@
       </div>
       <span class="menu-icon__line" @click="activa = !activa" />
     </div>
-    <dona v-if="quierodonar" />
+    <transition name="entrar">
+      <div>
+        <dona class="modal-donacion" :class="{'activado' : quierodonar}" />
+        <span v-if="quierodonar" class="x" @click="quierodonar = !quierodonar" />
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -75,6 +80,7 @@ p {
 	display: flex;
 	flex-flow: row;
 	padding: 10px;
+	z-index: 100;
 }
 .contenedor-links {
 	display: flex;
@@ -86,18 +92,64 @@ p {
 		position: fixed;
 	}
 }
+.modal-donacion {
+	width: 0;
+	height: 0;
+	transition: .5s;
+}
+.activado {
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.76);
+	z-index: 90;
+	backdrop-filter: blur(4px);
+	overflow: hidden;
+	transition: .5s;
+}
+.x {
+	z-index: 300;
+	position: fixed;
+	right: 17%;
+	top: 13%;
+	width: 20px;
+	&::before, &::after {
+			color: #fff;
+			z-index: 300;
+			border: 2px solid #fff;
+			content: '';
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			background: #fff;
+			transition: background .8s ease;
+	}
+	&::before {
+		transform: rotate(45deg);
+
+	}
+	&::after {
+		transform: rotate(-45deg);
+	}
+}
+
 
 .entrar-enter {
 	height: 0;
 	width: 0;
 	opacity: 0;
 }
-.entrar-enter-to,
-.entrar-leave {
+.entrar-enter-to {
 	opacity: 1;
 }
 .entrar-enter-active {
 	transition: width 0.7s ease, opacity 0.7s ease;
+}
+.entrar-leave {
+	opacity: 1;
 }
 .entrar-leave-to {
 	height: 0;
@@ -120,19 +172,20 @@ p {
 			transition: 0.8s;
 			right: 10vw;
 			top: 70px;
+			overflow: hidden;
 
 				&.activa {
 				display: flex;
 				flex-flow: column;
 				position: fixed;
-				min-height: 200px;
+				min-height: 100px;
 				width: 15vh;
 				padding: 15px;
 				border: 2px solid #fff;
 				right: 10vw;
 				transition: .8s;
 				background: rgba(0, 0, 0, 0.664);
-				overflow: hidden;
+
 			}
 		}
 
