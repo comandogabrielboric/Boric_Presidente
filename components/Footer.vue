@@ -1,34 +1,18 @@
-<template>
-  <div class="contenedor-footer">
-    <div class="footer">
-      <div class=" contenedor">
-        <nuxt-link class="link-footer" to="/storytelling">
-          storytelling
-        </nuxt-link>
-        <nuxt-link class="link-footer" to="/sumate">
-          sumate
-        </nuxt-link>
-        <nuxt-link class="link-footer" to="/dona">
-          dona
-        </nuxt-link>
-      </div>
-      <div class="link-rrss">
-        <div v-for="red in rrss" :key="red._id" class="cont-link">
-          <a class="link-footer" :href="red.url"><img :src="red.icono.url" alt="" class="logorrss"></a>
-        </div>
-      </div>
+<template lang="pug">
+footer
 
-      <div class="part-ciudadana contenedor">
-        <nuxt-link class="link-footer" to="#">
-          participacion ciudadana
-        </nuxt-link>
-      </div>
-    </div>
+	.capa.capaLinks
+		nuxt-link.link-footer(to='/storytelling') Storytelling
+		nuxt-link.link-footer(to='/sumate') Sumate
+		nuxt-link.link-footer(to='/dona') Dona
+		nuxt-link.link-footer(to='#') Participación ciudadana
+	.capa.capaFooter
+		.logos
+			.aprueboDignidad
+				.iconoAprueboDignidad
+				.textoAprueboDignidad
+		RedesSociales
 
-    <div v-for="logo in logosAD" :key="logo._id" class="logos contenedor-logos">
-      <img :src="logo.formats.thumbnail.url" alt="">
-    </div>
-  </div>
 </template>
 
 <script>
@@ -50,67 +34,74 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.contenedor-footer {
-	margin: 5px;
-}
-.contenedor {
-	display: flex;
-	flex-flow: column;
-}
-.footer {
-	display: flex;
-	flex-flow: row;
-	width: 100vw;
-	justify-content: space-around;
-	align-items: center;
-}
-.link-footer {
-	color: #fff;
-	text-decoration: none;
-	&:hover {
-		opacity: .8;
-		cursor: pointer;
-	}
-}
+<style lang="sass" scoped>
+@import '~/scss/utils'
+@import '~/scss/paleta'
 
-.logos {
-	display: flex;
-	flex-flow: row;
-	color: #fff;
-	justify-content: center;
-	align-items: center;
-	padding-bottom: 10px;
-	padding-top: 10px;
-}
-.logorrss {
-	width: 35px;
-}
-.link-rrss {
-	padding: 10px;
-	display: flex;
-	flex-flow: row;
-}
-.cont-link {
-	padding: 7px;
-}
+footer
+	background-color: white
+	color: $colorFooter
+	a
+		&, &:visited, &:active, &:hover
+			color: inherit
+			text-decoration: none
+	.capa
+		padding: 2em
+		display: flex
+		align-items: center
+	.capaFooter
+		background-color: $fondoFooter
 
-.link-footer {
-	text-align: center;
-	padding: 5px;
-}
-@media screen and (max-width: 760px) {
+	.capaLinks
+		display: flex
+		align-items: center
+		justify-content: space-around
+		position: relative
+		z-index: 0
+		> *
+			z-index: 1
+		&::before
+			content: ''
+			display: block
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			background-color: $fondoFooter
+			opacity: .5
+		.link-footer
+			padding: .25em
+			margin: .25em
+	.logos
+		.aprueboDignidad
+			font-size: 4em
+			display: flex
+			align-items: center
+			.iconoAprueboDignidad
+				+bgcon
+				background-image: url('/logos/apruebo dignidad icono.svg')
+				height: 1em
+				width: 1em
+			.textoAprueboDignidad
+				+micon
+				background-color: currentColor
+				mask-image: url('/logos/apruebo dignidad texto.svg')
+				height: 1em
+				width: 1.458em
 
-	.footer {
-		flex-flow: column;
-	}
-	.contenedor {
-		padding: 8px;
-		display: flex;
-	}
-	.contenedor-logos {
-		margin-top: 15px;
-	}
-}
+	@media screen and (min-width: 760px)
+		.capaFooter
+			justify-content: space-around
+
+	@media screen and (max-width: 760px)
+		flex-flow: column nowrap
+		.redesSociales
+			order: 1
+		.logos
+			order: 2
+			margin-top: 2em
+
+
 
 </style>

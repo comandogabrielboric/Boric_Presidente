@@ -39,8 +39,12 @@ export default {
 			{ hid: 'twitter:site', property: 'twitter:image', content: '@GabrielBoric' }
 		],
 		link: [
-			{ rel: 'icon', href: '/favicon.svg' },
-			{ rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' }
+			{ hid: 'icon', rel: 'icon', href: '/favicon.svg' },
+			{ hid: 'mask-icon', rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' },
+
+			{ hid: 'googleapis', rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+			{ hid: 'gstatic', rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+			{ hid: 'gfonts', rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap' }
 		]
 	},
 

@@ -1,47 +1,39 @@
 <template lang="pug">
-div
-	.navbar
+.navbar
 
-		.contenedor-logo
-			nuxt-link.ppal-link(to='/')
-				.logo
+	.contenedor-logo
+		nuxt-link.ppal-link(to='/')
+			.logo
 
-		mixin links
-			.links.contenedor-links.link-interno
-				nuxt-link.link(to='/propuestas') Propuestas
-				nuxt-link.link(to='/sumate') Sumate
-				nuxt-link.link(to='/donar') Dona
+	mixin links
+		.links.contenedor-links.link-interno
+			nuxt-link.link(to='/propuestas') Propuestas
+			nuxt-link.link(to='/sumate') Sumate
+			nuxt-link.link(to='/donar') Dona
 
-		.menuCompu
+	.menuCompu
+		+links
+
+	transition(:duration='300')
+		.menuMovil(v-if="activa")
+			//.barra
+				.oicono.cruz(@click="activa=false")
 			+links
+			//.barra
+				.oicono.nada
+			//.oicono.cruz(@click="activa=false")
 
-		transition(:duration='300')
-			.menuMovil(v-if="activa")
-				//.barra
-					.oicono.cruz(@click="activa=false")
-				+links
-				//.barra
-					.oicono.nada
-				//.oicono.cruz(@click="activa=false")
+	//.link-rrss
+		.cont-link(v-for='red in rrss' :key='red._id')
+			a.link-footer(:href='red.url')
+				img.logorrss(:src='red.icono.url' alt='')
 
-		//.link-rrss
-			.cont-link(v-for='red in rrss' :key='red._id')
-				a.link-footer(:href='red.url')
-					img.logorrss(:src='red.icono.url' alt='')
-
-		.redesSociales
-			a.redSocial.instagram(target="_blank" rel="noreferer noopener" href="https://www.instagram.com/gabrielboric/")
-				.oicono.instagram
-			a.redSocial.twitter(target="_blank" rel="noreferer noopener" href="https://twitter.com/gabrielboric")
-				.oicono.twitter
-			a.redSocial.facebook(target="_blank" rel="noreferer noopener" href="https://www.facebook.com/gabrielboric")
-				.oicono.facebook
+	RedesSociales
 
 
-		.triggerMenu(@click="activa = !activa")
-			.oicono(:class="activa ? 'cruz' : 'menu-relleno'")
+	.triggerMenu(@click="activa = !activa")
+		.oicono(:class="activa ? 'cruz' : 'menu-relleno'")
 
-	.espacio
 
 </template>
 
@@ -51,36 +43,23 @@ export default {
 	components: { logo },
 	data () {
 		return {
-			rrss: [],
-			logosAD: null,
-			activa: true,
-			quierodonar: null
+			activa: null
 		}
-	},
-	async fetch () {
-		const solicitud = await fetch(`${process.env.apiURL}/footer`).then(res =>
-			res.json()
-		)
-		this.logosAD = solicitud.logosAD
-		this.rrss = solicitud.RRSS
 	},
 	watch: {
 		$route () {
 			this.activa = false
 		}
-	},
-	methods: {
-		linkdona () {
-			this.activa = !this.activa
-			this.quierodonar = !this.quierodonar
-		}
 	}
 }
 </script>
 <style lang="sass" scoped>
-@import '~/scss/utils.sass'
+@import '~/scss/utils'
+@import '~/scss/paleta'
+
 .navbar
 	position: sticky
+	top: 0
 	z-index: 1000
 	display: flex
 	align-items: center
@@ -89,7 +68,8 @@ export default {
 	height: 5em
 	line-height: 0
 
-	color: #333
+	color: $colorHeader
+	background-color: $fondoHeader
 	a
 		&, &:visited, &:active, &:hover
 			color: inherit
@@ -123,6 +103,7 @@ export default {
 	.menuCompu
 		@media screen and (max-width: 760px)
 			display: none
+
 	.menuMovil
 		position: fixed
 		z-index: 10
@@ -135,6 +116,9 @@ export default {
 		display: flex
 		flex-flow: column nowrap
 		justify-content: center
+
+		color: $colorMenu
+		background-color: $fondoMenu
 
 		@media screen and (min-width: 760px)
 			display: none
