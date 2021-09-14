@@ -1,30 +1,32 @@
-<template>
-  <div>
-    <div>
-      <p>Storytelling</p>
-    </div>
-    <div>
-      <p>cuña</p>
-    </div>
-    <div>
-      <p>Sumate</p>
-    </div>
-    <div>
-      <p>Propuesta programatica</p>
-      <mostradorprop />
-    </div>
-    <div>
-      <p>Participacion ciudadana</p>
-    </div>
-  </div>
+<template lang="pug">
+.index
+	section
+		p Storytelling
+	section
+		p cuña
+	section
+		p Sumate
+	section
+		p Propuesta programatica
+		mostradorprop
+	section
+		p Participacion ciudadana
 </template>
 
 <script>
-export default {}
+import mostradorprop from './-mostradorprop.vue'
+export default {
+	components: { mostradorprop }
+}
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="sass" scoped>
+section
+	background-color: rgba(0,0,0,.05)
+	min-height: 10em
+	padding: 2em
+	&:nth-child(even)
+		background-color: rgba(0,0,0,.1)
 </style>
 
 

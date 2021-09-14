@@ -24,6 +24,7 @@
 		"nuxt": "^2.15.7",
 		"pug": "^3.0.2",
 		"pug-plain-loader": "^1.1.0",
+		"sanitize-html": "^2.5.1",
 		"vue-pdf": "^4.3.0",
 		"webpack": "^4.46.0"
 	},

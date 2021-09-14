@@ -1,47 +1,37 @@
-<template>
-  <div>
-    <div>
-      <title>Propuestas Programaticas</title>
-      <div class="pilares">
-        <img :src="imagen" alt="" class="img-pilares">
-        <div v-html="pilaresMarkdown" />
-        <a class="descargable" :href="programa">
-          <p class="descargable-programa">
-            descarga programa completo
-          </p>
-        </a>
-        <div v-html="pilaresMarkdown2" />
-      </div>
-      <div class="propuestas">
-        <div class="caja-propuestas">
-          <div v-for=" propuesta in propuestas" :key="propuesta.id" class="contenedor-propuesta">
-            <div @click="mostrar(propuesta)">
-              <img :src="propuesta.imagen.url" alt="" class="img-propuesta">
-              <h2 class="titulo-propuesta">
-                {{ propuesta.titulo }}
-              </h2>
-            </div>
-            <!-- <transition name="contenidoprop">
-            <div class="contenido-propuesta" :class="{'mostrando': _.includes(propuestaseleccionada, propuesta._id)}">
-              {{ propuesta.contenido }}
-              <span class="palito" />
-            </div>
-          </transition> -->
-          </div>
-          <transition name="entrar">
-            <div v-if="propuestaseleccionada !== null" class="contenido-propuesta">
-              <div v-html="Markdownpropuesta" />
-            </div>
-          </transition>
-        </div>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+.propuestasRoot
+
+	.zonaImagen
+		img.imagenPrograma(:src='imagen' alt='')
+	section.pilares(v-if="pilares")
+		.contenidoHTML(v-html="_.get(pilares, [0, 'contenido1'])")
+
+		div
+			a.descargable(:href='programa' target="_blank" download)
+				.oicono.descargar
+				.texto Descargar programa completo
+
+		.otrosContenidos(v-for="(pilar, index) in pilares")
+			.contenidoHTML(v-if="index !== 0" v-html='pilar.contenido1')
+
+
+	//section.propuestas(v-if="propuestas")
+		h1 Propuestas
+
+		.caja-propuestas
+			.contenedor-propuesta(v-for='propuesta in propuestas' :key='propuesta.id')
+				div(@click='mostrar(propuesta)')
+					img.img-propuesta(:src='propuesta.imagen.url' alt='')
+					h2.titulo-propuesta
+						| {{ propuesta.titulo }}
+
+			transition(name='entrar')
+				.contenido-propuesta(v-if='propuestaseleccionada !== null')
+					div(v-html='Markdownpropuesta')
+
 </template>
 
 <script>
-import marked from 'marked'
-
 export default {
 	data () {
 		return {
@@ -51,25 +41,29 @@ export default {
 			seoimg: null,
 			propuestaseleccionada: null,
 			contenido: null,
-			pilares: []
+			pilares: null
 		}
 	},
 	// solicita info a cms
 	async fetch () {
 		console.log('cargar pagina')
-		const solicitud = await fetch(`${process.env.apiURL}/programa`).then(res =>
+		const programa = await fetch(`${process.env.apiURL}/programa`).then(res =>
 			res.json()
 		)
-		const pag = solicitud
-		this.propuestas = pag.propuestas
-		this.programa = pag.Propuesta.url
-		const imagen = pag.imagen[0]
+		this.propuestas = programa.propuestas
+		this.programa = programa.Propuesta.url
+		const imagen = programa.imagen[0]
 		const imagen1 = imagen.imagen[0]
 		this.imagen = imagen1.url
 		this.seoimg = imagen.descripcionSEO
-		this.pilares = pag.pilares.contenido
 
-		console.log('pagina cargada', this.pilares)
+		const pilares = programa.pilares.contenido
+		this._.forEach(pilares, (pilar, pindex) => {
+			pilares[pindex].contenido1 = this.$demarcar(pilar.contenido1)
+		})
+		this.pilares = pilares
+
+		console.log('%c PILARES', 'color: yellow', JSON.parse(JSON.stringify(pilares)))
 	},
 
 	computed: {
@@ -77,37 +71,12 @@ export default {
 		propuestasID () {
 			return this.propuestas.map(a => a._id)
 		},
-		// procesa markdown pilares1
-		pilaresMarkdown () {
-			const pilar = this.pilares[0]
-			const valida = this.validamarkdown(pilar)
-			console.log(valida)
-			return marked(pilar.contenido1, { sanitize: true })
-		},
-		// procesa markdown pilares2
-		pilaresMarkdown2 () {
-			const pilar = this.pilares[1]
-			const valida = this.validamarkdown(pilar)
-			console.log(valida)
-			return marked(pilar.contenido1, { sanitize: true })
-		},
 		// porcesa markdown contenido propuestas
 		Markdownpropuesta () {
-			const valida = this.validamarkdown(this.contenido)
-			console.log(valida)
-			return marked(this.contenido, { sanitize: true })
+			return this.$demarcar(this.contenido)
 		}
 	},
 	methods: {
-		// valida que el texto markdown no contenga scripts
-		validamarkdown (md) {
-			const prohibido = 'script'
-			console.log('validando')
-			if (this._.includes(md, prohibido)) {
-				console.log('contenido prohibido')
-				throw 'contenido prohibido'
-			}	else console.log('contenido premitido')
-		},
 		// metodo para seleccionar una propuesta y renderizas su contenido
 		mostrar (propuesta) {
 			console.log('mostrando', this.mostrarpropuesta)
@@ -130,133 +99,95 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
+@import '~/scss/utils'
+.propuestasRoot
+	section
+		padding: 2em
 
-.img-pilares{
-	width: 100vw;
-}
-.propuestas{
-	padding: 10px;
-	z-index: 1;
-}
-.caja-propuestas {
-	display: flex;
-	flex-wrap: wrap;
-	position: relative;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-content: center;
-	align-items: center;
+// CONTENIDO HTML
+.contenidoHTML
+	border: 3px dashed orangered
+	padding: 2em
+	text-align: justify
+	justify-content: justify
+	::v-deep
+		line-height: 1.4
+		h1 + p
+			margin-top: 2rem
 
-}
-.contenedor-propuesta {
-	max-width: 150px;
-	height: 200px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	border-width: 5px;
-	margin: 10px;
-	text-align: center;
-	padding: 5px;
-}
-h2 {
-	font-size: 1rem;
-}
-.descargable	{
-	display: flex;
-	text-decoration: none;
-	color: #fff;
-	justify-content: center;
+.zonaImagen
+	.imagenPrograma
+		min-width: 100%
+		height: 230px
+		position: relative
+		left: 50%
+		transform: translateX(-50%)
+// PILARES
+.pilares
 
-}
-.img-propuesta {
-	max-width: 100px;
-	max-height: 100px;
-	z-index: 1;
-}
-.contenido-propuesta {
-	width: 80vw;
-	height: 40vh;
-	overflow-y: scroll;
-	transition: .5s;
-	top: 50%;
-	background: rgb(255, 255, 255);
-	padding: 20px;
-}
-.mostrando {
-	width: 80vw;
-	height: 80vh;
-	border: 2px solid rgba(54, 54, 54, 0.863);
-	transition: .5s;
-	display: block;
-	position: relative;
-	left: 8vw;
-	right: 8vw;
-	top: 50%;
-}
-.pilares {
-	text-align: center;
-	justify-content: center;
-	// color: rgba(255, 255, 255, 0.986);
-	&#propuestas {
-		color: rgb(255, 108, 194);
-	}
-}
-h1, #propuestas {
-	color: rgb(255, 108, 194);
-}
+	.descargable
+		margin: 0 auto
+		display: flex
+		.oicono +.texto
+			margin-left: 1em
+
+// PROPUESTAS
+.propuestas
+	padding: 10px
+	z-index: 1
+
+	.caja-propuestas
+		display: flex
+		flex-wrap: wrap
+		position: relative
+		display: flex
+		flex-wrap: wrap
+		justify-content: center
+		align-content: center
+		align-items: center
+
+		.contenedor-propuesta
+			max-width: 150px
+			height: 200px
+			display: flex
+			flex-wrap: wrap
+			justify-content: center
+			border-width: 5px
+			margin: 10px
+			text-align: center
+			padding: 5px
+
+			.img-propuesta
+				max-width: 100px
+				max-height: 100px
+				z-index: 1
 
 
-.contenedor-pdf {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-.pdf-programa {
-	width: 80vw;
-	height: 80vh;
-}
-.contenedor-pdf {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-.pdf-programa {
-	width: 80vw;
-	height: 80vh;
-}
-//transicion
-.entrar-enter {
-	height: 0;
-	width: 80vw;
-	opacity: 0;
-}
-.entrar-enter-to,
-.entrar-leave {
-	opacity: 1;
-}
-.entrar-enter-active {
-	transition: width 0.7s ease, opacity 0.7s ease;
-}
-.entrar-leave-to {
-	height: 0;
-	width: 80vw;
-	top: 0;
-	right: 0;
-	opacity: 0;
-}
-.entrar-leave-active {
-	transition: width 0.5s ease, height 0.5s ease, opacity 0.4s ease;
-}
+		.contenido-propuesta
+			width: 80vw
+			height: 40vh
+			overflow-y: scroll
+			transition: .5s
+			top: 50%
+			background: rgb(255, 255, 255)
+			padding: 20px
+			+salir
+				max-height: 0
+				opacity: 0
+			+saliendo
+				max-height: 100vh
+				overflow: hidden
 
-@media screen and (min-width: 1024px) {
-	.descargable-programa {
-		width: 50vw;
-		text-align: center;
-}
-}
+
+
+
+@media screen and (min-width: 1024px)
+	.descargable-programa
+		width: 50vw
+		text-align: center
+
+
 
 
 </style>
