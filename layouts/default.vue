@@ -1,8 +1,8 @@
 <template>
   <div>
     <Navbar />
-    <Nuxt />
-    <Footer />
+    <!-- <Nuxt /> -->
+    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -16,6 +16,6 @@
 }
 body {
 	min-height: 100vh;
-	background-color: $color1;
+	// background-color: $color1;
 }
 </style>

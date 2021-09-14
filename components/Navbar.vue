@@ -1,43 +1,31 @@
-<template>
-  <div>
-    <div class="navbar">
-      <div class="contenedor-logo">
-        <nuxt-link to="/" class="ppal-link">
-          <p>logo</p>
-        </nuxt-link>
-      </div>
-      <transition name="entrar">
-        <div class="contenedor-links link-interno" :class="{'activa': activa}">
-          <nuxt-link to="/propuestas" class="nuxt-link">
-            <p @click="activa = !activa">
-              propuestas
-            </p>
-          </nuxt-link>
-          <nuxt-link to="/sumate" class="nuxt-link">
-            <p @click="activa = !activa">
-              sumate
-            </p>
-          </nuxt-link>
-          <p class="nuxt-link" @click="linkdona()">
-            dona
-          </p>
-        </div>
-      </transition>
-      <div class="link-rrss">
-        <div v-for="red in rrss" :key="red._id" class="cont-link">
-          <a class="link-footer" :href="red.url"><img :src="red.icono.url" alt="" class="logorrss"></a>
-        </div>
-      </div>
-      <span class="menu-icon__line" @click="activa = !activa" />
-    </div>
-    <transition name="entrar">
-      <div>
-        <dona class="modal-donacion" :class="{'activado' : quierodonar}" />
-        <span v-if="quierodonar" class="x" @click="quierodonar = !quierodonar" />
-      </div>
-    </transition>
-    <div class="espacio" />
-  </div>
+<template lang="pug">
+div
+	.navbar
+		.contenedor-logo
+			nuxt-link.ppal-link(to='/')
+				p logo
+		transition(name='entrar')
+			.contenedor-links.link-interno(:class="{'activa': activa}")
+				nuxt-link.nuxt-link(to='/propuestas')
+					p(@click='activa = !activa')
+						| propuestas
+				nuxt-link.nuxt-link(to='/sumate')
+					p(@click='activa = !activa')
+						| sumate
+				p.nuxt-link(@click='linkdona()')
+					| dona
+		.link-rrss
+			.cont-link(v-for='red in rrss' :key='red._id')
+				a.link-footer(:href='red.url')
+					img.logorrss(:src='red.icono.url' alt='')
+		span.menu-icon__line(@click='activa = !activa')
+
+	transition(name='entrar')
+		div
+			dona.modal-donacion(:class="{'activado' : quierodonar}")
+				span.x(v-if='quierodonar' @click='quierodonar = !quierodonar')
+	.espacio
+
 </template>
 
 <script>
@@ -65,6 +53,11 @@ export default {
 	}
 }
 </script>
+<style lang="sass" scoped>
+.navbar
+	display: flex
+
+</style>
 
 <style lang="scss" scoped>
 @import './scss/_colores.scss';
@@ -84,7 +77,7 @@ p {
 	align-items: center;
 	width: 100vw;
 	height: 80px;
-	background-color: $color10;
+	// background-color: $color10;
 	opacity: .9;
 }
 .nuxt-link, .ppal-link {

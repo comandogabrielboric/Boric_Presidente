@@ -1,5 +1,8 @@
 const dev = process.env.MODO === 'dev'
 
+const titulo = 'Boric Presidente'
+const descripcion = 'PENDIENTE'
+
 export default {
 	env: {
 		apiURL: dev ? 'https://gbcms.crishadad.cl' : 'http://localhost:1337'
@@ -8,19 +11,36 @@ export default {
 	target: 'static',
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
-		title: 'frontcgb',
+		title: titulo,
+		description: descripcion,
 
 		htmlAttrs: {
 			lang: 'en'
 		},
 		meta: [
 			{ charset: 'utf-8' },
-			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ hid: 'description', name: 'description', content: '' },
-			{ name: 'format-detection', content: 'telephone=no' }
+			{ hid: 'viewport', name: 'viewport', content: 'width=device-width, initial-scale=1' },
+			{ hid: 'description', name: 'description', content: descripcion },
+			{ name: 'format-detection', content: 'telephone=no' },
+			{ name: 'theme-color', content: '#ffffff' },
+
+
+			{ hid: 'iprop:name', itemprop: 'name', content: titulo },
+			{ hid: 'iprop:description', itemprop: 'description', content: descripcion },
+			{ hid: 'iprop:image', itemprop: 'image', content: '/imagenes/portada.jpg' },
+
+			{ hid: 'og:title', property: 'og:title', content: titulo },
+			{ hid: 'og:description', property: 'og:description', content: descripcion },
+			{ hid: 'og:image', property: 'og:image', content: '/imagenes/portada.jpg' },
+
+			{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
+			{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
+			{ hid: 'twitter:image', property: 'twitter:image', content: '/imagenes/portada.jpg' },
+			{ hid: 'twitter:site', property: 'twitter:image', content: '@GabrielBoric' }
 		],
 		link: [
-			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+			{ rel: 'icon', href: '/favicon.svg' },
+			{ rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' }
 		]
 	},
 

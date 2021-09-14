@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "nuxt",
+		"dev": "MODO=dev nuxt",
 		"build": "nuxt build",
 		"start": "nuxt start",
 		"generate": "nuxt generate",
@@ -21,6 +21,8 @@
 		"marked": "^3.0.3",
 		"node-sass": "^6.0.1",
 		"nuxt": "^2.15.7",
+		"pug": "^3.0.2",
+		"pug-plain-loader": "^1.1.0",
 		"vue-pdf": "^4.3.0",
 		"webpack": "^4.46.0"
 	},
