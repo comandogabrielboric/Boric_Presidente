@@ -7,6 +7,7 @@
 </template>
 
 <style lang="scss">
+@import './scss/iconos.sass';
 @import './scss/_colores.scss';
 
 * {

@@ -1,40 +1,59 @@
 <template lang="pug">
 div
 	.navbar
+
 		.contenedor-logo
 			nuxt-link.ppal-link(to='/')
-				p logo
-		transition(name='entrar')
-			.contenedor-links.link-interno(:class="{'activa': activa}")
-				nuxt-link.nuxt-link(to='/propuestas')
-					p(@click='activa = !activa')
-						| propuestas
-				nuxt-link.nuxt-link(to='/sumate')
-					p(@click='activa = !activa')
-						| sumate
-				p.nuxt-link(@click='linkdona()')
-					| dona
-		.link-rrss
+				.logo
+
+		mixin links
+			.links.contenedor-links.link-interno
+				nuxt-link.link(to='/propuestas') Propuestas
+				nuxt-link.link(to='/sumate') Sumate
+				nuxt-link.link(to='/donar') Dona
+
+		.menuCompu
+			+links
+
+		transition(:duration='300')
+			.menuMovil(v-if="activa")
+				//.barra
+					.oicono.cruz(@click="activa=false")
+				+links
+				//.barra
+					.oicono.nada
+				//.oicono.cruz(@click="activa=false")
+
+		//.link-rrss
 			.cont-link(v-for='red in rrss' :key='red._id')
 				a.link-footer(:href='red.url')
 					img.logorrss(:src='red.icono.url' alt='')
-		span.menu-icon__line(@click='activa = !activa')
 
-	transition(name='entrar')
-		div
-			dona.modal-donacion(:class="{'activado' : quierodonar}")
-				span.x(v-if='quierodonar' @click='quierodonar = !quierodonar')
+		.redesSociales
+			a.redSocial.instagram(target="_blank" rel="noreferer noopener" href="https://www.instagram.com/gabrielboric/")
+				.oicono.instagram
+			a.redSocial.twitter(target="_blank" rel="noreferer noopener" href="https://twitter.com/gabrielboric")
+				.oicono.twitter
+			a.redSocial.facebook(target="_blank" rel="noreferer noopener" href="https://www.facebook.com/gabrielboric")
+				.oicono.facebook
+
+
+		.triggerMenu(@click="activa = !activa")
+			.oicono(:class="activa ? 'cruz' : 'menu-relleno'")
+
 	.espacio
 
 </template>
 
 <script>
+import logo from '@/static/logos/logo.svg'
 export default {
+	components: { logo },
 	data () {
 		return {
 			rrss: [],
 			logosAD: null,
-			activa: null,
+			activa: true,
 			quierodonar: null
 		}
 	},
@@ -45,6 +64,11 @@ export default {
 		this.logosAD = solicitud.logosAD
 		this.rrss = solicitud.RRSS
 	},
+	watch: {
+		$route () {
+			this.activa = false
+		}
+	},
 	methods: {
 		linkdona () {
 			this.activa = !this.activa
@@ -54,205 +78,92 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+@import '~/scss/utils.sass'
 .navbar
+	position: sticky
+	z-index: 1000
 	display: flex
+	align-items: center
+	justify-content: space-between
+	padding: 0 2em
+	height: 5em
+	line-height: 0
 
-</style>
-
-<style lang="scss" scoped>
-@import './scss/_colores.scss';
-p {
-	font-size: 1.3rem;
-	text-transform: uppercase;
-}
-.logorrss {
-	width: 30px;
-	padding: 7px;
-}
-.navbar {
-	display: flex;
-	flex-flow: row;
-	position: fixed;
-	justify-content: space-evenly;
-	align-items: center;
-	width: 100vw;
-	height: 80px;
-	// background-color: $color10;
-	opacity: .9;
-}
-.nuxt-link, .ppal-link {
-	color: $color9;
-	text-decoration: none;
-	padding: 10px;
-	border-radius: 4px;
-
-	&:hover {
-		color: $color12;
-		opacity: .8;
-		cursor: pointer;
-	}
-}
-.link-rrss {
-	display: flex;
-	flex-flow: row;
-	padding: 10px;
-	z-index: 200;
-
-}
-.contenedor-links {
-	display: flex;
-	flex-flow: row;
-	z-index: 200;
-}
-.menu-icon {
-	&__line {
-		position: fixed;
-	}
-}
-.modal-donacion {
-	width: 0;
-	height: 0;
-	transition: .5s;
-
-}
-.activado {
-	top: 0;
-	width: 100vw;
-	height: 100vh;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.76);
-	z-index: 90;
-	backdrop-filter: blur(4px);
-	overflow: hidden;
-	transition: .5s;
-}
-.x {
-	z-index: 300;
-	position: fixed;
-	right: 17%;
-	top: 13%;
-	width: 20px;
-	&::before, &::after {
-			color: #fff;
-			z-index: 300;
-			border: 2px solid #fff;
-			content: '';
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			background: #fff;
-			transition: background .8s ease;
-	}
-	&::before {
-		transform: rotate(45deg);
-
-	}
-	&::after {
-		transform: rotate(-45deg);
-	}
-}
+	color: #333
+	a
+		&, &:visited, &:active, &:hover
+			color: inherit
+			text-decoration: none
+	.logo
+		background-color: currentColor
+		mask-image: url('/logos/logo.svg')
+		mask-size: contain
+		mask-repeat: no-repeat
+		mask-position: center
+		height: 0.3965em
+		width: 1em
+		font-size: 6em
 
 
-.entrar-enter {
-	height: 0;
-	width: 0;
-	opacity: 0;
-}
-.entrar-enter-to {
-	opacity: 1;
-}
-.entrar-enter-active {
-	transition: width 0.7s ease, opacity 0.7s ease;
-}
-.entrar-leave {
-	opacity: 1;
-}
-.entrar-leave-to {
-	height: 0;
-	width: 0;
-	top: 0;
-	right: 0;
-	opacity: 0;
-}
-.entrar-leave-active {
-	transition: width 0.5s ease, height 0.5s ease, opacity 0.4s ease;
-}
-.espacio {
-	display: flex;
-	width: 100vw;
-	height: 80px;
-}
+	.redesSociales
+		display: flex
+		.redSocial
+			color: inherit
+			margin: 0.5em
+			line-height: 0
+			.oicono
+				font-size: 1.4em
 
-	@media screen and (max-width: 760px) {
+	.links
+		.link
+			text-transform: uppercase
+			margin: .3em
+			padding: .7em
 
-		.contenedor-links {
-			// display: none;
-			width: 0;
-			height: 0;
-			position: fixed;
-			transition: 0.8s;
-			right: 10vw;
-			top: 70px;
-			overflow: hidden;
-			text-align: center;
-			justify-content: center;
+	.menuCompu
+		@media screen and (max-width: 760px)
+			display: none
+	.menuMovil
+		position: fixed
+		z-index: 10
+		top: 5em
+		left: 0
+		right: 0
+		bottom: 0
+		padding: 2em
+		background-color: white
+		display: flex
+		flex-flow: column nowrap
+		justify-content: center
 
-				&.activa {
-				display: flex;
-				flex-flow: column;
-				position: fixed;
-				height: 200px;
-				width: 150px;
-				padding: 15px;
-				border: 2px solid #fff;
-				right: 10vw;
-				transition: .8s;
-				background: rgba(0, 0, 0, 0.664);
-				backdrop-filter: blur(2px);
-				border-radius: 4px;
-			}
-		}
+		@media screen and (min-width: 760px)
+			display: none
 
+		transition: all 0.1s ease
+		+salir
+			opacity: 0
+			max-height: 0
+		+saliendo
+			max-height: 100vh
+			overflow: hidden
 
-	// crea icono de menu hamburgesa
-		.menu-icon {
-			position: relative;
-			padding: 26px 10px;
-			cursor: pointer;
-			z-index: 100;
-			// display: none;
+		.barra
+			display: flex
+			justify-content: flex-end
+		.links
+			display: flex
+			flex-flow: column nowrap
+			justify-content: center
+			align-items: center
+			.link
+				display: block
+				text-align: center
+				font-size: 1.4em
+				margin: 1.2em 0
 
-			// crea la primera linea
-			&__line {
-				// display: none;
-				position: relative;
-				background: #000;
-				height: 2px;
-				width: 20px;
-				border-radius: 4px;
-				transition: background .8s ease;
-			// crea la segunda y tercera linea
-				&::before, &::after {
-					content: '';
-					position: absolute;
-					height: 100%;
-					width: 100%;
-					border-radius: 4px;
-					background: #000;
-					transition: background .8s ease;
-				}
-				// posiciona la segunda y tercera linea
-				&::before {
-					transform: translateY(-5px);
-				}
-				&::after {
-					transform: translateY(5px);
-				}
-			}
-		}
+	.triggerMenu
+		@media screen and (min-width: 760px)
+			display: none
 
 
-}
 </style>
