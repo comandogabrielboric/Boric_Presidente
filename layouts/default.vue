@@ -2,57 +2,7 @@
 .main
 	Navbar.header
 	.cuerpo
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		p blah
-		//Nuxt
+		Nuxt
 	Footer.footer
 </template>
 
@@ -72,7 +22,7 @@ body
 	background-color: $fondoBody
 
 .main
-	// height: 100vh
+	min-height: 100vh
 	// overflow-y: auto
 	position: relative
 	// border: 3px solid green
@@ -83,6 +33,7 @@ body
 		flex: auto 0 0
 	.cuerpo
 		flex: auto 1 0
+		overflow-x: hidden
 	.footer
 		flex: auto 0 0
 

@@ -58,6 +58,7 @@ footer
 		justify-content: space-around
 		position: relative
 		z-index: 0
+		text-transform: uppercase
 		> *
 			z-index: 1
 		&::before
@@ -75,7 +76,7 @@ footer
 			margin: .25em
 	.logos
 		.aprueboDignidad
-			font-size: 4em
+			font-size: 5em
 			display: flex
 			align-items: center
 			.iconoAprueboDignidad
@@ -97,10 +98,14 @@ footer
 	@media screen and (max-width: 760px)
 		flex-flow: column nowrap
 		.redesSociales
-			order: 1
-		.logos
-			order: 2
 			margin-top: 2em
+		.logos
+			.aprueboDignidad
+				font-size: 5em
+		.capaLinks
+			flex-flow: column nowrap
+		.capaFooter
+			flex-flow: column nowrap
 
 
 
