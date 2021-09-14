@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="navbar" @scroll="!activa">
+    <div class="navbar">
       <div class="contenedor-logo">
         <nuxt-link to="/" class="ppal-link">
           <p>logo</p>
@@ -36,6 +36,7 @@
         <span v-if="quierodonar" class="x" @click="quierodonar = !quierodonar" />
       </div>
     </transition>
+    <div class="espacio" />
   </div>
 </template>
 
@@ -66,6 +67,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import './scss/_colores.scss';
 p {
 	font-size: 1.3rem;
 	text-transform: uppercase;
@@ -77,16 +79,22 @@ p {
 .navbar {
 	display: flex;
 	flex-flow: row;
+	position: fixed;
 	justify-content: space-evenly;
 	align-items: center;
+	width: 100vw;
 	height: 80px;
+	background-color: $color10;
+	opacity: .9;
 }
 .nuxt-link, .ppal-link {
-	color: #fff;
+	color: $color9;
 	text-decoration: none;
 	padding: 10px;
 	border-radius: 4px;
+
 	&:hover {
+		color: $color12;
 		opacity: .8;
 		cursor: pointer;
 	}
@@ -95,13 +103,13 @@ p {
 	display: flex;
 	flex-flow: row;
 	padding: 10px;
-	z-index: 100;
+	z-index: 200;
 
 }
 .contenedor-links {
 	display: flex;
 	flex-flow: row;
-	z-index: 100;
+	z-index: 200;
 }
 .menu-icon {
 	&__line {
@@ -178,6 +186,11 @@ p {
 .entrar-leave-active {
 	transition: width 0.5s ease, height 0.5s ease, opacity 0.4s ease;
 }
+.espacio {
+	display: flex;
+	width: 100vw;
+	height: 80px;
+}
 
 	@media screen and (max-width: 760px) {
 
@@ -206,7 +219,6 @@ p {
 				background: rgba(0, 0, 0, 0.664);
 				backdrop-filter: blur(2px);
 				border-radius: 4px;
-
 			}
 		}
 

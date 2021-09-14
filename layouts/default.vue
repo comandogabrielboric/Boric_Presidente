@@ -6,7 +6,9 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@import './scss/_colores.scss';
+
 * {
 	margin: 0;
 	padding: 0;
@@ -14,6 +16,6 @@
 }
 body {
 	min-height: 100vh;
-	background-image: url('https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/5e5dd1be_body_1large_10000000nu19o0eh000028_7b219799f1.png');
+	background-color: $color1;
 }
 </style>

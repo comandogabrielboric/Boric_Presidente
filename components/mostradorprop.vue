@@ -38,6 +38,7 @@ export default {
 	flex-flow: row;
 	justify-content: space-around;
 	border: 2px solid #fff;
+	z-index: 1;
 }
 .contenedor-propuesta {
 	display: flex;

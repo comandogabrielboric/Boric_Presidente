@@ -4,7 +4,6 @@
       <title>Propuestas Programaticas</title>
       <div class="pilares">
         <img :src="imagen" alt="" class="img-pilares">
-        <p>Pilares / Puntos principales</p>
         <div v-html="pilaresMarkdown" />
         <a class="descargable" :href="programa">
           <p class="descargable-programa">
@@ -14,9 +13,6 @@
         <div v-html="pilaresMarkdown2" />
       </div>
       <div class="propuestas">
-        <p class="titulo">
-          Propuestas programaticas
-        </p>
         <div class="caja-propuestas">
           <div v-for=" propuesta in propuestas" :key="propuesta.id" class="contenedor-propuesta">
             <div @click="mostrar(propuesta)">
@@ -58,7 +54,7 @@ export default {
 			pilares: []
 		}
 	},
-
+	// solicita info a cms
 	async fetch () {
 		console.log('cargar pagina')
 		const solicitud = await fetch(`${process.env.apiURL}/programa`).then(res =>
@@ -77,22 +73,42 @@ export default {
 	},
 
 	computed: {
+		// retorna id de propuestas
 		propuestasID () {
 			return this.propuestas.map(a => a._id)
 		},
+		// procesa markdown pilares1
 		pilaresMarkdown () {
 			const pilar = this.pilares[0]
+			const valida = this.validamarkdown(pilar)
+			console.log(valida)
 			return marked(pilar.contenido1, { sanitize: true })
 		},
+		// procesa markdown pilares2
 		pilaresMarkdown2 () {
 			const pilar = this.pilares[1]
+			const valida = this.validamarkdown(pilar)
+			console.log(valida)
 			return marked(pilar.contenido1, { sanitize: true })
 		},
+		// porcesa markdown contenido propuestas
 		Markdownpropuesta () {
+			const valida = this.validamarkdown(this.contenido)
+			console.log(valida)
 			return marked(this.contenido, { sanitize: true })
 		}
 	},
 	methods: {
+		// valida que el texto markdown no contenga scripts
+		validamarkdown (md) {
+			const prohibido = 'script'
+			console.log('validando')
+			if (this._.includes(md, prohibido)) {
+				console.log('contenido prohibido')
+				throw 'contenido prohibido'
+			}	else console.log('contenido premitido')
+		},
+		// metodo para seleccionar una propuesta y renderizas su contenido
 		mostrar (propuesta) {
 			console.log('mostrando', this.mostrarpropuesta)
 			if (this.propuestaseleccionada === propuesta._id) {
@@ -121,6 +137,7 @@ export default {
 }
 .propuestas{
 	padding: 10px;
+	z-index: 1;
 }
 .caja-propuestas {
 	display: flex;
@@ -157,6 +174,7 @@ h2 {
 .img-propuesta {
 	max-width: 100px;
 	max-height: 100px;
+	z-index: 1;
 }
 .contenido-propuesta {
 	width: 80vw;
@@ -209,7 +227,7 @@ h1, #propuestas {
 	width: 80vw;
 	height: 80vh;
 }
-
+//transicion
 .entrar-enter {
 	height: 0;
 	width: 80vw;
