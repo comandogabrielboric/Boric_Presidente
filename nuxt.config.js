@@ -1,3 +1,7 @@
+import path from 'path'
+import webpack from 'webpack'
+import antdVars from './antdvVars'
+
 const dev = process.env.MODO === 'dev'
 
 const titulo = 'Boric Presidente'
@@ -49,10 +53,14 @@ export default {
 	},
 
 	// Global CSS: https://go.nuxtjs.dev/config-css
-	css: ['~/sass/base.sass'],
+	css: [
+		'~/sass/base.sass',
+		{ src: 'ant-design-vue/dist/antd.less', lang: 'less' }
+	],
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 	plugins: [
+		'@/plugins/antd-ui',
 		'plugins/demarcador',
 		'plugins/lodash'
 	],
@@ -72,5 +80,31 @@ export default {
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {
-	}
+		babel: {
+			plugins: [
+				['import', { libraryName: 'ant-design-vue', libraryDirectory: 'es', style: true }]
+			]
+		},
+		loaders: {
+			less: {
+				lessOptions: {
+					modifyVars: antdVars,
+					javascriptEnabled: true
+				}
+			}
+		},
+		plugins: [
+			new webpack.IgnorePlugin({
+				resourceRegExp: /^\.\/locale$/,
+				contextRegExp: /moment$/
+			})
+		],
+		postcss: {
+			plugins: {
+				'postcss-discard-comments': { comments: { removeAll: true } },
+				'postcss-preset-env': {}
+			}
+		}
+	},
+	telemetry: false
 }
