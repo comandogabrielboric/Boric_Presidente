@@ -44,13 +44,12 @@ export default {
 
 			{ hid: 'googleapis', rel: 'preconnect', href: 'https://fonts.googleapis.com' },
 			{ hid: 'gstatic', rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-			{ hid: 'gfonts', rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap' }
+			{ hid: 'gfonts', rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap' }
 		]
 	},
 
 	// Global CSS: https://go.nuxtjs.dev/config-css
-	css: [
-	],
+	css: ['~/sass/base.sass'],
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 	plugins: [

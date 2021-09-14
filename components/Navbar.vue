@@ -54,8 +54,8 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
-@import '~/scss/utils'
-@import '~/scss/paleta'
+@import '~/sass/utils'
+@import '~/sass/paleta'
 
 .navbar
 	position: sticky
@@ -69,11 +69,9 @@ export default {
 	line-height: 0
 
 	color: $colorHeader
-	background-color: $fondoHeader
-	a
-		&, &:visited, &:active, &:hover
-			color: inherit
-			text-decoration: none
+	background-color: transparentize($fondoHeader, .5)
+	backdrop-filter: blur(.5em)
+
 	.logo
 		background-color: currentColor
 		mask-image: url('/logos/logo.svg')
@@ -118,7 +116,8 @@ export default {
 		justify-content: center
 
 		color: $colorMenu
-		background-color: $fondoMenu
+		background-color: transparentize($fondoMenu, .5)
+		backdrop-filter: blur(.5em)
 
 		@media screen and (min-width: 760px)
 			display: none

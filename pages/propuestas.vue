@@ -3,16 +3,12 @@
 
 	.zonaImagen
 		img.imagenPrograma(:src='imagen' alt='')
+
+	a-button asdfafsd
+
 	section.pilares(v-if="pilares")
-		.contenidoHTML(v-html="_.get(pilares, [0, 'contenido1'])")
-
-		div
-			a.descargable(:href='programa' target="_blank" download)
-				.oicono.descargar
-				.texto Descargar programa completo
-
-		.otrosContenidos(v-for="(pilar, index) in pilares")
-			.contenidoHTML(v-if="index !== 0" v-html='pilar.contenido1')
+		.contenidosHTML(v-for="(pilar, index) in pilares")
+			.contenidoHTML(v-html='pilar.contenido1')
 
 
 	//section.propuestas(v-if="propuestas")
@@ -29,6 +25,12 @@
 				.contenido-propuesta(v-if='propuestaseleccionada !== null')
 					div(v-html='Markdownpropuesta')
 
+
+	.zonaDescargas
+		a.descargable(:href='programa' target="_blank" download)
+			.dentro
+				.oicono.descargar
+				.texto Descargar programa completo
 </template>
 
 <script>
@@ -100,13 +102,15 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '~/scss/utils'
+@import '~/sass/utils'
 .propuestasRoot
 	section
 		padding: 2em
 
 // CONTENIDO HTML
 .contenidoHTML
+	max-width: 900px
+	margin: 0 auto
 	border: 3px dashed orangered
 	padding: 2em
 	text-align: justify
@@ -115,22 +119,37 @@ export default {
 		line-height: 1.4
 		h1 + p
 			margin-top: 2rem
+		p
+			line-height: 1.8
+		strong
+			font-weight: bold
+		b
+			font-weight: bold
+		ol
+			margin: 2em 0
 
 .zonaImagen
 	.imagenPrograma
 		min-width: 100%
-		height: 230px
+		min-height: 230px
 		position: relative
 		left: 50%
 		transform: translateX(-50%)
-// PILARES
-.pilares
 
+.zonaDescargas
+	display: flex
+	justify-content: center
+	padding: 1em
 	.descargable
-		margin: 0 auto
-		display: flex
-		.oicono +.texto
-			margin-left: 1em
+		border: 1px solid red
+		padding: 2em
+		.dentro
+			display: flex
+			align-items: center
+			.oicono +.texto
+				margin-left: 1em
+
+// PILARES
 
 // PROPUESTAS
 .propuestas
