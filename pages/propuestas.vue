@@ -5,26 +5,28 @@
 		img.imagenPrograma(:src='imagen.url' :alt='altImg')
 
 	section.pilares(v-if="pilares")
-		.ql-editor.contenidoHTML(v-html='pilares')
+		.contenido
+			.ql-editor.contenidoHTML(v-html='pilares')
 
 
-	//section.propuestas(v-if="propuestas")
-		h1 Propuestas
+	section.propuestas(v-if="propuestas")
 
 		.caja-propuestas
-			.contenedor-propuesta(v-for='propuesta in propuestas' :key='propuesta.id')
-				div(@click='mostrar(propuesta)')
-					img.img-propuesta(:src='propuesta.imagen.url' alt='')
-					h2.titulo-propuesta
-						| {{ propuesta.titulo }}
 
-			transition(name='entrar')
-				.contenido-propuesta(v-if='propuestaseleccionada !== null')
-					div(v-html='Markdownpropuesta')
+			.propuesta(v-for='propuesta in propuestas' :key='propuesta.id' @click='propuestaIdMostrada = propuesta.id')
+				img.imagenDePropuesta(:src='propuesta.imagen.url' :alt="propuesta.textoAlternativoImagen")
+				h2.tituloPropuesta {{ propuesta.titulo }}
 
+
+			a-modal.modalPropuesta(:visible="mostrandoPropuesta" :footer="null" @close="mostrandoPropuesta = false" @cancel="mostrandoPropuesta = false" centered :width="null")
+				div(slot="title")
+					.pretitulo Propuestas programáticas
+					h2.titulo {{propuestaMostrada && propuestaMostrada.titulo}}
+				.cuerpoPropuesta
+					.ql-editor.contenidoHTML(v-html='propuestaMostrada && propuestaMostrada.html')
 
 	.zonaDescargas
-		a.descargable(v-if="programaArchivo" :href='programaArchivo.url' target="_blank" download :name="programaArchivo.name" :title="programaArchivo.alternativeText")
+		a.descargable(v-if="programaArchivo" :href='programaArchivo.url' target="_blank" download :name="programaArchivo.name" :title="programaArchivo.name")
 			.dentro
 				.oicono.descargar
 				.texto Descargar programa completo
@@ -44,8 +46,8 @@ export default {
 			programaArchivo: null,
 
 
-			propuestaseleccionada: null,
-			contenido: null
+			propuestaIdMostrada: null,
+			mostrandoPropuesta: null
 		}
 	},
 	// solicita info a cms
@@ -156,23 +158,23 @@ export default {
 		// porcesa markdown contenido propuestas
 		Markdownpropuesta () {
 			return this.$sanitizar(this.contenido)
+		},
+		propuestaMostrada () {
+			if (!this.propuestaIdMostrada) return null
+			const propuestaBruta = this._.find(this.propuestas, p => p.id === this.propuestaIdMostrada)
+
+			return {
+				titulo: propuestaBruta.titulo,
+				html: this.$sanitizar(propuestaBruta.contenido)
+			}
 		}
 	},
-	methods: {
-		// metodo para seleccionar una propuesta y renderizas su contenido
-		mostrar (propuesta) {
-			console.log('mostrando', this.mostrarpropuesta)
-			if (this.propuestaseleccionada === propuesta._id) {
-				this.propuestaseleccionada = null
-				this.contenido = null
-				console.log('anulando', this.propuestaseleccionada)
-			} else {
-				this.propuestaseleccionada = propuesta._id
-				this.contenido = propuesta.contenido
-				console.log('mostrando', this.propuestaseleccionada)
-			}
-			console.log('propuestasID', this.propuestasID)
-			console.log('propuesta seleccionada', propuesta._id)
+	watch: {
+		mostrandoPropuesta (v) {
+			if (!v) setTimeout(() => { this.propuestaIdMostrada = false }, 400)
+		},
+		propuestaIdMostrada (v) {
+			if (v) this.mostrandoPropuesta = true
 		}
 	}
 }
@@ -183,10 +185,13 @@ export default {
 
 <style lang="sass" scoped>
 @import '~/estilos/utils'
+@import '~/estilos/paleta'
 .propuestasRoot
 	background-color: #eee
 	section
 		padding: 2em
+		+movil
+			padding: 0
 
 // CONTENIDO HTML
 .contenidoHTML
@@ -195,7 +200,10 @@ export default {
 	// border: 3px dashed orangered
 	background-color: #fff
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
-	padding: 4em
+	padding: 4rem
+	+movil
+		padding: 1rem
+		font-size: .889em
 	text-align: justify
 	justify-content: justify
 	::v-deep
@@ -204,12 +212,16 @@ export default {
 			margin-top: 2rem
 		p
 			line-height: 1.8
+			+movil
+				line-height: 1.6
 		strong
 			font-weight: bold
 		b
 			font-weight: bold
 		ol
 			margin: 2em 0
+		a
+			all: revert
 
 .zonaImagen
 	.imagenPrograma
@@ -224,46 +236,63 @@ export default {
 	justify-content: center
 	padding: 1em
 	.descargable
-		border: 1px solid red
-		padding: 2em
+		padding-bottom: 3em
 		.dentro
 			display: flex
 			align-items: center
-			.oicono +.texto
-				margin-left: 1em
+			background-color: transparentize($colorBody, .9)
+			.oicono
+				flex: auto 0 0
+				font-size: 3em
+				margin: 2rem
+			.texto
+				flex: auto 1 1
+				margin: 2rem 2rem 2rem 0
 
 // PILARES
-
+.pilares
+	+movil
+		.contenidoHTML
+			padding: 5em 1em
 // PROPUESTAS
 .propuestas
-	padding: 10px
-	z-index: 1
+	z-index: 0
+	+movil
+		.caja-propuestas
+			padding: 5em 0
+	//border: 1px solid red
+	//*
+		border: 1px solid orange
 
 	.caja-propuestas
 		display: flex
-		flex-wrap: wrap
-		position: relative
-		display: flex
-		flex-wrap: wrap
+		flex-flow: row wrap
 		justify-content: center
-		align-content: center
-		align-items: center
 
-		.contenedor-propuesta
-			max-width: 150px
-			height: 200px
-			display: flex
-			flex-wrap: wrap
-			justify-content: center
-			border-width: 5px
+
+		.propuesta
+			flex: 12em 0 0
 			margin: 10px
 			text-align: center
 			padding: 5px
 
-			.img-propuesta
-				max-width: 100px
-				max-height: 100px
+			.imagenDePropuesta
+				$lado: 150px
+				max-width: $lado
+				max-height: $lado
 				z-index: 1
+			.tituloPropuesta
+				margin-top: 1rem
+				font-size: 1.2rem
+			+movil
+				flex: 9em 0 0
+				.imagenDePropuesta
+					$lado: 100px
+					max-width: $lado
+					max-height: $lado
+				.tituloPropuesta
+					font-size: .89em
+
 
 
 		.contenido-propuesta
@@ -282,14 +311,44 @@ export default {
 				overflow: hidden
 
 
-
-
-@media screen and (min-width: 1024px)
-	.descargable-programa
-		width: 50vw
-		text-align: center
-
-
+.modalPropuesta
+	::v-deep
+		.ant-modal-mask
+			backdrop-filter: blur(.5em)
+		.ant-modal
+			width: auto
+			max-width: 100%
+			margin: 0
+			color: inherit
+			.ant-modal-content
+				height: 80vh
+				background-color: transparent
+				+movil
+					height: 100vh
+				// background-color: red
+				display: flex
+				flex-flow: column nowrap
+				.ant-modal-header
+					flex: auto 0 0
+					padding: 2em
+					background-color: transparentize($fondoBody, .5)
+					backdrop-filter: blur(1em)
+					.pretitulo
+						margin-bottom: 1em
+						opacity: .6
+					.titulo
+						line-height: 1.4
+					+movil
+						padding: 1em
+						.pretitulo
+							font-size: .8em
+						.titulo
+							font-size: 1em
+				.ant-modal-body
+					flex: auto 1 1
+					max-height: 100%
+					overflow-y: auto
+					padding: 0
 
 
 </style>

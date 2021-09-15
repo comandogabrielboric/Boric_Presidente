@@ -24,3 +24,12 @@
 	mask-size: contain
 	mask-repeat: no-repeat
 	mask-position: center
+
+$compu: "(min-width: 760px)"
+$movil: "(max-width: 759.9px)"
+=compu
+	@media #{$compu}
+		@content
+=movil
+	@media #{$movil}
+		@content
