@@ -1,9 +1,11 @@
 <template lang="pug">
 .navbar
 
-	.contenedor-logo
-		nuxt-link.ppal-link(to='/')
-			.logo
+	nuxt-link.alHome.zonaLogo(to='/')
+		.logo
+			.trasLogo
+				.iconoAprueboDignidad
+		.logo.trasero
 
 	mixin links
 		.links.contenedor-links.link-interno
@@ -16,20 +18,9 @@
 
 	transition(:duration='300')
 		.menuMovil(v-if="activa")
-			//.barra
-				.oicono.cruz(@click="activa=false")
 			+links
-			//.barra
-				.oicono.nada
-			//.oicono.cruz(@click="activa=false")
-
-	//.link-rrss
-		.cont-link(v-for='red in rrss' :key='red._id')
-			a.link-footer(:href='red.url')
-				img.logorrss(:src='red.icono.url' alt='')
 
 	RedesSociales
-
 
 	.triggerMenu(@click="activa = !activa")
 		.oicono(:class="activa ? 'cruz' : 'menu-relleno'")
@@ -57,6 +48,8 @@ export default {
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
 
+$alturaMenu: 6em
+
 .navbar
 	position: sticky
 	top: 0
@@ -65,13 +58,16 @@ export default {
 	align-items: center
 	justify-content: space-between
 	padding: 0 2em
-	height: 5em
+	height: $alturaMenu
 	line-height: 0
 
 	color: $colorHeader
-	background-color: transparentize($fondoHeader, .5)
+	background-color: transparentize($fondoHeader, .4)
 	backdrop-filter: blur(.5em)
 
+	.zonaLogo
+		position: relative
+		filter: drop-shadow(0 1px 1px transparentize(white, .5)) drop-shadow(0 -.5em .5em transparentize(white, .35)) drop-shadow(0 1em .5em transparentize(black, .65))
 	.logo
 		background-color: currentColor
 		mask-image: url('/logos/logo.svg')
@@ -80,7 +76,37 @@ export default {
 		mask-position: center
 		height: 0.3965em
 		width: 1em
-		font-size: 6em
+		font-size: 8em
+		&.trasero
+			position: absolute
+			top: -1px
+			left: -1px
+			right: -1px
+			bottom: -1px
+			z-index: -1
+			background-color: #fff
+
+		.trasLogo
+			border: 3px solid red
+			height: 100%
+			.iconoAprueboDignidad
+				+bgcon
+				background-image: url('/logos/apruebo dignidad icono.svg')
+				$lado: 3.4em
+				height: $lado
+				width: $lado
+				position: relative
+				top: 400%
+				left: 50%
+				transform: translateX(-50%, -50%)
+				animation: rotar 30s linear infinite
+				@keyframes rotar
+					0%
+						transform: translate(-50%, -50%) rotateZ(0deg)
+					50%
+						transform: translate(-50%, -50%) rotateZ(180deg)
+					100%
+						transform: translate(-50%, -50%) rotateZ(360deg)
 
 
 	.redesSociales
