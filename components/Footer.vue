@@ -50,6 +50,7 @@ footer
 		display: flex
 		align-items: center
 	.capaFooter
+		padding: 3em
 		background-color: $fondoFooter
 
 	.capaLinks

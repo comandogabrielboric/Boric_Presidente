@@ -22,14 +22,24 @@
 				div(slot="title")
 					.pretitulo Propuestas programáticas
 					h2.titulo {{propuestaMostrada && propuestaMostrada.titulo}}
-				.cuerpoPropuesta
-					.ql-editor.contenidoHTML(v-html='propuestaMostrada && propuestaMostrada.html')
+					.modoVisualizacion(v-if="propuestaMostrada && propuestaMostrada.pdfURL")
+						.modo(@click="modoVisualizacion = 'html'" :class="{activo: modoVisualizacion === 'html'}") Ver texto
+						.modo(@click="modoVisualizacion = 'pdf'" :class="{activo: modoVisualizacion === 'pdf'}") Ver en PDF
+						a.modo(:href="propuestaMostrada.pdfURL" download target="_blank") Descargar PDF
+				.cuerpoPropuesta(v-if="propuestaMostrada")
+					transition-group(mode="out-in")
+						.pdf(v-show="modoVisualizacion === 'pdf'" key="pdf")
+							iframe(:src='`https://docs.google.com/viewer?url=${propuestaMostrada.pdfURL}&embedded=true`' frameborder='0' height='500px' width='100%')
+						.html(v-show="modoVisualizacion === 'html'" key="html")
+							.ql-editor.contenidoHTML(v-html='propuestaMostrada.html')
 
 	.zonaDescargas
 		a.descargable(v-if="programaArchivo" :href='programaArchivo.url' target="_blank" download :name="programaArchivo.name" :title="programaArchivo.name")
 			.dentro
 				.oicono.descargar
 				.texto Descargar programa completo
+
+
 </template>
 
 <script>
@@ -47,7 +57,8 @@ export default {
 
 
 			propuestaIdMostrada: null,
-			mostrandoPropuesta: null
+			mostrandoPropuesta: null,
+			modoVisualizacion: 'html'
 		}
 	},
 	// solicita info a cms
@@ -165,7 +176,8 @@ export default {
 
 			return {
 				titulo: propuestaBruta.titulo,
-				html: this.$sanitizar(propuestaBruta.contenido)
+				html: this.$sanitizar(propuestaBruta.contenido),
+				pdfURL: this._.get(propuestaBruta, ['archivoPDF', 'url'])
 			}
 		}
 	},
@@ -195,7 +207,8 @@ export default {
 
 // CONTENIDO HTML
 .contenidoHTML
-	max-width: 900px
+	width: 900px
+	max-width: 100%
 	margin: 0 auto
 	// border: 3px dashed orangered
 	background-color: #fff
@@ -338,6 +351,18 @@ export default {
 						opacity: .6
 					.titulo
 						line-height: 1.4
+					.modoVisualizacion
+						display: flex
+						margin-top: .5em
+
+						.modo
+							font-size: .8em
+							opacity: .5
+							transition: opacity .15s ease
+							&.activo
+								opacity: .8
+						.modo + .modo
+							margin-left: 1rem
 					+movil
 						padding: 1em
 						.pretitulo
@@ -349,6 +374,25 @@ export default {
 					max-height: 100%
 					overflow-y: auto
 					padding: 0
+					display: flex
+					flex-flow: column nowrap
+					width: 900px
+					max-width: 100%
+					.cuerpoPropuesta
+						&,
+						& > span,
+						& > span > div,
+						& > span > div > iframe
+							flex: auto 1 1
+							display: flex
+							flex-flow: column nowrap
+					.pdf,
+					.html
+						flex: auto 1 1
+						width: 900px
+						max-width: 100%
+					+salir
+						opacity: 0
 
 
 </style>
