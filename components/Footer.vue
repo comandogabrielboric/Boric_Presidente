@@ -35,8 +35,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '~/sass/utils'
-@import '~/sass/paleta'
+@import '~/estilos/utils'
+@import '~/estilos/paleta'
 
 footer
 	background-color: white

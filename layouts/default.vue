@@ -7,9 +7,9 @@
 </template>
 
 <style lang="sass">
-@import '~/sass/iconos'
-@import '~/sass/colores'
-@import '~/sass/paleta'
+@import '~/estilos/iconos'
+@import '~/estilos/colores'
+@import '~/estilos/paleta'
 
 *
 	margin: 0

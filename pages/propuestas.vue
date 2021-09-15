@@ -1,14 +1,11 @@
 <template lang="pug">
 .propuestasRoot
 
-	.zonaImagen
-		img.imagenPrograma(:src='imagen' alt='')
-
-	a-button asdfafsd
+	.zonaImagen(v-if="imagen")
+		img.imagenPrograma(:src='imagen.url' :alt='altImg')
 
 	section.pilares(v-if="pilares")
-		.contenidosHTML(v-for="(pilar, index) in pilares")
-			.contenidoHTML(v-html='pilar.contenido1')
+		.ql-editor.contenidoHTML(v-html='pilares')
 
 
 	//section.propuestas(v-if="propuestas")
@@ -27,7 +24,7 @@
 
 
 	.zonaDescargas
-		a.descargable(:href='programa' target="_blank" download)
+		a.descargable(v-if="programaArchivo" :href='programaArchivo.url' target="_blank" download :name="programaArchivo.name" :title="programaArchivo.alternativeText")
 			.dentro
 				.oicono.descargar
 				.texto Descargar programa completo
@@ -38,34 +35,117 @@ export default {
 	data () {
 		return {
 			propuestas: [],
-			programa: null,
+
+			seo: null,
+
 			imagen: null,
-			seoimg: null,
+			altImg: null,
+			pilares: null,
+			programaArchivo: null,
+
+
 			propuestaseleccionada: null,
-			contenido: null,
-			pilares: null
+			contenido: null
 		}
 	},
 	// solicita info a cms
 	async fetch () {
-		console.log('cargar pagina')
-		const programa = await fetch(`${process.env.apiURL}/programa`).then(res =>
-			res.json()
-		)
-		this.propuestas = programa.propuestas
-		this.programa = programa.Propuesta.url
-		const imagen = programa.imagen[0]
-		const imagen1 = imagen.imagen[0]
-		this.imagen = imagen1.url
-		this.seoimg = imagen.descripcionSEO
+		const _ = this._
+		console.log('FETCH')
+		const respuesta = await this.$olicitar(`${process.env.apiURL}/programa`)
+		// console.log('respuesta', respuesta)
+		// const ejemplo = {
+		// 	_id: '61413ba1ca5342206a85774f',
+		// 	titulo: 'Transición Energética Justa, Democrática y Popular',
+		// 	contenido: '<p>NERGÍA EN LA BASE DE',
+		// 	pag_ubicacion: 44,
+		// 	published_at: '2021-09-15T00:17:48.042Z',
+		// 	createdAt: '2021-09-15T00:17:37.045Z',
+		// 	updatedAt: '2021-09-15T00:17:48.577Z',
+		// 	__v: 0,
+		// 	imagen: {
+		// 		_id: '613a0919812a3c33c826bad7',
+		// 		name: 'https://i.ibb.co/1Xbg5qN/energiaymineria.png',
+		// 		alternativeText: '',
+		// 		caption: '',
+		// 		hash: 'energiaymineria_e801693e29',
+		// 		ext: '.png',
+		// 		mime: 'image/png',
+		// 		size: 4.14,
+		// 		width: 250,
+		// 		height: 250,
+		// 		url: 'https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/energiaymineria_e801693e29.png',
+		// 		formats: {
+		// 			thumbnail: {
+		// 				name: 'thumbnail_https://i.ibb.co/1Xbg5qN/energiaymineria.png',
+		// 				hash: 'thumbnail_energiaymineria_e801693e29',
+		// 				ext: '.png',
+		// 				mime: 'image/png',
+		// 				width: 156,
+		// 				height: 156,
+		// 				size: 6.89,
+		// 				path: null,
+		// 				url: 'https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/thumbnail_energiaymineria_e801693e29.png'
+		// 			}
+		// 		},
+		// 		provider: 'aws-s3',
+		// 		related: [
+		// 			'61413ba1ca5342206a85774f'
+		// 		],
+		// 		createdAt: '2021-09-09T13:16:09.674Z',
+		// 		updatedAt: '2021-09-15T00:17:37.310Z',
+		// 		__v: 0,
+		// 		id: '613a0919812a3c33c826bad7'
+		// 	},
+		// 	id: '61413ba1ca5342206a85774f'
+		// }
+		this.propuestas = respuesta.propuestas // Array
 
-		const pilares = programa.pilares.contenido
-		this._.forEach(pilares, (pilar, pindex) => {
-			pilares[pindex].contenido1 = this.$demarcar(pilar.contenido1)
-		})
-		this.pilares = pilares
 
-		console.log('%c PILARES', 'color: yellow', JSON.parse(JSON.stringify(pilares)))
+		// SEO
+		// const ejemploSEO = {
+		// 	_id: '6141409e6322394f5721fc7e',
+		// 	titulo_pag: 'boricpresidente pilares',
+		// 	descripcion_pag: 'Programa y propuestas Gabriel Boric',
+		// 	__v: 0,
+		// 	id: '6141409e6322394f5721fc7e'
+		// }
+		this.seo = respuesta.SEO
+
+
+		// IMAGEN
+		// console.log('respuesta.imagen', respuesta.imagen)
+		const componenteImagen = respuesta.componenteImagen
+		this.imagen = componenteImagen.imagen
+		this.altImg = componenteImagen.textoAlternativoImagen
+
+
+		// PILARES
+		this.pilares = this.$sanitizar(respuesta.Texto_pilares)
+
+
+		this.programaArchivo = _.get(respuesta, ['Archivo_programa'])
+	},
+	head () {
+		if (!this.seo) return {}
+		const titulo = this.seo.titulo_pag
+		const descripcion = this.seo.descripcion_pag
+		const obj = {
+			title: titulo,
+			description: descripcion,
+			meta: [
+				{ hid: 'iprop:name', itemprop: 'name', content: titulo },
+				{ hid: 'iprop:description', itemprop: 'description', content: descripcion },
+				{ hid: 'iprop:image', itemprop: 'image', content: '/imagenes/portada.jpg' },
+				{ hid: 'og:title', property: 'og:title', content: titulo },
+				{ hid: 'og:description', property: 'og:description', content: descripcion },
+				{ hid: 'og:image', property: 'og:image', content: '/imagenes/portada.jpg' },
+				{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
+				{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
+				{ hid: 'twitter:image', property: 'twitter:image', content: '/imagenes/portada.jpg' }
+			]
+		}
+		return obj
 	},
 
 	computed: {
@@ -75,7 +155,7 @@ export default {
 		},
 		// porcesa markdown contenido propuestas
 		Markdownpropuesta () {
-			return this.$demarcar(this.contenido)
+			return this.$sanitizar(this.contenido)
 		}
 	},
 	methods: {
@@ -102,8 +182,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '~/sass/utils'
+@import '~/estilos/utils'
 .propuestasRoot
+	background-color: #eee
 	section
 		padding: 2em
 
@@ -111,8 +192,10 @@ export default {
 .contenidoHTML
 	max-width: 900px
 	margin: 0 auto
-	border: 3px dashed orangered
-	padding: 2em
+	// border: 3px dashed orangered
+	background-color: #fff
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
+	padding: 4em
 	text-align: justify
 	justify-content: justify
 	::v-deep

@@ -1,5 +1,4 @@
 const colorMarca = '#A82CD0'
-const colorMarca2 = '#FE805C'
 
 const colorError = '#FE6159'
 const colorExito = '#59D078'
@@ -8,7 +7,6 @@ const fontSize = 18
 const textoColor = '#402673'
 
 const linkColor = colorMarca
-const botonPrincipalFondo = `linear-gradient(0% ${colorMarca}, 100% ${colorMarca2})`
 
 const vars = {
 	'primary-color': colorMarca, // primary color for all components
@@ -24,10 +22,10 @@ const vars = {
 
 	'disabled-color': 'rgba(0, 0, 0, 0.25)', // disable state color
 	'border-color-base': '#d9d9d9', // major border color
-	'border-radius-base': '5px', // major border radius
+	'border-radius-base': 0, // major border radius
 	'border-width-base': '0',
 	'box-shadow-base': '0 0 0 rgba(0, 0, 0, 0)', // major shadow for layers
-	'font-family': '"Quicksand", -apple-system, BlinkMacSystemFont, Meiryo, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+	'font-family': '"Roboto Slab", -apple-system, BlinkMacSystemFont, Meiryo, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
 	'font-size-base': `${fontSize}px`,
 	'font-size-lg': '20px',
 	'font-size-sm': '13px',
