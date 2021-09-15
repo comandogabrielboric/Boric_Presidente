@@ -87,12 +87,13 @@ $alturaMenu: 6em
 			background-color: #fff
 
 		.trasLogo
-			border: 3px solid red
 			height: 100%
+			opacity: 0
+			transition: opacity .5s ease
 			.iconoAprueboDignidad
 				+bgcon
 				background-image: url('/logos/apruebo dignidad icono.svg')
-				$lado: 3.4em
+				$lado: 3.8em
 				height: $lado
 				width: $lado
 				position: relative
@@ -107,7 +108,9 @@ $alturaMenu: 6em
 						transform: translate(-50%, -50%) rotateZ(180deg)
 					100%
 						transform: translate(-50%, -50%) rotateZ(360deg)
-
+		&:hover
+			.trasLogo
+				opacity: 1
 
 	.redesSociales
 		display: flex
