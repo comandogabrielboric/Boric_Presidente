@@ -183,7 +183,12 @@ export default {
 	},
 	watch: {
 		mostrandoPropuesta (v) {
-			if (!v) setTimeout(() => { this.propuestaIdMostrada = false }, 400)
+			if (!v) {
+				setTimeout(() => {
+					this.propuestaIdMostrada = false
+					this.modoVisualizacion = 'html'
+				}, 400)
+			}
 		},
 		propuestaIdMostrada (v) {
 			if (v) this.mostrandoPropuesta = true
