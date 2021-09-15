@@ -10,7 +10,7 @@
 	mixin links
 		.links.contenedor-links.link-interno
 			nuxt-link.link(to='/propuestas') Propuestas
-			nuxt-link.link(to='/sumate') Sumate
+			nuxt-link.link(to='/participa') participa
 			nuxt-link.link(to='/donar') Dona
 
 	.menuCompu

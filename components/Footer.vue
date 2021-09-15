@@ -3,7 +3,7 @@ footer
 
 	.capa.capaLinks
 		nuxt-link.link-footer(to='/storytelling') Storytelling
-		nuxt-link.link-footer(to='/sumate') Sumate
+		nuxt-link.link-footer(to='/participa') Participa
 		nuxt-link.link-footer(to='/dona') Dona
 		nuxt-link.link-footer(to='#') Participación ciudadana
 	.capa.capaFooter
