@@ -1,75 +1,164 @@
-<template>
-  <div>
-    <div>
-      <title>Propuestas Programaticas</title>
-      <div class="pilares">
-        <img :src="imagen" alt="" class="img-pilares">
-        <div v-html="pilaresMarkdown" />
-        <a class="descargable" :href="programa">
-          <p class="descargable-programa">
-            descarga programa completo
-          </p>
-        </a>
-        <div v-html="pilaresMarkdown2" />
-      </div>
-      <div class="propuestas">
-        <div class="caja-propuestas">
-          <div v-for=" propuesta in propuestas" :key="propuesta.id" class="contenedor-propuesta">
-            <div @click="mostrar(propuesta)">
-              <img :src="propuesta.imagen.url" alt="" class="img-propuesta">
-              <h2 class="titulo-propuesta">
-                {{ propuesta.titulo }}
-              </h2>
-            </div>
-            <!-- <transition name="contenidoprop">
-            <div class="contenido-propuesta" :class="{'mostrando': _.includes(propuestaseleccionada, propuesta._id)}">
-              {{ propuesta.contenido }}
-              <span class="palito" />
-            </div>
-          </transition> -->
-          </div>
-          <transition name="entrar">
-            <div v-if="propuestaseleccionada !== null" class="contenido-propuesta">
-              <div v-html="Markdownpropuesta" />
-            </div>
-          </transition>
-        </div>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+.propuestasRoot
+
+	.zonaImagen(v-if="imagen")
+		img.imagenPrograma(:src='imagen.url' :alt='altImg')
+
+	section.pilares(v-if="pilares")
+		.contenido
+			.ql-editor.contenidoHTML(v-html='pilares')
+
+
+	section.propuestas(v-if="propuestas")
+
+		.caja-propuestas
+
+			.propuesta(v-for='propuesta in propuestas' :key='propuesta.id' @click='propuestaIdMostrada = propuesta.id')
+				img.imagenDePropuesta(:src='propuesta.imagen.url' :alt="propuesta.textoAlternativoImagen")
+				h2.tituloPropuesta {{ propuesta.titulo }}
+
+
+			a-modal.modalPropuesta(:visible="mostrandoPropuesta" :footer="null" @close="mostrandoPropuesta = false" @cancel="mostrandoPropuesta = false" centered :width="null")
+				div(slot="title")
+					.pretitulo Propuestas programáticas
+					h2.titulo {{propuestaMostrada && propuestaMostrada.titulo}}
+					.modoVisualizacion(v-if="propuestaMostrada && propuestaMostrada.pdfURL")
+						.modo(@click="modoVisualizacion = 'html'" :class="{activo: modoVisualizacion === 'html'}") Ver texto
+						.modo(@click="modoVisualizacion = 'pdf'" :class="{activo: modoVisualizacion === 'pdf'}") Ver en PDF
+						a.modo(:href="propuestaMostrada.pdfURL" download target="_blank") Descargar PDF
+				.cuerpoPropuesta(v-if="propuestaMostrada")
+					transition-group(mode="out-in")
+						.pdf(v-show="modoVisualizacion === 'pdf'" key="pdf")
+							iframe(:src='`https://docs.google.com/viewer?url=${propuestaMostrada.pdfURL}&embedded=true`' frameborder='0' height='500px' width='100%')
+						.html(v-show="modoVisualizacion === 'html'" key="html")
+							.ql-editor.contenidoHTML(v-html='propuestaMostrada.html')
+
+	.zonaDescargas
+		a.descargable(v-if="programaArchivo" :href='programaArchivo.url' target="_blank" download :name="programaArchivo.name" :title="programaArchivo.name")
+			.dentro
+				.oicono.descargar
+				.texto Descargar programa completo
+
+
 </template>
 
 <script>
-import marked from 'marked'
-
 export default {
 	data () {
 		return {
 			propuestas: [],
-			programa: null,
+
+			seo: null,
+
 			imagen: null,
-			seoimg: null,
-			propuestaseleccionada: null,
-			contenido: null,
-			pilares: []
+			altImg: null,
+			pilares: null,
+			programaArchivo: null,
+
+
+			propuestaIdMostrada: null,
+			mostrandoPropuesta: null,
+			modoVisualizacion: 'html'
 		}
 	},
 	// solicita info a cms
 	async fetch () {
-		console.log('cargar pagina')
-		const solicitud = await fetch(`${process.env.apiURL}/programa`).then(res =>
-			res.json()
-		)
-		const pag = solicitud
-		this.propuestas = pag.propuestas
-		this.programa = pag.Propuesta.url
-		const imagen = pag.imagen[0]
-		const imagen1 = imagen.imagen[0]
-		this.imagen = imagen1.url
-		this.seoimg = imagen.descripcionSEO
-		this.pilares = pag.pilares.contenido
+		const _ = this._
+		console.log('FETCH')
+		const respuesta = await this.$olicitar(`${process.env.apiURL}/programa`)
+		// console.log('respuesta', respuesta)
+		// const ejemplo = {
+		// 	_id: '61413ba1ca5342206a85774f',
+		// 	titulo: 'Transición Energética Justa, Democrática y Popular',
+		// 	contenido: '<p>NERGÍA EN LA BASE DE',
+		// 	pag_ubicacion: 44,
+		// 	published_at: '2021-09-15T00:17:48.042Z',
+		// 	createdAt: '2021-09-15T00:17:37.045Z',
+		// 	updatedAt: '2021-09-15T00:17:48.577Z',
+		// 	__v: 0,
+		// 	imagen: {
+		// 		_id: '613a0919812a3c33c826bad7',
+		// 		name: 'https://i.ibb.co/1Xbg5qN/energiaymineria.png',
+		// 		alternativeText: '',
+		// 		caption: '',
+		// 		hash: 'energiaymineria_e801693e29',
+		// 		ext: '.png',
+		// 		mime: 'image/png',
+		// 		size: 4.14,
+		// 		width: 250,
+		// 		height: 250,
+		// 		url: 'https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/energiaymineria_e801693e29.png',
+		// 		formats: {
+		// 			thumbnail: {
+		// 				name: 'thumbnail_https://i.ibb.co/1Xbg5qN/energiaymineria.png',
+		// 				hash: 'thumbnail_energiaymineria_e801693e29',
+		// 				ext: '.png',
+		// 				mime: 'image/png',
+		// 				width: 156,
+		// 				height: 156,
+		// 				size: 6.89,
+		// 				path: null,
+		// 				url: 'https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/thumbnail_energiaymineria_e801693e29.png'
+		// 			}
+		// 		},
+		// 		provider: 'aws-s3',
+		// 		related: [
+		// 			'61413ba1ca5342206a85774f'
+		// 		],
+		// 		createdAt: '2021-09-09T13:16:09.674Z',
+		// 		updatedAt: '2021-09-15T00:17:37.310Z',
+		// 		__v: 0,
+		// 		id: '613a0919812a3c33c826bad7'
+		// 	},
+		// 	id: '61413ba1ca5342206a85774f'
+		// }
+		this.propuestas = respuesta.propuestas // Array
 
-		console.log('pagina cargada', this.pilares)
+
+		// SEO
+		// const ejemploSEO = {
+		// 	_id: '6141409e6322394f5721fc7e',
+		// 	titulo_pag: 'boricpresidente pilares',
+		// 	descripcion_pag: 'Programa y propuestas Gabriel Boric',
+		// 	__v: 0,
+		// 	id: '6141409e6322394f5721fc7e'
+		// }
+		this.seo = respuesta.SEO
+
+
+		// IMAGEN
+		// console.log('respuesta.imagen', respuesta.imagen)
+		const componenteImagen = respuesta.componenteImagen
+		this.imagen = componenteImagen.imagen
+		this.altImg = componenteImagen.textoAlternativoImagen
+
+
+		// PILARES
+		this.pilares = this.$sanitizar(respuesta.Texto_pilares)
+
+
+		this.programaArchivo = _.get(respuesta, ['Archivo_programa'])
+	},
+	head () {
+		if (!this.seo) return {}
+		const titulo = this.seo.titulo_pag
+		const descripcion = this.seo.descripcion_pag
+		const obj = {
+			title: titulo,
+			description: descripcion,
+			meta: [
+				{ hid: 'iprop:name', itemprop: 'name', content: titulo },
+				{ hid: 'iprop:description', itemprop: 'description', content: descripcion },
+				{ hid: 'iprop:image', itemprop: 'image', content: '/imagenes/portada.jpg' },
+				{ hid: 'og:title', property: 'og:title', content: titulo },
+				{ hid: 'og:description', property: 'og:description', content: descripcion },
+				{ hid: 'og:image', property: 'og:image', content: '/imagenes/portada.jpg' },
+				{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
+				{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
+				{ hid: 'twitter:image', property: 'twitter:image', content: '/imagenes/portada.jpg' }
+			]
+		}
+		return obj
 	},
 
 	computed: {
@@ -77,51 +166,27 @@ export default {
 		propuestasID () {
 			return this.propuestas.map(a => a._id)
 		},
-		// procesa markdown pilares1
-		pilaresMarkdown () {
-			const pilar = this.pilares[0]
-			const valida = this.validamarkdown(pilar)
-			console.log(valida)
-			return marked(pilar.contenido1, { sanitize: true })
-		},
-		// procesa markdown pilares2
-		pilaresMarkdown2 () {
-			const pilar = this.pilares[1]
-			const valida = this.validamarkdown(pilar)
-			console.log(valida)
-			return marked(pilar.contenido1, { sanitize: true })
-		},
 		// porcesa markdown contenido propuestas
 		Markdownpropuesta () {
-			const valida = this.validamarkdown(this.contenido)
-			console.log(valida)
-			return marked(this.contenido, { sanitize: true })
+			return this.$sanitizar(this.contenido)
+		},
+		propuestaMostrada () {
+			if (!this.propuestaIdMostrada) return null
+			const propuestaBruta = this._.find(this.propuestas, p => p.id === this.propuestaIdMostrada)
+
+			return {
+				titulo: propuestaBruta.titulo,
+				html: this.$sanitizar(propuestaBruta.contenido),
+				pdfURL: this._.get(propuestaBruta, ['archivoPDF', 'url'])
+			}
 		}
 	},
-	methods: {
-		// valida que el texto markdown no contenga scripts
-		validamarkdown (md) {
-			const prohibido = 'script'
-			console.log('validando')
-			if (this._.includes(md, prohibido)) {
-				console.log('contenido prohibido')
-				throw 'contenido prohibido'
-			}	else console.log('contenido premitido')
+	watch: {
+		mostrandoPropuesta (v) {
+			if (!v) setTimeout(() => { this.propuestaIdMostrada = false }, 400)
 		},
-		// metodo para seleccionar una propuesta y renderizas su contenido
-		mostrar (propuesta) {
-			console.log('mostrando', this.mostrarpropuesta)
-			if (this.propuestaseleccionada === propuesta._id) {
-				this.propuestaseleccionada = null
-				this.contenido = null
-				console.log('anulando', this.propuestaseleccionada)
-			} else {
-				this.propuestaseleccionada = propuesta._id
-				this.contenido = propuesta.contenido
-				console.log('mostrando', this.propuestaseleccionada)
-			}
-			console.log('propuestasID', this.propuestasID)
-			console.log('propuesta seleccionada', propuesta._id)
+		propuestaIdMostrada (v) {
+			if (v) this.mostrandoPropuesta = true
 		}
 	}
 }
@@ -130,133 +195,204 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="sass" scoped>
+@import '~/estilos/utils'
+@import '~/estilos/paleta'
+.propuestasRoot
+	background-color: #eee
+	section
+		padding: 2em
+		+movil
+			padding: 0
 
-.img-pilares{
-	width: 100vw;
-}
-.propuestas{
-	padding: 10px;
-	z-index: 1;
-}
-.caja-propuestas {
-	display: flex;
-	flex-wrap: wrap;
-	position: relative;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-content: center;
-	align-items: center;
+// CONTENIDO HTML
+.contenidoHTML
+	width: 900px
+	max-width: 100%
+	margin: 0 auto
+	// border: 3px dashed orangered
+	background-color: #fff
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
+	padding: 4rem
+	+movil
+		padding: 1rem
+		font-size: .889em
+	text-align: justify
+	justify-content: justify
+	::v-deep
+		line-height: 1.4
+		h1 + p
+			margin-top: 2rem
+		p
+			line-height: 1.8
+			+movil
+				line-height: 1.6
+		strong
+			font-weight: bold
+		b
+			font-weight: bold
+		ol
+			margin: 2em 0
+		a
+			all: revert
 
-}
-.contenedor-propuesta {
-	max-width: 150px;
-	height: 200px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	border-width: 5px;
-	margin: 10px;
-	text-align: center;
-	padding: 5px;
-}
-h2 {
-	font-size: 1rem;
-}
-.descargable	{
-	display: flex;
-	text-decoration: none;
-	color: #fff;
-	justify-content: center;
+.zonaImagen
+	.imagenPrograma
+		min-width: 100%
+		min-height: 230px
+		position: relative
+		left: 50%
+		transform: translateX(-50%)
 
-}
-.img-propuesta {
-	max-width: 100px;
-	max-height: 100px;
-	z-index: 1;
-}
-.contenido-propuesta {
-	width: 80vw;
-	height: 40vh;
-	overflow-y: scroll;
-	transition: .5s;
-	top: 50%;
-	background: rgb(255, 255, 255);
-	padding: 20px;
-}
-.mostrando {
-	width: 80vw;
-	height: 80vh;
-	border: 2px solid rgba(54, 54, 54, 0.863);
-	transition: .5s;
-	display: block;
-	position: relative;
-	left: 8vw;
-	right: 8vw;
-	top: 50%;
-}
-.pilares {
-	text-align: center;
-	justify-content: center;
-	// color: rgba(255, 255, 255, 0.986);
-	&#propuestas {
-		color: rgb(255, 108, 194);
-	}
-}
-h1, #propuestas {
-	color: rgb(255, 108, 194);
-}
+.zonaDescargas
+	display: flex
+	justify-content: center
+	padding: 1em
+	.descargable
+		padding-bottom: 3em
+		.dentro
+			display: flex
+			align-items: center
+			background-color: transparentize($colorBody, .9)
+			.oicono
+				flex: auto 0 0
+				font-size: 3em
+				margin: 2rem
+			.texto
+				flex: auto 1 1
+				margin: 2rem 2rem 2rem 0
+
+// PILARES
+.pilares
+	+movil
+		.contenidoHTML
+			padding: 5em 1em
+// PROPUESTAS
+.propuestas
+	z-index: 0
+	+movil
+		.caja-propuestas
+			padding: 5em 0
+	//border: 1px solid red
+	//*
+		border: 1px solid orange
+
+	.caja-propuestas
+		display: flex
+		flex-flow: row wrap
+		justify-content: center
 
 
-.contenedor-pdf {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-.pdf-programa {
-	width: 80vw;
-	height: 80vh;
-}
-.contenedor-pdf {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-.pdf-programa {
-	width: 80vw;
-	height: 80vh;
-}
-//transicion
-.entrar-enter {
-	height: 0;
-	width: 80vw;
-	opacity: 0;
-}
-.entrar-enter-to,
-.entrar-leave {
-	opacity: 1;
-}
-.entrar-enter-active {
-	transition: width 0.7s ease, opacity 0.7s ease;
-}
-.entrar-leave-to {
-	height: 0;
-	width: 80vw;
-	top: 0;
-	right: 0;
-	opacity: 0;
-}
-.entrar-leave-active {
-	transition: width 0.5s ease, height 0.5s ease, opacity 0.4s ease;
-}
+		.propuesta
+			flex: 12em 0 0
+			margin: 10px
+			text-align: center
+			padding: 5px
 
-@media screen and (min-width: 1024px) {
-	.descargable-programa {
-		width: 50vw;
-		text-align: center;
-}
-}
+			.imagenDePropuesta
+				$lado: 150px
+				max-width: $lado
+				max-height: $lado
+				z-index: 1
+			.tituloPropuesta
+				margin-top: 1rem
+				font-size: 1.2rem
+			+movil
+				flex: 9em 0 0
+				.imagenDePropuesta
+					$lado: 100px
+					max-width: $lado
+					max-height: $lado
+				.tituloPropuesta
+					font-size: .89em
+
+
+
+		.contenido-propuesta
+			width: 80vw
+			height: 40vh
+			overflow-y: scroll
+			transition: .5s
+			top: 50%
+			background: rgb(255, 255, 255)
+			padding: 20px
+			+salir
+				max-height: 0
+				opacity: 0
+			+saliendo
+				max-height: 100vh
+				overflow: hidden
+
+
+.modalPropuesta
+	::v-deep
+		.ant-modal-mask
+			backdrop-filter: blur(.5em)
+		.ant-modal
+			width: auto
+			max-width: 100%
+			margin: 0
+			color: inherit
+			.ant-modal-content
+				height: 80vh
+				background-color: transparent
+				+movil
+					height: 100vh
+				// background-color: red
+				display: flex
+				flex-flow: column nowrap
+				.ant-modal-header
+					flex: auto 0 0
+					padding: 2em
+					background-color: transparentize($fondoBody, .5)
+					backdrop-filter: blur(1em)
+					.pretitulo
+						margin-bottom: 1em
+						opacity: .6
+					.titulo
+						line-height: 1.4
+					.modoVisualizacion
+						display: flex
+						margin-top: .5em
+
+						.modo
+							font-size: .8em
+							opacity: .5
+							transition: opacity .15s ease
+							&.activo
+								opacity: .8
+						.modo + .modo
+							margin-left: 1rem
+					+movil
+						padding: 1em
+						.pretitulo
+							font-size: .8em
+						.titulo
+							font-size: 1em
+				.ant-modal-body
+					flex: auto 1 1
+					max-height: 100%
+					overflow-y: auto
+					padding: 0
+					display: flex
+					flex-flow: column nowrap
+					width: 900px
+					max-width: 100%
+					.cuerpoPropuesta
+						&,
+						& > span,
+						& > span > div,
+						& > span > div > iframe
+							flex: auto 1 1
+							display: flex
+							flex-flow: column nowrap
+					.pdf,
+					.html
+						flex: auto 1 1
+						width: 900px
+						max-width: 100%
+					+salir
+						opacity: 0
 
 
 </style>
