@@ -28,14 +28,14 @@ div
 			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/maletin_d53cc2fc4a.png" alt="Kit grafico Boricpresidente").imgMaletin
 		.descargable
 			.linkDescargaKit
-				a(target="_blank" rel="noreferer noopener"  href="https://drive.google.com/drive/folders/1fqjrBTIYRgQWJ-caAgD4U8xGK9sWgCBj")
+				a(target="_blank" rel="noreferer noopener" href="https://drive.google.com/drive/folders/1fqjrBTIYRgQWJ-caAgD4U8xGK9sWgCBj")
 				.dentro
 					.oicono.descargar
 					.texto Descargar tu kit aqui
 	section
-		p  Donacione
+		p Donacione
 	section
-		p  Participacion ciudadan
+		p Participacion ciudadan
 </template>
 
 

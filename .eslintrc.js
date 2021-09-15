@@ -28,7 +28,7 @@ module.exports = {
 		'no-multiple-empty-lines': 'off',
 		'vue/html-indent': ['error', 'tab', {
 			attribute: 1,
-			baseIndent: 0,
+			baseIndent: 1,
 			closeBracket: 0,
 			alignAttributesVertically: true,
 			ignores: []
