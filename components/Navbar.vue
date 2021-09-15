@@ -57,13 +57,24 @@ $alturaMenu: 6em
 	display: flex
 	align-items: center
 	justify-content: space-between
-	padding: 0 2em
-	height: $alturaMenu
 	line-height: 0
 
 	color: $colorHeader
-	background-color: transparentize($fondoHeader, .4)
-	backdrop-filter: blur(.5em)
+
+	height: $alturaMenu
+	padding: 0 2em
+	+movil
+		padding: 0 1em
+	&::before
+		content: ''
+		display: block
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		background-color: transparentize($fondoHeader, .4)
+		backdrop-filter: blur(.5em)
 
 	.zonaLogo
 		position: relative
@@ -77,6 +88,8 @@ $alturaMenu: 6em
 		height: 0.3965em
 		width: 1em
 		font-size: 8em
+		+movil
+			font-size: 6em
 		&.trasero
 			position: absolute
 			top: -1px
@@ -90,6 +103,7 @@ $alturaMenu: 6em
 			height: 100%
 			opacity: 0
 			transition: opacity .5s ease
+			overflow: hidden
 			.iconoAprueboDignidad
 				+bgcon
 				background-image: url('/logos/apruebo dignidad icono.svg')
@@ -134,7 +148,7 @@ $alturaMenu: 6em
 	.menuMovil
 		position: fixed
 		z-index: 10
-		top: 5em
+		top: $alturaMenu
 		left: 0
 		right: 0
 		bottom: 0
