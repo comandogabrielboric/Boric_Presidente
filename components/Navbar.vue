@@ -142,6 +142,7 @@ $alturaMenu: 6em
 			padding: .7em
 
 	.menuCompu
+		z-index: inherit
 		@media screen and (max-width: 760px)
 			display: none
 
@@ -186,6 +187,7 @@ $alturaMenu: 6em
 				text-align: center
 				font-size: 1.4em
 				margin: 1.2em 0
+
 
 	.triggerMenu
 		@media screen and (min-width: 760px)
