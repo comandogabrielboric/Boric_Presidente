@@ -399,6 +399,5 @@ export default {
 					+salir
 						opacity: 0
 
-
 </style>
 
