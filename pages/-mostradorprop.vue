@@ -1,9 +1,9 @@
 <template lang="pug">
 .contenedor
-  .contenedor-propuesta(v-for='propuesta in propuestas' :key='propuesta.id')
-    .caja-propuesta
-      img.img-propuesta(:src='propuesta.imagen.url' alt='')
-      h2.titulo-propuesta {{ propuesta.titulo }}
+	.contenedor-propuesta(v-for='propuesta in propuestas' :key='propuesta.id')
+		.caja-propuesta
+			img.img-propuesta(:src='propuesta.imagen.url' alt='')
+			h2.titulo-propuesta {{ propuesta.titulo }}
 
 </template>
 

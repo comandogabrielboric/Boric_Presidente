@@ -1,25 +1,25 @@
 <template>
-  <div class="modal">
-    <div class="contenido-modal">
-      <div class="titulo">
-        <h1>realiza tu aporte aqui</h1>
-        <h3>debes seguir los siguientes pasos</h3>
-      </div>
-      <div class="pasos">
-        <ul>
-          <li>paso 1</li>
-          <li>paso 2</li>
-          <li>paso 3</li>
-          <li>paso 4</li>
-        </ul>
-      </div>
-      <a class="btn-aportes" href="https://aportes.servel.cl/servel-aportes/inicio.xhtml">
-        <button type="" class="btn-aportes">
-          realiza tu aporte aqui
-        </button>
-      </a>
-    </div>
-  </div>
+	<div class="modal">
+		<div class="contenido-modal">
+			<div class="titulo">
+				<h1>realiza tu aporte aqui</h1>
+				<h3>debes seguir los siguientes pasos</h3>
+			</div>
+			<div class="pasos">
+				<ul>
+					<li>paso 1</li>
+					<li>paso 2</li>
+					<li>paso 3</li>
+					<li>paso 4</li>
+				</ul>
+			</div>
+			<a class="btn-aportes" href="https://aportes.servel.cl/servel-aportes/inicio.xhtml">
+				<button type="" class="btn-aportes">
+					realiza tu aporte aqui
+				</button>
+			</a>
+		</div>
+	</div>
 </template>
 
 <script>

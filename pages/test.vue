@@ -1,57 +1,57 @@
 <template>
-  <div>
-    <div>
-      <title>Propuestas Programaticas</title>
-      <div class="pilares">
-        <img :src="imagen" alt="" class="img-pilares">
-        <p>Pilares / Puntos principales</p>
-        <div v-html="pilaresMarkdown" />
-        <a class="descargable" :href="programa">
-          <p class="descargable-programa">
-            descarga programa completo
-          </p>
-        </a>
-        <div v-html="pilaresMarkdown2" />
-      </div>
-      <div class="propuestas">
-        <p class="titulo">
-          Propuestas programaticas
-        </p>
-        <div class="caja-propuestas">
-          <div v-for=" propuesta in propuestas" :key="propuesta.id" class="contenedor-propuesta">
-            <div @click="mostrar(propuesta)">
-              <img :src="propuesta.imagen.url" alt="" class="img-propuesta">
-              <h2 class="titulo-propuesta">
-                {{ propuesta.titulo }}
-              </h2>
-            </div>
-            <!-- <transition name="contenidoprop">
-            <div class="contenido-propuesta" :class="{'mostrando': _.includes(propuestaseleccionada, propuesta._id)}">
-              {{ propuesta.contenido }}
-              <span class="palito" />
-            </div>
-          </transition> -->
-          </div>
-          <transition name="entrar">
-            <div v-if="propuestaseleccionada !== null" class="contenido-propuesta">
-              <div v-html="Markdownpropuesta" />
-            </div>
-          </transition>
-        </div>
-      </div>
-      <div class="contenedor-pdf">
-        <!-- <object :data="programa" class="pdf-programa" /> -->
+	<div>
+		<div>
+			<title>Propuestas Programaticas</title>
+			<div class="pilares">
+				<img :src="imagen" alt="" class="img-pilares">
+				<p>Pilares / Puntos principales</p>
+				<div v-html="pilaresMarkdown" />
+				<a class="descargable" :href="programa">
+					<p class="descargable-programa">
+						descarga programa completo
+					</p>
+				</a>
+				<div v-html="pilaresMarkdown2" />
+			</div>
+			<div class="propuestas">
+				<p class="titulo">
+					Propuestas programaticas
+				</p>
+				<div class="caja-propuestas">
+					<div v-for=" propuesta in propuestas" :key="propuesta.id" class="contenedor-propuesta">
+						<div @click="mostrar(propuesta)">
+							<img :src="propuesta.imagen.url" alt="" class="img-propuesta">
+							<h2 class="titulo-propuesta">
+								{{ propuesta.titulo }}
+							</h2>
+						</div>
+						<!-- <transition name="contenidoprop">
+						<div class="contenido-propuesta" :class="{'mostrando': _.includes(propuestaseleccionada, propuesta._id)}">
+							{{ propuesta.contenido }}
+							<span class="palito" />
+						</div>
+					</transition> -->
+					</div>
+					<transition name="entrar">
+						<div v-if="propuestaseleccionada !== null" class="contenido-propuesta">
+							<div v-html="Markdownpropuesta" />
+						</div>
+					</transition>
+				</div>
+			</div>
+			<div class="contenedor-pdf">
+				<!-- <object :data="programa" class="pdf-programa" /> -->
 
 
-        <a :href="programa">
-          <p class="descargable-programa">
-            descarga programa completo
-          </p>
-        </a>
-        <!-- <pdf src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/Programa_Completo_8ff9270a64.pdf" class="pdf-programa" /> -->
-      </div>
-    </div>
-  </div>
+				<a :href="programa">
+					<p class="descargable-programa">
+						descarga programa completo
+					</p>
+				</a>
+				<!-- <pdf src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/Programa_Completo_8ff9270a64.pdf" class="pdf-programa" /> -->
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
