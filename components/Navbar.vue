@@ -48,7 +48,7 @@ export default {
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
 
-$alturaMenu: 6em
+$alturaMenu: 5em
 
 .navbar
 	position: sticky
@@ -73,12 +73,12 @@ $alturaMenu: 6em
 		left: 0
 		right: 0
 		bottom: 0
-		background-color: transparentize($fondoHeader, .4)
+		background-color: transparentize($fondoHeader, 0)
 		backdrop-filter: blur(.5em)
 
 	.zonaLogo
 		position: relative
-		filter: drop-shadow(0 1px 1px transparentize(white, .5)) drop-shadow(0 -.5em .5em transparentize(white, .35)) drop-shadow(0 1em .5em transparentize(black, .65))
+		// filter: drop-shadow(0 1px 1px transparentize(white, .5)) drop-shadow(0 -.5em .5em transparentize(white, .35)) drop-shadow(0 1em .5em transparentize(black, .65))
 	.logo
 		background-color: currentColor
 		mask-image: url('/logos/logo.svg')
