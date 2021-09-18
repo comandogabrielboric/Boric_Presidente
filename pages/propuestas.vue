@@ -1,12 +1,17 @@
 <template lang="pug">
 .propuestasRoot
 
-	.zonaImagen(v-if="imagen")
-		img.imagenPrograma(:src='imagen.url' :alt='altImg')
+	//- .zonaImagen(v-if="imagen")
+	//- 	img.imagenPrograma(:src='imagen.url' :alt='altImg')
+	.encabezado
+		h1 Propuesta
+		h1 Programática
+		h1 para un nuevo Chile
+		p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at mi eget diam euismod egestas vel non ipsum elir sit eget.
 
-	section.pilares(v-if="pilares")
-		.contenido
-			.ql-editor.contenidoHTML(v-html='pilares')
+	//- section.pilares(v-if="pilares")
+	//- 	.contenido
+	//- 		.ql-editor.contenidoHTML(v-html='pilares')
 
 
 	section.propuestas(v-if="propuestas")
@@ -66,77 +71,16 @@ export default {
 		const _ = this._
 		console.log('FETCH')
 		const respuesta = await this.$olicitar(`${process.env.apiURL}/programa`)
-		// console.log('respuesta', respuesta)
-		// const ejemplo = {
-		// 	_id: '61413ba1ca5342206a85774f',
-		// 	titulo: 'Transición Energética Justa, Democrática y Popular',
-		// 	contenido: '<p>NERGÍA EN LA BASE DE',
-		// 	pag_ubicacion: 44,
-		// 	published_at: '2021-09-15T00:17:48.042Z',
-		// 	createdAt: '2021-09-15T00:17:37.045Z',
-		// 	updatedAt: '2021-09-15T00:17:48.577Z',
-		// 	__v: 0,
-		// 	imagen: {
-		// 		_id: '613a0919812a3c33c826bad7',
-		// 		name: 'https://i.ibb.co/1Xbg5qN/energiaymineria.png',
-		// 		alternativeText: '',
-		// 		caption: '',
-		// 		hash: 'energiaymineria_e801693e29',
-		// 		ext: '.png',
-		// 		mime: 'image/png',
-		// 		size: 4.14,
-		// 		width: 250,
-		// 		height: 250,
-		// 		url: 'https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/energiaymineria_e801693e29.png',
-		// 		formats: {
-		// 			thumbnail: {
-		// 				name: 'thumbnail_https://i.ibb.co/1Xbg5qN/energiaymineria.png',
-		// 				hash: 'thumbnail_energiaymineria_e801693e29',
-		// 				ext: '.png',
-		// 				mime: 'image/png',
-		// 				width: 156,
-		// 				height: 156,
-		// 				size: 6.89,
-		// 				path: null,
-		// 				url: 'https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/thumbnail_energiaymineria_e801693e29.png'
-		// 			}
-		// 		},
-		// 		provider: 'aws-s3',
-		// 		related: [
-		// 			'61413ba1ca5342206a85774f'
-		// 		],
-		// 		createdAt: '2021-09-09T13:16:09.674Z',
-		// 		updatedAt: '2021-09-15T00:17:37.310Z',
-		// 		__v: 0,
-		// 		id: '613a0919812a3c33c826bad7'
-		// 	},
-		// 	id: '61413ba1ca5342206a85774f'
-		// }
 		this.propuestas = respuesta.propuestas // Array
-
-
 		// SEO
-		// const ejemploSEO = {
-		// 	_id: '6141409e6322394f5721fc7e',
-		// 	titulo_pag: 'boricpresidente pilares',
-		// 	descripcion_pag: 'Programa y propuestas Gabriel Boric',
-		// 	__v: 0,
-		// 	id: '6141409e6322394f5721fc7e'
-		// }
 		this.seo = respuesta.SEO
-
-
 		// IMAGEN
-		// console.log('respuesta.imagen', respuesta.imagen)
 		const componenteImagen = respuesta.componenteImagen
 		this.imagen = componenteImagen.imagen
 		this.altImg = componenteImagen.textoAlternativoImagen
-
-
 		// PILARES
 		this.pilares = this.$sanitizar(respuesta.Texto_pilares)
-
-
+		// PROGRAMA COMPLETO
 		this.programaArchivo = _.get(respuesta, ['Archivo_programa'])
 	},
 	head () {
@@ -204,11 +148,32 @@ export default {
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
 .propuestasRoot
-	background-color: #eee
+	background-color: $azul2
 	section
 		padding: 2em
 		+movil
 			padding: 0
+
+// ENCABEZADO
+.encabezado
+	text-align: center
+	padding-top: .4rem
+	h1
+		padding: 0 1rem 0 1rem
+		margin: 0
+		line-height: 1
+		color: $verde3
+		font-style: italic
+		font-weight: 900
+		&:nth-child(1)
+			padding-top: 2rem
+		&:nth-child(3)
+			color: #fff
+			font-weight: 400
+	p
+		color: #fff
+		padding: 1.5rem 1rem 0 1rem
+
 
 // CONTENIDO HTML
 .contenidoHTML
@@ -217,7 +182,7 @@ export default {
 	margin: 0 auto
 	// border: 3px dashed orangered
 	background-color: #fff
-	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
+	// box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
 	padding: 4rem
 	+movil
 		padding: 1rem
@@ -225,6 +190,8 @@ export default {
 	text-align: justify
 	justify-content: justify
 	::v-deep
+		*
+			font-family: roboto
 		line-height: 1.4
 		h1 + p
 			margin-top: 2rem
@@ -278,32 +245,37 @@ export default {
 	+movil
 		.caja-propuestas
 			padding: 5em 0
-	//border: 1px solid red
-	//*
-		border: 1px solid orange
+	// border: 1px solid red
+	// *
+	// 	border: 1px solid orange
 
 	.caja-propuestas
 		display: flex
 		flex-flow: row wrap
 		justify-content: center
-
-
 		.propuesta
-			flex: 12em 0 0
+			// flex: 12em 0 0
 			margin: 10px
 			text-align: center
 			padding: 5px
-
+			width: 250px
+			height: 250px
+			background-color: rgba(14, 107, 139, 1)
 			.imagenDePropuesta
-				$lado: 150px
+				$lado: 130px
+				padding-top: 1em
 				max-width: $lado
 				max-height: $lado
 				z-index: 1
 			.tituloPropuesta
 				margin-top: 1rem
 				font-size: 1.2rem
+				font-style: italic
+				color: #fff
 			+movil
-				flex: 9em 0 0
+				// flex: 9em 0 0
+				width: 250px
+				height: 250px
 				.imagenDePropuesta
 					$lado: 100px
 					max-width: $lado
@@ -349,7 +321,7 @@ export default {
 				.ant-modal-header
 					flex: auto 0 0
 					padding: 2em
-					background-color: transparentize($fondoBody, .5)
+					background-color: transparentize($fondoBody, .2)
 					backdrop-filter: blur(1em)
 					.pretitulo
 						margin-bottom: 1em
