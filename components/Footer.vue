@@ -2,21 +2,23 @@
 footer
 
 	.capa.capaLinks
-		nuxt-link.link-footer(to='/storytelling') Storytelling
-		nuxt-link.link-footer(to='/participa') Participa
-		nuxt-link.link-footer(to='/dona') Dona
-		nuxt-link.link-footer(to='#') Participación ciudadana
 	.capa.capaFooter
+		.logo
+		p Por un Chile en el que nadie quede fuera.
+		RedesSociales
+
 		.logos
 			.aprueboDignidad
 				.iconoAprueboDignidad
 				.textoAprueboDignidad
-		RedesSociales
 
 </template>
 
 <script>
+import logo from '@/static/logos/logo.svg'
+
 export default {
+	components: { logo },
 	data () {
 		return {
 			rrss: [],
@@ -49,9 +51,13 @@ footer
 		padding: 2em
 		display: flex
 		align-items: center
+
 	.capaFooter
-		padding: 3em
+		padding: 1em 3em
 		background-color: $fondoFooter
+		.redesSociales
+			font-size: 1.4em
+			padding-bottom: 1em
 
 	.capaLinks
 		display: flex
@@ -60,18 +66,21 @@ footer
 		position: relative
 		z-index: 0
 		text-transform: uppercase
+		margin-top: -2em
 		> *
 			z-index: 1
 		&::before
 			content: ''
 			display: block
 			position: absolute
-			top: 0
+			top: -20px
 			left: 0
 			right: 0
 			bottom: 0
+			clip-path: ellipse(60% 100% at 50% 100%)
 			background-color: $fondoFooter
-			opacity: .5
+
+
 		.link-footer
 			padding: .25em
 			margin: .25em
