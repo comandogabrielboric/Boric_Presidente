@@ -19,7 +19,7 @@
 				h2 ¡Lorem Ipsum ipsum!
 				p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			.suscribirse
-				participa
+				participaant
 	section
 		p Propuesta programatica
 		mostradorprop

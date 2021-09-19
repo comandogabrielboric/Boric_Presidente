@@ -10,6 +10,8 @@ div
 </template>
 
 <script>
+import isEmail from 'validator/lib/isEmail'
+
 export default {
 	data () {
 		return {
@@ -19,12 +21,20 @@ export default {
 			comuna: null
 		}
 	},
-
+	computed: {
+		emailEsValido () {
+			return !this._.isEmpty(this.email) && isEmail(this.email)
+		}
+	},
 	methods: {
 		async suscribirse () {
 			const { nombre, email, telefono, comuna } = this
 			const data = { nombre, email, telefono, comuna }
 			const config = {}
+			if (!this.emailEsValido) {
+				console.error('email invalido')
+				return
+			}
 			const respuesta = await this.$axios.post(`${process.env.apiURL}/suscribirse`, data, config).then(r => r.json).catch(e => console.error('fallo suscribirse', e))
 			console.log('Respuesta', respuesta)
 		}
