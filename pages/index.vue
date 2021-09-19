@@ -6,11 +6,20 @@
 	.seccionCuna
 		.curva
 		.cuna
-			p Aporta con tus ideas y anhelos a un programa de Gobierno descentralizado y abierto de cara a la ciudadanía.
+			h1 ¡Mesas ciudadanas
+			h2  x Boric!
+			p Te invitamos a aportar con tus ideas, opiniones y anhelos a un programa de Gobierno diverso, descentralizado y abierto de cara a la ciudadanía.
 			p Súmate a una mesa ciudadana o contesta una consulta.
 			.btnparticipa Participa Aquí
+			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/large_IMG_20210715_144542_145_1_1_e194f04db0.png").imgSaludo
 	.seccionParticipa
-		p Sumate
+		.curva
+		.contenido
+			.textoseccion
+				h2 ¡Lorem Ipsum ipsum!
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			.suscribirse
+				participa
 	section
 		p Propuesta programatica
 		mostradorprop
@@ -75,9 +84,7 @@ section
 		width: 100vw
 		height: 5em
 		background-color: $verde1
-		// margin-top: -2em
 		justify-content: center
-		// opacity: .5
 		clip-path: ellipse(65% 100% at 50% 100%)
 		+movil
 			height: 3em
@@ -85,6 +92,7 @@ section
 		+compu
 			margin-top: -2em
 	.cuna
+		margin-top: 1.5em
 		display: flex
 		flex-flow: column
 		width: 80vw
@@ -92,6 +100,17 @@ section
 		align-items: center
 		background-color: $verde1
 		z-index: 2
+		h1
+			font-size: 2.5em
+			font-weight: 900
+			color: #fff
+			line-height: 1.3em
+		h2
+			color: $verde3
+			font-size: 2.5em
+			font-weight: 900
+			margin-top: -.7em
+
 		p
 			color: $blanco
 			font-size: 1em
@@ -110,12 +129,45 @@ section
 			padding: .5em 1.3em
 			border-radius: 4px
 			margin: 2em 0 3em 0
-
+		.imgSaludo
+			margin-top: -15%
+			width: 100vw
+			z-index: 0
 
 .seccionParticipa
+	position: relative
 	background-color: $verde2
 	min-height: 10em
 	padding: 2em
+	justify-content: center
+	text-align: center
+	.curva
+		display: flex
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		width: 100vw
+		height: 5em
+		background-color: $verde2
+		justify-content: center
+		clip-path: ellipse(65% 100% at 50% 100%)
+		z-index: 2
+		+movil
+			height: 3em
+			margin-top: -1.2em
+		+compu
+			margin-top: -2em
+	.contenido
+		position: relative
+		z-index: 3
+		.textoseccion
+			margin-top: -1em
+			z-index: 5
+		.suscribirse
+			display: flex
+			justify-content: center
+
 
 
 
