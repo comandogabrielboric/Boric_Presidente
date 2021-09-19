@@ -17,7 +17,7 @@ export default {
 
 	async fetch () {
 		console.log('cargar propuestas')
-		const solicitud = await fetch(`${process.env.apiURL}/seleccionhomes`).then(res =>
+		const solicitud = await fetch(`${process.env.cmsURL}/seleccionhomes`).then(res =>
 			res.json()
 		)
 		const propuestas = solicitud

@@ -70,7 +70,7 @@ export default {
 	async fetch () {
 		const _ = this._
 		console.log('FETCH')
-		const respuesta = await this.$olicitar(`${process.env.apiURL}/programa`)
+		const respuesta = await this.$olicitar(`${process.env.cmsURL}/programa`)
 		this.propuestas = respuesta.propuestas // Array
 		// SEO
 		this.seo = respuesta.SEO

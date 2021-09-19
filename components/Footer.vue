@@ -23,7 +23,7 @@ export default {
 	},
 	async fetch () {
 		// console.log('cargar footer')
-		const solicitud = await fetch(`${process.env.apiURL}/footer`).then(res =>
+		const solicitud = await fetch(`${process.env.cmsURL}/footer`).then(res =>
 			res.json()
 		)
 		this.logosAD = solicitud.logosAD

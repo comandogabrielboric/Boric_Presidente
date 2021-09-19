@@ -24,5 +24,6 @@ function capturadorErrorSolicitud (error) {
 }
 
 export default ({ app }, inject) => {
+	inject('axios', axios)
 	inject('olicitar', solicitar)
 }

@@ -14,7 +14,8 @@ function titleTemplate (tituloLocal) {
 
 export default {
 	env: {
-		apiURL: dev ? 'https://gbcms.crishadad.cl' : 'http://localhost:1337'
+		cmsURL: dev ? 'http://localhost:1337' : 'https://gbcms.crishadad.cl',
+		apiURL: dev ? 'http://localhost:3001' : 'https://bpapi.crishadad.cl'
 	},
 	// Target: https://go.nuxtjs.dev/config-target
 	target: 'static',
