@@ -4,9 +4,8 @@ footer
 	.capa.capaLinks
 	.capa.capaFooter
 		.logo
-		p Por un Chile en el que nadie quede fuera.
+		p.textoFooter Por un Chile en el que nadie quede fuera.
 		RedesSociales
-
 		.logos
 			.aprueboDignidad
 				.iconoAprueboDignidad
@@ -15,10 +14,7 @@ footer
 </template>
 
 <script>
-import logo from '@/static/logos/logo.svg'
-
 export default {
-	components: { logo },
 	data () {
 		return {
 			rrss: [],
@@ -53,11 +49,27 @@ footer
 		align-items: center
 
 	.capaFooter
+		margin-top: -3em
 		padding: 1em 3em
 		background-color: $fondoFooter
+		display: flex
+		flex-flow: column
+		.logo
+
+			+bgcon
+			background-color: currentColor
+			mask-image: url('/logos/logo.svg')
+			mask-size: contain
+			mask-repeat: no-repeat
+			mask-position: center
+			height: 0.3965em
+			width: 1em
+			font-size: 10em
 		.redesSociales
 			font-size: 1.4em
-			padding-bottom: 1em
+			// padding: 1em 0 1em 0
+		.textoFooter
+			margin-top: 1em
 
 	.capaLinks
 		display: flex
@@ -73,7 +85,8 @@ footer
 			content: ''
 			display: block
 			position: absolute
-			top: -20px
+			height: auto
+			top: -3em
 			left: 0
 			right: 0
 			bottom: 0
@@ -89,6 +102,7 @@ footer
 			font-size: 5em
 			display: flex
 			align-items: center
+			padding: .25em 0 .5em 0
 			.iconoAprueboDignidad
 				+bgcon
 				background-image: url('/logos/apruebo dignidad icono.svg')
@@ -101,14 +115,12 @@ footer
 				height: 1em
 				width: 1.458em
 
-	@media screen and (min-width: 760px)
-		.capaFooter
-			justify-content: space-around
+
 
 	@media screen and (max-width: 760px)
 		flex-flow: column nowrap
 		.redesSociales
-			margin-top: 2em
+			// margin-top: 2em
 		.logos
 			.aprueboDignidad
 				font-size: 5em
@@ -116,6 +128,7 @@ footer
 			flex-flow: column nowrap
 		.capaFooter
 			flex-flow: column nowrap
+
 
 
 
