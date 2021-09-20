@@ -1,19 +1,17 @@
 <template lang="pug">
 div
-	a-form-model(ref='ruleForm' :model='ruleForm' :rules='rules' v-bind='layout')
-		a-form-model-item(has-feedback='' label='nombre' prop='nombre')
-			a-input(v-model='ruleForm.nombre' type='nombre')
-		a-form-model-item(has-feedback='' label='email' prop='email')
-			a-input(v-model='ruleForm.email' type='email')
-		a-form-model-item(has-feedback='' label='telefono' prop='telefono')
-			a-input(v-model='ruleForm.telefono' type='tel')
-		a-form-model-item(has-feedback='' label='comuna' prop='comuna')
-			a-input(v-model='ruleForm.comuna' type='comuna')
+	a-form-model(ref='ruleForm' :model='ruleForm' :rules='rules' v-bind='layout').suscribirse
+		a-form-model-item(has-feedback='' prop='nombre')
+			a-input(v-model='ruleForm.nombre' type='nombre' placeholder="Nombre").input
+		a-form-model-item(has-feedback='' prop='email')
+			a-input(v-model='ruleForm.email' type='email' placeholder='Email').input
+		a-form-model-item(has-feedback='' prop='telefono')
+			a-input(v-model='ruleForm.telefono' type='tel' placeholder='+56 x xxxx xxxx').input
+		a-form-model-item(has-feedback='' prop='comuna')
+			a-input(v-model='ruleForm.comuna' type='comuna' placeholder='Comuna').input
 		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }')
-			a-button(type='primary' @click="submitForm('ruleForm')")
-				| Submit
-			a-button(style='margin-left: 10px' @click="resetForm('ruleForm')")
-				| Reset
+			a-button(type='primary' @click="suscribirse('ruleForm')")
+				| SEGUIMOS
 
 </template>
 
@@ -76,19 +74,22 @@ export default {
 		}
 	},
 	methods: {
-		submitForm (formName) {
-			this.$refs[formName].validate(valid => {
-				if (valid) {
-					alert('submit!')
-				} else {
-					console.log('error submit!!')
-					return false
-				}
-			})
-		},
-		resetForm (formName) {
-			this.$refs[formName].resetFields()
+		async suscribirse () {
+			// const { nombre, email, telefono, comuna } = this
+			// const data = { nombre, email, telefono, comuna }
+			const config = {}
+			const respuesta = await this.$axios.post(`${process.env.apiURL}/suscribirse`, this.ruleForm, config).then(r => r.json).catch(e => console.error('fallo suscribirse', e))
+			console.log('Respuesta', respuesta)
 		}
 	}
 }
 </script>
+
+<style lang="sass" scoped>
+.suscribirse
+	display: flex
+	flex-flow: column
+	input
+		width: 250px
+		margin-top: 2px
+</style>
