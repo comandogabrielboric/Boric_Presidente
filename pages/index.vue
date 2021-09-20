@@ -472,7 +472,7 @@ section.seccionaporta
 				border-radius: 50%
 				+compu
 					right: 30%
-					bottom: 10em
+					bottom: 13em
 
 section.propuestas
 	position: relative
@@ -496,6 +496,8 @@ section.propuestas
 		top: -8em
 		right: 30vw
 		bottom: 0
+		+compu
+			right: 45vw
 	.curva
 		display: flex
 		position: absolute
