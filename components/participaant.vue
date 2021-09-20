@@ -12,9 +12,7 @@
 		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }').contenedorbtn
 			a-button(type='primary' @click="submitForm('ruleForm')").suscribirme
 				| SEGUIMOS
-		.terminosycondiciones
-			.acepto Acepto
-			.terminos Terminos y Condiciones
+		p.terminosycondiciones #[span.primero Acepto] &nbspTerminos y Condiciones
 	a-modal(v-model="visible" title="Bienvenide !!" centered @ok="handleOk" :footer="null").modal
 		p Pronto recibiras noticias de nosotros
 
@@ -139,11 +137,14 @@ export default {
 	font-size: 1.4em
 .terminosycondiciones
 	color: $verde3
-	display: flex
-	flex-flow: row
-	.terminos
-		font-weight: 900
-		margin-left: .4em
+	display: inline
+	font-size: .9rem
+	width: 400
+	max-width: 100%
+	font-weight: 900
+	.primero
+		font-weight: 400
+
 .modal
 	height: 200px
 
