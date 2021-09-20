@@ -1,39 +1,17 @@
 <template lang="pug">
 div
+	section.participa
+		.contenido
+			.textoseccion
+				h2.titulo #[span.primero ¡Lorem] &nbspIpsum
+					div ipsum!
+				.texto
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			.suscribirse
+				participaant
+
 	section
-		.formulariocontacto#mc_embed_signup
-			form#mc-embedded-subscribe-form.validate(action='https://	boricpresidente.us6.list-manage.com/subscribe/post?	u=9f1dc4f56ef47d2a37e0340d3&id=cea6cdf0c4' method='post' 	name='mc-embedded-subscribe-form' target='_blank' novalidate='')
-				.formSuscribirse#mc_embed_signup_scroll
-					h2 Dejanos tu mail y recibe actualizaciones de la campaña
-					.mc-field-group
-						label(for='mce-EMAIL')
-							| Email
-							span.asterisk *
-						input.mceinput#mce-EMAIL.required.email(type='email' value='' 	name='EMAIL')
-					.mc-field-group
-						label(for='mce-FNAME')
-							| Nombre
-							span.asterisk *
-						input.mceinput#mce-FNAME.required(type='text' value='' 	name='FNAME')
-					#mce-responses.clear
-						#mce-error-response.response(style='display:none')
-							#mce-success-response.response(style='display:none')
-							div(style='position: absolute; left: -5000px;' 	aria-hidden='true')
-								input(type='text' 	name='b_9f1dc4f56ef47d2a37e0340d3_cea6cdf0c4' tabindex='-1' 	value='')
-							.clear
-					button#mc-embedded-subscribe.button(type='submit' 	value='Subscribe' name='subscribe') Subscribirme
-	section.kitgrafico
-		h2.titulo Arma tu propia campaña!
-		.maletin
-			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/maletin_d53cc2fc4a.png" alt="Kit grafico Boricpresidente").imgMaletin
-		.descargable
-			.linkDescargaKit
-				a(target="_blank" rel="noreferer noopener" href="https://drive.google.com/drive/folders/1fqjrBTIYRgQWJ-caAgD4U8xGK9sWgCBj")
-				.dentro
-					.oicono.descargar
-					.texto Descargar tu kit aqui
-	section
-		p Donacione
+		p Donaciones
 	section
 		p Participacion ciudadan
 </template>
@@ -49,75 +27,75 @@ section
 	padding: 2em
 	&:nth-child(even)
 		background-color: rgba(0,0,0,.1)
-
-.formulariocontacto
-	display: flex
-	justify-content: center
-	padding: 2em
-	.formSuscribirse
+section.participa
+	background-color: $verde2
+	.contenido
+		position: relative
+		z-index: 3
 		display: flex
-		flex-flow: column
-		text-align: center
+		flex-flow: column nowrap
 		align-items: center
-		.asterisk
-			color: red
-		.mc-field-group
+		.textoseccion
+			margin-top: -1em
 			display: flex
-			align-items: center
-			justify-content: space-between
-			padding: 1em
-			width: 360px
-			+movil
-				flex-flow: column
-			.mceinput
-				-webkit-appearance: none
-				margin-left: 1em
-		.button
-			padding: .3em
-			margin: .8em
-			width: 8em
-
-.kitgrafico
-	display: flex
-	flex-flow: column
-	max-height: 90vh
-	.titulo
-		+movil
-			text-align: center
-	.maletin
-		display: flex
-		justify-content: center
-		transform: translateX(-8vw)
-		.imgMaletin
-			font-size: 60vh
-			display: flex
-			max-width: 1.4em
-			max-height: 1em
-			+movil
-				font-size: 50vw
-	.descargable
-		display: flex
-		flex-flow: column
-	.linkDescargaKit
-		margin-top: 1.5em
-		font-size: .7em
-		display: flex
-		justify-content: right
-		color: red
-		+movil
+			flex-wrap: wrap
+			z-index: 5
+			color: #fff
 			justify-content: center
-		.dentro
-			display: flex
-			align-items: center
-			background-color: transparentize($colorBody, .9)
-			.oicono
-				flex: auto 0 0
-				font-size: 2em
-				margin: 2rem
+			width: 400px
+			max-width: 100%
+			.titulo
+				max-width: 100%
+				line-height: 1.2
+				font-size: 3.3rem
+				color: #fff
+				font-weight: 900
+				.primero
+					font-size: 3rem
+					font-weight: 400
+					font-style: italic
+					color: $verde3
+
 			.texto
-				font-size: 1.5em
-				flex: auto 1 1
-				margin: 2rem 2rem 2rem 0
+				font-style: italic
+				padding: 1em 0 .8em 0
+				font-size: 1.3em
+		.suscribirse
+			display: flex
+			justify-content: center
+	+movil
+		.contenido
+			.textoseccion
+				margin: 2em 0
+				text-align: center
+				.texto
+					width: 450px
+					max-width: 100%
+	+compu
+		.contenido
+			padding: 0 5vw
+			flex-flow: row nowrap
+			justify-content: space-around
+			.textoseccion,
+			.suscribirse
+				flex: 400px 0 1
+			.suscribirse
+				margin-left: 4em
+			.textoseccion
+				justify-content: center
+				align-content: center
+				flex-flow: column
+				.titulo
+					text-align: left
+					h2
+						padding: 0 .5em
+					h3
+						padding: 0 .7em
+				.texto
+					width: 450px
+					max-width: 100%
+
+
 
 
 </style>

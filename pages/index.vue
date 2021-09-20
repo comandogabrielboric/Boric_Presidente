@@ -16,10 +16,12 @@
 		.curva
 		.contenido
 			.textoseccion
-				h2.titulo #[span.primero ¡Lorem] &nbspIpsum
-					div ipsum!
+				h2.titulo #[span.primero INSCRÍBETE]
+					div ¡Únete a la campaña!
 				.texto
-					p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					p Las transformaciones que Chile necesita las hacemos entre todas y todos.
+					P Déjanos tu mail y recibirás más información sobre la campaña
+
 			.suscribirse
 				participaant
 		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/large_gabriel_senora_5f8fbaa3ed.png")
@@ -28,7 +30,7 @@
 			.texto
 				h2 ¡Arma tu
 				h3 Campaña!
-				p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at mi eget diam euismod egestas vel non ipsum elir sit eget.
+				p Descarga nuestro kit y crea tus propios insumos de campaña. ¡De ti depende!
 			.cajaHerramienta
 				img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/caja_herramientas_transparente_1_c066b0a32e.svg")
 				.circulo
@@ -45,7 +47,7 @@
 			.bloque.texto
 				h2 Sumate
 				h3 y Aporta
-				p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at mi eget diam euismod egestas vel non ipsum elir sit eget.
+				p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia
 				.noMovil
 					+linkServel
 			.bloque.chanchito
@@ -62,7 +64,8 @@
 			.textoseccion
 				h2.titulo Propuesta
 				h3 Programática
-				p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at mi eget diam euismod egestas vel non ipsum elir sit eget.
+				p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
+				p ¿Quieres conocer parte de nuestras propuestas?
 			.link
 				nuxt-link(to="/propuestas").linkpropuestas VER PROPUESTAS
 
@@ -212,11 +215,11 @@ section
 			.titulo
 				max-width: 100%
 				line-height: 1.2
-				font-size: 3.3rem
+				font-size: 2.8rem
 				color: #fff
 				font-weight: 900
 				.primero
-					font-size: 3rem
+					font-size: 3.3rem
 					font-weight: 400
 					font-style: italic
 					color: $verde3
@@ -530,11 +533,15 @@ section.propuestas
 				font-weight: 400
 				color: #fff
 			p
-				padding: 1.5em 0
+				// padding: 1.5em 0
 				color: #fff
 				font-style: italic
 				font-size: 1rem
+				&:nth-of-type(1)
+					padding-top: 2em
+
 		.link
+			padding: 2em 1em
 			display: flex
 			justify-content: center
 			.linkpropuestas

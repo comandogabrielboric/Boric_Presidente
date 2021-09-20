@@ -7,7 +7,8 @@
 		h1 Propuesta
 		h1 Programática
 		h1 para un nuevo Chile
-		p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at mi eget diam euismod egestas vel non ipsum elir sit eget.
+		p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
+		p ¿Quieres conocer parte de nuestras propuestas?
 
 	//- section.pilares(v-if="pilares")
 	//- 	.contenido
@@ -157,7 +158,7 @@ export default {
 // ENCABEZADO
 .encabezado
 	text-align: center
-	padding-top: .4rem
+	padding-top: 1.5rem
 	h1
 		padding: 0 1rem 0 1rem
 		margin: 0
@@ -171,8 +172,10 @@ export default {
 			color: #fff
 			font-weight: 400
 	p
+		padding: 0 2.5rem
 		color: #fff
-		padding: 1.5rem 1rem 0 1rem
+		&:nth-of-type(1)
+			padding-top: 4rem
 
 
 // CONTENIDO HTML
@@ -219,7 +222,7 @@ export default {
 .zonaDescargas
 	display: flex
 	justify-content: center
-	padding: 1em
+	padding: 1em 1em 6em 1em
 	.descargable
 		padding-bottom: 3em
 		.dentro
@@ -244,7 +247,7 @@ export default {
 	z-index: 0
 	+movil
 		.caja-propuestas
-			padding: 5em 0
+			padding: 3.5em 0
 	// border: 1px solid red
 	// *
 	// 	border: 1px solid orange
