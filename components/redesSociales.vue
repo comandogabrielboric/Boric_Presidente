@@ -4,7 +4,7 @@
 		.oicono.facebook
 	a.redSocial.twitter(target="_blank" rel="noreferer noopener" href="https://twitter.com/gabrielboric")
 		.oicono.twitter
-	a.redSocial.instagram(target="_blank" rel="noreferer noopener" href="https://www.instagram.com/gabrielboric/")
+	a.redSocial.instagram(target="_blank" rel="noreferer noopener" href="https://www.instagram.com/gabrielboric")
 		.oicono.instagram
 	a.redSocial.tiktok(target="_blank" rel="noreferer noopener" href="https://www.tiktok.com/gabrielboric")
 		.oicono.tiktok
