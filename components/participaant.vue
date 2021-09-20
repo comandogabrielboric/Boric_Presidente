@@ -12,9 +12,15 @@
 		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }').contenedorbtn
 			a-button(type='primary' @click="submitForm('ruleForm')").suscribirme
 				| SEGUIMOS
-		p.terminosycondiciones #[span.primero Acepto] &nbspTerminos y Condiciones
+		p(@click='showModal').terminosycondiciones #[span.primero Acepto] &nbspTerminos y Condiciones
 	a-modal(v-model="visible" title="Bienvenide !!" centered @ok="handleOk" :footer="null").modal
 		p Pronto recibiras noticias de nosotros
+	a-modal(:visible='tyc' title='Terminos y Condiciones' @ok='handleOk' @cancel="tyc = false" :footer="null").modal
+		p El/la usuaria/o declara aceptar el uso de los datos solicitados para la campaña presidencial de Gabriel Boric en el marco de la Ley N° 19.628. Sólo podrán ser usados estos datos para los fines específicos que el usuario autorice, esto es, para la entrega de información de la campaña presidencial respectiva y de la difusión de sus actividades propias. Para estos efectos el usuario autoriza a que lo contacten a través de medios digitales tales como email, Facebook, mensajes de texto (SMS), WhatsApp u otras plataformas similares con las finalidades señaladas, a la casilla de correo electrónico y número de teléfono que haya indicado.
+
+		p La permanencia en estas bases de datos tendrá siempre la posibilidad de que la/el usuaria/o pueda darse de baja o solicitar dejar de estar registrado en las mismas, pudiendo al efecto revocar su autorización, y disponiendo, en todo caso, de los derechos que confiere la Ley N° 19.628.
+
+		p La campaña presidencial de Gabriel Boric no podrá, bajo ningún concepto, ceder o transferir dichas bases de datos a terceros sin contar con el consentimiento expreso del usuario titular de los datos privados.
 
 
 </template>
@@ -75,7 +81,8 @@ export default {
 				labelCol: { span: 4 },
 				wrapperCol: { span: 14 }
 			},
-			visible: false
+			visible: false,
+			tyc: false
 		}
 	},
 	methods: {
@@ -102,9 +109,14 @@ export default {
 			}
 			console.log('suscrito', this.visible)
 		},
+		showModal () {
+			console.log('terminos')
+			this.tyc = true
+		},
 		handleOk (e) {
 			console.log(e)
 			this.visible = false
+			this.tyc = false
 		}
 	}
 }
@@ -142,6 +154,7 @@ export default {
 	width: 400
 	max-width: 100%
 	font-weight: 900
+	cursor: pointer
 	.primero
 		font-weight: 400
 
@@ -166,12 +179,13 @@ export default {
 .modal::v-deep
 	.ant-modal-header
 		text-align: center
-		padding: 3em
+		padding-top: 3em
 		background-color: $verde1
 	.ant-modal-title
 		color: $verde3
 		font-size: 2.5em
 		font-weight: 700
+		line-height: 1.5em
 		+movil
 			font-size: 1.5em
 	.ant-modal-body
@@ -179,6 +193,8 @@ export default {
 		padding: 2em 1em
 		background-color: $verde1
 		color: #fff
+		max-height: 60vh
+		overflow: auto
 		p
 			font-size: 1.2em
 	.ant-modal-mask

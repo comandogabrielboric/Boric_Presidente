@@ -183,7 +183,7 @@ section
 	position: relative
 	background-color: $verde2
 	min-height: 10em
-	// padding: 2em 0
+	padding: 5em 0
 	justify-content: center
 	.curva
 		display: flex
@@ -280,12 +280,14 @@ section
 	display: flex
 	flex-flow: column
 	justify-content: center
+	margin-top: -2em
+	padding-bottom: 3em
 	&::before
 		content: ''
 		display: block
 		position: absolute
 		height: auto
-		top: -1.5em
+		top: -7em
 		left: 0
 		right: 0
 		bottom: 100%
@@ -294,11 +296,13 @@ section
 		+compu
 			clip-path: ellipse(55% 100% at 50% 100%)
 			top: -3em
+			margin-top: -6em
+
 		// opacity: .5
 	.contenido
 		text-align: center
 		// justify-content: center
-		padding-bottom: 2em
+		padding-bottom: 5em
 		.texto
 			display: flex
 			flex-flow: column
