@@ -54,14 +54,25 @@
 			.bloque.noCompu
 					+linkServel
 
-	section
-		p Participacion ciudadana
+	section.propuestas
+		wave.wave
+		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/combi_foto_1_5762a7cd72.svg").combi
+		.curva
+		.contenido
+			.textoseccion
+				h2.titulo Propuesta
+				h3 Programática
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at mi eget diam euismod egestas vel non ipsum elir sit eget.
+			.link
+				nuxt-link(to="/propuestas").linkpropuestas VER PROPUESTAS
+
 </template>
 
 <script>
 import mostradorprop from './-mostradorprop.vue'
+import wave from '~/static/svg/wave.svg'
 export default {
-	components: { mostradorprop }
+	components: { mostradorprop, wave }
 }
 </script>
 
@@ -415,6 +426,7 @@ section.seccionaporta
 		justify-content: center
 		align-items: center
 		text-align: center
+		padding-bottom: 4em
 		.bloque
 			width: 400px
 			max-width: 100%
@@ -441,6 +453,7 @@ section.seccionaporta
 				color: #fff
 			p
 				padding: 1em 0
+				font-size: 1rem
 				color: #fff
 				font-style: italic
 		.chanchito
@@ -452,7 +465,7 @@ section.seccionaporta
 				position: absolute
 				// left: 0
 				right: 35%
-				bottom: 11.5em
+				bottom: 16em
 				width: 9em
 				height: 9em
 				background: rgba(38, 140, 175, 1)
@@ -461,6 +474,78 @@ section.seccionaporta
 					right: 30%
 					bottom: 10em
 
+section.propuestas
+	position: relative
+	padding: 0
+	background-color: rgba(249, 58, 121, 1)
+	padding-bottom: 6em
+	.wave
+		display: flex
+		position: absolute
+		width: 100vw
+		// height: 5em
+		right: 0
+		left: 0
+		bottom: 0
+		top: -8em
+
+	.combi
+		position: absolute
+		width: 200px
+		z-index: 6
+		top: -8em
+		right: 30vw
+		bottom: 0
+	.curva
+		display: flex
+		position: absolute
+		top: -2.5em
+		left: 0
+		right: 0
+		width: 100vw
+		height: 3em
+		background-color: rgba(249, 58, 121, 1)
+		justify-content: center
+		clip-path: ellipse(60% 100% at 50% 100%)
+	.contenido
+		display: flex row nowrap
+		text-align: center
+		justify-content: center
+		width: 400
+		max-width: 100%
+		heigth: 10em
+		background-color: rgba(249, 58, 121, 1)
+		padding: 1em 2em
+		.textoseccion
+			h2,
+			h3
+				font-size: 3rem
+				line-height: 1.5rem
+				font-weight: 900
+				font-style: italic
+				color: $verde3
+			h2
+				font-weight: 400
+				color: #fff
+			p
+				padding: 1.5em 0
+				color: #fff
+				font-style: italic
+				font-size: 1rem
+		.link
+			display: flex
+			justify-content: center
+			.linkpropuestas
+				display: flex
+				justify-content: center
+				border-radius: 2px
+				align-items: center
+				width: 320px
+				max-width: 70%
+				height: 2em
+				font-weight: 900
+				color: $azul2
+				background-color: $verde3
 
 </style>
 
