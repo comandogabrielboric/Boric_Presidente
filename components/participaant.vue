@@ -1,6 +1,6 @@
 <template lang="pug">
-div
-	a-form-model(ref='ruleForm' :model='ruleForm' :rules='rules' v-bind='layout').suscribirse
+.rootParticipa
+	a-form-model(ref='ruleForm' :model='ruleForm' :rules='rules').suscribirse
 		a-form-model-item(has-feedback='' prop='nombre')
 			a-input(v-model='ruleForm.nombre' type='nombre' placeholder="Nombre").input
 		a-form-model-item(has-feedback='' prop='email')
@@ -10,11 +10,14 @@ div
 		a-form-model-item(has-feedback='' prop='comuna')
 			a-input(v-model='ruleForm.comuna' type='comuna' placeholder='Comuna').input
 		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }').contenedorbtn
-			a-button(type='primary' @click="suscribirse('ruleForm')").suscribirme
+			a-button(type='primary' @click="submitForm('ruleForm')").suscribirme
 				| SEGUIMOS
 		.terminosycondiciones
 			.acepto Acepto
 			.terminos Terminos y Condiciones
+	a-modal(v-model="visible" title="Bienvenide !!" centered @ok="handleOk" :footer="null").modal
+		p Pronto recibiras noticias de nosotros
+
 
 </template>
 
@@ -74,10 +77,20 @@ export default {
 				labelCol: { span: 4 },
 				wrapperCol: { span: 14 }
 			},
-			suscrito: null
+			visible: false
 		}
 	},
 	methods: {
+		submitForm (formName) {
+			this.$refs[formName].validate(valid => {
+				if (valid) {
+					this.suscribirse()
+				} else {
+					console.log('error submit!!')
+					return false
+				}
+			})
+		},
 		async suscribirse () {
 			// const { nombre, email, telefono, comuna } = this
 			// const data = { nombre, email, telefono, comuna }
@@ -85,9 +98,15 @@ export default {
 			const respuesta = await this.$axios.post(`${process.env.apiURL}/suscribirse`, this.ruleForm, config).then(r => r.data).catch(e => console.error('fallo suscribirse', e))
 			console.log('Respuesta', respuesta)
 			if (!respuesta) {
-				this.suscrito = false
+				this.visible = false
+			} else {
+				this.visible = true
 			}
-			console.log('suscrito', this.suscrito)
+			console.log('suscrito', this.visible)
+		},
+		handleOk (e) {
+			console.log(e)
+			this.visible = false
 		}
 	}
 }
@@ -95,6 +114,7 @@ export default {
 
 <style lang="sass" scoped>
 @import '~/estilos/paleta'
+@import '~/estilos/utils'
 .suscribirse
 	display: flex
 	flex-wrap: wrap
@@ -103,7 +123,7 @@ export default {
 
 	input
 		width: 250px
-		margin-top: 2px
+		height: 2em
 		border-radius: 2px
 		&::placeholder
 			font-size: .9em
@@ -124,4 +144,46 @@ export default {
 	.terminos
 		font-weight: 900
 		margin-left: .4em
+.modal
+	height: 200px
+
+
+
+
+.rootParticipa
+	text-align: left
+
+.rootParticipa::v-deep
+	.ant-row
+		margin-bottom: 1em
+	.ant-form-explain
+		margin-top: .25rem
+		font-size: .8em
+	.has-error .ant-form-explain,
+	.has-error .ant-form-split
+		color: #fff
+.modal::v-deep
+	.ant-modal-header
+		text-align: center
+		padding: 3em
+		background-color: $verde1
+	.ant-modal-title
+		color: $verde3
+		font-size: 2.5em
+		font-weight: 700
+		+movil
+			font-size: 1.5em
+	.ant-modal-body
+		text-align: center
+		padding: 2em 1em
+		background-color: $verde1
+		color: #fff
+		p
+			font-size: 1.2em
+	.ant-modal-mask
+		backdrop-filter: blur(4px)
+
+
+
+
 </style>
