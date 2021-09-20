@@ -20,7 +20,7 @@
 		.menuMovil(v-if="activa")
 			+links
 
-	RedesSociales
+	//- RedesSociales
 
 	.triggerMenu(@click="activa = !activa")
 		.oicono(:class="activa ? 'cruz' : 'menu-relleno'")

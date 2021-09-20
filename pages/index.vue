@@ -22,9 +22,20 @@
 					p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			.suscribirse
 				participaant
-	section
-		p Propuesta programatica
-		mostradorprop
+		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/large_gabriel_senora_5f8fbaa3ed.png")
+	.seccionArmaTuCampana
+		.contenido
+			.texto
+				h2 ¡Arma tu
+				h3 Campaña!
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at mi eget diam euismod egestas vel non ipsum elir sit eget.
+			.cajaHerramienta
+				img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/caja_herramientas_transparente_1_c066b0a32e.svg")
+				.circulo
+		.kitGrafico
+			h3 Descarga tu
+			.descargaKit KIT GRÁFICO AQUÍ
+
 	section
 		p Participacion ciudadana
 </template>
@@ -140,7 +151,7 @@ section
 	position: relative
 	background-color: $verde2
 	min-height: 10em
-	padding: 2em
+	// padding: 2em 0
 	justify-content: center
 	.curva
 		display: flex
@@ -188,6 +199,9 @@ section
 		.suscribirse
 			display: flex
 			justify-content: center
+	img
+		width: 100vw
+
 
 	+movil
 		.curva
@@ -225,6 +239,117 @@ section
 				.texto
 					width: 450px
 					max-width: 100%
+
+.seccionArmaTuCampana
+	background-color: $petroleo2
+	min-height: 10em
+	align-items: center
+	position: relative
+	display: flex
+	flex-flow: column
+	justify-content: center
+	&::before
+		content: ''
+		display: block
+		position: absolute
+		height: auto
+		top: -1.5em
+		left: 0
+		right: 0
+		bottom: 100%
+		clip-path: ellipse(60% 100% at 50% 100%)
+		background-color: $petroleo2
+		+compu
+			clip-path: ellipse(55% 100% at 50% 100%)
+			top: -3em
+		// opacity: .5
+	.contenido
+		text-align: center
+		// justify-content: center
+		padding-bottom: 2em
+		.texto
+			display: flex
+			flex-flow: column
+			width: 320px
+			max-width: 100%
+			padding: 1em
+			h2,
+			h3
+				font-size: 3.2rem
+				line-height: .7em
+			h2
+				color: $verde3
+				font-style: italic
+			h3
+				font-weight: 900
+				color: #fff
+			p
+				color: #fff
+				font-style: italic
+				font-size: 1.3rem
+		.cajaHerramienta
+			img
+				position: relative
+				width: 200px
+				z-index: 5
+				padding: 1.5em 0 1em 0
+			.circulo
+				position: absolute
+				left: 43%
+				right: 0
+				bottom: 11em
+				width: 9em
+				height: 9em
+				background: $petroleo3
+				border-radius: 50%
+	.kitGrafico
+		display: flex
+		flex-flow: column
+		align-items: center
+		padding: 1em 0 3em 0
+		h3
+			font-style: italic
+			color: $azul2
+		.descargaKit
+			display: flex
+			justify-content: center
+			border-radius: 2px
+			align-items: center
+			width: 320px
+			max-width: 70%
+			height: 2em
+			font-weight: 900
+			color: $azul2
+			background-color: $verde3
+	+compu
+		.contenido
+			display: flex
+			flex-flow: row-reverse
+			justify-content: space-evenly
+			width: 100vw
+			max-width: 100%
+			height: 450px
+			// background-color: $verde2
+			.texto
+				position: relative
+			.cajaHerramienta
+				display: flex
+				align-items: center
+				.circulo
+					right: 0
+					// top: 0
+					// bottom: 0
+					left: 25%
+		.kitGrafico
+				height: 7em
+				position: absolute
+				// top: 0
+				bottom: 1em
+				right: 20%
+				// left: 0
+				width: 350px
+
+
 
 
 </style>
