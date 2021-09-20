@@ -35,6 +35,24 @@
 		.kitGrafico
 			h3 Descarga tu
 			.descargaKit KIT GRÁFICO AQUÍ
+	section.seccionaporta
+		mixin linkServel
+			.linkservel
+				a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml") QUIERO APORTAR
+				p Ver Instrucciones para donar
+
+		.contenido
+			.bloque.texto
+				h2 Sumate
+				h3 y Aporta
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at mi eget diam euismod egestas vel non ipsum elir sit eget.
+				.noMovil
+					+linkServel
+			.bloque.chanchito
+				img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/chanchito_pomaire_1_01e5c4d5b1.svg")
+				.circulo
+			.bloque.noCompu
+					+linkServel
 
 	section
 		p Participacion ciudadana
@@ -297,7 +315,7 @@ section
 				position: absolute
 				left: 43%
 				right: 0
-				bottom: 11em
+				bottom: 11.5em
 				width: 9em
 				height: 9em
 				background: $petroleo3
@@ -350,6 +368,98 @@ section
 				width: 350px
 
 
+
+
+
+section.seccionaporta
+	background-color: $azul2
+	position: relative
+	&::before
+		content: ''
+		display: block
+		position: absolute
+		height: auto
+		top: -1.5em
+		left: 0
+		right: 0
+		bottom: 100%
+		clip-path: ellipse(60% 100% at 50% 100%)
+		background-color: $azul2
+		+compu
+			clip-path: ellipse(55% 100% at 50% 100%)
+			top: -3em
+	.linkservel
+		display: flex
+		flex-flow: column nowrap
+		align-items: center
+		padding: 2em 0
+		a
+			display: flex
+			justify-content: center
+			border-radius: 2px
+			align-items: center
+			width: 320px
+			max-width: 70%
+			height: 2em
+			font-weight: 900
+			color: $azul2
+			background-color: $verde3
+		p
+			color: $verde3
+			font-size: .8em
+			font-style: italic
+			padding-top: .7em
+	.contenido
+		display: flex
+		flex-flow: column nowrap
+		justify-content: center
+		align-items: center
+		text-align: center
+		.bloque
+			width: 400px
+			max-width: 100%
+		+compu
+			text-align: left
+			flex-flow: row nowrap
+			justify-content: space-around
+			.bloque + .bloque
+				margin-left: 4em
+			.bloque
+				flex: 400px 0 1
+			.linkservel
+				align-items: start
+		.texto
+			h2,
+			h3
+				font-size: 3rem
+				line-height: 1.4rem
+				font-style: italic
+			h2
+				color: $verde3
+			h3
+				font-weight: 900
+				color: #fff
+			p
+				padding: 1em 0
+				color: #fff
+				font-style: italic
+		.chanchito
+			img
+				position: relative
+				width: 8em
+				z-index: 5
+			.circulo
+				position: absolute
+				// left: 0
+				right: 35%
+				bottom: 11.5em
+				width: 9em
+				height: 9em
+				background: rgba(38, 140, 175, 1)
+				border-radius: 50%
+				+compu
+					right: 30%
+					bottom: 10em
 
 
 </style>
