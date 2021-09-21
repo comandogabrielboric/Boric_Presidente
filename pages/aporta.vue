@@ -1,12 +1,12 @@
 <template lang="pug">
 .root
 	.pasos
-		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/small_1_117a57e95e.png")
-		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/small_2_1835803185.png")
-		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/small_3_82f194a838.png")
-		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/small_4_4bac3fec41.png")
+		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/small_1_117a57e95e.png" alt="dona")
+		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/small_2_1835803185.png" alt="dona")
+		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/small_3_82f194a838.png" alt="dona")
+		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/small_4_4bac3fec41.png" alt="dona")
 
-		a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" target="_blank") QUIERO APORTAR
+		a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" alt="dona" target="_blank") QUIERO APORTAR
 	.relleno
 </template>
 <script>
