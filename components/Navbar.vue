@@ -9,7 +9,7 @@
 
 	mixin links
 		.links.contenedor-links.link-interno
-			//- nuxt-link.link(to='/participa') participa Aquí!
+			nuxt-link.link(to='/participa') participa Aquí!
 			nuxt-link.link(to='/aporta') aporta
 			nuxt-link.link(to='/propuestas') Propuestas
 

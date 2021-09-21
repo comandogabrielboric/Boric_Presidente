@@ -3,14 +3,12 @@ div
 	section.participa
 		.contenido
 			.textoseccion
-				h2.titulo #[span.primero ¡Lorem] &nbspIpsum
-					div ipsum!
+				h2.titulo #[span.primero ¿como]
+					div participar?
 				.texto
-					p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-			.suscribirse
-				participaant
+					p Tenemos dos mecanismos de participación abiertos a toda la ciudadanía para que creemos, juntos y juntas, el futuro Gobierno de Gabriel Boric.
 
-	section
+	section.mesasCiudadanas
 		p Donaciones
 	section
 		p Participacion ciudadan
@@ -28,7 +26,7 @@ section
 	&:nth-child(even)
 		background-color: rgba(0,0,0,.1)
 section.participa
-	background-color: $verde2
+	background-image: url('https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/comp/bg-participar.header.png')
 	.contenido
 		position: relative
 		z-index: 3
@@ -51,7 +49,7 @@ section.participa
 				color: #fff
 				font-weight: 900
 				.primero
-					font-size: 3rem
+					font-size: 4rem
 					font-weight: 400
 					font-style: italic
 					color: $verde3
@@ -60,9 +58,7 @@ section.participa
 				font-style: italic
 				padding: 1em 0 .8em 0
 				font-size: 1.3em
-		.suscribirse
-			display: flex
-			justify-content: center
+
 	+movil
 		.contenido
 			.textoseccion
@@ -71,17 +67,16 @@ section.participa
 				.texto
 					width: 450px
 					max-width: 100%
+				.titulo
+					font-size: 3rem
 	+compu
 		.contenido
 			padding: 0 5vw
 			flex-flow: row nowrap
 			justify-content: space-around
-			.textoseccion,
-			.suscribirse
-				flex: 400px 0 1
-			.suscribirse
-				margin-left: 4em
+
 			.textoseccion
+				flex: 400px 0 1
 				justify-content: center
 				align-content: center
 				flex-flow: column

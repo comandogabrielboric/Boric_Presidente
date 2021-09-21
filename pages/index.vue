@@ -80,7 +80,31 @@
 import mostradorprop from './-mostradorprop.vue'
 import wave from '~/static/svg/wave.svg'
 export default {
-	components: { mostradorprop, wave }
+	components: { mostradorprop, wave },
+
+	head () {
+		if (!this.seo) return {}
+		const titulo = this.seo.titulo_pag
+		const descripcion = this.seo.descripcion_pag
+		const obj = {
+			title: titulo,
+			description: descripcion,
+			meta: [
+				{ hid: 'iprop:name', itemprop: 'name', content: titulo },
+				{ hid: 'iprop:description', itemprop: 'description', content: descripcion },
+				{ hid: 'iprop:image', itemprop: 'image', content: '/imagenes/portada.jpg' },
+				{ hid: 'og:title', property: 'og:title', content: titulo },
+				{ hid: 'og:type', property: 'og:type', content: 'website' },
+				{ hid: 'og:description', property: 'og:description', content: descripcion },
+				{ hid: 'og:image', property: 'og:image', content: '/imagenes/portada.jpg' },
+				{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
+				{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
+				{ hid: 'twitter:image', property: 'twitter:image', content: '/imagenes/portada.jpg' }
+			]
+
+		}
+		return obj
+	}
 }
 </script>
 

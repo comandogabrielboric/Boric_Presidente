@@ -50,6 +50,8 @@ export default {
 			{ hid: 'twitter:site', property: 'twitter:site', content: '@GabrielBoric' }
 		],
 		link: [
+			{ hid: 'canonical', rel: 'canonical', href: 'https://boricpresidente.cl'	},
+
 			{ hid: 'icon', rel: 'icon', href: '/favicon.svg' },
 			{ hid: 'mask-icon', rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' },
 

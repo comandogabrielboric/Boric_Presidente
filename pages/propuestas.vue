@@ -96,12 +96,14 @@ export default {
 				{ hid: 'iprop:description', itemprop: 'description', content: descripcion },
 				{ hid: 'iprop:image', itemprop: 'image', content: '/imagenes/portada.jpg' },
 				{ hid: 'og:title', property: 'og:title', content: titulo },
+				{ hid: 'og:type', property: 'og:type', content: 'article' },
 				{ hid: 'og:description', property: 'og:description', content: descripcion },
 				{ hid: 'og:image', property: 'og:image', content: '/imagenes/portada.jpg' },
 				{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
 				{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
 				{ hid: 'twitter:image', property: 'twitter:image', content: '/imagenes/portada.jpg' }
 			]
+
 		}
 		return obj
 	},
