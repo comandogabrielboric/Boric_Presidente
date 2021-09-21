@@ -2,7 +2,7 @@
 .index
 	.storytelling
 		.filtroBlur
-			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/boric-portada_Mesa+de+trabajo+1+copia+3+1-2.jpg")
+			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/boric-portada_Mesa+de+trabajo+1+copia+3+1-2.jpg" alt="Mesa de trbajo")
 	.seccionCuna
 		.curva
 		.cuna
@@ -11,7 +11,7 @@
 			p Te invitamos a aportar con tus ideas, opiniones y anhelos a un programa de Gobierno diverso, descentralizado y abierto de cara a la ciudadanía.
 			p Súmate a una mesa ciudadana o contesta una consulta.
 			.btnparticipa Participa Aquí
-			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/IMG_20210715_144542_145+(1)+1+(1).png").imgSaludo
+			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/IMG_20210715_144542_145+(1)+1+(1).png" alt="Diversidad").imgSaludo
 	.seccionParticipa
 		.curva
 		.contenido
@@ -24,7 +24,7 @@
 
 			.suscribirse
 				participaant
-		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/image+1.png")
+		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/image+1.png" alt="Participa")
 	.seccionArmaTuCampana
 		mixin linkDescarga
 			.kitGrafico
@@ -38,7 +38,7 @@
 				.noMovil
 					+linkDescarga
 			.cajaHerramienta
-				img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/caja_herramientas_transparente_1_c066b0a32e.svg")
+				img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/caja_herramientas_transparente_1_c066b0a32e.svg" alt="Herramientas")
 				.circulo
 			.noCompu
 				+linkDescarga
@@ -56,14 +56,14 @@
 				.noMovil
 					+linkServel
 			.bloque.chanchito
-				img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/chanchito_pomaire_1_01e5c4d5b1.svg")
+				img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/chanchito_pomaire_1_01e5c4d5b1.svg" alt="Chanchito de Pomaire")
 				.circulo
 			.bloque.noCompu
 					+linkServel
 
 	section.propuestas
 		wave.wave
-		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/combi_foto_1_5762a7cd72.svg").combi
+		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/combi_foto_1_5762a7cd72.svg" alt="Combi").combi
 		.curva
 		.contenido
 			.textoseccion

@@ -5,7 +5,7 @@ import antdVars from './antdvVars'
 const dev = process.env.MODO === 'dev'
 
 const titulo = 'Boric Presidente'
-const descripcion = 'PENDIENTE'
+const descripcion = 'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
 
 function titleTemplate (tituloLocal) {
 	// If undefined or blank then we don't need the hyphen
