@@ -515,6 +515,7 @@ section.propuestas
 		right: 30vw
 		bottom: 0
 		+compu
+			top: -10em
 			right: 45vw
 			width: 300px
 	.curva
