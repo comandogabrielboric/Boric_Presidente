@@ -14,7 +14,7 @@
 *
 	margin: 0
 	padding: 0
-	font-family: "Roboto Slab", serif
+	font-family: "lexia", "Roboto Slab"
 
 body
 	min-height: 100vh
