@@ -9,7 +9,7 @@
 
 	mixin links
 		.links.contenedor-links.link-interno
-			//- nuxt-link.link(to='/participa') participa Aquí!
+			a.link(href='https://participa.boricpresidente.cl/' target="_blank") participa Aquí!
 			nuxt-link.link(to='/aporta') aporta
 			nuxt-link.link(to='/propuestas') Propuestas
 
@@ -20,7 +20,7 @@
 		.menuMovil(v-if="activa")
 			+links
 
-	RedesSocialesnav
+	//- RedesSocialesnav
 
 	.triggerMenu(@click="activa = !activa")
 		.oicono(:class="activa ? 'cruz' : 'menu-relleno'")

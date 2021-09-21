@@ -20,8 +20,9 @@
 		.caja-propuestas
 
 			.propuesta(v-for='propuesta in propuestas' :key='propuesta.id' @click='propuestaIdMostrada = propuesta.id')
-				img.imagenDePropuesta(:src='propuesta.imagen.url' :alt="propuesta.textoAlternativoImagen")
-				h2.tituloPropuesta {{ propuesta.titulo }}
+				.prop
+					img.imagenDePropuesta(:src='propuesta.imagen.url' 	:alt="propuesta.textoAlternativoImagen")
+					h2.tituloPropuesta {{ propuesta.titulo }}
 
 
 			a-modal.modalPropuesta(:visible="mostrandoPropuesta" :footer="null" @close="mostrandoPropuesta = false" @cancel="mostrandoPropuesta = false" centered :width="null")
@@ -270,27 +271,34 @@ export default {
 			width: 250px
 			height: 250px
 			background-color: rgba(14, 107, 139, 1)
-			.imagenDePropuesta
-				$lado: 130px
-				padding-top: 1em
-				max-width: $lado
-				max-height: $lado
-				z-index: 1
-			.tituloPropuesta
-				margin-top: 1rem
-				font-size: 1.2rem
-				font-style: italic
-				color: #fff
-			+movil
-				// flex: 9em 0 0
-				width: 250px
-				height: 250px
+			.prop
+				display: flex
+				flex-flow: column
+				align-items: center
+				justify-content: center
 				.imagenDePropuesta
-					$lado: 100px
+					$lado: 130px
+					padding-top: 1em
 					max-width: $lado
 					max-height: $lado
+					z-index: 1
 				.tituloPropuesta
-					font-size: .89em
+					margin-top: 1rem
+					font-size: 1.2rem
+					padding: 0 .3em
+					font-style: italic
+					color: #fff
+					font-size: .98em
+
+				+movil
+					// flex: 9em 0 0
+					width: 250px
+					height: 250px
+					.imagenDePropuesta
+						$lado: 100px
+						max-width: $lado
+						max-height: $lado
+					.tituloPropuesta
 
 
 

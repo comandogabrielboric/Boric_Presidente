@@ -13,7 +13,7 @@
 				+tituloMesaCiudadana
 			p Te invitamos a aportar con tus ideas, opiniones y anhelos a un programa de Gobierno diverso, descentralizado y abierto de cara a la ciudadanía.
 			p Súmate a una mesa ciudadana o contesta una consulta.
-			.btnparticipa Participa Aquí
+			a(href='https://participa.boricpresidente.cl/' target="_blank").btnparticipa Participa Aquí
 			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/IMG_20210715_144542_145+(1)+1+(1).png" alt="Diversidad").imgSaludo
 	.seccionParticipa
 		.curva
@@ -48,7 +48,7 @@
 	section.seccionaporta
 		mixin linkServel
 			.linkservel
-				a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml") QUIERO APORTAR
+				a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" target="_blank") QUIERO APORTAR
 				p Ver Instrucciones para donar
 
 		.contenido
@@ -587,6 +587,7 @@ section.propuestas
 		heigth: 10em
 		background-color: rgba(249, 58, 121, 1)
 		padding: 1em 1em
+		margin-bottom: -3em
 		.textoseccion
 			h2,
 			h3

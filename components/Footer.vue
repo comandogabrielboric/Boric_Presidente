@@ -55,7 +55,6 @@ footer
 		display: flex
 		flex-flow: column
 		.logo
-
 			+bgcon
 			background-color: currentColor
 			mask-image: url('/logos/logo.svg')
@@ -69,7 +68,8 @@ footer
 			font-size: 1.4em
 			// padding: 1em 0 1em 0
 		.textoFooter
-			margin-top: 1em
+			text-align: center
+			margin-top: 2em
 
 	.capaLinks
 		display: flex
@@ -85,8 +85,8 @@ footer
 			content: ''
 			display: block
 			position: absolute
-			height: auto
-			top: -3em
+			height: 3em
+			top: -1em
 			left: 0
 			right: 0
 			bottom: 0
