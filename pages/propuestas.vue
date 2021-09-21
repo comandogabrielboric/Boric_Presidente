@@ -97,6 +97,7 @@ export default {
 				{ hid: 'iprop:image', itemprop: 'image', content: '/imagenes/portada.jpg' },
 				{ hid: 'og:title', property: 'og:title', content: titulo },
 				{ hid: 'og:type', property: 'og:type', content: 'article' },
+				{ hid: 'og:url', property: 'og:type', content: 'http://boricpresidente.cl' },
 				{ hid: 'og:description', property: 'og:description', content: descripcion },
 				{ hid: 'og:image', property: 'og:image', content: '/imagenes/portada.jpg' },
 				{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
