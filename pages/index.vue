@@ -4,10 +4,13 @@
 		.filtroBlur
 			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/boric-portada_Mesa+de+trabajo+1+copia+3+1-2.jpg" alt="Mesa de trbajo")
 	.seccionCuna
+		mixin tituloMesaCiudadana
+			h1 Mesas ciudadanas
+			h2  x Boric
 		.curva
 		.cuna
-			h1 ¡Mesas ciudadanas
-			h2  x Boric!
+			.noMovil
+				+tituloMesaCiudadana
 			p Te invitamos a aportar con tus ideas, opiniones y anhelos a un programa de Gobierno diverso, descentralizado y abierto de cara a la ciudadanía.
 			p Súmate a una mesa ciudadana o contesta una consulta.
 			.btnparticipa Participa Aquí
@@ -16,8 +19,8 @@
 		.curva
 		.contenido
 			.textoseccion
-				h2.titulo #[span.primero INSCRÍBETE]
-					div ¡Únete a la campaña!
+				h2.titulo #[span.primero Inscríbete]
+					div Únete a la campaña
 				.texto
 					p Las transformaciones que Chile necesita las hacemos entre todas y todos.
 					P Déjanos tu mail y recibirás más información sobre la campaña
@@ -32,8 +35,8 @@
 				a(href="https://drive.google.com/drive/folders/1fqjrBTIYRgQWJ-caAgD4U8xGK9sWgCBj" target="_blank").descargaKit KIT GRÁFICO AQUÍ
 		.contenido
 			.texto
-				h2 ¡Arma tu
-				h3 Campaña!
+				h2 Arma tu
+				h3 Campaña
 				p Descarga nuestro kit y crea tus propios insumos de campaña. ¡De ti depende!
 				.noMovil
 					+linkDescarga
@@ -50,7 +53,7 @@
 
 		.contenido
 			.bloque.texto
-				h2 Sumate
+				h2 Súmate
 				h3 y Aporta
 				p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia
 				.noMovil
@@ -136,10 +139,12 @@ section
 			backdrop-filter: blur(8px)
 			justify-content: center
 	img
-		max-width: 100vw
-		max-height: 100vh
+		max-width: 170vw
+		// max-height: 130vh
+		margin-left: 25vw
 		+compu
-			margin-top: -2em
+			margin: 0 0 -2.5em 0
+			max-width: 100vw
 
 .seccionCuna
 	position: relative
@@ -170,7 +175,7 @@ section
 		margin-top: 1.5em
 		display: flex
 		flex-flow: column
-		width: 80vw
+		width: 95vw
 		text-align: center
 		align-items: center
 		background-color: $verde1
@@ -188,22 +193,24 @@ section
 
 		p
 			color: $blanco
-			font-size: 1em
-			padding: 0 2em 0 2em
+			font-size: 1rem
+			padding: 0 .5em
 			&:nth-child(1)
 				padding-top: 2em
 				font-weight: 200
 			&:nth-child(2)
 				font-weight: 700
 			+compu
+				font-size: 1em
 				max-width: 600px
+				padding: 0 3em
 		.btnparticipa
 			cursor: pointer
 			text-transform: uppercase
 			background-color: $verde3
 			padding: .5em 1.3em
 			border-radius: 4px
-			margin: 2em 0 3em 0
+			margin: 1em 0 2.5em 0
 		.imgSaludo
 			margin-top: -15%
 			width: 100vw
@@ -233,6 +240,7 @@ section
 		display: flex
 		flex-flow: column nowrap
 		align-items: center
+		margin-top: -6em
 		.textoseccion
 			margin-top: -1em
 			display: flex
@@ -245,20 +253,21 @@ section
 			.titulo
 				max-width: 100%
 				line-height: 1.2
-				font-size: 2.8rem
+				font-size: 2rem
 				color: #fff
 				font-weight: 900
 				.primero
-					font-size: 3.3rem
+					font-size: 3rem
 					font-weight: 400
 					font-style: italic
 					color: $verde3
 
 			.texto
 				font-style: italic
-				padding: 1em 0 .8em 0
-				font-size: 1.3em
+				padding: 1em 0 0 0
+				font-size: 1.2rem
 		.suscribirse
+			padding: 0 .5em
 			display: flex
 			justify-content: center
 	img
@@ -267,8 +276,8 @@ section
 
 	+movil
 		.curva
-			height: 2.5em
-			margin-top: -1.2em
+			height: 2em
+			margin-top: -1em
 		.contenido
 			.textoseccion
 				margin: 2em 0
@@ -280,26 +289,27 @@ section
 		.curva
 			margin-top: -2em
 		.contenido
-			padding: 0 5vw
+			padding: 2em 6em 0 6em
 			flex-flow: row nowrap
 			justify-content: space-around
 			.textoseccion,
 			.suscribirse
 				flex: 400px 0 1
 			.suscribirse
-				margin-left: 4em
+				margin-left: 1em
 			.textoseccion
 				justify-content: center
 				align-content: center
 				flex-flow: column
 				.titulo
 					text-align: left
+
 					h2
 						padding: 0 .5em
 					h3
 						padding: 0 .7em
 				.texto
-					width: 450px
+					width: 400px
 					max-width: 100%
 
 .seccionArmaTuCampana
@@ -317,31 +327,30 @@ section
 		display: block
 		position: absolute
 		height: auto
-		top: -7em
+		top: -4.5em
 		left: 0
 		right: 0
 		bottom: 100%
-		clip-path: ellipse(60% 100% at 50% 100%)
+		clip-path: ellipse(85% 100% at 50% 100%)
 		background-color: $petroleo2
 		+compu
-			clip-path: ellipse(55% 100% at 50% 100%)
-			top: -3em
+			clip-path: ellipse(70% 100% at 50% 100%)
+			top: 0
 			margin-top: -6em
-
-		// opacity: .5
 	.contenido
 		text-align: center
-		// justify-content: center
-		padding-bottom: 5em
+		// padding-bottom: 1em
+		margin-top: -2.5em
+		z-index: 5
 		.texto
 			display: flex
 			flex-flow: column
 			width: 320px
 			max-width: 100%
-			padding: 1em
+			padding: 0 1em
 			h2,
 			h3
-				font-size: 3.2rem
+				font-size: 2.5rem
 				line-height: .7em
 			h2
 				color: $verde3
@@ -352,19 +361,20 @@ section
 			p
 				color: #fff
 				font-style: italic
-				font-size: 1.3rem
+				font-size: 1rem
+				padding: 0 .5em
 		.cajaHerramienta
 			img
 				position: relative
 				width: 200px
 				z-index: 5
-				padding: 1.5em 0 1em 0
+				padding: 1em 0 1em 0
 			.circulo
 				position: absolute
 				left: 43%
 				right: 0
 				bottom: 0
-				top: 15em
+				top: 8em
 				width: 9em
 				height: 9em
 				background: $petroleo3
@@ -373,20 +383,20 @@ section
 		display: flex
 		flex-flow: column
 		align-items: center
-		padding: 3em 0
+		padding: 0
 		h4
 			font-style: italic
 			color: $azul2
+			font-weight: 700
 		.descargaKit
 			display: flex
 			flex-flow: column nowrap
-			align-items: center
 			background-color: $verde3
-			justify-content: center
 			border-radius: 2px
-			padding: .2em
+			padding: .4em
 			width: 320px
 			max-width: 90%
+			height: 2em
 			font-weight: 900
 			color: $azul2
 			background-color: $verde3
@@ -394,13 +404,17 @@ section
 		.contenido
 			display: flex
 			flex-flow: row-reverse
-			justify-content: space-evenly
+			justify-content: space-around
 			width: 100vw
+			align-items: center
 			max-width: 100%
 			height: 450px
-			// background-color: $verde2
+			margin: -6em 0 -3.5em 0
 			.texto
-				position: relative
+				h2,
+				h3,
+				p
+					text-align: left
 			.cajaHerramienta
 				display: flex
 				align-items: center
@@ -410,9 +424,9 @@ section
 					width: 250px
 					height: 250px
 					right: 0
-					top: 2em
+					top: -1em
 					bottom: 0
-					left: 25%
+					left: 20%
 		.kitGrafico
 				height: 7em
 
@@ -442,14 +456,16 @@ section.seccionaporta
 		display: flex
 		flex-flow: column nowrap
 		align-items: center
-		padding: 2em 0
+		justify-content: center
+		padding: 1em 0
+
 		a
 			display: flex
 			justify-content: center
 			border-radius: 2px
 			align-items: center
 			width: 320px
-			max-width: 70%
+			max-width: 100%
 			height: 2em
 			font-weight: 900
 			color: $azul2
@@ -466,9 +482,17 @@ section.seccionaporta
 		align-items: center
 		text-align: center
 		padding-bottom: 4em
+		margin-top: -1em
 		.bloque
 			width: 400px
 			max-width: 100%
+		.bloque.texto
+			h2,
+			h3
+				font-size: 2.5rem
+			p
+				font-size: 1rem
+				font-style: italic
 		+compu
 			text-align: left
 			flex-flow: row nowrap
@@ -506,7 +530,7 @@ section.seccionaporta
 				position: absolute
 				// left: 0
 				right: 35%
-				bottom: 16em
+				bottom: 14em
 				width: 9em
 				height: 9em
 				background: rgba(38, 140, 175, 1)
@@ -562,11 +586,11 @@ section.propuestas
 		max-width: 100%
 		heigth: 10em
 		background-color: rgba(249, 58, 121, 1)
-		padding: 1em 2em
+		padding: 1em 1em
 		.textoseccion
 			h2,
 			h3
-				font-size: 3rem
+				font-size: 2.3rem
 				line-height: 1.5rem
 				font-weight: 900
 				font-style: italic
@@ -580,19 +604,20 @@ section.propuestas
 				font-style: italic
 				font-size: 1rem
 				&:nth-of-type(1)
-					padding-top: 2em
+					padding-top: .5em
 
 		.link
-			padding: 2em 1em
+			padding: 1em 0
 			display: flex
 			justify-content: center
 			.linkpropuestas
 				display: flex
+				padding-top: .2em
 				justify-content: center
 				border-radius: 2px
 				align-items: center
-				width: 320px
-				max-width: 70%
+				width: 250px
+				max-width: 85%
 				height: 2em
 				font-weight: 900
 				color: $azul2
