@@ -26,17 +26,22 @@
 				participaant
 		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/large_gabriel_senora_5f8fbaa3ed.png")
 	.seccionArmaTuCampana
+		mixin linkDescarga
+			.kitGrafico
+				h4 Descarga tu
+				a(href="https://drive.google.com/drive/folders/1fqjrBTIYRgQWJ-caAgD4U8xGK9sWgCBj" target="_blank").descargaKit KIT GRÁFICO AQUÍ
 		.contenido
 			.texto
 				h2 ¡Arma tu
 				h3 Campaña!
 				p Descarga nuestro kit y crea tus propios insumos de campaña. ¡De ti depende!
+				.noMovil
+					+linkDescarga
 			.cajaHerramienta
 				img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/caja_herramientas_transparente_1_c066b0a32e.svg")
 				.circulo
-		.kitGrafico
-			h3 Descarga tu
-			.descargaKit KIT GRÁFICO AQUÍ
+			.noCompu
+				+linkDescarga
 	section.seccionaporta
 		mixin linkServel
 			.linkservel
@@ -333,7 +338,8 @@ section
 				position: absolute
 				left: 43%
 				right: 0
-				bottom: 11.5em
+				bottom: 0
+				top: 15em
 				width: 9em
 				height: 9em
 				background: $petroleo3
@@ -342,18 +348,20 @@ section
 		display: flex
 		flex-flow: column
 		align-items: center
-		padding: 1em 0 3em 0
-		h3
+		padding: 3em 0
+		h4
 			font-style: italic
 			color: $azul2
 		.descargaKit
 			display: flex
+			flex-flow: column nowrap
+			align-items: center
+			background-color: $verde3
 			justify-content: center
 			border-radius: 2px
-			align-items: center
+			padding: .2em
 			width: 320px
-			max-width: 70%
-			height: 2em
+			max-width: 90%
 			font-weight: 900
 			color: $azul2
 			background-color: $verde3
@@ -371,19 +379,18 @@ section
 			.cajaHerramienta
 				display: flex
 				align-items: center
+				img
+					width: 300px
 				.circulo
+					width: 250px
+					height: 250px
 					right: 0
-					// top: 0
-					// bottom: 0
+					top: 2em
+					bottom: 0
 					left: 25%
 		.kitGrafico
 				height: 7em
-				position: absolute
-				// top: 0
-				bottom: 1em
-				right: 20%
-				// left: 0
-				width: 350px
+
 
 
 
@@ -468,6 +475,8 @@ section.seccionaporta
 				position: relative
 				width: 8em
 				z-index: 5
+				+compu
+					width: 200px
 			.circulo
 				position: absolute
 				// left: 0
@@ -480,6 +489,8 @@ section.seccionaporta
 				+compu
 					right: 30%
 					bottom: 13em
+					width: 200px
+					height: 200px
 
 section.propuestas
 	position: relative
@@ -505,6 +516,7 @@ section.propuestas
 		bottom: 0
 		+compu
 			right: 45vw
+			width: 300px
 	.curva
 		display: flex
 		position: absolute
