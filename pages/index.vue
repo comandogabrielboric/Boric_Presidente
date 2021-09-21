@@ -2,7 +2,7 @@
 .index
 	.storytelling
 		.filtroBlur
-			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/gabriel_boric_foto_header_Mesa_de_trabajo_1_copia_3_1_d8c6d632cb.png")
+			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/boric-portada_Mesa+de+trabajo+1+copia+3+1-2.jpg")
 	.seccionCuna
 		.curva
 		.cuna
@@ -11,7 +11,7 @@
 			p Te invitamos a aportar con tus ideas, opiniones y anhelos a un programa de Gobierno diverso, descentralizado y abierto de cara a la ciudadanía.
 			p Súmate a una mesa ciudadana o contesta una consulta.
 			.btnparticipa Participa Aquí
-			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/large_IMG_20210715_144542_145_1_1_e194f04db0.png").imgSaludo
+			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/IMG_20210715_144542_145+(1)+1+(1).png").imgSaludo
 	.seccionParticipa
 		.curva
 		.contenido
@@ -24,7 +24,7 @@
 
 			.suscribirse
 				participaant
-		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/large_gabriel_senora_5f8fbaa3ed.png")
+		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/image+1.png")
 	.seccionArmaTuCampana
 		mixin linkDescarga
 			.kitGrafico

@@ -230,10 +230,12 @@ export default {
 			align-items: center
 			background-color: transparentize($colorBody, .9)
 			.oicono
+				color: $verde3
 				flex: auto 0 0
 				font-size: 3em
 				margin: 2rem
 			.texto
+				color: #fff
 				flex: auto 1 1
 				margin: 2rem 2rem 2rem 0
 
@@ -245,6 +247,7 @@ export default {
 // PROPUESTAS
 .propuestas
 	z-index: 0
+	cursor: pointer
 	+movil
 		.caja-propuestas
 			padding: 3.5em 0
@@ -326,21 +329,32 @@ export default {
 					padding: 2em
 					background-color: transparentize($fondoBody, .2)
 					backdrop-filter: blur(1em)
+					width: 900px
+					background-color: #19CBB5
 					.pretitulo
+						color: rgba(219, 248, 123, 1)
+						font-weight: 900
 						margin-bottom: 1em
 						opacity: .6
 					.titulo
+						color: #fff
+						font-weight: 900
+						font-style: italic
 						line-height: 1.4
+						display: flex
 					.modoVisualizacion
+						color: rgba(23, 117, 150, 1)
 						display: flex
 						margin-top: .5em
 
 						.modo
+							cursor: pointer
 							font-size: .8em
-							opacity: .5
+							opacity: .8
 							transition: opacity .15s ease
 							&.activo
-								opacity: .8
+								// opacity: 1
+								color: lighten(rgba(23, 117, 150, 1),10%)
 						.modo + .modo
 							margin-left: 1rem
 					+movil
