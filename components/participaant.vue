@@ -7,13 +7,12 @@
 			a-input(v-model='ruleForm.email' type='email' placeholder='Email').input
 		a-form-model-item(has-feedback='' prop='telefono')
 			a-input(v-model='ruleForm.telefono' type='tel' placeholder='+56 x xxxx xxxx').input
-		//- a-form-model-item(has-feedback='' prop='comuna')
-		//- 	a-input(v-model='ruleForm.comuna' type='comuna' placeholder='Comuna').input
-		a-form-model-item(has-feedback='' prop='region')
-			a-select(v-model="ruleForm.region" type='region' @change="handleChange").input
+		a-form-model-item( has-feedback='' prop='region')
+			a-select(v-model="ruleForm.region" type='region' @change="handleChange" placeholder='Region').input
 				a-select-option(v-for="region in regiones" :key="region.lavel" :value="region.label") {{ region.label }}
 		a-form-model-item(v-if="regionseleccionada !== null" has-feedback='' prop='comuna')
-			a-select(v-model="ruleForm.comuna" type='comuna' @change="handleComuna").input
+			a-select(v-model="ruleForm.comuna" placeholder='Region'
+      value='' type='comuna' @change="handleComuna").input
 				a-select-option(v-for="comuna in comunas" :key="comuna.label" :value="comuna.value") {{ comuna.label }}
 		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }').contenedorbtn
 			a-button(type='primary' @click="submitForm('ruleForm')").suscribirme
@@ -53,9 +52,6 @@ export default {
 		const validaNombre = (rule, value, callback) => {
 			if (value === '') {
 				callback(new Error('Ingresa tu nombre'))
-				console.log('regiones comunas', this.regiones)
-				console.log('region seleccionada', this.regionseleccionada)
-				console.log('comuna seleccion', this.comunas)
 			} else {
 				callback()
 			}
