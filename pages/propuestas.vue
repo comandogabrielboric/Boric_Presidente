@@ -1,12 +1,18 @@
 <template lang="pug">
 .propuestasRoot
 
-	.zonaImagen(v-if="imagen")
-		img.imagenPrograma(:src='imagen.url' :alt='altImg')
+	//- .zonaImagen(v-if="imagen")
+	//- 	img.imagenPrograma(:src='imagen.url' :alt='altImg')
+	.encabezado
+		h1 Propuesta
+		h1 Programática
+		h1 para un nuevo Chile
+		p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
+		p ¿Quieres conocer parte de nuestras propuestas?
 
-	section.pilares(v-if="pilares")
-		.contenido
-			.ql-editor.contenidoHTML(v-html='pilares')
+	//- section.pilares(v-if="pilares")
+	//- 	.contenido
+	//- 		.ql-editor.contenidoHTML(v-html='pilares')
 
 
 	section.propuestas(v-if="propuestas")
@@ -14,8 +20,9 @@
 		.caja-propuestas
 
 			.propuesta(v-for='propuesta in propuestas' :key='propuesta.id' @click='propuestaIdMostrada = propuesta.id')
-				img.imagenDePropuesta(:src='propuesta.imagen.url' :alt="propuesta.textoAlternativoImagen")
-				h2.tituloPropuesta {{ propuesta.titulo }}
+				.prop
+					img.imagenDePropuesta(:src='propuesta.imagen.url' 	:alt="propuesta.textoAlternativoImagen")
+					h2.tituloPropuesta {{ propuesta.titulo }}
 
 
 			a-modal.modalPropuesta(:visible="mostrandoPropuesta" :footer="null" @close="mostrandoPropuesta = false" @cancel="mostrandoPropuesta = false" centered :width="null")
@@ -65,78 +72,17 @@ export default {
 	async fetch () {
 		const _ = this._
 		console.log('FETCH')
-		const respuesta = await this.$olicitar(`${process.env.apiURL}/programa`)
-		// console.log('respuesta', respuesta)
-		// const ejemplo = {
-		// 	_id: '61413ba1ca5342206a85774f',
-		// 	titulo: 'Transición Energética Justa, Democrática y Popular',
-		// 	contenido: '<p>NERGÍA EN LA BASE DE',
-		// 	pag_ubicacion: 44,
-		// 	published_at: '2021-09-15T00:17:48.042Z',
-		// 	createdAt: '2021-09-15T00:17:37.045Z',
-		// 	updatedAt: '2021-09-15T00:17:48.577Z',
-		// 	__v: 0,
-		// 	imagen: {
-		// 		_id: '613a0919812a3c33c826bad7',
-		// 		name: 'https://i.ibb.co/1Xbg5qN/energiaymineria.png',
-		// 		alternativeText: '',
-		// 		caption: '',
-		// 		hash: 'energiaymineria_e801693e29',
-		// 		ext: '.png',
-		// 		mime: 'image/png',
-		// 		size: 4.14,
-		// 		width: 250,
-		// 		height: 250,
-		// 		url: 'https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/energiaymineria_e801693e29.png',
-		// 		formats: {
-		// 			thumbnail: {
-		// 				name: 'thumbnail_https://i.ibb.co/1Xbg5qN/energiaymineria.png',
-		// 				hash: 'thumbnail_energiaymineria_e801693e29',
-		// 				ext: '.png',
-		// 				mime: 'image/png',
-		// 				width: 156,
-		// 				height: 156,
-		// 				size: 6.89,
-		// 				path: null,
-		// 				url: 'https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/thumbnail_energiaymineria_e801693e29.png'
-		// 			}
-		// 		},
-		// 		provider: 'aws-s3',
-		// 		related: [
-		// 			'61413ba1ca5342206a85774f'
-		// 		],
-		// 		createdAt: '2021-09-09T13:16:09.674Z',
-		// 		updatedAt: '2021-09-15T00:17:37.310Z',
-		// 		__v: 0,
-		// 		id: '613a0919812a3c33c826bad7'
-		// 	},
-		// 	id: '61413ba1ca5342206a85774f'
-		// }
+		const respuesta = await this.$olicitar(`${process.env.cmsURL}/programa`)
 		this.propuestas = respuesta.propuestas // Array
-
-
 		// SEO
-		// const ejemploSEO = {
-		// 	_id: '6141409e6322394f5721fc7e',
-		// 	titulo_pag: 'boricpresidente pilares',
-		// 	descripcion_pag: 'Programa y propuestas Gabriel Boric',
-		// 	__v: 0,
-		// 	id: '6141409e6322394f5721fc7e'
-		// }
 		this.seo = respuesta.SEO
-
-
 		// IMAGEN
-		// console.log('respuesta.imagen', respuesta.imagen)
 		const componenteImagen = respuesta.componenteImagen
 		this.imagen = componenteImagen.imagen
 		this.altImg = componenteImagen.textoAlternativoImagen
-
-
 		// PILARES
 		this.pilares = this.$sanitizar(respuesta.Texto_pilares)
-
-
+		// PROGRAMA COMPLETO
 		this.programaArchivo = _.get(respuesta, ['Archivo_programa'])
 	},
 	head () {
@@ -151,12 +97,15 @@ export default {
 				{ hid: 'iprop:description', itemprop: 'description', content: descripcion },
 				{ hid: 'iprop:image', itemprop: 'image', content: '/imagenes/portada.jpg' },
 				{ hid: 'og:title', property: 'og:title', content: titulo },
+				{ hid: 'og:type', property: 'og:type', content: 'article' },
+				{ hid: 'og:url', property: 'og:type', content: 'http://boricpresidente.cl' },
 				{ hid: 'og:description', property: 'og:description', content: descripcion },
 				{ hid: 'og:image', property: 'og:image', content: '/imagenes/portada.jpg' },
 				{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
 				{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
 				{ hid: 'twitter:image', property: 'twitter:image', content: '/imagenes/portada.jpg' }
 			]
+
 		}
 		return obj
 	},
@@ -204,11 +153,34 @@ export default {
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
 .propuestasRoot
-	background-color: #eee
+	background-color: $azul2
 	section
 		padding: 2em
 		+movil
 			padding: 0
+
+// ENCABEZADO
+.encabezado
+	text-align: center
+	padding-top: 1.5rem
+	h1
+		padding: 0 1rem 0 1rem
+		margin: 0
+		line-height: 1
+		color: $verde3
+		font-style: italic
+		font-weight: 900
+		&:nth-child(1)
+			padding-top: 2rem
+		&:nth-child(3)
+			color: #fff
+			font-weight: 400
+	p
+		padding: 0 2.5rem
+		color: #fff
+		&:nth-of-type(1)
+			padding-top: 4rem
+
 
 // CONTENIDO HTML
 .contenidoHTML
@@ -217,7 +189,7 @@ export default {
 	margin: 0 auto
 	// border: 3px dashed orangered
 	background-color: #fff
-	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
+	// box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
 	padding: 4rem
 	+movil
 		padding: 1rem
@@ -225,6 +197,8 @@ export default {
 	text-align: justify
 	justify-content: justify
 	::v-deep
+		*
+			font-family: roboto
 		line-height: 1.4
 		h1 + p
 			margin-top: 2rem
@@ -252,7 +226,7 @@ export default {
 .zonaDescargas
 	display: flex
 	justify-content: center
-	padding: 1em
+	padding: 1em 1em 6em 1em
 	.descargable
 		padding-bottom: 3em
 		.dentro
@@ -260,10 +234,12 @@ export default {
 			align-items: center
 			background-color: transparentize($colorBody, .9)
 			.oicono
+				color: $verde3
 				flex: auto 0 0
 				font-size: 3em
 				margin: 2rem
 			.texto
+				color: #fff
 				flex: auto 1 1
 				margin: 2rem 2rem 2rem 0
 
@@ -275,41 +251,54 @@ export default {
 // PROPUESTAS
 .propuestas
 	z-index: 0
+	cursor: pointer
 	+movil
 		.caja-propuestas
-			padding: 5em 0
-	//border: 1px solid red
-	//*
-		border: 1px solid orange
+			padding: 3.5em 0
+	// border: 1px solid red
+	// *
+	// 	border: 1px solid orange
 
 	.caja-propuestas
 		display: flex
 		flex-flow: row wrap
 		justify-content: center
-
-
 		.propuesta
-			flex: 12em 0 0
+			// flex: 12em 0 0
 			margin: 10px
 			text-align: center
 			padding: 5px
-
-			.imagenDePropuesta
-				$lado: 150px
-				max-width: $lado
-				max-height: $lado
-				z-index: 1
-			.tituloPropuesta
-				margin-top: 1rem
-				font-size: 1.2rem
-			+movil
-				flex: 9em 0 0
+			width: 250px
+			height: 250px
+			background-color: rgba(14, 107, 139, 1)
+			.prop
+				display: flex
+				flex-flow: column
+				align-items: center
+				justify-content: center
 				.imagenDePropuesta
-					$lado: 100px
+					$lado: 130px
+					padding-top: 1em
 					max-width: $lado
 					max-height: $lado
+					z-index: 1
 				.tituloPropuesta
-					font-size: .89em
+					margin-top: 1rem
+					font-size: 1.2rem
+					padding: 0 .3em
+					font-style: italic
+					color: #fff
+					font-size: .98em
+
+				+movil
+					// flex: 9em 0 0
+					width: 250px
+					height: 250px
+					.imagenDePropuesta
+						$lado: 100px
+						max-width: $lado
+						max-height: $lado
+					.tituloPropuesta
 
 
 
@@ -349,23 +338,34 @@ export default {
 				.ant-modal-header
 					flex: auto 0 0
 					padding: 2em
-					background-color: transparentize($fondoBody, .5)
+					background-color: transparentize($fondoBody, .2)
 					backdrop-filter: blur(1em)
+					width: 900px
+					background-color: #19CBB5
 					.pretitulo
+						color: rgba(219, 248, 123, 1)
+						font-weight: 900
 						margin-bottom: 1em
 						opacity: .6
 					.titulo
+						color: #fff
+						font-weight: 900
+						font-style: italic
 						line-height: 1.4
+						display: flex
 					.modoVisualizacion
+						color: rgba(23, 117, 150, 1)
 						display: flex
 						margin-top: .5em
 
 						.modo
+							cursor: pointer
 							font-size: .8em
-							opacity: .5
+							opacity: .8
 							transition: opacity .15s ease
 							&.activo
-								opacity: .8
+								// opacity: 1
+								color: lighten(rgba(23, 117, 150, 1),10%)
 						.modo + .modo
 							margin-left: 1rem
 					+movil

@@ -5,7 +5,7 @@ import antdVars from './antdvVars'
 const dev = process.env.MODO === 'dev'
 
 const titulo = 'Boric Presidente'
-const descripcion = 'PENDIENTE'
+const descripcion = 'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
 
 function titleTemplate (tituloLocal) {
 	// If undefined or blank then we don't need the hyphen
@@ -14,7 +14,8 @@ function titleTemplate (tituloLocal) {
 
 export default {
 	env: {
-		apiURL: dev ? 'https://gbcms.crishadad.cl' : 'http://localhost:1337'
+		cmsURL: dev ? 'http://localhost:1337' : 'https://gbcms.crishadad.cl',
+		apiURL: dev ? 'http://localhost:3001' : 'https://bpapi.crishadad.cl'
 	},
 	// Target: https://go.nuxtjs.dev/config-target
 	target: 'static',
@@ -49,12 +50,15 @@ export default {
 			{ hid: 'twitter:site', property: 'twitter:site', content: '@GabrielBoric' }
 		],
 		link: [
+			{ hid: 'canonical', rel: 'canonical', href: 'https://boricpresidente.cl'	},
+
 			{ hid: 'icon', rel: 'icon', href: '/favicon.svg' },
 			{ hid: 'mask-icon', rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' },
 
 			{ hid: 'googleapis', rel: 'preconnect', href: 'https://fonts.googleapis.com' },
 			{ hid: 'gstatic', rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-			{ hid: 'gfonts', rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap' },
+			{ hid: 'gfonts', rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700;900&display=swap' },
+			{ hid: 'gfonts', rel: 'stylesheet', href: 'https://use.typekit.net/jem8rnn.css' },
 
 			{ hid: 'quill', rel: 'stylesheet', href: 'https://cdn.quilljs.com/1.0.0/quill.snow.css' }
 		]
@@ -85,6 +89,7 @@ export default {
 
 	// Modules: https://go.nuxtjs.dev/config-modules
 	modules: [
+		'nuxt-svg-loader'
 	],
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build

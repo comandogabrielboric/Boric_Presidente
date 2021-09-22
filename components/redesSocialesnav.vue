@@ -6,10 +6,10 @@
 		.oicono.twitter
 	a.redSocial.instagram(target="_blank" rel="noreferer noopener" href="https://www.instagram.com/gabrielboric")
 		.oicono.instagram
-	a.redSocial.tiktok(target="_blank" rel="noreferer noopener" href="https://www.tiktok.com/@gabrielboric")
-		.oicono.tiktok
-	a.redSocial.whatsapp(target="_blank" rel="noreferer noopener" href="https://api.whatsapp.com/send?phone=56957603153")
-		.oicono.whatsapp
+	//- a.redSocial.tiktok(target="_blank" rel="noreferer noopener" href="https://www.tiktok.com/gabrielboric")
+	//- 	.oicono.tiktok
+	//- a.redSocial.whatsapp(target="_blank" rel="noreferer noopener" href="/")
+	//- 	.oicono.whatsapp
 
 </template>
 <script>
