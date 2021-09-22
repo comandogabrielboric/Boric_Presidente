@@ -18,4 +18,5 @@ node -v \
 
 yarn generate &&
 aws s3 rm s3://staticboricpresidente --recursive &&
-aws s3 cp ./dist s3://staticboricpresidente --acl 'public-read' --recursive
+aws s3 cp ./dist s3://staticboricpresidente --acl 'public-read' --recursive &&
+aws cloudfront create-invalidation --distribution-id E2EMYR8BO96SPB --paths "/*"
