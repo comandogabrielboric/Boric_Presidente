@@ -15,4 +15,6 @@ function sanitizar (html) {
 	return sanitizado
 }
 
-export default sanitizar
+export default ({ app }, inject) => {
+	inject('sanitizar', sanitizar)
+}
