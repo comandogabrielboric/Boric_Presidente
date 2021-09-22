@@ -61,6 +61,6 @@ export default {
 		&.animando
 			animation: avanzar 3s linear 1
 			.combi
-				animation: vibrar 2s infinite
+				animation: vibrar 1.5s 2
 
 </style>

@@ -73,7 +73,6 @@ export default {
 	plugins: [
 		'@/plugins/antd-ui',
 		'@/plugins/axios',
-		'@/plugins/sanitizador',
 		'@/plugins/seo',
 		'@/plugins/lodash'
 	],
@@ -100,5 +99,11 @@ export default {
 			}
 		}
 	},
-	telemetry: false
+	telemetry: false,
+	render: {
+		static: {
+			maxAge: 1000 * 60 * 60 * 24 * 7
+		}
+	},
+	modern: true
 }

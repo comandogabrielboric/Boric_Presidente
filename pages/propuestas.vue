@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import sanitizar from '~/lib/sanitizador'
 export default {
 	data () {
 		return {
@@ -73,7 +74,13 @@ export default {
 		const _ = this._
 		console.log('FETCH')
 		const respuesta = await this.$olicitar(`${process.env.cmsURL}/programa`)
-		this.propuestas = respuesta.propuestas // Array
+		const propuestas = respuesta.propuestas // Array
+
+		this.propuestas = this._.map(propuestas, p => {
+			p.contenido = sanitizar(p.contenido)
+			return p
+		})
+
 		// SEO
 		this.seo = respuesta.SEO
 		// IMAGEN
@@ -81,7 +88,7 @@ export default {
 		this.imagen = componenteImagen.imagen
 		this.altImg = componenteImagen.textoAlternativoImagen
 		// PILARES
-		this.pilares = this.$sanitizar(respuesta.Texto_pilares)
+		this.pilares = sanitizar(respuesta.Texto_pilares)
 		// PROGRAMA COMPLETO
 		this.programaArchivo = _.get(respuesta, ['Archivo_programa'])
 	},
@@ -103,21 +110,13 @@ export default {
 	},
 
 	computed: {
-		// retorna id de propuestas
-		propuestasID () {
-			return this.propuestas.map(a => a._id)
-		},
-		// porcesa markdown contenido propuestas
-		Markdownpropuesta () {
-			return this.$sanitizar(this.contenido)
-		},
 		propuestaMostrada () {
 			if (!this.propuestaIdMostrada) return null
 			const propuestaBruta = this._.find(this.propuestas, p => p.id === this.propuestaIdMostrada)
 
 			return {
 				titulo: propuestaBruta.titulo,
-				html: this.$sanitizar(propuestaBruta.contenido),
+				html: propuestaBruta.contenido,
 				pdfURL: this._.get(propuestaBruta, ['archivoPDF', 'url'])
 			}
 		}
