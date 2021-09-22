@@ -16,8 +16,8 @@
 				b Súmate a una mesa ciudadana o contesta una consulta.
 		.noMovil.sobreCurva
 			.contenido
-				h1 ¡Mesas ciudadanas
-				h2 x Boric!
+				h1 Mesas ciudadanas
+				h2 x Boric
 				div Te invitamos a aportar con tus ideas, opiniones y anhelos a un programa de Gobierno diverso, descentralizado y abierto de cara a la ciudadanía. #[b Súmate a una mesa ciudadana o contesta una consulta, y sé parte de un proyecto transformador que construimos juntas y juntos.]
 
 
@@ -32,8 +32,8 @@
 		.curva.curvaSuperior
 		.contenido
 			.lado
-				h2.titulo #[span.primero ¡Inscríbete]
-					div Únete a la campaña!
+				h2.titulo #[span.primero Inscríbete]
+					div Únete a la campaña
 				.texto
 					p Las transformaciones que Chile necesita las hacemos entre todas y todos.
 					P Déjanos tu mail y recibirás más información sobre la campaña
@@ -55,8 +55,8 @@
 
 		.contenido
 			.lado
-				h2 ¡Arma tu
-				h3 Campaña!
+				h2 Arma tu
+				h3 Campaña
 				p Descarga nuestro kit y crea tus propios insumos de campaña. #[br]¡De ti depende!
 				.noMovil
 					+linkDescarga
@@ -76,7 +76,7 @@
 		mixin linkServel
 			.linkservel
 				a.boton(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" target="_blank") QUIERO APORTAR
-				n-link.instrucciones(to="/donar") Ver Instrucciones para donar
+				n-link.instrucciones(to="/aporta") Ver Instrucciones para donar
 
 		.curva.curvaSuperior
 

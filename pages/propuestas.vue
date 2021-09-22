@@ -324,7 +324,7 @@ export default {
 			width: auto
 			max-width: 100%
 			margin: 0
-			color: inherit
+			// color: inherit
 			.ant-modal-content
 				height: 80vh
 				background-color: transparent
