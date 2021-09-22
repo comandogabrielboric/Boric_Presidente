@@ -1,5 +1,5 @@
 <template lang="pug">
-.root
+.rootChanchito
 	.chanchito(@mouseover="animar" :class="{animando}")
 		img(src="/imagenes/chanchitoPomaire.png" alt="Chanchito de Pomaire")
 		.circulo
@@ -17,7 +17,7 @@ export default {
 			this.animando = true
 			setTimeout(() => {
 				this.animando = false
-			}, 1000)
+			}, 2000)
 		}
 	}
 }

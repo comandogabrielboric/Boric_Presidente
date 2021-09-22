@@ -89,18 +89,16 @@
 					+linkServel
 			.lado.ladoImagen
 				Chanchito
-				//.chanchito
-					img(src="/imagenes/chanchitoPomaire.png" alt="Chanchito de Pomaire")
-					.circulo
 			.noCompu
 				+linkServel
 
 	section.propuestas
 		.ondaonda
 			wave.wave
+		.zonaCombi
+			Combi
 		.curva.curvaSuperior
 
-		img(src="/imagenes/combiVerde.png" alt="Combi").combi
 		.curva.curvaSuperior
 		.contenido
 			.textoseccion
@@ -491,18 +489,9 @@ section.propuestas
 			.wave
 				height: auto
 
-	.combi
-		position: absolute
-		width: 11em
-		z-index: 6
-		top: 0
-		left: 50%
-		transform: translate(-50%, -80%)
-		bottom: 0
-		&:hover
-			animation: vibrar 1s 1
-		+compu
-			width: 22em
+	.zonaCombi
+		position: relative
+		z-index: 3
 
 	.contenido
 		display: flex row nowrap
