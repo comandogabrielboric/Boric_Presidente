@@ -12,27 +12,16 @@
 <script>
 export default {
 	head () {
-		if (!this.seo) return {}
-		const titulo = this.seo.titulo_pag
-		const descripcion = this.seo.descripcion_pag
-		const obj = {
-			title: titulo,
-			description: descripcion,
-			meta: [
-				{ hid: 'iprop:name', itemprop: 'name', content: titulo },
-				{ hid: 'iprop:description', itemprop: 'description', content: descripcion },
-				{ hid: 'iprop:image', itemprop: 'image', content: '/imagenes/portada.jpg' },
-				{ hid: 'og:title', property: 'og:title', content: titulo },
-				{ hid: 'og:type', property: 'og:type', content: 'Donaciones' },
-				{ hid: 'og:url', property: 'og:type', content: 'http://boricpresidente.cl' },
-				{ hid: 'og:description', property: 'og:description', content: descripcion },
-				{ hid: 'og:image', property: 'og:image', content: '/imagenes/portada.jpg' },
-				{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
-				{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
-				{ hid: 'twitter:image', property: 'twitter:image', content: '/imagenes/portada.jpg' }
-			]
-
-		}
+		const titulo = 'Aporta'
+		const descripcion = 'El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia'
+		const imagen = '/imagenes/portadaMovil.webp'
+		const url = 'https://boricpresidente.cl/aporta'
+		const obj = this.$eo({
+			titulo,
+			descripcion,
+			imagen,
+			url
+		})
 		return obj
 	}
 }

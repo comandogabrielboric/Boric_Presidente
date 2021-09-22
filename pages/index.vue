@@ -3,8 +3,8 @@
 
 	section.storytelling
 		.filtroBlur
-			img.noMovil(src="/imagenes/portada.jpg" alt="Súmate a cambiar Chile")
-			img.noCompu(src="/imagenes/portadaMovil.jpg" alt="Súmate a cambiar Chile")
+			img.noMovil(src="/imagenes/portada.webp" alt="Súmate a cambiar Chile")
+			img.noCompu(src="/imagenes/portadaMovil.webp" alt="Súmate a cambiar Chile")
 
 
 	section.seccionCuna
@@ -23,8 +23,8 @@
 
 		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank") Participa Aquí
 
-		img.noMovil(src="/imagenes/diversidad.png" alt="Diversidad").imgSaludo
-		img.noCompu(src="/imagenes/diversidadMovil.png" alt="Diversidad").imgSaludo
+		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad").imgSaludo
+		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad").imgSaludo
 
 
 
@@ -41,8 +41,8 @@
 			.lado
 				.suscribirse
 					participaant
-		img.noMovil(src="/imagenes/participa.png" alt="Participa")
-		img.noCompu(src="/imagenes/participaMovil.png" alt="Participa")
+		img.noMovil(src="/imagenes/participa.webp" alt="Participa")
+		img.noCompu(src="/imagenes/participaMovil.webp" alt="Participa")
 
 
 	section.seccionArmaTuCampana
@@ -64,7 +64,7 @@
 
 			.lado.ladoImagen
 				.cajaHerramienta
-					img(src="/imagenes/cajaHerramientas.png" alt="Herramientas")
+					img(src="/imagenes/cajaHerramientas.webp" alt="Herramientas")
 					.circulo
 
 		.noCompu
@@ -81,25 +81,24 @@
 		.curva.curvaSuperior
 
 		.contenido
-			.bloque.lado
+			.lado
 				h2 Súmate
 				h3 y Aporta
-				p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia
+				p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia.
 				.noMovil
 					+linkServel
 			.lado.ladoImagen
-				.bloque.chanchito
-					img(src="/imagenes/chanchitoPomaire.png" alt="Chanchito de Pomaire")
-					.circulo
-			.bloque.noCompu
+				Chanchito
+			.noCompu
 				+linkServel
 
 	section.propuestas
 		.ondaonda
 			wave.wave
+		.zonaCombi
+			Combi
 		.curva.curvaSuperior
 
-		img(src="/imagenes/combiVerde.png" alt="Combi").combi
 		.curva.curvaSuperior
 		.contenido
 			.textoseccion
@@ -119,28 +118,18 @@ export default {
 	components: { mostradorprop, wave },
 
 	head () {
-		if (!this.seo) return {}
-		const titulo = this.seo.titulo_pag
-		const descripcion = this.seo.descripcion_pag
-		const obj = {
-			title: titulo,
-			description: descripcion,
-			meta: [
-				{ hid: 'iprop:name', itemprop: 'name', content: titulo },
-				{ hid: 'iprop:description', itemprop: 'description', content: descripcion },
-				{ hid: 'iprop:image', itemprop: 'image', content: '/imagenes/portada.jpg' },
-				{ hid: 'og:title', property: 'og:title', content: titulo },
-				{ hid: 'og:type', property: 'og:type', content: 'website' },
-				{ hid: 'og:url', property: 'og:type', content: 'http://boricpresidente.cl' },
-				{ hid: 'og:description', property: 'og:description', content: descripcion },
-				{ hid: 'og:image', property: 'og:image', content: '/imagenes/portada.jpg' },
-				{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
-				{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
-				{ hid: 'twitter:image', property: 'twitter:image', content: '/imagenes/portada.jpg' }
-			]
-
-		}
-		return obj
+		const titulo = 'Boric Presidente'
+		const descripcion = 'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
+		const imagen = '/imagenes/portadaMovil.webp'
+		const url = 'https://boricpresidente.cl'
+		const meta = this.$eo({
+			titulo,
+			descripcion,
+			imagen,
+			url
+		})
+		meta.titleTemplate = '%s'
+		return meta
 	}
 }
 </script>
@@ -148,6 +137,7 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
+@import '~/estilos/animaciones'
 
 section
 	position: relative
@@ -195,7 +185,7 @@ section
 		max-width: 100%
 		//max-height: 50vh
 	+compu
-		background-image: url('/imagenes/portada.jpg')
+		background-image: url('/imagenes/portada.webp')
 		background-size: cover
 		background-repeat: no-repeat
 		.filtroBlur
@@ -456,35 +446,6 @@ section.seccionaporta
 			margin: 1em 0
 			font-style: italic
 
-		.chanchito
-			$lado: 11em
-			width: $lado
-			height: $lado
-			position: relative
-			img
-				position: relative
-				height: 100%
-				z-index: 5
-			.circulo
-				position: absolute
-				top: 50%
-				left: 50%
-				width: $lado
-				height: $lado
-				background: rgba(38, 140, 175, 1)
-				border-radius: 50%
-				transform: translate(-63%, -63%) scale(.8)
-			+compu
-				$lado: 16em
-				width: $lado
-				height: $lado
-				img
-					transform: scaleX(-1)
-				.circulo
-					width: $lado
-					height: $lado
-					transform: translate(-65%, -65%) scale(.8)
-
 	+compu
 		.contenido
 			display: flex
@@ -515,18 +476,13 @@ section.propuestas
 			left: 0
 			bottom: 100%
 		+compu
-			height: 6em
+			height: 2em
+			.wave
+				height: auto
 
-	.combi
-		position: absolute
-		width: 11em
-		z-index: 6
-		top: 0
-		left: 50%
-		transform: translate(-50%, -80%)
-		bottom: 0
-		+compu
-			width: 22em
+	.zonaCombi
+		position: relative
+		z-index: 3
 
 	.contenido
 		display: flex row nowrap

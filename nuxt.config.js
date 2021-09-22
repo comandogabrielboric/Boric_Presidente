@@ -7,6 +7,8 @@ const remoto = !!process.env.REMOTO
 
 const titulo = 'Boric Presidente'
 const descripcion = 'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
+const imagen = '/imagenes/portadaMovil.webp'
+const url = 'https://boricpresidente.cl'
 
 function titleTemplate (tituloLocal) {
 	// If undefined or blank then we don't need the hyphen
@@ -27,7 +29,7 @@ export default {
 		description: descripcion,
 
 		htmlAttrs: {
-			lang: 'en'
+			lang: 'es-cl'
 		},
 		meta: [
 			{ charset: 'utf-8' },
@@ -39,19 +41,21 @@ export default {
 
 			{ hid: 'iprop:name', itemprop: 'name', content: titulo },
 			{ hid: 'iprop:description', itemprop: 'description', content: descripcion },
-			{ hid: 'iprop:image', itemprop: 'image', content: '/imagenes/portada.jpg' },
+			{ hid: 'iprop:image', itemprop: 'image', content: imagen },
 
+			{ hid: 'og:type', property: 'og:type', content: 'website' },
 			{ hid: 'og:title', property: 'og:title', content: titulo },
 			{ hid: 'og:description', property: 'og:description', content: descripcion },
-			{ hid: 'og:image', property: 'og:image', content: '/imagenes/portada.jpg' },
+			{ hid: 'og:image', property: 'og:image', content: imagen },
+			{ hid: 'og:url', property: 'og:url', content: url },
 
 			{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
 			{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
-			{ hid: 'twitter:image', property: 'twitter:image', content: '/imagenes/portada.jpg' },
+			{ hid: 'twitter:image', property: 'twitter:image', content: imagen },
 			{ hid: 'twitter:site', property: 'twitter:site', content: '@GabrielBoric' }
 		],
 		link: [
-			{ hid: 'canonical', rel: 'canonical', href: 'https://boricpresidente.cl'	},
+			{ hid: 'canonical', rel: 'canonical', href: url	},
 
 			{ hid: 'icon', rel: 'icon', href: '/favicon.svg' },
 			{ hid: 'mask-icon', rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' },
@@ -76,6 +80,7 @@ export default {
 		'@/plugins/antd-ui',
 		'@/plugins/axios',
 		'@/plugins/sanitizador',
+		'@/plugins/seo',
 		'@/plugins/lodash'
 	],
 	// Auto import components: https://go.nuxtjs.dev/config-components

@@ -71,7 +71,7 @@ footer
 			display: block
 			position: absolute
 			height: 3em
-			top: -1em
+			top: -.95em
 			left: 0
 			right: 0
 			bottom: 0
