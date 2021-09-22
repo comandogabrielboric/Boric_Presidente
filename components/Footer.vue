@@ -22,7 +22,7 @@ export default {}
 @import '~/estilos/paleta'
 
 footer
-	background-color: white
+	background-color: $fondoFooter
 	color: $colorFooter
 	a
 		&, &:visited, &:active, &:hover
