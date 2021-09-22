@@ -1,10 +1,10 @@
 <template lang="pug">
 .root
 	.pasos
-		img(src="/imagenes/donaciones1.png" alt="dona")
-		img(src="/imagenes/donaciones2.png" alt="dona")
-		img(src="/imagenes/donaciones3.png" alt="dona")
-		img(src="/imagenes/donaciones4.png" alt="dona")
+		img(src="/imagenes/donaciones1.webp" alt="dona")
+		img(src="/imagenes/donaciones2.webp" alt="dona")
+		img(src="/imagenes/donaciones3.webp" alt="dona")
+		img(src="/imagenes/donaciones4.webp" alt="dona")
 		.link
 			a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" alt="dona" target="_blank") QUIERO APORTAR
 	.relleno
