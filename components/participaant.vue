@@ -1,7 +1,7 @@
 <template lang="pug">
 .rootParticipa
 	a-form-model(ref='ruleForm' :model='ruleForm' :rules='rules').suscribirse
-		a-form-model-item(has-feedback='' prop='nombre')
+		a-form-model-item(label="nombre" has-feedback='' prop='nombre')
 			a-input(v-model='ruleForm.nombre' type='nombre' placeholder="Nombre").input
 		a-form-model-item(has-feedback='' prop='email')
 			a-input(v-model='ruleForm.email' type='email' placeholder='Email').input
