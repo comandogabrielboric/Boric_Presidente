@@ -7,8 +7,12 @@
 			a-input(v-model='ruleForm.email' type='email' placeholder='Email').input
 		a-form-model-item(has-feedback='' prop='telefono')
 			a-input(v-model='ruleForm.telefono' type='tel' placeholder='+56 x xxxx xxxx').input
-		a-form-model-item(has-feedback='' prop='comuna')
-			a-input(v-model='ruleForm.comuna' type='comuna' placeholder='Comuna').input
+		//- a-form-model-item(has-feedback='' prop='comuna')
+		//- 	a-input(v-model='ruleForm.comuna' type='comuna' placeholder='Comuna').input
+		//- a-form-model-item( has-feedback='' prop='region')
+		//- 	a-select(v-decorator="[\'region',\{ rules: [{ required: true, message: 'Selecciona tu region' }] },\]" placeholder='Region' @change='handleSelectChange').input
+		//- 		a-select-option(v-for="region in regiones" :key="region.label")
+
 		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }').contenedorbtn
 			a-button(type='primary' @click="submitForm('ruleForm')").suscribirme
 				| SEGUIMOS
@@ -28,6 +32,7 @@
 <script>
 import isEmail from 'validator/lib/isEmail'
 import { phone } from 'phone'
+import regionesComunas from '../regiones/regioneschile'
 
 export default {
 	data () {
@@ -46,6 +51,7 @@ export default {
 		const validaNombre = (rule, value, callback) => {
 			if (value === '') {
 				callback(new Error('Ingresa tu nombre'))
+				console.log('reggionescomunas', this.regiones)
 			} else {
 				callback()
 			}
@@ -82,9 +88,11 @@ export default {
 				wrapperCol: { span: 14 }
 			},
 			visible: false,
-			tyc: false
+			tyc: false,
+			regiones: regionesComunas
 		}
 	},
+
 	methods: {
 		submitForm (formName) {
 			this.$refs[formName].validate(valid => {
