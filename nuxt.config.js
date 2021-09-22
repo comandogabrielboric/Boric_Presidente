@@ -73,7 +73,6 @@ export default {
 	plugins: [
 		'@/plugins/antd-ui',
 		'@/plugins/axios',
-		'@/plugins/sanitizador',
 		'@/plugins/seo',
 		'@/plugins/lodash'
 	],
