@@ -9,10 +9,12 @@
 			a-input(v-model='ruleForm.telefono' type='tel' placeholder='+56 x xxxx xxxx').input
 		//- a-form-model-item(has-feedback='' prop='comuna')
 		//- 	a-input(v-model='ruleForm.comuna' type='comuna' placeholder='Comuna').input
-		//- a-form-model-item( has-feedback='' prop='region')
-		//- 	a-select(v-decorator="[\'region',\{ rules: [{ required: true, message: 'Selecciona tu region' }] },\]" placeholder='Region' @change='handleSelectChange').input
-		//- 		a-select-option(v-for="region in regiones" :key="region.label")
-
+		a-form-model-item(has-feedback='' prop='region')
+			a-select(v-model="ruleForm.region" type='region' @change="handleChange").input
+				a-select-option(v-for="region in regiones" :key="region.lavel" :value="region.label") {{ region.label }}
+		a-form-model-item(v-if="regionseleccionada !== null" has-feedback='' prop='comuna')
+			a-select(v-model="ruleForm.comuna" type='comuna' @change="handleComuna").input
+				a-select-option(v-for="comuna in comunas" :key="comuna.label" :value="comuna.value") {{ comuna.label }}
 		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }').contenedorbtn
 			a-button(type='primary' @click="submitForm('ruleForm')").suscribirme
 				| SEGUIMOS
@@ -51,7 +53,9 @@ export default {
 		const validaNombre = (rule, value, callback) => {
 			if (value === '') {
 				callback(new Error('Ingresa tu nombre'))
-				console.log('reggionescomunas', this.regiones)
+				console.log('regiones comunas', this.regiones)
+				console.log('region seleccionada', this.regionseleccionada)
+				console.log('comuna seleccion', this.comunas)
 			} else {
 				callback()
 			}
@@ -63,9 +67,16 @@ export default {
 				callback()
 			}
 		}
+		const validaRegion = (rule, value, callback) => {
+			if (value === '') {
+				callback(new Error('Ingresa tu region'))
+			} else {
+				callback()
+			}
+		}
 		const validaComuna = (rule, value, callback) => {
 			if (value === '') {
-				callback(new Error('Ingresa tu comuna'))
+				callback(new Error('Ingresa tu region'))
 			} else {
 				callback()
 			}
@@ -75,12 +86,14 @@ export default {
 				nombre: '',
 				email: '',
 				telefono: '',
-				comuna: ''
+				comuna: '',
+				region: ''
 			},
 			rules: {
 				nombre: [{ validator: validaNombre, trigger: 'change' }],
 				email: [{ validator: validaEmail, trigger: 'change' }],
 				telefono: [{ validator: validaTelefono, trigger: 'change' }],
+				region: [{ validator: validaRegion }],
 				comuna: [{ validator: validaComuna, trigger: 'change' }]
 			},
 			layout: {
@@ -89,10 +102,23 @@ export default {
 			},
 			visible: false,
 			tyc: false,
-			regiones: regionesComunas
+			regionseleccionada: null
+			// regiones: this.re
 		}
 	},
-
+	computed: {
+		regiones () {
+			const re = regionesComunas.regionesComunas
+			// const arrayregiones = this._.map(re, 'label')
+			return re
+		},
+		comunas () {
+			const re = this.regiones
+			const com = this._.filter(re, ['value', this.regionseleccionada])
+			const comunas = com[0].children
+			return comunas
+		}
+	},
 	methods: {
 		submitForm (formName) {
 			this.$refs[formName].validate(valid => {
@@ -103,6 +129,14 @@ export default {
 					return false
 				}
 			})
+		},
+		handleChange (value) {
+			console.log(`Selected: ${value}`)
+			this.regionseleccionada = value
+			console.log('seleccion', this.regionseleccionada)
+		},
+		handleComuna (value) {
+			console.log(`Selected: ${value}`)
 		},
 		async suscribirse () {
 			// const { nombre, email, telefono, comuna } = this
@@ -139,12 +173,13 @@ export default {
 	justify-content: center
 	max-width: 400px
 
-	input
+	.input
 		width: 250px
 		height: 2em
 		border-radius: 2px
 		&::placeholder
 			font-size: .9em
+
 .suscribirme
 	// position: stycky
 	width: 250px
