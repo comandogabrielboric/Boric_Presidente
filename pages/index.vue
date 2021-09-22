@@ -3,8 +3,8 @@
 
 	section.storytelling
 		.filtroBlur
-			img.noMovil(src="/imagenes/portada.jpg" alt="Súmate a cambiar Chile")
-			img.noCompu(src="/imagenes/portadaMovil.jpg" alt="Súmate a cambiar Chile")
+			img.noMovil(src="/imagenes/portada.webp" alt="Súmate a cambiar Chile")
+			img.noCompu(src="/imagenes/portadaMovil.webp" alt="Súmate a cambiar Chile")
 
 
 	section.seccionCuna
@@ -23,8 +23,8 @@
 
 		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank") Participa Aquí
 
-		img.noMovil(src="/imagenes/diversidad.png" alt="Diversidad").imgSaludo
-		img.noCompu(src="/imagenes/diversidadMovil.png" alt="Diversidad").imgSaludo
+		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad").imgSaludo
+		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad").imgSaludo
 
 
 
@@ -41,8 +41,8 @@
 			.lado
 				.suscribirse
 					participaant
-		img.noMovil(src="/imagenes/participa.png" alt="Participa")
-		img.noCompu(src="/imagenes/participaMovil.png" alt="Participa")
+		img.noMovil(src="/imagenes/participa.webp" alt="Participa")
+		img.noCompu(src="/imagenes/participaMovil.webp" alt="Participa")
 
 
 	section.seccionArmaTuCampana
@@ -64,7 +64,7 @@
 
 			.lado.ladoImagen
 				.cajaHerramienta
-					img(src="/imagenes/cajaHerramientas.png" alt="Herramientas")
+					img(src="/imagenes/cajaHerramientas.webp" alt="Herramientas")
 					.circulo
 
 		.noCompu
@@ -121,21 +121,22 @@ export default {
 		if (!this.seo) return {}
 		const titulo = this.seo.titulo_pag
 		const descripcion = this.seo.descripcion_pag
+		const imagen = '/imagenes/portadaMovil.webp'
 		const obj = {
 			title: titulo,
 			description: descripcion,
 			meta: [
 				{ hid: 'iprop:name', itemprop: 'name', content: titulo },
 				{ hid: 'iprop:description', itemprop: 'description', content: descripcion },
-				{ hid: 'iprop:image', itemprop: 'image', content: '/imagenes/portada.jpg' },
+				{ hid: 'iprop:image', itemprop: 'image', content: imagen },
 				{ hid: 'og:title', property: 'og:title', content: titulo },
 				{ hid: 'og:type', property: 'og:type', content: 'website' },
 				{ hid: 'og:url', property: 'og:type', content: 'http://boricpresidente.cl' },
 				{ hid: 'og:description', property: 'og:description', content: descripcion },
-				{ hid: 'og:image', property: 'og:image', content: '/imagenes/portada.jpg' },
+				{ hid: 'og:image', property: 'og:image', content: imagen },
 				{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
 				{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
-				{ hid: 'twitter:image', property: 'twitter:image', content: '/imagenes/portada.jpg' }
+				{ hid: 'twitter:image', property: 'twitter:image', content: imagen }
 			]
 
 		}
@@ -195,7 +196,7 @@ section
 		max-width: 100%
 		//max-height: 50vh
 	+compu
-		background-image: url('/imagenes/portada.jpg')
+		background-image: url('/imagenes/portada.webp')
 		background-size: cover
 		background-repeat: no-repeat
 		.filtroBlur
