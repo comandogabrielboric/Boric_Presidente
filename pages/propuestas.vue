@@ -291,14 +291,12 @@ export default {
 					font-size: .98em
 
 				+movil
-					// flex: 9em 0 0
 					width: 250px
 					height: 250px
 					.imagenDePropuesta
 						$lado: 100px
 						max-width: $lado
 						max-height: $lado
-					.tituloPropuesta
 
 
 

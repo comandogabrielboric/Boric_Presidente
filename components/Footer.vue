@@ -14,22 +14,7 @@ footer
 </template>
 
 <script>
-export default {
-	data () {
-		return {
-			rrss: [],
-			logosAD: null
-		}
-	},
-	async fetch () {
-		// console.log('cargar footer')
-		const solicitud = await fetch(`${process.env.cmsURL}/footer`).then(res =>
-			res.json()
-		)
-		this.logosAD = solicitud.logosAD
-		this.rrss = solicitud.RRSS
-	}
-}
+export default {}
 </script>
 
 <style lang="sass" scoped>
