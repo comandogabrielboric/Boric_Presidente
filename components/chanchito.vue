@@ -1,6 +1,6 @@
 <template lang="pug">
 .rootChanchito
-	.chanchito(@mouseover="animar" :class="{animando}")
+	.chanchito(@mouseover="animar" @click="animar" :class="{animando}")
 		img(src="/imagenes/chanchitoPomaire.png" alt="Chanchito de Pomaire")
 		.circulo
 </template>

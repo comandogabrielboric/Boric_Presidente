@@ -1,6 +1,6 @@
 <template lang="pug">
 .rootCombi
-	.espacioCompi(@mouseover="animar" :class="{animando}")
+	.espacioCompi(@mouseover="animar" @click="animar" :class="{animando}")
 		img(src="/imagenes/combiVerde.png" alt="Combi").combi
 </template>
 <script>
