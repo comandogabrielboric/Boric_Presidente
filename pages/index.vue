@@ -36,7 +36,7 @@
 					div Únete a la campaña
 				.texto
 					p Las transformaciones que Chile necesita las hacemos entre todas y todos.
-					P Déjanos tu mail y recibirás más información sobre la campaña
+					P Déjanos tu mail y recibirás más información sobre la campaña.
 
 			.lado
 				.suscribirse
