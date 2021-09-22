@@ -514,7 +514,9 @@ section.propuestas
 			left: 0
 			bottom: 100%
 		+compu
-			height: 6em
+			height: 2em
+			.wave
+				height: auto
 
 	.combi
 		position: absolute
