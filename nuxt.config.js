@@ -15,7 +15,7 @@ function titleTemplate (tituloLocal) {
 	return tituloLocal ? `${tituloLocal} | Boric Presidente` : 'Boric Presidente'
 }
 
-export default {
+const config = {
 	env: {
 		cmsURL: (dev && !remoto) ? 'http://localhost:1337' : 'https://gbcms.crishadad.cl',
 		apiURL: (dev && !remoto) ? 'http://localhost:3001' : 'https://bpapi.crishadad.cl'
@@ -107,3 +107,12 @@ export default {
 	},
 	modern: true
 }
+
+if (dev) {
+	config.plugins.push('@/plugins/sanitizador')
+} else {
+	config.plugins.push({ src: '@/plugins/sanitizador', mode: 'server' })
+}
+
+
+export default config

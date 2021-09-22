@@ -50,7 +50,6 @@
 </template>
 
 <script>
-import sanitizar from '~/lib/sanitizador'
 export default {
 	data () {
 		return {
@@ -77,7 +76,7 @@ export default {
 		const propuestas = respuesta.propuestas // Array
 
 		this.propuestas = this._.map(propuestas, p => {
-			p.contenido = sanitizar(p.contenido)
+			p.contenido = this.$sanitizar(p.contenido)
 			return p
 		})
 
@@ -88,7 +87,7 @@ export default {
 		this.imagen = componenteImagen.imagen
 		this.altImg = componenteImagen.textoAlternativoImagen
 		// PILARES
-		this.pilares = sanitizar(respuesta.Texto_pilares)
+		this.pilares = this.$sanitizar(respuesta.Texto_pilares)
 		// PROGRAMA COMPLETO
 		this.programaArchivo = _.get(respuesta, ['Archivo_programa'])
 	},
