@@ -1,73 +1,106 @@
 <template lang="pug">
-.index
-	.storytelling
+.rootIndex
+
+	section.storytelling
 		.filtroBlur
-			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/boric-portada_Mesa+de+trabajo+1+copia+3+1-2.jpg" alt="Mesa de trbajo")
-	.seccionCuna
-		mixin tituloMesaCiudadana
-			h1 Mesas ciudadanas
-			h2  x Boric
-		.curva
-		.cuna
-			.noMovil
-				+tituloMesaCiudadana
-			p Te invitamos a aportar con tus ideas, opiniones y anhelos a un programa de Gobierno diverso, descentralizado y abierto de cara a la ciudadanía.
-			p Súmate a una mesa ciudadana o contesta una consulta.
-			a(href='https://participa.boricpresidente.cl/' target="_blank").btnparticipa Participa Aquí
-			img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/IMG_20210715_144542_145+(1)+1+(1).png" alt="Diversidad").imgSaludo
-	.seccionParticipa
-		.curva
+			img.noMovil(src="/imagenes/portada.jpg" alt="Súmate a cambiar Chile")
+			img.noCompu(src="/imagenes/portadaMovil.jpg" alt="Súmate a cambiar Chile")
+
+
+	section.seccionCuna
+		.curva.curvaSuperior
+
+		.noCompu.sobreCurva
+			.contenido
+				div Aporta con tus ideas y anhelos a un programa de Gobierno descentralizado y abierto de cara a la ciudadanía.
+				b Súmate a una mesa ciudadana o contesta una consulta.
+		.noMovil.sobreCurva
+			.contenido
+				h1 ¡Mesas ciudadanas
+				h2 x Boric!
+				div Te invitamos a aportar con tus ideas, opiniones y anhelos a un programa de Gobierno diverso, descentralizado y abierto de cara a la ciudadanía. #[b Súmate a una mesa ciudadana o contesta una consulta, y sé parte de un proyecto transformador que construimos juntas y juntos.]
+
+
+		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank") Participa Aquí
+
+		img.noMovil(src="/imagenes/diversidad.png" alt="Diversidad").imgSaludo
+		img.noCompu(src="/imagenes/diversidadMovil.png" alt="Diversidad").imgSaludo
+
+
+
+	section.seccionParticipa
+		.curva.curvaSuperior
 		.contenido
-			.textoseccion
-				h2.titulo #[span.primero Inscríbete]
-					div Únete a la campaña
+			.lado
+				h2.titulo #[span.primero ¡Inscríbete]
+					div Únete a la campaña!
 				.texto
 					p Las transformaciones que Chile necesita las hacemos entre todas y todos.
 					P Déjanos tu mail y recibirás más información sobre la campaña
 
-			.suscribirse
-				participaant
-		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/recursos/image+1.png" alt="Participa")
-	.seccionArmaTuCampana
+			.lado
+				.suscribirse
+					participaant
+		img.noMovil(src="/imagenes/participa.png" alt="Participa")
+		img.noCompu(src="/imagenes/participaMovil.png" alt="Participa")
+
+
+	section.seccionArmaTuCampana
+		.curva.curvaSuperior
+
 		mixin linkDescarga
 			.kitGrafico
-				h4 Descarga tu
-				a(href="https://drive.google.com/drive/folders/1fqjrBTIYRgQWJ-caAgD4U8xGK9sWgCBj" target="_blank").descargaKit KIT GRÁFICO AQUÍ
-		.contenido
-			.texto
-				h2 Arma tu
-				h3 Campaña
-				p Descarga nuestro kit y crea tus propios insumos de campaña. ¡De ti depende!
-				.noMovil
-					+linkDescarga
-			.cajaHerramienta
-				img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/caja_herramientas_transparente_1_c066b0a32e.svg" alt="Herramientas")
-				.circulo
-			.noCompu
-				+linkDescarga
-	section.seccionaporta
-		mixin linkServel
-			.linkservel
-				a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" target="_blank") QUIERO APORTAR
-				p Ver Instrucciones para donar
+				.texto Descarga tu
+				a(href="https://drive.google.com/drive/folders/1fqjrBTIYRgQWJ-caAgD4U8xGK9sWgCBj" target="_blank").boton KIT GRÁFICO AQUÍ
 
 		.contenido
-			.bloque.texto
+			.lado
+				h2 ¡Arma tu
+				h3 Campaña!
+				p Descarga nuestro kit y crea tus propios insumos de campaña. #[br]¡De ti depende!
+				.noMovil
+					+linkDescarga
+
+
+			.lado.ladoImagen
+				.cajaHerramienta
+					img(src="/imagenes/cajaHerramientas.png" alt="Herramientas")
+					.circulo
+
+		.noCompu
+			+linkDescarga
+
+
+	section.seccionaporta
+
+		mixin linkServel
+			.linkservel
+				a.boton(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" target="_blank") QUIERO APORTAR
+				n-link.instrucciones(to="/donar") Ver Instrucciones para donar
+
+		.curva.curvaSuperior
+
+		.contenido
+			.bloque.lado
 				h2 Súmate
 				h3 y Aporta
 				p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia
 				.noMovil
 					+linkServel
-			.bloque.chanchito
-				img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/chanchito_pomaire_1_01e5c4d5b1.svg" alt="Chanchito de Pomaire")
-				.circulo
+			.lado.ladoImagen
+				.bloque.chanchito
+					img(src="/imagenes/chanchitoPomaire.png" alt="Chanchito de Pomaire")
+					.circulo
 			.bloque.noCompu
-					+linkServel
+				+linkServel
 
 	section.propuestas
-		wave.wave
-		img(src="https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/combi_foto_1_5762a7cd72.svg" alt="Combi").combi
-		.curva
+		.ondaonda
+			wave.wave
+		.curva.curvaSuperior
+
+		img(src="/imagenes/combiVerde.png" alt="Combi").combi
+		.curva.curvaSuperior
 		.contenido
 			.textoseccion
 				h2.titulo Propuesta
@@ -117,19 +150,52 @@ export default {
 @import '~/estilos/paleta'
 
 section
-	background-color: rgba(0,0,0,.05)
-	min-height: 10em
-	padding: 2em
-	&:nth-child(even)
-		background-color: rgba(0,0,0,.1)
+	position: relative
+	.contenido
+		width: 100%
+		max-width: 100%
+		padding-left: 1em
+		padding-right: 1em
+		+compu
+			padding-top: 2em
+			padding-left: 4em
+			padding-right: 4em
+	.curvaSuperior
+		display: flex
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		width: 100vw
+		background-color: black
+		justify-content: center
+		clip-path: ellipse(65% 100% at 50% 100%)
+
+		height: 3em
+		margin-top: -1.2em
+		+compu
+			height: 5em
+			margin-top: -2em
+		z-index: 1
+		+ *,
+		~ .sobreCurva
+			position: relative
+			z-index: 2
+
+	.ladoImagen
+		display: flex
+		justify-content: center
+		align-items: center
 
 .storytelling
 	display: flex
 	justify-content: center
 	max-height: calc(100vh - 5em)
+	img
+		max-width: 100%
+		//max-height: 50vh
 	+compu
-		margin-top: -20px
-		background-image: url(https://s3.amazonaws.com/cdn.boricpresidente.cl/archivos/small_gabriel_boric_foto_header_Mesa_de_trabajo_1_copia_3_1_1_10b2b4f538.png)
+		background-image: url('/imagenes/portada.jpg')
 		background-size: cover
 		background-repeat: no-repeat
 		.filtroBlur
@@ -138,48 +204,37 @@ section
 			height: 100%
 			backdrop-filter: blur(8px)
 			justify-content: center
-	img
-		max-width: 170vw
-		// max-height: 130vh
-		margin-left: 25vw
-		+compu
+		img
 			margin: 0 0 -2.5em 0
 			max-width: 100vw
 
 .seccionCuna
 	position: relative
 	background-color: $verde1
-	width: 100vw
 	min-height: 10em
-	// padding: 2em
 	display: flex
+	flex-flow: column nowrap
 	justify-content: center
 	background-color: $verde1
+	color: white
+	text-align: center
 	.curva
-		display: flex
-		position: absolute
-		top: 0
-		left: 0
-		right: 0
-		width: 100vw
-		height: 5em
 		background-color: $verde1
-		justify-content: center
-		clip-path: ellipse(65% 100% at 50% 100%)
-		+movil
+		//+movil
 			height: 3em
 			margin-top: -1.2em
-		+compu
+		//+compu
 			margin-top: -2em
-	.cuna
-		margin-top: 1.5em
-		display: flex
-		flex-flow: column
-		width: 95vw
-		text-align: center
-		align-items: center
-		background-color: $verde1
-		z-index: 2
+
+	.contenido
+		padding: 0 1em
+		line-height: 1.3
+		width: 400px
+		max-width: 100%
+		margin: 0 auto
+
+		h1, h2
+			font-style: italic
 		h1
 			font-size: 2.5em
 			font-weight: 900
@@ -191,393 +246,287 @@ section
 			font-weight: 900
 			margin-top: -.7em
 
-		p
-			color: $blanco
-			font-size: 1rem
-			padding: 0 .5em
-			&:nth-child(1)
-				padding-top: 2em
-				font-weight: 200
-			&:nth-child(2)
-				font-weight: 700
-			+compu
-				font-size: 1em
-				max-width: 600px
-				padding: 0 3em
-		.btnparticipa
-			cursor: pointer
-			text-transform: uppercase
-			background-color: $verde3
-			padding: .5em 1.3em
-			border-radius: 4px
-			margin: 1em 0 2.5em 0
+	.btnparticipa
+		display: block
+		margin: 0 auto
+		cursor: pointer
+		text-transform: uppercase
+		background-color: $verde3
+		color: $verde1
+		padding: .5em 1.3em
+		border-radius: 4px
+		margin-top: .5em
+	.imgSaludo
+		width: 100vw
+		z-index: 0
+		margin-top: -9vw
+
+	+compu
+		.contenido
+			width: 600px
 		.imgSaludo
-			margin-top: -15%
-			width: 100vw
-			z-index: 0
+			margin-top: -6vw
+
+
 
 .seccionParticipa
 	position: relative
 	background-color: $verde2
-	min-height: 10em
-	padding: 5em 0
-	justify-content: center
+	color: white
 	.curva
-		display: flex
-		position: absolute
-		top: 0
-		left: 0
-		right: 0
-		width: 100vw
-		height: 5em
 		background-color: $verde2
-		justify-content: center
-		clip-path: ellipse(65% 100% at 50% 100%)
-		z-index: 2
 	.contenido
 		position: relative
 		z-index: 3
-		display: flex
-		flex-flow: column nowrap
-		align-items: center
-		margin-top: -6em
-		.textoseccion
-			margin-top: -1em
-			display: flex
-			flex-wrap: wrap
-			z-index: 5
-			color: #fff
-			justify-content: center
-			width: 400px
+		text-align: center
+		.titulo
 			max-width: 100%
-			.titulo
-				max-width: 100%
-				line-height: 1.2
-				font-size: 2rem
-				color: #fff
-				font-weight: 900
-				.primero
-					font-size: 3rem
-					font-weight: 400
-					font-style: italic
-					color: $verde3
-
-			.texto
+			line-height: 1.2
+			font-size: 2rem
+			color: #fff
+			font-weight: 900
+			.primero
+				font-size: 2.8rem
+				font-weight: 400
 				font-style: italic
-				padding: 1em 0 0 0
-				font-size: 1.2rem
+				color: $verde3
+
+		.texto
+			font-style: italic
+			font-size: 1.2rem
 		.suscribirse
 			padding: 0 .5em
 			display: flex
 			justify-content: center
 	img
-		width: 100vw
+		width: 100%
 
-
-	+movil
-		.curva
-			height: 2em
-			margin-top: -1em
-		.contenido
-			.textoseccion
-				margin: 2em 0
-				text-align: center
-				.texto
-					width: 450px
-					max-width: 100%
 	+compu
-		.curva
-			margin-top: -2em
 		.contenido
-			padding: 2em 6em 0 6em
+			display: flex
 			flex-flow: row nowrap
+			text-align: left
 			justify-content: space-around
-			.textoseccion,
-			.suscribirse
-				flex: 400px 0 1
-			.suscribirse
-				margin-left: 1em
-			.textoseccion
-				justify-content: center
-				align-content: center
-				flex-flow: column
-				.titulo
-					text-align: left
+			.lado
+				flex: 350px 0 1
 
-					h2
-						padding: 0 .5em
-					h3
-						padding: 0 .7em
-				.texto
-					width: 400px
-					max-width: 100%
+
 
 .seccionArmaTuCampana
 	background-color: $petroleo2
-	min-height: 10em
-	align-items: center
-	position: relative
 	display: flex
 	flex-flow: column
+	align-items: center
+	position: relative
 	justify-content: center
-	margin-top: -2em
 	padding-bottom: 3em
-	&::before
-		content: ''
-		display: block
-		position: absolute
-		height: auto
-		top: -4.5em
-		left: 0
-		right: 0
-		bottom: 100%
-		clip-path: ellipse(85% 100% at 50% 100%)
+	.curva
 		background-color: $petroleo2
-		+compu
-			clip-path: ellipse(70% 100% at 50% 100%)
-			top: 0
-			margin-top: -6em
 	.contenido
 		text-align: center
-		// padding-bottom: 1em
-		margin-top: -2.5em
-		z-index: 5
+
 		.texto
 			display: flex
 			flex-flow: column
-			width: 320px
-			max-width: 100%
-			padding: 0 1em
-			h2,
-			h3
-				font-size: 2.5rem
-				line-height: .7em
-			h2
-				color: $verde3
-				font-style: italic
-			h3
-				font-weight: 900
-				color: #fff
-			p
-				color: #fff
-				font-style: italic
-				font-size: 1rem
-				padding: 0 .5em
-		.cajaHerramienta
-			img
-				position: relative
-				width: 200px
-				z-index: 5
-				padding: 1em 0 1em 0
+			// padding: 0 1em
+		h2,
+		h3
+			font-size: 2.5rem
+			line-height: .7em
+		h2
+			color: $verde3
+			font-style: italic
+		h3
+			font-weight: 900
+			color: #fff
+		p
+			color: #fff
+			font-style: italic
+			font-size: 1rem
+			// padding: 0 .5em
+
+	.cajaHerramienta
+		$lado: 11em
+		width: $lado
+		height: $lado
+		position: relative
+		img
+			position: relative
+			height: 100%
+			z-index: 1
+			padding: 1em 0 1em 0
+		.circulo
+			position: absolute
+			top: 50%
+			left: 50%
+			right: 0
+			bottom: 0
+			width: $lado
+			height: $lado
+			background: $petroleo3
+			border-radius: 50%
+			transform: translate(-25%, -50%) scale(.9)
+		+compu
+			$lado: 18em
+			width: $lado
+			height: $lado
 			.circulo
-				position: absolute
-				left: 43%
-				right: 0
-				bottom: 0
-				top: 8em
-				width: 9em
-				height: 9em
-				background: $petroleo3
-				border-radius: 50%
+				width: $lado
+				height: $lado
+			.circulo
+				transform: translate(-30%, -50%) scale(.9)
+
 	.kitGrafico
 		display: flex
 		flex-flow: column
 		align-items: center
-		padding: 0
-		h4
+		text-align: center
+		color: $azul2
+		font-weight: 700
+		.texto
+			font-size: 1.2em
 			font-style: italic
-			color: $azul2
-			font-weight: 700
-		.descargaKit
-			display: flex
-			flex-flow: column nowrap
+		.boton
 			background-color: $verde3
-			border-radius: 2px
-			padding: .4em
-			width: 320px
-			max-width: 90%
-			height: 2em
-			font-weight: 900
 			color: $azul2
-			background-color: $verde3
+			&:visited
+				color: $azul2
 	+compu
 		.contenido
 			display: flex
-			flex-flow: row-reverse
+			flex-flow: row nowrap
 			justify-content: space-around
-			width: 100vw
-			align-items: center
-			max-width: 100%
-			height: 450px
-			margin: -6em 0 -3.5em 0
-			.texto
-				h2,
-				h3,
-				p
-					text-align: left
-			.cajaHerramienta
-				display: flex
-				align-items: center
-				img
-					width: 300px
-				.circulo
-					width: 250px
-					height: 250px
-					right: 0
-					top: -1em
-					bottom: 0
-					left: 20%
-		.kitGrafico
-				height: 7em
-
-
-
+			text-align: left
+			padding-top: 2em
+			.lado
+				flex: 250px 0 1
+				&.ladoImagen
+					order: -1
+			.kitGrafico
+				display: block
+				text-align: left
 
 
 
 section.seccionaporta
 	background-color: $azul2
 	position: relative
-	&::before
-		content: ''
-		display: block
-		position: absolute
-		height: auto
-		top: -1.5em
-		left: 0
-		right: 0
-		bottom: 100%
-		clip-path: ellipse(60% 100% at 50% 100%)
+	.curva
 		background-color: $azul2
-		+compu
-			clip-path: ellipse(55% 100% at 50% 100%)
-			top: -3em
+
 	.linkservel
 		display: flex
 		flex-flow: column nowrap
 		align-items: center
 		justify-content: center
 		padding: 1em 0
-
-		a
-			display: flex
-			justify-content: center
-			border-radius: 2px
-			align-items: center
-			width: 320px
-			max-width: 100%
-			height: 2em
-			font-weight: 900
+		.boton
 			color: $azul2
 			background-color: $verde3
-		p
+		.instrucciones
 			color: $verde3
-			font-size: .8em
 			font-style: italic
-			padding-top: .7em
+			padding: .5em 0
+		+compu
+			align-items: unset
+			justify-content: unset
+			.boton
+				margin: 0 auto 0 0
+
 	.contenido
 		display: flex
 		flex-flow: column nowrap
 		justify-content: center
 		align-items: center
 		text-align: center
-		padding-bottom: 4em
-		margin-top: -1em
-		.bloque
-			width: 400px
-			max-width: 100%
-		.bloque.texto
-			h2,
-			h3
-				font-size: 2.5rem
-			p
-				font-size: 1rem
-				font-style: italic
-		+compu
-			text-align: left
-			flex-flow: row nowrap
-			justify-content: space-around
-			.bloque + .bloque
-				margin-left: 4em
-			.bloque
-				flex: 400px 0 1
-			.linkservel
-				align-items: start
-		.texto
-			h2,
-			h3
-				font-size: 3rem
-				line-height: 1.4rem
-				font-style: italic
-			h2
-				color: $verde3
-			h3
-				font-weight: 900
-				color: #fff
-			p
-				padding: 1em 0
-				font-size: 1rem
-				color: #fff
-				font-style: italic
+		padding-bottom: 6em
+		h2,
+		h3
+			font-size: 2.5rem
+			margin: 0
+			line-height: 1
+			font-style: italic
+		h2
+			color: $verde3
+		h3
+			font-weight: 900
+			color: #fff
+		p
+			margin: 1em 0
+			font-style: italic
+
 		.chanchito
+			$lado: 11em
+			width: $lado
+			height: $lado
+			position: relative
 			img
 				position: relative
-				width: 8em
+				height: 100%
 				z-index: 5
-				+compu
-					width: 200px
 			.circulo
 				position: absolute
-				// left: 0
-				right: 35%
-				bottom: 14em
-				width: 9em
-				height: 9em
+				top: 50%
+				left: 50%
+				width: $lado
+				height: $lado
 				background: rgba(38, 140, 175, 1)
 				border-radius: 50%
-				+compu
-					right: 30%
-					bottom: 13em
-					width: 200px
-					height: 200px
+				transform: translate(-63%, -63%) scale(.8)
+			+compu
+				$lado: 16em
+				width: $lado
+				height: $lado
+				img
+					transform: scaleX(-1)
+				.circulo
+					width: $lado
+					height: $lado
+					transform: translate(-65%, -65%) scale(.8)
+
+	+compu
+		.contenido
+			display: flex
+			flex-flow: row nowrap
+			text-align: left
+			justify-content: space-around
+			padding-bottom: 14em
+			.lado
+				flex: 350px 0 1
 
 section.propuestas
 	position: relative
-	padding: 0
 	background-color: rgba(249, 58, 121, 1)
-	padding-bottom: 6em
-	.wave
-		display: flex
+	padding-bottom: 4em
+	.curva
+		background-color: rgba(249, 58, 121, 1)
+	.ondaonda
 		position: absolute
-		width: 100vw
-		// height: 5em
-		right: 0
-		left: 0
-		bottom: 0
-		top: -8em
+		background-color: #268CAF
+		width: 100%
+		height: 0
+		bottom: 100%
+		.wave
+			display: flex
+			position: absolute
+			width: 100vw
+			right: 0
+			left: 0
+			bottom: 100%
+		+compu
+			height: 6em
 
 	.combi
 		position: absolute
-		width: 200px
+		width: 11em
 		z-index: 6
-		top: -8em
-		right: 30vw
+		top: 0
+		left: 50%
+		transform: translate(-50%, -80%)
 		bottom: 0
 		+compu
-			top: -10em
-			right: 45vw
-			width: 300px
-	.curva
-		display: flex
-		position: absolute
-		top: -2.5em
-		left: 0
-		right: 0
-		width: 100vw
-		height: 3em
-		background-color: rgba(249, 58, 121, 1)
-		justify-content: center
-		clip-path: ellipse(60% 100% at 50% 100%)
+			width: 22em
+
 	.contenido
 		display: flex row nowrap
 		text-align: center
@@ -586,8 +535,10 @@ section.propuestas
 		max-width: 100%
 		heigth: 10em
 		background-color: rgba(249, 58, 121, 1)
-		padding: 1em 1em
-		margin-bottom: -3em
+		+movil
+			padding-top: 1em
+		+compu
+			padding-bottom: 1em
 		.textoseccion
 			h2,
 			h3
@@ -600,7 +551,6 @@ section.propuestas
 				font-weight: 400
 				color: #fff
 			p
-				// padding: 1.5em 0
 				color: #fff
 				font-style: italic
 				font-size: 1rem
@@ -623,7 +573,10 @@ section.propuestas
 				font-weight: 900
 				color: $azul2
 				background-color: $verde3
-
+	+compu
+		.contenido
+			width: 400px
+			margin: 0 auto
 </style>
 
 

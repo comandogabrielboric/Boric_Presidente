@@ -5,13 +5,12 @@
 		.logo
 			.trasLogo
 				.iconoAprueboDignidad
-		.logo.trasero
 
 	mixin links
 		.links.contenedor-links.link-interno
-			a.link(href='https://participa.boricpresidente.cl/' target="_blank") participa Aquí!
-			nuxt-link.link(to='/aporta') aporta
-			nuxt-link.link(to='/propuestas') Propuestas
+			a.link.bold(href='https://participa.boricpresidente.cl/' target="_blank") participa Aquí!
+			nuxt-link.link.bold(to='/aporta') aporta
+			nuxt-link.link.bold(to='/propuestas') Propuestas
 
 	.menuCompu
 		+links
@@ -58,25 +57,17 @@ $alturaMenu: 5em
 	align-items: center
 	justify-content: space-between
 	color: $colorHeader
+	background-color: $fondoHeader
 	height: $alturaMenu
+	box-shadow: 0 -3em 0 $fondoHeader
+
 	padding: 0 2em
 	+movil
 		padding: 0 1em
-	&::before
-		content: ''
-		display: block
-		position: absolute
-		top: 0
-		left: 0
-		right: 0
-		bottom: 0
-		background-color: transparentize($fondoHeader, 0)
-		backdrop-filter: blur(.5em)
 
 	.zonaLogo
 		position: relative
 		flex: auto 0 0
-		// filter: drop-shadow(0 1px 1px transparentize(white, .5)) drop-shadow(0 -.5em .5em transparentize(white, .35)) drop-shadow(0 1em .5em transparentize(black, .65))
 		.logo
 			background-color: currentColor
 			mask-image: url('/logos/logo.svg')
@@ -88,14 +79,6 @@ $alturaMenu: 5em
 			font-size: 8em
 			+movil
 				font-size: 6em
-			&.trasero
-				position: absolute
-				top: -1px
-				left: -1px
-				right: -1px
-				bottom: -1px
-				z-index: -1
-				background-color: #fff
 
 			.trasLogo
 				height: 100%
@@ -137,6 +120,8 @@ $alturaMenu: 5em
 			text-transform: uppercase
 			margin: 0 .3em
 			padding: 0 .7em
+			&.nuxt-link-active
+				color: $colorPrincipalC3
 
 	.menuCompu
 		flex: auto 1 1
