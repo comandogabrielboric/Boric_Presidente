@@ -1,38 +1,62 @@
 <template lang="pug">
 .root
-	h1 Proto
+	.chanchito(@mouseover="animar" :class="{animando}")
+		img(src="/imagenes/chanchitoPomaire.png" alt="Chanchito de Pomaire")
+		.circulo
 </template>
 <script>
-export default {}
+export default {
+	data () {
+		return {
+			animando: null
+		}
+	},
+	methods: {
+		animar () {
+			if (this.animando) return
+			this.animando = true
+			setTimeout(() => {
+				this.animando = false
+			}, 1000)
+		}
+	}
+}
 </script>
 <style lang="sass" scoped>
+@import '~/estilos/utils'
+@import '~/estilos/animaciones'
+.chanchito
+	$lado: 11em
+	width: $lado
+	height: $lado
+	position: relative
+	&.animando
+		img
+			animation: jalea 1s 1
 
-@keyframes jello-horizontal
-	0%
-		-webkit-transform: scale3d(1, 1, 1)
-		transform: scale3d(1, 1, 1)
+	img
+		position: relative
+		height: 100%
+		z-index: 5
 
-	30%
-		-webkit-transform: scale3d(1.25, 0.75, 1)
-		transform: scale3d(1.25, 0.75, 1)
-
-	40%
-		-webkit-transform: scale3d(0.75, 1.25, 1)
-		transform: scale3d(0.75, 1.25, 1)
-
-	50%
-		-webkit-transform: scale3d(1.15, 0.85, 1)
-		transform: scale3d(1.15, 0.85, 1)
-
-	65%
-		-webkit-transform: scale3d(0.95, 1.05, 1)
-		transform: scale3d(0.95, 1.05, 1)
-
-	75%
-		-webkit-transform: scale3d(1.05, 0.95, 1)
-		transform: scale3d(1.05, 0.95, 1)
-
-	100%
-		-webkit-transform: scale3d(1, 1, 1)
-		transform: scale3d(1, 1, 1)
+	.circulo
+		position: absolute
+		top: 50%
+		left: 50%
+		width: $lado
+		height: $lado
+		background: rgba(38, 140, 175, 1)
+		border-radius: 50%
+		transform: translate(-63%, -63%) scale(.8)
+	+compu
+		$lado: 16em
+		width: $lado
+		height: $lado
+		transform: scaleX(-1)
+		//img
+			transform: scaleX(-1)
+		.circulo
+			width: $lado
+			height: $lado
+			transform: translate(-65%, -65%) scale(.8)
 </style>

@@ -81,17 +81,18 @@
 		.curva.curvaSuperior
 
 		.contenido
-			.bloque.lado
+			.lado
 				h2 Súmate
 				h3 y Aporta
 				p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia
 				.noMovil
 					+linkServel
 			.lado.ladoImagen
-				.bloque.chanchito
+				Chanchito
+				//.chanchito
 					img(src="/imagenes/chanchitoPomaire.png" alt="Chanchito de Pomaire")
 					.circulo
-			.bloque.noCompu
+			.noCompu
 				+linkServel
 
 	section.propuestas
@@ -148,6 +149,7 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
+@import '~/estilos/animaciones'
 
 section
 	position: relative
@@ -455,35 +457,6 @@ section.seccionaporta
 			margin: 1em 0
 			font-style: italic
 
-		.chanchito
-			$lado: 11em
-			width: $lado
-			height: $lado
-			position: relative
-			img
-				position: relative
-				height: 100%
-				z-index: 5
-			.circulo
-				position: absolute
-				top: 50%
-				left: 50%
-				width: $lado
-				height: $lado
-				background: rgba(38, 140, 175, 1)
-				border-radius: 50%
-				transform: translate(-63%, -63%) scale(.8)
-			+compu
-				$lado: 16em
-				width: $lado
-				height: $lado
-				img
-					transform: scaleX(-1)
-				.circulo
-					width: $lado
-					height: $lado
-					transform: translate(-65%, -65%) scale(.8)
-
 	+compu
 		.contenido
 			display: flex
@@ -526,6 +499,8 @@ section.propuestas
 		left: 50%
 		transform: translate(-50%, -80%)
 		bottom: 0
+		&:hover
+			animation: vibrar 1s 1
 		+compu
 			width: 22em
 
