@@ -395,7 +395,8 @@ section
 					order: -1
 			.kitGrafico
 				display: block
-				text-align: left
+				.texto
+					text-align: left
 
 
 
