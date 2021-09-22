@@ -7,19 +7,9 @@
 </template>
 
 <style lang="sass">
-@import '~/estilos/iconos'
 @import '~/estilos/colores'
 @import '~/estilos/paleta'
 
-*
-	margin: 0
-	padding: 0
-	font-family: "lexia", "Roboto Slab"
-
-body
-	min-height: 100vh
-	color: $colorBody
-	background-color: $fondoBody
 
 .main
 	min-height: 100vh
