@@ -440,7 +440,6 @@ section.seccionaporta
 		align-items: center
 		text-align: center
 		padding-bottom: 6em
-		.bloque
 		h2,
 		h3
 			font-size: 2.5rem

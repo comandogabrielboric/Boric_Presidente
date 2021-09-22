@@ -3,6 +3,7 @@ import webpack from 'webpack'
 import antdVars from './antdvVars'
 
 const dev = process.env.MODO === 'dev'
+const remoto = !!process.env.REMOTO
 
 const titulo = 'Boric Presidente'
 const descripcion = 'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
@@ -14,8 +15,8 @@ function titleTemplate (tituloLocal) {
 
 export default {
 	env: {
-		cmsURL: dev ? 'http://localhost:1337' : 'https://gbcms.crishadad.cl',
-		apiURL: dev ? 'http://localhost:3001' : 'https://bpapi.crishadad.cl'
+		cmsURL: (dev && !remoto) ? 'http://localhost:1337' : 'https://gbcms.crishadad.cl',
+		apiURL: (dev && !remoto) ? 'http://localhost:3001' : 'https://bpapi.crishadad.cl'
 	},
 	// Target: https://go.nuxtjs.dev/config-target
 	target: 'static',
