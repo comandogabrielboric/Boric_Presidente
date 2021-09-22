@@ -1,13 +1,13 @@
 <template lang="pug">
 .rootParticipa
 	a-form-model(ref='ruleForm' :model='ruleForm' :rules='rules').suscribirse
-		a-form-model-item(label="nombre" has-feedback='' prop='nombre')
+		a-form-model-item(has-feedback='' prop='nombre')
 			a-input(v-model='ruleForm.nombre' type='nombre' placeholder="Nombre").input
 		a-form-model-item(has-feedback='' prop='email')
 			a-input(v-model='ruleForm.email' type='email' placeholder='Email').input
 		a-form-model-item(has-feedback='' prop='telefono')
 			a-input(v-model='ruleForm.telefono' type='tel' placeholder='+56 x xxxx xxxx').input
-		a-form-model-item( has-feedback='' prop='region')
+		a-form-model-item(has-feedback='' prop='region')
 			a-select(v-model="ruleForm.region" type='region' @change="handleChange" placeholder='Region').input
 				a-select-option(v-for="region in regiones" :key="region.lavel" :value="region.label") {{ region.label }}
 		a-form-model-item(v-if="regionseleccionada !== null" has-feedback='' prop='comuna')
@@ -175,6 +175,9 @@ export default {
 		border-radius: 2px
 		&::placeholder
 			font-size: .9em
+	.ant-form-item
+		.ant-form-item-label
+			color: $verde3
 
 .suscribirme
 	// position: stycky
