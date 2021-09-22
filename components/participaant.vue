@@ -148,7 +148,6 @@ export default {
 			console.log('suscrito', this.visible)
 		},
 		showModal () {
-			console.log('terminos')
 			this.tyc = true
 		},
 		handleOk (e) {
