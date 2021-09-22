@@ -44,7 +44,7 @@
 		a.descargable(v-if="programaArchivo" :href='programaArchivo.url' target="_blank" download :name="programaArchivo.name" :title="programaArchivo.name")
 			.dentro
 				.oicono.descargar
-				.texto Descargar programa completo
+				.texto Descarga nuestro programa (en construcción)
 
 
 </template>

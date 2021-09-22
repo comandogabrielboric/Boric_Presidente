@@ -51,7 +51,7 @@
 		mixin linkDescarga
 			.kitGrafico
 				.texto Descarga tu
-				a(href="https://drive.google.com/drive/folders/1fqjrBTIYRgQWJ-caAgD4U8xGK9sWgCBj" target="_blank").boton KIT GRÁFICO AQUÍ
+				a(href="https://drive.google.com/drive/folders/1vwqqSnxHIyv9wI617h8pUers1OudaBo0" target="_blank").boton KIT GRÁFICO AQUÍ
 
 		.contenido
 			.lado
@@ -256,6 +256,7 @@ section
 		padding: .5em 1.3em
 		border-radius: 4px
 		margin-top: .5em
+		z-index: 5
 	.imgSaludo
 		width: 100vw
 		z-index: 0
