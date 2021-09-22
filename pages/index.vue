@@ -84,7 +84,7 @@
 			.lado
 				h2 Súmate
 				h3 y Aporta
-				p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia
+				p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia.
 				.noMovil
 					+linkServel
 			.lado.ladoImagen
@@ -118,29 +118,18 @@ export default {
 	components: { mostradorprop, wave },
 
 	head () {
-		if (!this.seo) return {}
-		const titulo = this.seo.titulo_pag
-		const descripcion = this.seo.descripcion_pag
+		const titulo = 'Boric Presidente'
+		const descripcion = 'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
 		const imagen = '/imagenes/portadaMovil.webp'
-		const obj = {
-			title: titulo,
-			description: descripcion,
-			meta: [
-				{ hid: 'iprop:name', itemprop: 'name', content: titulo },
-				{ hid: 'iprop:description', itemprop: 'description', content: descripcion },
-				{ hid: 'iprop:image', itemprop: 'image', content: imagen },
-				{ hid: 'og:title', property: 'og:title', content: titulo },
-				{ hid: 'og:type', property: 'og:type', content: 'website' },
-				{ hid: 'og:url', property: 'og:type', content: 'http://boricpresidente.cl' },
-				{ hid: 'og:description', property: 'og:description', content: descripcion },
-				{ hid: 'og:image', property: 'og:image', content: imagen },
-				{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
-				{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
-				{ hid: 'twitter:image', property: 'twitter:image', content: imagen }
-			]
-
-		}
-		return obj
+		const url = 'https://boricpresidente.cl'
+		const meta = this.$eo({
+			titulo,
+			descripcion,
+			imagen,
+			url
+		})
+		meta.titleTemplate = '%s'
+		return meta
 	}
 }
 </script>

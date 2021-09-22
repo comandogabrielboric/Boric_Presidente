@@ -86,27 +86,17 @@ export default {
 		this.programaArchivo = _.get(respuesta, ['Archivo_programa'])
 	},
 	head () {
-		if (!this.seo) return {}
-		const titulo = this.seo.titulo_pag
-		const descripcion = this.seo.descripcion_pag
-		const obj = {
-			title: titulo,
-			description: descripcion,
-			meta: [
-				{ hid: 'iprop:name', itemprop: 'name', content: titulo },
-				{ hid: 'iprop:description', itemprop: 'description', content: descripcion },
-				{ hid: 'iprop:image', itemprop: 'image', content: '/imagenes/portada.jpg' },
-				{ hid: 'og:title', property: 'og:title', content: titulo },
-				{ hid: 'og:type', property: 'og:type', content: 'article' },
-				{ hid: 'og:url', property: 'og:type', content: 'http://boricpresidente.cl' },
-				{ hid: 'og:description', property: 'og:description', content: descripcion },
-				{ hid: 'og:image', property: 'og:image', content: '/imagenes/portada.jpg' },
-				{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
-				{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
-				{ hid: 'twitter:image', property: 'twitter:image', content: '/imagenes/portada.jpg' }
-			]
-
-		}
+		// if (!this.seo) return {}
+		const titulo = this._.get(this.seo, ['titulo_pag'], 'Propuesta Programática')
+		const descripcion = this._.get(this.seo, ['descripcion_pag'], 'Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera. ¿Quieres conocer parte de nuestras propuestas?')
+		const imagen = '/imagenes/portadaMovil.web'
+		const url = 'https://boricpresidente.cl/propuestas'
+		const obj = this.$eo({
+			titulo,
+			descripcion,
+			imagen,
+			url
+		})
 		return obj
 	},
 
