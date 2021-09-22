@@ -1,6 +1,6 @@
-import path from 'path'
-import webpack from 'webpack'
-import antdVars from './antdvVars'
+// import path from 'path'
+// import webpack from 'webpack'
+// import antdVars from './antdvVars'
 
 const dev = process.env.MODO === 'dev'
 const remoto = !!process.env.REMOTO
@@ -65,7 +65,7 @@ export default {
 
 	// Global CSS: https://go.nuxtjs.dev/config-css
 	css: [
-		{ src: 'ant-design-vue/dist/antd.less', lang: 'less' },
+		'ant-design-vue/dist/antd.css',
 		'~/estilos/base.sass'
 	],
 
@@ -82,7 +82,6 @@ export default {
 
 	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
 	buildModules: [
-		// https://go.nuxtjs.dev/eslint
 		'@nuxtjs/eslint-module',
 		'@nuxtjs/svg'
 	],
@@ -94,26 +93,6 @@ export default {
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {
-		babel: {
-			plugins: [
-				['import', { libraryName: 'ant-design-vue', libraryDirectory: 'es', style: true }]
-			]
-		},
-		loaders: {
-			less: {
-				lessOptions: {
-					modifyVars: antdVars,
-					javascriptEnabled: true
-				}
-			}
-		},
-		plugins: [
-			new webpack.IgnorePlugin({
-				resourceRegExp: /^\.\/locale$/,
-				contextRegExp: /moment$/
-			}),
-			new webpack.NormalModuleReplacementPlugin(/node_modules\/ant-design-vue\/lib\/style\/index\.less/, path.join(__dirname, 'estilos/ant.less'))
-		],
 		postcss: {
 			plugins: {
 				'postcss-discard-comments': { comments: { removeAll: true } },
