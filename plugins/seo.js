@@ -1,6 +1,3 @@
-import _ from 'lodash'
-
-
 function seo ({ titulo, descripcion, url, imagen }) {
 	const meta = {
 		title: titulo,

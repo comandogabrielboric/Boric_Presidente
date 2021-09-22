@@ -97,6 +97,8 @@ export default {
 			imagen,
 			url
 		})
+		obj.link = obj.link || []
+		obj.link.push({ hid: 'quill', rel: 'stylesheet', href: 'https://cdn.quilljs.com/1.0.0/quill.snow.css' })
 		return obj
 	},
 
