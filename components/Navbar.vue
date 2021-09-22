@@ -8,7 +8,7 @@
 
 	mixin links
 		.links.contenedor-links.link-interno
-			a.link.bold(href='https://participa.boricpresidente.cl/' target="_blank") participa Aquí!
+			a.link.bold(href='https://participa.boricpresidente.cl/' target="_blank") participa Aquí
 			nuxt-link.link.bold(to='/aporta') aporta
 			nuxt-link.link.bold(to='/propuestas') Propuestas
 
@@ -153,8 +153,8 @@ $alturaMenu: 5em
 		flex-flow: column nowrap
 		justify-content: center
 
-		color: $colorMenu
-		background-color: transparentize($fondoMenu, .5)
+		color: $verde3
+		background-color: transparentize($azul1, .3)
 		backdrop-filter: blur(.5em)
 
 		@media screen and (min-width: 760px)
