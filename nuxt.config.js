@@ -58,8 +58,8 @@ const config = {
 			{ hid: 'canonical', rel: 'canonical', href: url	},
 
 			{ hid: 'icon', rel: 'icon', href: '/favicon.svg' },
-			{ hid: 'mask-icon', rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' },
-			{ hid: 'gfonts', rel: 'stylesheet', href: 'https://use.typekit.net/jem8rnn.css' }
+			{ hid: 'mask-icon', rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' }
+			// { hid: 'tkfonts', rel: 'stylesheet', href: 'https://use.typekit.net/jem8rnn.css' }
 		]
 	},
 
@@ -82,7 +82,8 @@ const config = {
 	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
 	buildModules: [
 		'@nuxtjs/eslint-module',
-		'@nuxtjs/svg'
+		'@nuxtjs/svg',
+		'nuxt-font-loader'
 	],
 
 	// Modules: https://go.nuxtjs.dev/config-modules
@@ -105,7 +106,14 @@ const config = {
 			maxAge: 1000 * 60 * 60 * 24 * 7
 		}
 	},
-	modern: 'client'
+	modern: 'client',
+
+	fontLoader: {
+		url: 'https://use.typekit.net/jem8rnn.css'
+
+		// prefetch: true,
+		// preconnect: true
+	}
 }
 
 if (dev) {
