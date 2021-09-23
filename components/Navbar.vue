@@ -28,9 +28,7 @@
 </template>
 
 <script>
-import logo from '@/static/logos/logo.svg'
 export default {
-	components: { logo },
 	data () {
 		return {
 			activa: null
