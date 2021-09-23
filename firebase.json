@@ -26,6 +26,33 @@
 						}
 					]
 				}
+			],
+			"redirects": [
+				{
+					"source": "/wp-content/uploads/2021/07/Programa_Completo.pdf",
+					"destination": "/propuestas",
+					"type": 302
+				},
+				{
+					"source": "/wp-content/uploads/2021/05/manifiesto_gabriel_boric.pdf",
+					"destination": "/propuestas",
+					"type": 302
+				},
+				{
+					"source": "/wp-content/uploads/2021/06/Propuesta-GB_salud-mental.pdf",
+					"destination": "/propuestas",
+					"type": 302
+				},
+				{
+					"source": "/wp-content/uploads/2021/06/Transporte-público-doble-cero.pdf",
+					"destination": "/propuestas",
+					"type": 302
+				},
+				{
+					"source": "/wp-content/*",
+					"destination": "/propuestas",
+					"type": 302
+				}
 			]
 		},
 		{
