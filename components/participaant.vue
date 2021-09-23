@@ -23,7 +23,7 @@
 			a-button(type='primary' @click="submitForm('formulario')").suscribirme
 				| SEGUIMOS
 
-		p(@click='showModal').terminosycondiciones #[span.primero Acepto] &nbspTerminos y Condiciones
+		p(@click='showModal').terminosycondiciones #[span.primero Acepto] &nbspTérminos y Condiciones
 
 	a-modal(v-model="visible" title="Bienvenide !!" centered @ok="handleOk" :footer="null").modal
 		p Pronto recibiras noticias de nosotros

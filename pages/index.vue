@@ -76,7 +76,7 @@
 		mixin linkServel
 			.linkservel
 				a.boton(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" target="_blank") QUIERO APORTAR
-				n-link.instrucciones(to="/aporta") Ver Instrucciones para donar
+				n-link.instrucciones(to="/aporta") Ver instrucciones para donar
 
 		.curva.curvaSuperior
 
