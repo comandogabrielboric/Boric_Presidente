@@ -31,6 +31,8 @@ export default {
 @import '~/estilos/utils'
 
 .root
+	background-color: $petroleo2
+
 	.pasos
 		display: flex
 		flex-flow: row
@@ -48,6 +50,8 @@ export default {
 		display: flex
 		padding-top: 2em
 		justify-content: center
+		background-color: $petroleo2
+
 		a
 			display: flex
 			justify-content: center
