@@ -112,10 +112,9 @@
 </template>
 
 <script>
-import mostradorprop from './-mostradorprop.vue'
 import wave from '~/static/svg/wave.svg'
 export default {
-	components: { mostradorprop, wave },
+	components: { wave },
 
 	head () {
 		const titulo = 'Boric Presidente'

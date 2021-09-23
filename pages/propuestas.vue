@@ -51,6 +51,46 @@
 
 <script>
 export default {
+	async asyncData ({ app }) {
+		// console.log('context keys', Object.keys(context))
+		const _ = app.$lodash
+		// console.log('asyncData')
+		const respuesta = await app.$olicitar(`${process.env.cmsURL}/programa`)
+		const propuestas = respuesta.propuestas // Array
+
+		const data = {
+			propuestas: [],
+
+			seo: null,
+
+			imagen: null,
+			altImg: null,
+			pilares: null,
+			programaArchivo: null,
+
+
+			propuestaIdMostrada: null,
+			mostrandoPropuesta: null,
+			modoVisualizacion: 'html'
+		}
+		data.propuestas = _.map(propuestas, p => {
+			p.contenido = app.$sanitizar(p.contenido)
+			return p
+		})
+
+		// SEO
+		data.seo = respuesta.SEO
+		// IMAGEN
+		const componenteImagen = respuesta.componenteImagen
+		data.imagen = componenteImagen.imagen
+		data.altImg = componenteImagen.textoAlternativoImagen
+		// PILARES
+		data.pilares = app.$sanitizar(respuesta.Texto_pilares)
+		// PROGRAMA COMPLETO
+		data.programaArchivo = _.get(respuesta, ['Archivo_programa'])
+
+		return data
+	},
 	data () {
 		return {
 			propuestas: [],
@@ -69,28 +109,6 @@ export default {
 		}
 	},
 	// solicita info a cms
-	async fetch () {
-		const _ = this._
-		console.log('FETCH')
-		const respuesta = await this.$olicitar(`${process.env.cmsURL}/programa`)
-		const propuestas = respuesta.propuestas // Array
-
-		this.propuestas = this._.map(propuestas, p => {
-			p.contenido = this.$sanitizar(p.contenido)
-			return p
-		})
-
-		// SEO
-		this.seo = respuesta.SEO
-		// IMAGEN
-		const componenteImagen = respuesta.componenteImagen
-		this.imagen = componenteImagen.imagen
-		this.altImg = componenteImagen.textoAlternativoImagen
-		// PILARES
-		this.pilares = this.$sanitizar(respuesta.Texto_pilares)
-		// PROGRAMA COMPLETO
-		this.programaArchivo = _.get(respuesta, ['Archivo_programa'])
-	},
 	head () {
 		// if (!this.seo) return {}
 		const titulo = this._.get(this.seo, ['titulo_pag'], 'Propuesta Programática')
