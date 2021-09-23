@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import axios from 'axios'
 import _ from 'lodash'
 
@@ -9,6 +10,8 @@ async function solicitar (url, errorHandler) {
 	}).catch(errorHandler || capturadorErrorSolicitud)
 	return r
 }
+
+Vue.prototype.$solicitar = solicitar
 
 function capturadorErrorSolicitud (error) {
 	if (error.response) {
