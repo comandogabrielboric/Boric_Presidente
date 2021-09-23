@@ -116,11 +116,12 @@ const config = {
 	}
 }
 
-if (dev) {
-	config.plugins.push('@/plugins/sanitizador')
-} else {
-	config.plugins.push({ src: '@/plugins/sanitizador', mode: 'server' })
-}
+config.plugins.push('@/plugins/sanitizador')
+// if (dev) {
+// 	config.plugins.push('@/plugins/sanitizador')
+// } else {
+// 	config.plugins.push({ src: '@/plugins/sanitizador', mode: 'server' })
+// }
 
 
 export default config
