@@ -5,8 +5,8 @@
 		img(src="/imagenes/donaciones2.webp" alt="dona")
 		img(src="/imagenes/donaciones3.webp" alt="dona")
 		img(src="/imagenes/donaciones4.webp" alt="dona")
-		.link
-			a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" alt="dona" target="_blank") QUIERO APORTAR
+	.link
+		a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" alt="dona" target="_blank") QUIERO APORTAR
 	.relleno
 </template>
 <script>
@@ -44,21 +44,21 @@ export default {
 			+movil
 				width: 80vw
 				// height: 80vh
-		.link
+	.link
+		display: flex
+		padding-top: 2em
+		justify-content: center
+		a
 			display: flex
-			padding-top: 2em
 			justify-content: center
-			a
-				display: flex
-				justify-content: center
-				border-radius: 2px
-				align-items: center
-				width: 320px
-				max-width: 70%
-				height: 2em
-				font-weight: 900
-				color: $azul2
-				background-color: $verde3
+			border-radius: 2px
+			align-items: center
+			width: 320px
+			max-width: 70%
+			height: 2em
+			font-weight: 900
+			color: $azul2
+			background-color: $verde3
 .relleno
 	display: flex
 	width: 100vw
