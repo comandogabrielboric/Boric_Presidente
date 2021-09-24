@@ -51,7 +51,7 @@
 		mixin linkDescarga
 			.kitGrafico
 				.texto Descarga tu
-				a(href="https://drive.google.com/drive/folders/1vwqqSnxHIyv9wI617h8pUers1OudaBo0" target="_blank").boton KIT GRÁFICO AQUÍ
+				a(href="https://drive.google.com/drive/folders/1vwqqSnxHIyv9wI617h8pUers1OudaBo0" target="_blank" rel="noreferer noopener").boton KIT GRÁFICO AQUÍ
 
 		.contenido
 			.lado
@@ -75,7 +75,7 @@
 
 		mixin linkServel
 			.linkservel
-				a.boton(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" target="_blank") QUIERO APORTAR
+				a.boton(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" target="_blank" rel="noreferer noopener") QUIERO APORTAR
 				n-link.instrucciones(to="/aporta") Ver instrucciones para donar
 
 		.curva.curvaSuperior

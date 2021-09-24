@@ -8,7 +8,7 @@
 
 	mixin links
 		.links.contenedor-links.link-interno
-			a.link.bold(href='https://participa.boricpresidente.cl' target="_blank") participa Aquí
+			a.link.bold(href='https://participa.boricpresidente.cl' target="_blank" rel="noreferer noopener") participa Aquí
 			nuxt-link.link.bold(to='/aporta') aporta
 			nuxt-link.link.bold(to='/propuestas') Propuestas
 

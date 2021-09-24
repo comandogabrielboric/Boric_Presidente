@@ -6,7 +6,7 @@
 		img(src="/imagenes/donaciones3.webp" alt="dona")
 		img(src="/imagenes/donaciones4.webp" alt="dona")
 	.link
-		a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" alt="dona" target="_blank") QUIERO APORTAR
+		a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" alt="dona" target="_blank" rel="noreferer noopener") QUIERO APORTAR
 	.relleno
 </template>
 <script>

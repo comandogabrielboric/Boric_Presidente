@@ -32,7 +32,7 @@
 					.modoVisualizacion(v-if="propuestaMostrada && propuestaMostrada.pdfURL")
 						.modo(@click="modoVisualizacion = 'html'" :class="{activo: modoVisualizacion === 'html'}") Ver texto
 						.modo(@click="modoVisualizacion = 'pdf'" :class="{activo: modoVisualizacion === 'pdf'}") Ver en PDF
-						a.modo(:href="propuestaMostrada.pdfURL" download target="_blank") Descargar PDF
+						a.modo(:href="propuestaMostrada.pdfURL" download target="_blank" rel="noreferer noopener") Descargar PDF
 				.cuerpoPropuesta(v-if="propuestaMostrada")
 					transition-group(mode="out-in")
 						.pdf(v-show="modoVisualizacion === 'pdf'" key="pdf")
@@ -41,7 +41,7 @@
 							.ql-editor.contenidoHTML(v-html='propuestaMostrada.html')
 
 	.zonaDescargas
-		a.descargable(v-if="programaArchivo" :href='programaArchivo.url' target="_blank" download :name="programaArchivo.name" :title="programaArchivo.name")
+		a.descargable(v-if="programaArchivo" :href='programaArchivo.url' target="_blank" rel="noreferer noopener" download :name="programaArchivo.name" :title="programaArchivo.name")
 			.dentro
 				.oicono.descargar
 				.texto Descarga nuestro programa (en construcción)
