@@ -6,7 +6,7 @@ const dev = process.env.MODO === 'dev'
 const remoto = !!process.env.REMOTO
 
 const titulo = 'Boric Presidente'
-const descripcion = 'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
+const descripcion = 'Súmate a Cambiar Chile junto a Gabriel Boric'
 const imagen = '/imagenes/portadaMovil.webp'
 const url = 'https://boricpresidente.cl'
 
