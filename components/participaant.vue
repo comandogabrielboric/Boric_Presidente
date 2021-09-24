@@ -62,7 +62,7 @@ export default {
 			}
 		}
 		const validaNombre = (rule, value, callback) => {
-			if (value === '') {
+			if (!value) {
 				callback(new Error('Ingresa tu nombre'))
 			} else {
 				callback()
