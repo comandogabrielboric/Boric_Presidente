@@ -4,6 +4,10 @@
     <loc>https://boricpresidente.cl/</loc>
   </url>
 	<url>
+    <loc>https://boricpresidente.cl/aporta</loc>
+  </url>
+	
+	<url>
     <loc>https://boricpresidente.cl/propuestas</loc>
   </url>
 </urlset>
