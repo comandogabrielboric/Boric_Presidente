@@ -27,87 +27,87 @@
 		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad").imgSaludo
 
 
+	.postcarga(v-if="cargado")
+		section.seccionParticipa
+			.curva.curvaSuperior
+			.contenido
+				.lado
+					h2.titulo #[span.primero Inscríbete]
+						div Únete a la campaña
+					.texto
+						p Las transformaciones que Chile necesita las hacemos 		entre todas y todos.
+						P Déjanos tu mail y recibirás más información sobre la 		campaña.
 
-	section.seccionParticipa
-		.curva.curvaSuperior
-		.contenido
-			.lado
-				h2.titulo #[span.primero Inscríbete]
-					div Únete a la campaña
-				.texto
-					p Las transformaciones que Chile necesita las hacemos entre todas y todos.
-					P Déjanos tu mail y recibirás más información sobre la campaña.
-
-			.lado
-				.suscribirse
-					participaant
-		img.noMovil(src="/imagenes/participa.webp" alt="Participa")
-		img.noCompu(src="/imagenes/participaMovil.webp" alt="Participa")
-
-
-	section.seccionArmaTuCampana
-		.curva.curvaSuperior
-
-		mixin linkDescarga
-			.kitGrafico
-				.texto Descarga tu
-				a(href="https://drive.google.com/drive/folders/1vwqqSnxHIyv9wI617h8pUers1OudaBo0" target="_blank" rel="noreferer noopener").boton KIT GRÁFICO AQUÍ
-
-		.contenido
-			.lado
-				h2 Arma tu
-				h3 Campaña
-				p Descarga nuestro kit y crea tus propios insumos de campaña. #[br]¡De ti depende!
-				.noMovil
-					+linkDescarga
+				.lado
+					.suscribirse
+						participaant
+			img.noMovil(src="/imagenes/participa.webp" alt="Participa")
+			img.noCompu(src="/imagenes/participaMovil.webp" alt="Participa")
 
 
-			.lado.ladoImagen
-				.cajaHerramienta
-					img(src="/imagenes/cajaHerramientas.webp" alt="Herramientas")
-					.circulo
+		section.seccionArmaTuCampana
+			.curva.curvaSuperior
 
-		.noCompu
-			+linkDescarga
+			mixin linkDescarga
+				.kitGrafico
+					.texto Descarga tu
+					a(href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0" target="_blank" 	rel="noreferer noopener").boton KIT GRÁFICO AQUÍ
+
+			.contenido
+				.lado
+					h2 Arma tu
+					h3 Campaña
+					p Descarga nuestro kit y crea tus propios insumos de 	campaña. #[br]¡De ti depende!
+					.noMovil
+						+linkDescarga
 
 
-	section.seccionaporta
+				.lado.ladoImagen
+					.cajaHerramienta
+						img(src="/imagenes/cajaHerramientas.webp" 	alt="Herramientas")
+						.circulo
 
-		mixin linkServel
-			.linkservel
-				a.boton(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" target="_blank" rel="noreferer noopener") QUIERO APORTAR
-				n-link.instrucciones(to="/aporta") Ver instrucciones para donar
-
-		.curva.curvaSuperior
-
-		.contenido
-			.lado
-				h2 Súmate
-				h3 y Aporta
-				p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia.
-				.noMovil
-					+linkServel
-			.lado.ladoImagen
-				Chanchito
 			.noCompu
-				+linkServel
+				+linkDescarga
 
-	section.propuestas
-		.ondaonda
-			wave.wave
-		.zonaCombi
-			Combi
-		.curva.curvaSuperior
 
-		.curva.curvaSuperior
-		.contenido
-			.textoseccion
-				h2.titulo Propuesta
-				h3 Programática
-				p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
-				p ¿Quieres conocer parte de nuestras propuestas?
-			.link
-				nuxt-link(to="/propuestas").linkpropuestas VER PROPUESTAS
+		section.seccionaporta
+
+			mixin linkServel
+				.linkservel
+					a.boton(href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml" target="_blank" rel="noreferer noopener") 	QUIERO APORTAR
+					n-link.instrucciones(to="/aporta") Ver instrucciones para 	donar
+
+			.curva.curvaSuperior
+
+			.contenido
+				.lado
+					h2 Súmate
+					h3 y Aporta
+					p El cambio lo financiamos las personas comunes. Aporta y 	construyamos un Chile donde el dinero no haga la diferencia.
+					.noMovil
+						+linkServel
+				.lado.ladoImagen
+					Chanchito
+				.noCompu
+					+linkServel
+
+		section.propuestas
+			.ondaonda
+				wave.wave
+			.zonaCombi
+				Combi
+			.curva.curvaSuperior
+
+			.curva.curvaSuperior
+			.contenido
+				.textoseccion
+					h2.titulo Propuesta
+					h3 Programática
+					p Nuestro Gobierno impulsará grandes cambios, paso a paso, 	sin dejar a nadie fuera.
+					p ¿Quieres conocer parte de nuestras propuestas?
+				.link
+					nuxt-link(to="/propuestas").linkpropuestas VER PROPUESTAS
 
 </template>
 
@@ -115,7 +115,11 @@
 import wave from '~/static/svg/wave.svg'
 export default {
 	components: { wave },
-
+	data () {
+		return {
+			cargado: null
+		}
+	},
 	head () {
 		const titulo = 'Boric Presidente'
 		const descripcion = 'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
@@ -129,6 +133,9 @@ export default {
 		})
 		meta.titleTemplate = '%s'
 		return meta
+	},
+	mounted () {
+		this.cargado = true
 	}
 }
 </script>
