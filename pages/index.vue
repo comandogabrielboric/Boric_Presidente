@@ -21,7 +21,7 @@
 				div Te invitamos a aportar con tus ideas, opiniones y anhelos a un programa de Gobierno diverso, descentralizado y abierto de cara a la ciudadanía. #[b Súmate a una mesa ciudadana o contesta una consulta, y sé parte de un proyecto transformador que construimos juntas y juntos.]
 
 
-		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank") Participa Aquí
+		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener") Participa Aquí
 
 		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad").imgSaludo
 		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad").imgSaludo
