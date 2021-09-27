@@ -359,6 +359,7 @@ export default {
 						font-style: italic
 						line-height: 1.4
 						display: flex
+						max-width: 95vw
 					.modoVisualizacion
 						color: rgba(23, 117, 150, 1)
 						display: flex
