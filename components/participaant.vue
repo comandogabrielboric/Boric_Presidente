@@ -193,7 +193,7 @@ export default {
 .suscribirme
 	// position: stycky
 	width: 250px
-	padding: 0
+	padding: .2em 0 0 0
 	right: 42px
 	color: $petroleo1
 	background-color: $verde3
