@@ -45,7 +45,10 @@
 			.dentro
 				.oicono.descargar
 				.texto Descarga nuestro programa (en construcción)
-
+	.textoCierre
+		p Estas y muchas otras ideas se están pensando en nuestras mesas de participación.
+		p Súmate y decidamos las propuestas de nuestro programa.
+		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener") Participa Aquí
 
 </template>
 
@@ -252,6 +255,27 @@ export default {
 				flex: auto 1 1
 				margin: 2rem 2rem 2rem 0
 
+.textoCierre
+	display: flex
+	flex-flow: column
+	justify-content: center
+	padding: 1em 1em 6em 1em
+	align-items: center
+	font-size: 1.2rem
+	text-align: center
+	p
+		line-height: .5em
+	.btnparticipa
+		display: block
+		margin: 0 auto
+		cursor: pointer
+		text-transform: uppercase
+		background-color: $verde3
+		color: $verde1
+		padding: .5em 1.3em
+		border-radius: 4px
+		margin-top: .5em
+		z-index: 5
 // PILARES
 .pilares
 	+movil
