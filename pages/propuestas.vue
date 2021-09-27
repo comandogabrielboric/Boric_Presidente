@@ -29,8 +29,8 @@
 				div(slot="title")
 					.pretitulo Propuestas programáticas
 					h2.titulo {{propuestaMostrada && propuestaMostrada.titulo}}
-					.modoVisualizacion(v-if="propuestaMostrada && propuestaMostrada.pdfURL")
-						.modo(@click="modoVisualizacion = 'html'" :class="{activo: modoVisualizacion === 'html'}") Ver texto
+					//- .modoVisualizacion(v-if="propuestaMostrada && propuestaMostrada.pdfURL")
+					//- 	.modo(@click="modoVisualizacion = 'html'" :class="{activo: modoVisualizacion === 'html'}") Ver texto
 						//- .modo(@click="modoVisualizacion = 'pdf'" :class="{activo: modoVisualizacion === 'pdf'}") Ver en PDF
 						//- a.modo(:href="propuestaMostrada.pdfURL" download target="_blank" rel="noreferer noopener") Descargar PDF
 				.cuerpoPropuesta(v-if="propuestaMostrada")
