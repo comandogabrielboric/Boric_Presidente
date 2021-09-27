@@ -342,7 +342,7 @@ section
 			// padding: 0 1em
 		h2,
 		h3
-			font-size: 2.5rem
+			font-size: 3rem
 			line-height: .7em
 		h2
 			color: $verde3
@@ -353,7 +353,7 @@ section
 		p
 			color: #fff
 			font-style: italic
-			font-size: 1rem
+			font-size: 1.2rem
 			// padding: 0 .5em
 
 	.cajaHerramienta
@@ -396,11 +396,13 @@ section
 		color: $azul2
 		font-weight: 700
 		.texto
-			font-size: 1.2em
+			font-size: 1em
 			font-style: italic
 		.boton
 			background-color: $verde3
 			color: $azul2
+			font-size: 1.1rem
+			padding: .5em 1.5em
 			&:visited
 				color: $azul2
 	+compu
@@ -432,10 +434,12 @@ section.seccionaporta
 		flex-flow: column nowrap
 		align-items: center
 		justify-content: center
-		padding: 1em 0
+		padding: .5em 0
 		.boton
 			color: $azul2
 			background-color: $verde3
+			font-size: 1.1rem
+			padding: .4em 1.5em
 		.instrucciones
 			color: $verde3
 			font-style: italic
@@ -455,7 +459,7 @@ section.seccionaporta
 		padding-bottom: 6em
 		h2,
 		h3
-			font-size: 2.5rem
+			font-size: 3rem
 			margin: 0
 			line-height: 1
 			font-style: italic
@@ -467,6 +471,7 @@ section.seccionaporta
 		p
 			margin: 1em 0
 			font-style: italic
+			font-size: 1.2rem
 
 	+compu
 		.contenido
@@ -521,7 +526,7 @@ section.propuestas
 		.textoseccion
 			h2,
 			h3
-				font-size: 2.3rem
+				font-size: 3rem
 				line-height: 1.5rem
 				font-weight: 900
 				font-style: italic
@@ -532,7 +537,7 @@ section.propuestas
 			p
 				color: #fff
 				font-style: italic
-				font-size: 1rem
+				font-size: 1.2rem
 				&:nth-of-type(1)
 					padding-top: .5em
 
@@ -541,10 +546,11 @@ section.propuestas
 			display: flex
 			justify-content: center
 			.linkpropuestas
+				font-size: 1.1rem
 				display: flex
 				padding-top: .2em
 				justify-content: center
-				border-radius: 2px
+				border-radius: 5px
 				align-items: center
 				width: 250px
 				max-width: 85%
