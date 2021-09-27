@@ -232,7 +232,8 @@ export default {
 		transform: translateX(-50%)
 
 .zonaDescargas
-	display: flex
+	display: none
+	// display: flex
 	justify-content: center
 	padding: 1em 1em 6em 1em
 	.descargable
