@@ -232,6 +232,7 @@ section
 		width: 400px
 		max-width: 100%
 		margin: 0 auto
+		font-size: 1rem
 
 		h1, h2
 			font-style: italic
@@ -267,6 +268,13 @@ section
 	+compu
 		.contenido
 			width: 600px
+			font-size: 1.2rem
+			h1
+				font-size: 2.8em
+		.btnparticipa
+			font-size: 1.1rem
+			margin-top: 1em
+
 		.imgSaludo
 			margin-top: -6vw
 
