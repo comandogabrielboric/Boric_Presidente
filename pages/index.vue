@@ -188,8 +188,10 @@ section
 	justify-content: center
 	max-height: calc(100vh - 5em)
 	img
+		width: 119.45%
+		height: 100%
 		max-width: 100%
-		//max-height: 50vh
+		// max-height: 100%
 	+compu
 		background-image: url('/imagenes/portada.webp')
 		background-size: cover
