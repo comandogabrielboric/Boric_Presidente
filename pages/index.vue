@@ -24,7 +24,7 @@
 		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener") Participa Aquí
 
 		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad").imgSaludo
-		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad").imgSaludo
+		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad" v-if="cargado").imgSaludo
 
 
 	.postcarga(v-if="cargado")
