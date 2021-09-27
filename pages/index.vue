@@ -293,11 +293,11 @@ section
 		.titulo
 			max-width: 100%
 			line-height: 1.2
-			font-size: 2rem
+			font-size: 2.3rem
 			color: #fff
 			font-weight: 900
 			.primero
-				font-size: 2.8rem
+				font-size: 3rem
 				font-weight: 400
 				font-style: italic
 				color: $verde3
