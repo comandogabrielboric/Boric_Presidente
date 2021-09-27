@@ -204,6 +204,8 @@ section
 			justify-content: center
 		img
 			margin: 0 0 -2.5em 0
+			width: 100%
+			height: 53.4%
 			max-width: 100vw
 
 .seccionCuna
@@ -256,7 +258,9 @@ section
 		margin-top: .5em
 		z-index: 5
 	.imgSaludo
-		width: 100vw
+		width: 100%
+		height: 66.55%
+		// width: 100vw
 		z-index: 0
 		margin-top: -9vw
 
@@ -299,7 +303,7 @@ section
 			justify-content: center
 	img
 		width: 100%
-
+		height: 51.82%
 	+compu
 		.contenido
 			display: flex
@@ -351,6 +355,7 @@ section
 		position: relative
 		img
 			position: relative
+			width: 100.13%
 			height: 100%
 			z-index: 1
 			padding: 1em 0 1em 0

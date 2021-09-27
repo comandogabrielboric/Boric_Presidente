@@ -36,6 +36,7 @@ export default {
 
 	img
 		position: relative
+		width: 81.56%
 		height: 100%
 		z-index: 5
 
