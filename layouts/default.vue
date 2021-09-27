@@ -18,7 +18,6 @@
 	// border: 3px solid green
 	display: flex
 	flex-flow: column nowrap
-	font-display: swap
 	.header
 		flex: auto 0 0
 	.cuerpo
