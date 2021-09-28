@@ -264,7 +264,8 @@ export default {
 	font-size: 1.2rem
 	text-align: center
 	p
-		line-height: .5em
+		&:nth-child(1)
+			margin-bottom: .3em
 	.btnparticipa
 		display: block
 		margin: 0 auto
