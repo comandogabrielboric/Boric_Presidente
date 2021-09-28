@@ -181,6 +181,7 @@ export default {
 		color: $verde3
 		font-style: italic
 		font-weight: 900
+		font-size: 3em
 		&:nth-child(1)
 			padding-top: 2rem
 		&:nth-child(3)
@@ -189,8 +190,12 @@ export default {
 	p
 		padding: 0 2.5rem
 		color: #fff
+		font-size: 1.2rem
 		&:nth-of-type(1)
 			padding-top: 4rem
+	+movil
+		p
+			padding: 0 1em
 
 
 // CONTENIDO HTML
@@ -289,9 +294,6 @@ export default {
 	+movil
 		.caja-propuestas
 			padding: 3.5em 0
-	// border: 1px solid red
-	// *
-	// 	border: 1px solid orange
 
 	.caja-propuestas
 		display: flex
@@ -318,11 +320,10 @@ export default {
 					z-index: 1
 				.tituloPropuesta
 					margin-top: 1rem
-					font-size: 1.2rem
+					font-size: 1rem
 					padding: 0 .3em
 					font-style: italic
 					color: #fff
-					font-size: .98em
 
 				+movil
 					width: 250px
@@ -331,7 +332,6 @@ export default {
 						$lado: 100px
 						max-width: $lado
 						max-height: $lado
-
 
 
 		.contenido-propuesta
