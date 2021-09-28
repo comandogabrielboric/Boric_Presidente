@@ -16,6 +16,7 @@
 		"lint": "yarn lint:js"
 	},
 	"dependencies": {
+		"@nuxtjs/gtm": "^2.4.0",
 		"@nuxtjs/svg": "^0.2.0",
 		"@octokit/webhooks": "^9.12.0",
 		"ant-design-vue": "^1.7.8",

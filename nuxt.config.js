@@ -68,7 +68,6 @@ const config = {
 		'ant-design-vue/dist/antd.css',
 		'~/estilos/base.sass'
 	],
-
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 	plugins: [
 		'@/plugins/antd-ui',
@@ -88,7 +87,8 @@ const config = {
 
 	// Modules: https://go.nuxtjs.dev/config-modules
 	modules: [
-		'nuxt-svg-loader'
+		'nuxt-svg-loader',
+		'@nuxtjs/gtm'
 	],
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
@@ -110,9 +110,22 @@ const config = {
 
 	fontLoader: {
 		url: 'https://use.typekit.net/jem8rnn.css'
-
 		// prefetch: true,
 		// preconnect: true
+	},
+
+	gtm: {
+		id: 'GTM-TG9JT2J',
+		pageTracking: false,
+		pageViewEventName: 'nuxtRoute',
+		scriptId: 'gtm-script',
+		scriptDefer: false,
+		scriptURL: 'https://www.googletagmanager.com/gtm.js',
+		crossOrigin: false,
+
+		noscript: true,
+		noscriptId: 'gtm-noscript',
+		noscriptURL: 'https://www.googletagmanager.com/ns.html'
 	}
 }
 
