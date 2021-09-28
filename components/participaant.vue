@@ -182,10 +182,10 @@ export default {
 
 	.input
 		width: 250px
-		height: 2em
 		border-radius: 2px
+		margin-bottom: .1em
 		&::placeholder
-			font-size: .9em
+			font-size: 1em
 	.ant-form-item
 		.ant-form-item-label
 			color: $verde3
