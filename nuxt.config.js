@@ -115,8 +115,9 @@ const config = {
 	},
 
 	gtm: {
+		enabled: true,
 		id: 'GTM-TG9JT2J',
-		pageTracking: false,
+		pageTracking: true,
 		pageViewEventName: 'nuxtRoute',
 		scriptId: 'gtm-script',
 		scriptDefer: false,
