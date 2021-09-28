@@ -25,6 +25,15 @@
 							"value": "strict-origin-when-cross-origin"
 						}
 					]
+				},
+				{
+					"source": "**/*.@(svg|png|webp)",
+					"headers": [
+						{
+							"key": "Cache-Control",
+							"value": "max-age=604800"
+						}
+					]
 				}
 			],
 			"redirects": [
