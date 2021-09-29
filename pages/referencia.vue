@@ -21,7 +21,7 @@ export default {
 			console.log('codigo referencia', codigoReferencia)
 			this.$gtm.push({ event: 'referencia', codigoReferencia })
 			this.$nextTick(
-				// this.$router.replace('/')
+				this.$router.replace('/')
 			)
 		}
 	}
