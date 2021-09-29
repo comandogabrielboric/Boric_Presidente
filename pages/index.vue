@@ -21,7 +21,7 @@
 				div Te invitamos a aportar con tus ideas, opiniones y anhelos a un programa de Gobierno diverso, descentralizado y abierto de cara a la ciudadanía. #[b Súmate a una mesa ciudadana o contesta una consulta, y sé parte de un proyecto transformador que construimos juntas y juntos.]
 
 
-		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener") Participa Aquí
+		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
 
 		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad"  v-if="cargado").imgSaludo
 		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad" v-if="cargado").imgSaludo
@@ -51,7 +51,7 @@
 			mixin linkDescarga
 				.kitGrafico
 					.texto Descarga tu
-					a(href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0" target="_blank" 	rel="noreferer noopener").boton KIT GRÁFICO AQUÍ
+					a(href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0" target="_blank" 	rel="noreferer noopener" @click="$gtm.push({ event: 'link', hacia: 'Decarga Kit grafico'})").boton KIT GRÁFICO AQUÍ
 
 			.contenido
 				.lado
@@ -75,8 +75,8 @@
 
 			mixin linkServel
 				.linkservel
-					a.boton(href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml" target="_blank" rel="noreferer noopener") 	QUIERO APORTAR
-					n-link.instrucciones(to="/aporta") Ver instrucciones para 	donar
+					a.boton(href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml" target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link', hacia: 'Aportes Servel'})") 	QUIERO APORTAR
+					n-link.instrucciones(to="/aporta" @click="$gtm.push({ event: 'link', hacia: 'Instrucciones Donacion'})") Ver instrucciones para 	donar
 
 			.curva.curvaSuperior
 
@@ -107,7 +107,7 @@
 					p Nuestro Gobierno impulsará grandes cambios, paso a paso, 	sin dejar a nadie fuera.
 					p ¿Quieres conocer parte de nuestras propuestas?
 				.link
-					nuxt-link(to="/propuestas").linkpropuestas VER PROPUESTAS
+					nuxt-link(to="/propuestas" @click="$gtm.push({ event: 'link-home', hacia: 'Propuestas'})").linkpropuestas VER PROPUESTAS
 
 </template>
 
