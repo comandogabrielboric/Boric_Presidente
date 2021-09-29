@@ -18,8 +18,11 @@ export default {
 				.then(r => r.data)
 				.catch(e => console.error('fallo registrarReferencia', e))
 			console.log('respuesta', respuesta)
-			if (this.$gtm) this.$gtm.push({ event: 'referencia', codigoReferencia })
-			this.$router.replace('/')
+			console.log('codigo referencia', codigoReferencia)
+			this.$gtm.push({ event: 'referencia', codigoReferencia })
+			this.$nextTick(
+				// this.$router.replace('/')
+			)
 		}
 	}
 }
