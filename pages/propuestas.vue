@@ -159,6 +159,9 @@ export default {
 			if (v) this.mostrandoPropuesta = true
 		}
 	},
+	mounted () {
+		window.propuesta = this
+	},
 	methods: {
 		abrirPropuesta (propuestaID) {
 			this.propuestaIdMostrada = propuestaID

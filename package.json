@@ -9,6 +9,7 @@
 		"build": "nuxt build",
 		"start": "nuxt start",
 		"generate": "nuxt generate --modern=client",
+		"genDev": "REMOTO=1 MODO=dev nuxt generate --modern=client",
 		"deploy": "nuxt generate --modern=client && firebase deploy --only hosting:produccion",
 		"produccion": "nuxt generate --modern=client && firebase deploy --only hosting:produccion",
 		"tests": "nuxt generate --modern=client && firebase deploy --only hosting:tests",

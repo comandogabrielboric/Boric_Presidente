@@ -123,5 +123,11 @@ config.plugins.push('@/plugins/sanitizador')
 // 	config.plugins.push({ src: '@/plugins/sanitizador', mode: 'server' })
 // }
 
+// if (dev) {
+// 	// config.dev = true
+// }
+config.devtools = true
+config.generate = { devtools: true }
+
 
 export default config

@@ -1,6 +1,5 @@
 <template lang="pug">
-.root
-	h1 propuestaID {{propuestaID}}.
+.rootPropuestaID
 </template>
 <script>
 export default {
@@ -9,6 +8,7 @@ export default {
 	},
 	mounted () {
 		this.$emit('montado', { propuestaID: this.$route.params.propuestaID })
+		window.pID = this
 	}
 }
 </script>
