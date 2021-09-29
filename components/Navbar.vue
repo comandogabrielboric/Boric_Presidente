@@ -1,16 +1,16 @@
 <template lang="pug">
 .navbar
 
-	nuxt-link.alHome.zonaLogo(to='/')
+	nuxt-link.alHome.zonaLogo(to='/'  @click.native="tag('/home')")
 		.logo
 			.trasLogo
 				.iconoAprueboDignidad
 
 	mixin links
 		.links.contenedor-links.link-interno
-			a.link.bold(href='https://participa.boricpresidente.cl' target="_blank" rel="noreferer noopener") participa Aquí
-			nuxt-link.link.bold(to='/aporta') aporta
-			nuxt-link.link.bold(to='/propuestas') Propuestas
+			a.link.bold(href='https://participa.boricpresidente.cl' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'nav-link', hacia: 'participa.boricpresidente.cl'})") participa Aquí
+			nuxt-link.link.bold(to='/aporta' @click.native="tag('/aporta')") aporta
+			nuxt-link.link.bold(to='/propuestas' @click.native="tag('/propuestas')") Propuestas
 
 	.menuCompu
 		+links
@@ -37,6 +37,11 @@ export default {
 	watch: {
 		$route () {
 			this.activa = false
+		}
+	},
+	methods: {
+		tag (valor) {
+			this.$gtm.push({ event: 'nav-link', hacia: valor })
 		}
 	}
 }
