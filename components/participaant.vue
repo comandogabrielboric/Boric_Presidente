@@ -132,7 +132,7 @@ export default {
 			this.$refs[formName].validate(valid => {
 				if (valid) {
 					this.suscribirse()
-					this.$gtm.push({ event: 'Registro mailing completo' })
+					this.$gtm.push({ event: 'Registro_mailing', nombre: 'Registro en Mailchimp', estado: 'completo' })
 				} else {
 					console.log('error submit!!')
 					return false
