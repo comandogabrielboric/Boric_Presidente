@@ -1,6 +1,7 @@
 <template lang="pug">
 .propuestasRoot
 
+	n-child(@montado="verSiHayQueAbrirUnaPropuesta")
 	//- .zonaImagen(v-if="imagen")
 	//- 	img.imagenPrograma(:src='imagen.url' :alt='altImg')
 	.encabezado
@@ -19,9 +20,9 @@
 
 		.caja-propuestas
 
-			.propuesta(v-for='propuesta in propuestas' :key='propuesta.id' @click='propuestaIdMostrada = propuesta.id')
+			.propuesta(v-for='propuesta in propuestas' :key='propuesta.id' @click='abrirPropuesta(propuesta.id)')
 				.prop
-					img.imagenDePropuesta(:src='propuesta.imagen.url' 	:alt="propuesta.textoAlternativoImagen")
+					img.imagenDePropuesta(:src='propuesta.imagen.url' :alt="propuesta.textoAlternativoImagen")
 					h2.tituloPropuesta {{ propuesta.titulo }}
 
 
@@ -49,6 +50,8 @@
 		p Estas y muchas otras ideas se están pensando en nuestras mesas de participación.
 		p Súmate y decidamos las propuestas de nuestro programa.
 		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener") Participa Aquí
+
+
 
 </template>
 
@@ -133,6 +136,7 @@ export default {
 		propuestaMostrada () {
 			if (!this.propuestaIdMostrada) return null
 			const propuestaBruta = this._.find(this.propuestas, p => p.id === this.propuestaIdMostrada)
+			if (!propuestaBruta) return null
 
 			return {
 				titulo: propuestaBruta.titulo,
@@ -144,6 +148,7 @@ export default {
 	watch: {
 		mostrandoPropuesta (v) {
 			if (!v) {
+				if (this.propuestaMostrada) this.$router.push('/propuestas')
 				setTimeout(() => {
 					this.propuestaIdMostrada = false
 					this.modoVisualizacion = 'html'
@@ -152,6 +157,17 @@ export default {
 		},
 		propuestaIdMostrada (v) {
 			if (v) this.mostrandoPropuesta = true
+		}
+	},
+	methods: {
+		abrirPropuesta (propuestaID) {
+			this.propuestaIdMostrada = propuestaID
+			this.$nextTick(() => {
+				if (this.propuestaMostrada) this.$router.push(`/propuestas/${propuestaID}`)
+			})
+		},
+		verSiHayQueAbrirUnaPropuesta ({ propuestaID }) {
+			if (propuestaID) this.abrirPropuesta(propuestaID)
 		}
 	}
 }
