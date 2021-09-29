@@ -132,7 +132,7 @@ export default {
 			this.$refs[formName].validate(valid => {
 				if (valid) {
 					this.suscribirse()
-					this.$gtm.push({ event: 'registro formulario' })
+					this.$gtm.push({ event: 'Registro mailing completo' })
 				} else {
 					console.log('error submit!!')
 					return false
