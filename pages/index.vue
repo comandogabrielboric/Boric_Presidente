@@ -76,7 +76,7 @@
 			mixin linkServel
 				.linkservel
 					a.boton(href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml" target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Aportes Servel'})") 	QUIERO APORTAR
-					n-link.instrucciones(to="/aporta" @click="$gtm.push({ event: 'link-home', hacia: 'Instrucciones Donacion'})") Ver instrucciones para 	donar
+					n-link.instrucciones(to="/aporta" @click.native="tag('instrucciones')") Ver instrucciones para 	donar
 
 			.curva.curvaSuperior
 
@@ -107,7 +107,7 @@
 					p Nuestro Gobierno impulsará grandes cambios, paso a paso, 	sin dejar a nadie fuera.
 					p ¿Quieres conocer parte de nuestras propuestas?
 				.link
-					nuxt-link(to="/propuestas" @click="$gtm.push({ event: 'link-home', hacia: 'Propuestas'})").linkpropuestas VER PROPUESTAS
+					nuxt-link(to="/propuestas" @click.native="tag('Propuestas')").linkpropuestas VER PROPUESTAS
 
 </template>
 
@@ -136,6 +136,12 @@ export default {
 	},
 	mounted () {
 		this.cargado = true
+	},
+	methods: {
+		tag (valor) {
+			console.log('tag')
+			this.$gtm.push({ event: 'link-home', hacia: valor })
+		}
 	}
 }
 </script>
