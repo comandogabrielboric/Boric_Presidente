@@ -12,6 +12,7 @@
 
 
 .main
+	font-display: swap
 	min-height: 100vh
 	// overflow-y: auto
 	position: relative
