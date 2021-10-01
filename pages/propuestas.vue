@@ -20,7 +20,7 @@
 
 		.caja-propuestas
 
-			.propuesta(v-for='propuesta in propuestas' :key='propuesta.id' @click='abrirPropuesta(propuesta.id)')
+			.propuesta(v-for='propuesta in propuestas' :key='propuesta.id' @click='abrirPropuesta(propuesta.id, propuesta.Slug)')
 				.prop
 					img.imagenDePropuesta(:src='propuesta.imagen.url' :alt="propuesta.textoAlternativoImagen")
 					h2.tituloPropuesta {{ propuesta.titulo }}
@@ -163,14 +163,20 @@ export default {
 		window.propuesta = this
 	},
 	methods: {
-		abrirPropuesta (propuestaID) {
+		abrirPropuesta (propuestaID, slug) {
 			this.propuestaIdMostrada = propuestaID
 			this.$nextTick(() => {
-				if (this.propuestaMostrada) this.$router.push(`/propuestas/${propuestaID}`)
+				if (this.propuestaMostrada) this.$router.push(`/propuestas/${slug}`)
 			})
 		},
-		verSiHayQueAbrirUnaPropuesta ({ propuestaID }) {
-			if (propuestaID) this.abrirPropuesta(propuestaID)
+		verSiHayQueAbrirUnaPropuesta ({ propuestaSlug }) {
+			const propuestas = this.propuestas
+			const propuestaParaAbrir = this._.filter(propuestas, ['Slug', propuestaSlug])
+			console.log('prop a abrir', propuestaParaAbrir, propuestas)
+			if (propuestaSlug) {
+				const propuestaID = propuestaParaAbrir[0]._id
+				this.abrirPropuesta(propuestaID, propuestaSlug)
+			}
 		}
 	}
 }

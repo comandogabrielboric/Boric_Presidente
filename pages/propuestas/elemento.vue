@@ -1,5 +1,5 @@
 
 <script>
-import propuestaID from './_propuestaID.vue'
-export default propuestaID
+import propuestaSlug from './_propuestaSlug.vue'
+export default propuestaSlug
 </script>
