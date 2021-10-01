@@ -49,7 +49,7 @@
 	.textoCierre
 		p Estas y muchas otras ideas se están pensando en nuestras mesas de participación.
 		p Súmate y decidamos las propuestas de nuestro programa.
-		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener") Participa Aquí
+		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Propuestas participa.boricpresidente.cl'})") Participa Aquí
 
 
 
