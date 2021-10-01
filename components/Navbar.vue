@@ -1,7 +1,7 @@
 <template lang="pug">
 .navbar
 
-	nuxt-link.alHome.zonaLogo(to='/'  @click.native="tag('/home')")
+	nuxt-link.alHome.zonaLogo(to='/'  @click.native="tag('nav home')")
 		.logo
 			.trasLogo
 				.iconoAprueboDignidad
