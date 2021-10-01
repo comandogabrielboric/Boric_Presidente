@@ -162,6 +162,7 @@ export default {
 		},
 		showModal () {
 			this.tyc = true
+			this.$gtm.push({ event: 'gtm.linkClick', hacia: 'terminos y condiciones' })
 		},
 		handleOk (e) {
 			console.log(e)
