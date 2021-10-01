@@ -233,16 +233,32 @@ export default {
 	justify-content: justify
 	::v-deep
 		*
-			font-family: roboto
-		line-height: 1.4
+			font-family: lexia, Lucida Sans, Lucida Grande, sans-serif
+			line-height: 1.4
+		h1
+			font-weight: 900
+			font-style: italic
+			margin-top: 2rem
+			color: #19CBB5
+		h2
+			font-size: 1.4rem
+			margin-bottom: 1em
+			margin-top: 1.4rem
+			font-weight: 900
+			font-style: italic
+			color: #094C67
 		h1 + p
 			margin-top: 2rem
-		p
+		p,
+		li
+			font-size: 1rem
 			line-height: 1.8
+			margin-bottom: .8rem
 			+movil
 				line-height: 1.6
 		strong
 			font-weight: bold
+			font-style: italic
 		b
 			font-weight: bold
 		ol
