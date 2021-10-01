@@ -75,7 +75,7 @@
 
 			mixin linkServel
 				.linkservel
-					a.boton(href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml" target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Aportes Servel'})") 	QUIERO APORTAR
+					a.boton(href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml" target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Home Aportes Servel'})") 	QUIERO APORTAR
 					n-link.instrucciones(to="/aporta" @click.native="tag('instrucciones')") Ver instrucciones para 	donar
 
 			.curva.curvaSuperior
