@@ -71,7 +71,7 @@ export default {
 
 			imagen: null,
 			altImg: null,
-			pilares: null,
+			// pilares: null,
 			programaArchivo: null,
 
 
@@ -91,7 +91,7 @@ export default {
 		data.imagen = componenteImagen.imagen
 		data.altImg = componenteImagen.textoAlternativoImagen
 		// PILARES
-		data.pilares = app.$sanitizar(respuesta.Texto_pilares)
+		// data.pilares = app.$sanitizar(respuesta.Texto_pilares)
 		// PROGRAMA COMPLETO
 		data.programaArchivo = _.get(respuesta, ['Archivo_programa'])
 
@@ -105,7 +105,7 @@ export default {
 
 			imagen: null,
 			altImg: null,
-			pilares: null,
+			// pilares: null,
 			programaArchivo: null,
 
 
@@ -324,10 +324,10 @@ export default {
 		margin-top: .5em
 		z-index: 5
 // PILARES
-.pilares
-	+movil
-		.contenidoHTML
-			padding: 5em 1em
+// .pilares
+// 	+movil
+// 		.contenidoHTML
+// 			padding: 5em 1em
 // PROPUESTAS
 .propuestas
 	z-index: 0
