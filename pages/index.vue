@@ -28,7 +28,7 @@
 		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad" v-if="cargado").imgSaludo
 		img.noCompu.imgTiny(src="/imagenes/diversidadMovilTiny.webp" alt="Diversidad" v-if="!cargado").imgSaludo
 
-
+	.precarga(v-if="!cargado")
 	.postcarga(v-if="cargado")
 		section.seccionParticipa
 			.curva.curvaSuperior
@@ -203,7 +203,7 @@ section
 		// max-height: 100%
 	.imgTiny
 		width: 119.45vw
-		height: 100%
+		height: 90%
 		filter: blur(4px)
 	.filtroBlur
 		min-height: 250px
@@ -296,7 +296,10 @@ section
 			margin-top: -6vw
 
 
-
+.precarga
+	height: 100vh
+	width: 100vw
+	background-color: $verde2
 .seccionParticipa
 	position: relative
 	background-color: $verde2
