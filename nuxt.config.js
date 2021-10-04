@@ -58,7 +58,12 @@ const config = {
 			{ hid: 'canonical', rel: 'canonical', href: url	},
 
 			{ hid: 'icon', rel: 'icon', href: '/favicon.svg' },
-			{ hid: 'mask-icon', rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' }
+			{ hid: 'mask-icon', rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' },
+			{ hid: 'analytics', rel: 'dns-prefetch', href: 'https://www.google-analytics.com' },
+			{ hid: 'tagManager', rel: 'dns-prefetch', href: 'https://www.googletagmanager.com' },
+			{ hid: 'analytics', href: 'https://www.google-analytics.com', rel: 'preconnect' },
+			{ hid: 'tagManager', href: 'https://www.googletagmanager.com', rel: 'preconnect' }
+
 			// { hid: 'tkfonts', rel: 'stylesheet', href: 'https://use.typekit.net/jem8rnn.css' }
 		]
 	},
