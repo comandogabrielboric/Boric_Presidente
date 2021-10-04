@@ -4,7 +4,8 @@
 	section.storytelling
 		.filtroBlur
 			img.noMovil(src="/imagenes/portada.webp" alt="Súmate a cambiar Chile")
-			img.noCompu(src="/imagenes/portadaMovil.webp" alt="Súmate a cambiar Chile")
+			img.noCompu(v-if="cargado" src="/imagenes/portadaMovil.webp" alt="Súmate a cambiar Chile")
+			img.noCompu.imgtyni(v-if="!cargado" src="/imagenes/portadaMovilTyni.webp" alt="Súmate a cambiar Chile")
 
 
 	section.seccionCuna
@@ -198,6 +199,13 @@ section
 		height: 100%
 		max-width: 100%
 		// max-height: 100%
+	.imgtyni
+		width: 119.45vw
+		height: 100%
+		filter: blur(4px)
+	.filtroBlur
+		min-height: 250px
+		width: 100vw
 	+compu
 		background-image: url('/imagenes/portada.webp')
 		background-size: cover
@@ -267,6 +275,7 @@ section
 	.imgSaludo
 		width: 100%
 		height: 66.55%
+		min-height: 10em
 		// width: 100vw
 		z-index: 0
 		margin-top: -9vw
