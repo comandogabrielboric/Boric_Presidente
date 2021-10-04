@@ -5,7 +5,7 @@
 		.filtroBlur
 			img.noMovil(src="/imagenes/portada.webp" alt="Súmate a cambiar Chile")
 			img.noCompu(v-if="cargado" src="/imagenes/portadaMovil.webp" alt="Súmate a cambiar Chile")
-			img.noCompu.imgtyni(v-if="!cargado" src="/imagenes/portadaMovilTyni.webp" alt="Súmate a cambiar Chile")
+			img.noCompu.imgTiny(v-if="!cargado" src="/imagenes/portadaMovilTiny.webp" alt="Súmate a cambiar Chile")
 
 
 	section.seccionCuna
@@ -26,6 +26,7 @@
 
 		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad"  v-if="cargado").imgSaludo
 		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad" v-if="cargado").imgSaludo
+		img.noCompu.imgTiny(src="/imagenes/diversidadMovilTiny.webp" alt="Diversidad" v-if="!cargado").imgSaludo
 
 
 	.postcarga(v-if="cargado")
@@ -154,6 +155,7 @@ export default {
 
 section
 	position: relative
+	// min-height: 50vh
 	.contenido
 		width: 100%
 		max-width: 100%
@@ -199,7 +201,7 @@ section
 		height: 100%
 		max-width: 100%
 		// max-height: 100%
-	.imgtyni
+	.imgTiny
 		width: 119.45vw
 		height: 100%
 		filter: blur(4px)
@@ -225,7 +227,7 @@ section
 .seccionCuna
 	position: relative
 	background-color: $verde1
-	min-height: 10em
+	min-height: 20em
 	display: flex
 	flex-flow: column nowrap
 	justify-content: center
