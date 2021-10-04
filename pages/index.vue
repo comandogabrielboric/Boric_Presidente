@@ -202,7 +202,7 @@ section
 		max-width: 100%
 		// max-height: 100%
 	.imgTiny
-		width: 119.45vw
+		width: 100vw
 		height: 90%
 		filter: blur(4px)
 	.filtroBlur
