@@ -18,8 +18,8 @@
 		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }').contenedorbtn
 			a-button(type='primary' @click="firmarahora('formulario')").suscribirme
 				| SEGUIMOS
-	a-modal(v-model="visible" title="Bienvenide !!" centered @ok="handleOk" :footer="null").modal
-	p Pronto recibiras noticias de nosotros
+	a-modal(v-model="visible" title="Gracias !!" centered @ok="handleOk" :footer="null").modal
+		p Firmaste exitosamente
 
 </template>
 <script>
@@ -98,7 +98,7 @@ export default {
 			}
 			console.log('form', form)
 			const config = {}
-			const respuesta = await this.$axios.post(`${process.env.apiURL}/unete`, this.formulario, config).then(r => r.data).catch(e => console.error('fallo suscribirse', e))
+			const respuesta = await this.$axios.post(`${process.env.apiURL}/unete`, this.formulario, config).then(r => r.data).catch(e => console.error('fallo firma', e))
 			console.log('Respuesta', respuesta)
 			if (respuesta.error) {
 				this.visible = false

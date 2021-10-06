@@ -36,6 +36,7 @@
 		"phone": "^3.1.7",
 		"pug": "^3.0.2",
 		"pug-plain-loader": "^1.1.0",
+		"rut.js": "^2.0.0",
 		"sanitize-html": "^2.5.1",
 		"validator": "^13.6.0",
 		"vue-pdf": "^4.3.0",
