@@ -11,9 +11,9 @@
 
 <script>
 import { gsap } from 'gsap'
-import Vue from 'vue'
-import { ObserveVisibility } from 'vue-observe-visibility'
-Vue.directive('observe-visibility', ObserveVisibility)
+// import Vue from 'vue'
+// import { ObserveVisibility } from 'vue-observe-visibility'
+// Vue.directive('observe-visibility', ObserveVisibility)
 
 export default {
 	async asyncData ({ app }) {

@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import VueObserveVisibility from 'vue-observe-visibility'
+import { ObserveVisibility } from 'vue-observe-visibility'
 
-Vue.directive(VueObserveVisibility)
+Vue.directive('observe-visibility', ObserveVisibility)
 
 export default ({ app }, inject) => {
-	inject('VueObserveVisibility', VueObserveVisibility)
+	inject('observe-visibility', ObserveVisibility)
 }
