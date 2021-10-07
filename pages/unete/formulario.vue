@@ -1,7 +1,6 @@
 <template lang="pug">
 .root
-	h1 Unete
-	a-form-model(ref='formulario' :model='formulario' :rules='rules').suscribirse
+	a-form-model(ref='formulario' :model='formulario' :rules='rules').firmar
 
 		a-form-model-item(has-feedback prop='nombre')
 			a-input(v-model='formulario.nombre' type='nombre' placeholder="Nombre").input
@@ -15,9 +14,8 @@
 		a-form-model-item(has-feedback prop='email')
 			a-input(v-model='formulario.email' type='email' placeholder='Email').input
 
-		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }').contenedorbtn
-			a-button(type='primary' @click="firmarahora('formulario')").suscribirme
-				| SEGUIMOS
+		a-form-model-item(:wrapper-col='{ span: 24 }').contenedorbtn
+			a-button(@click="firmarahora('formulario')").boton FIRMAR
 	a-modal(v-model="visible" title="Gracias !!" centered @ok="handleOk" :footer="null").modal
 		p Firmaste exitosamente
 
@@ -111,5 +109,21 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+@import '~/estilos/paleta'
 
+.firmar
+	padding: 1em
+	width: 260px
+.contenedorbtn
+	display: flex
+	justify-content: center
+	.boton
+		// margin-left: -.8em
+		width: 100%
+		padding: .2em 0 0 0
+		color: $petroleo1
+		background-color: $verde3
+		border-radius: 3px
+		font-weight: 900
+		font-size: 1.4em
 </style>
