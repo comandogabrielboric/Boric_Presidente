@@ -1,9 +1,12 @@
 <template lang="pug">
 .rootCombi
-	.espacioCompi(@mouseover="animar" @click="animar" :class="{animando}")
+	.espacioCompi(@mouseover="animar" v-observe-visibility="animar" @click="animar" :class="{animando}")
 		img(src="/imagenes/combiVerde.webp" alt="Combi").combi
 </template>
 <script>
+import Vue from 'vue'
+import { ObserveVisibility } from 'vue-observe-visibility'
+Vue.directive('observe-visibility', ObserveVisibility)
 export default {
 	data () {
 		return {
