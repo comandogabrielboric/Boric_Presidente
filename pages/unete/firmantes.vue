@@ -9,6 +9,8 @@ export default {}
 </script>
 
 <style lang="sass" scoped>
+@import '~/estilos/paleta'
+
 .root
 	border: 1px solid red
 	width: 260px
