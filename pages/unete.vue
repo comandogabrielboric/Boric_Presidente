@@ -7,13 +7,57 @@
 		.contenedorCarta
 		.contenedorfirmas
 			formulario
-			firmantes
+			.firmantes
+				.texto Han firmado {{ nFirmas }} personas
+				ul.firmas(v-for="firma in firmantes")
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+					li.nombres {{ firma.nombre }} {{firma.apellido}}
+
 </template>
 <script>
 import formulario from './unete/formulario.vue'
-import firmantes from './unete/firmantes.vue'
+// import firmantes from './unete/firmantes.vue'
 export default {
-	components: { formulario, firmantes }
+	components: { formulario },
+
+	async asyncData ({ app }) {
+		const respuesta = await app.$olicitar(`${process.env.apiURL}/firmantes`)
+		const firmantes = respuesta.firmas
+		const nFirmas = firmantes.length
+
+		const data = {
+			firmantes,
+			nFirmas
+		}
+		return data
+	},
+	data () {
+		return {
+			firmantes: [],
+			nFirmas: null
+		}
+	}
+
 }
 </script>
 <style lang="sass" scoped>
@@ -39,18 +83,28 @@ export default {
 	.contenedorCarta
 		width: 95vw
 		height: 500px
-		border: 1px solid orange
 	.contenedorfirmas
 		max-width: 320px
 		display: flex
 		flex-wrap: wrap
 		justify-content: center
 		align-items: center
-		border: 1px solid red
 		padding: 1em
-
+		.firmantes
+			font-size: 1.1em
+			.texto
+				padding: .5em
+			.firmas
+				height: 300px
+				width: 250px
+				padding: .5em
+				text-transform: capitalize
+				background-color: #268CAF
+				overflow: auto
 	+compu
 		.contenedorCarta
 			width: 70vw
 			max-width: 700px
+
+
 </style>

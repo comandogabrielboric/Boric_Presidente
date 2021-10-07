@@ -1,16 +1,19 @@
 <template lang="pug">
 .root
 	.emisiones
-		.emisionesContenedor
-			.contenedorContador
-				.contador 0
-				.texto     kg/co2
-			.barra(id='barraDeProgreso')
-	button(@click="activarBarra()") activar
+		.emisionesContenedor(v-observe-visibility="activarBarra")
+			.barra(id='barraDeProgreso' )
+				.contenedorContador
+					.contador 0
+					.texto     kg/co2
+		//- button(@click="activarBarra()") activar
 </template>
 
 <script>
 import { gsap } from 'gsap'
+import Vue from 'vue'
+import { ObserveVisibility } from 'vue-observe-visibility'
+Vue.directive('observe-visibility', ObserveVisibility)
 
 export default {
 	async asyncData ({ app }) {
@@ -25,6 +28,7 @@ export default {
 	data () {
 		return {
 			consumototal: null
+			// isVisible: null
 		}
 	},
 	methods: {
@@ -32,8 +36,8 @@ export default {
 			const emisiones = this.consumototal
 			console.log(emisiones)
 		},
-		activarBarra () {
-			console.log('activando barra')
+		activarBarra (isVisible, entry) {
+			console.log('activando barra', isVisible)
 			const emisiones = this.consumototal
 			const inicio = 0
 
@@ -56,25 +60,25 @@ export default {
 	.emisionesContenedor
 		height: 200px
 		width: 80vw
-		border: 2px solid red
 		display: flex
 		flex-wrap: wrap
-		// align-items: center
+		align-items: center
 		.barra
-			height: 40px
+			height: 55px
 			width: 0
-			border: 2px solid red
 			border-radius: 10px
 			background: linear-gradient(90deg, $colorSecundariosB2 0%, $colorSecundariosA1 100%)
+			overflow: hidden
+			display: flex
+			align-items: center
 		.contenedorContador
 			width: 100%
-			font-size: 2.5em
+			font-size: 2.3em
 			display: flex
 			justify-content: center
 			align-items: center
 			.contador
 				// display: block
-				border: 2px solid red
 				text-align: center
 				margin-right: .3em
 			.texto
