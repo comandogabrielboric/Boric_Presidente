@@ -2,10 +2,31 @@
 .root
 	.texto Han firmado x personas
 	.contenedorFirmantes Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus libero sit amet ullamcorper fringilla. Integer in vehicula nibh, non consequat enim. In hac habitasse platea dictumst. Maecenas fringilla sed eros eu consectetur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla vitae ante non nulla placerat commodo. Curabitur id tellus ultricies, auctor mauris posuere, iaculis magna. Suspendisse consectetur, diam sit amet tempor sollicitudin, ligula sem convallis nulla, at maximus justo eros at felis. Ut suscipit gravida felis, eget varius quam.Lor
+	button(@click="t()")
 </template>
 
 <script>
-export default {}
+export default {
+	async asyncData ({ app }) {
+		const respuesta = await app.$olicitar(`${process.env.apiURL}/firmantes`)
+		const firmantes = respuesta.firma
+
+		const data = {
+			firmantes
+		}
+		return data
+	},
+	data () {
+		return {
+			firmantes: []
+		}
+	},
+	methods: {
+		t () {
+			console.log(this.firmantes)
+		}
+	}
+}
 </script>
 
 <style lang="sass" scoped>
