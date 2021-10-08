@@ -9,7 +9,7 @@
 			a-input(v-model='formulario.apellido' type='apellido' placeholder="Apellido").input
 
 		a-form-model-item(has-feedback prop='rut')
-			a-input(v-model='formulario.rut' type='tel' placeholder='Rut').input
+			a-input(v-model='formulario.rut' type='rut' placeholder='Rut').input
 
 		a-form-model-item(has-feedback prop='email')
 			a-input(v-model='formulario.email' type='email' placeholder='Email').input
