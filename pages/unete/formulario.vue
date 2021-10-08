@@ -15,7 +15,7 @@
 			a-input(v-model='formulario.email' type='email' placeholder='Email').input
 
 		a-form-model-item(:wrapper-col='{ span: 24 }').contenedorbtn
-			button(@click="firmarahora('formulario')").boton
+			.button(@click="firmarahora('formulario')").boton
 				.p FIRMAR
 	a-modal(v-model="visible" centered @ok="handleOk" :footer="null").modal
 		p.t Gracias por unirte
@@ -137,6 +137,7 @@ export default {
 		color: $verde1
 		justify-content: center
 		align-items: center
+		border: 0
 		border-radius: 5px
 		margin-top: .5em
 		z-index: 5
