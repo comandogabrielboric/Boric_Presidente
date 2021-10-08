@@ -11,6 +11,15 @@
 			.firmantes
 				.texto Han firmado {{ nFirmas }} personas
 				ul.firmas
+					li.nombres Camila Vallejo
+					li.nombres Rodrigo Oyarzun
+					li.nombres Roberto Rojas
+					li.nombres Daniel Stingo
+					li.nombres Jorge Arrate
+					li.nombres Marcela Mella
+					li.nombres Marianela Jopia
+					li.nombres Iona Rothfeld
+					li.nombres Carolina Garrido
 					li.nombres(v-for="firma in firmantes") {{ firma.nombre }} {{firma.apellido}}
 
 </template>
