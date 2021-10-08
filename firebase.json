@@ -72,6 +72,11 @@
 					"source": "/propuestas/elemento",
 					"destination": "/propuestas",
 					"type": 302
+				},
+				{
+					"source": "/programa",
+					"destination": "/",
+					"type": 302
 				}
 			]
 		},
