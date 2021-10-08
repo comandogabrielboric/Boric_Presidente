@@ -21,8 +21,10 @@ export default {
 	components: { formulario },
 
 	async asyncData ({ app }) {
+		const _ = app.$lodash
 		const respuesta = await app.$olicitar(`${process.env.apiURL}/firmantes`)
-		const firmantes = respuesta.firmas
+		const firmas = respuesta.firmas
+		const firmantes = _.reverse(firmas)
 		const nFirmas = firmantes.length
 
 		const textos = await app.$olicitar(`${process.env.cmsURL}/carta-nos-unimos-con-boric`)
