@@ -8,42 +8,23 @@
 			.ql-editor.contenidoHTML(v-html='carta')
 		.contenedorfirmas
 			formulario
-			.firmantes
-				.texto Han firmado {{ nFirmas }} personas
-				ul.firmas
-					li.nombres Camila Vallejo
-					li.nombres Rodrigo Oyarzun
-					li.nombres Roberto Rojas
-					li.nombres Daniel Stingo
-					li.nombres Jorge Arrate
-					li.nombres Marcela Mella
-					li.nombres Marianela Jopia
-					li.nombres Iona Rothfeld
-					li.nombres Carolina Garrido
-					li.nombres(v-for="firma in firmantes") {{ firma.nombre }} {{firma.apellido}}
+			firmantes
 
 </template>
 <script>
 import formulario from './unete/formulario.vue'
+// import firmantes from '../components/firmantes.vue'
 // import firmantes from './unete/firmantes.vue'
 export default {
 	components: { formulario },
 
 	async asyncData ({ app }) {
-		const _ = app.$lodash
-		const respuesta = await app.$olicitar(`${process.env.apiURL}/firmantes`)
-		const firmas = respuesta.firmas
-		const firmantes = _.reverse(firmas)
-		const nFirmas = firmantes.length
-
 		const textos = await app.$olicitar(`${process.env.cmsURL}/carta-nos-unimos-con-boric`)
 		const carta = app.$sanitizar(textos.Carta)
 		const textoIntroductorio = app.$sanitizar(textos.Texto_introductorio)
 		const textoModal = app.$sanitizar(textos.Texto_modal)
 
 		const data = {
-			firmantes,
-			nFirmas,
 			carta,
 			textoIntroductorio,
 			textoModal
@@ -52,8 +33,6 @@ export default {
 	},
 	data () {
 		return {
-			firmantes: [],
-			nFirmas: null,
 			carta: null,
 			textoIntroductorio: null,
 			textoModal: null
@@ -101,19 +80,6 @@ export default {
 		justify-content: center
 		align-items: center
 		padding: 2em 1em 1em 1em
-		.firmantes
-			font-size: 1.1em
-			.texto
-				padding: .5em
-			.firmas
-				height: 300px
-				width: 250px
-				padding: 1em
-				text-transform: capitalize
-				background-color: #268CAF
-				overflow: auto
-				.nombres
-					list-style: none
 	+compu
 		justify-content: space-evenly
 	+movil
