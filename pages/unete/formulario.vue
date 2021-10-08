@@ -16,8 +16,12 @@
 
 		a-form-model-item(:wrapper-col='{ span: 24 }').contenedorbtn
 			a-button(@click="firmarahora('formulario')").boton FIRMAR
-	a-modal(v-model="visible" title="Gracias !!" centered @ok="handleOk" :footer="null").modal
-		p Firmaste exitosamente
+	a-modal(v-model="visible" centered @ok="handleOk" :footer="null").modal
+		p.t Gracias por unirte
+		p ¿Quieres sumarte a las mesas de participación programáticas?
+		a.link(href='https://participa.boricpresidente.cl' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'nav-link', hacia: 'Unete - participa.boricpresidente.cl'})") Haz click aquí.
+		p ¿Te gustaría apoyarnos un poco más?
+		nuxt-link.link(to='/aporta' @click.native="tag('Unete - aporta')") Haz click aquí para para aportar a la campaña
 
 </template>
 <script>
@@ -104,12 +108,16 @@ export default {
 				this.visible = true
 			}
 			console.log('suscrito', this.visible)
+		},
+		tag (valor) {
+			this.$gtm.push({ event: 'nav-link', hacia: valor })
 		}
 	}
 }
 </script>
 <style lang="sass" scoped>
 @import '~/estilos/paleta'
+@import '~/estilos/utils'
 
 .firmar
 	padding: 1em
@@ -126,4 +134,42 @@ export default {
 		border-radius: 3px
 		font-weight: 900
 		font-size: 1.4em
+
+.modal::v-deep
+	.ant-modal-body
+		text-align: center
+		padding: 2em 1em 5em 1em
+		background-color: $verde1
+		// max-height: 80vh
+		overflow: auto
+		font-family: lexia
+		.t
+			color: $verde3
+			font-size: 2.2em
+			padding-bottom: .3em
+		p
+			font-size: 1.3em
+			color: #fff
+			padding: 1em 0 0 0
+			&:nth-of-type(3)
+				margin-top: 1em
+		.link
+			margin: 0 .3em
+			padding: 0 .7em
+			font-wegth: 700
+			font-size: 1.2em
+			color: #fff
+			font-style: italic
+			&.nuxt-link-active
+				color: $colorPrincipalC3
+		+compu
+			padding: 2em 2em 5em 2em
+			.t
+				font-size: 3em
+			p
+				font-size: 1.8em
+			.link
+				font-size: 1.5em
+	.ant-modal-mask
+		backdrop-filter: blur(4px)
 </style>

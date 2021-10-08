@@ -111,7 +111,6 @@ const config = {
 			maxAge: 1000 * 60 * 60 * 24 * 7
 		}
 	},
-	modern: 'client',
 
 	fontLoader: {
 		url: 'https://use.typekit.net/jem8rnn.css'
