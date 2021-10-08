@@ -15,7 +15,8 @@
 			a-input(v-model='formulario.email' type='email' placeholder='Email').input
 
 		a-form-model-item(:wrapper-col='{ span: 24 }').contenedorbtn
-			a-button(@click="firmarahora('formulario')").boton FIRMAR
+			button(@click="firmarahora('formulario')").boton
+				.p FIRMAR
 	a-modal(v-model="visible" centered @ok="handleOk" :footer="null").modal
 		p.t Gracias por unirte
 		p ¿Quieres sumarte a las mesas de participación programáticas?
@@ -126,15 +127,20 @@ export default {
 	display: flex
 	justify-content: center
 	.boton
-		// margin-left: -.8em
+		display: flex
+		margin: 0 auto
+		cursor: pointer
 		width: 100%
-		padding: .2em 0 0 0
-		color: $petroleo1
+		height: 38px
+		text-transform: uppercase
 		background-color: $verde3
-		border-radius: 3px
-		font-weight: 900
-		font-size: 1.4em
-
+		color: $verde1
+		justify-content: center
+		align-items: center
+		border-radius: 5px
+		margin-top: .5em
+		z-index: 5
+		font-size: 1.5em
 .modal::v-deep
 	.ant-modal-body
 		text-align: center
