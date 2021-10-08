@@ -17,6 +17,7 @@
 		a-form-model-item(:wrapper-col='{ span: 24 }').contenedorbtn
 			.button(@click="firmarahora('formulario')").boton
 				.p FIRMAR
+			p(@click='showModal').terminosycondiciones #[span.primero Acepto] &nbspTérminos y Condiciones
 	a-modal(v-model="visible" centered @ok="handleOk" :footer="null").modal
 		p.t Gracias por unirte
 		p ¿Quieres sumarte a las mesas de participación programáticas?
@@ -24,6 +25,13 @@
 		p ¿Te gustaría apoyarnos un poco más?
 		nuxt-link.link(to='/aporta' @click.native="tag('Unete - aporta')") Haz click aquí para para aportar a la campaña
 
+	a-modal(:visible='tyc' @ok='handleOk' @cancel="tyc = false" :footer="null").modal
+		p.t Terminos y Condiciones
+		.h El/la usuaria/o declara aceptar el uso de los datos solicitados para la campaña presidencial de Gabriel Boric en el marco de la Ley N° 19.628. Sólo podrán ser usados estos datos para los fines específicos que el usuario autorice, esto es, para la entrega de información de la campaña presidencial respectiva y de la difusión de sus actividades propias. Para estos efectos el usuario autoriza a que lo contacten a través de medios digitales tales como email, Facebook, mensajes de texto (SMS), WhatsApp u otras plataformas similares con las finalidades señaladas, a la casilla de correo electrónico y número de teléfono que haya indicado.
+
+		.h La permanencia en estas bases de datos tendrá siempre la posibilidad de que la/el usuaria/o pueda darse de baja o solicitar dejar de estar registrado en las mismas, pudiendo al efecto revocar su autorización, y disponiendo, en todo caso, de los derechos que confiere la Ley N° 19.628.
+
+		.h La campaña presidencial de Gabriel Boric no podrá, bajo ningún concepto, ceder o transferir dichas bases de datos a terceros sin contar con el consentimiento expreso del usuario titular de los datos privados.
 </template>
 <script>
 import isEmail from 'validator/lib/isEmail'
@@ -81,7 +89,9 @@ export default {
 				labelCol: { span: 4 },
 				wrapperCol: { span: 14 }
 			},
-			visible: false
+			visible: false,
+			tyc: false
+
 
 		}
 	},
@@ -89,6 +99,10 @@ export default {
 		handleOk (e) {
 			console.log(e)
 			this.visible = false
+		},
+		showModal () {
+			this.tyc = true
+			this.$gtm.push({ event: 'gtm.linkClick', hacia: 'terminos y condiciones' })
 		},
 		async firmarahora () {
 			const formulario = this.formulario
@@ -142,18 +156,36 @@ export default {
 		margin-top: .5em
 		z-index: 5
 		font-size: 1.5em
+
+.terminosycondiciones
+	color: $verde3
+	display: inline
+	font-size: .9rem
+	width: 400
+	max-width: 100%
+	font-weight: 400
+	cursor: pointer
+	text-align: center
+	.primero
+		font-weight: 400
+
 .modal::v-deep
 	.ant-modal-body
 		text-align: center
 		padding: 2em 1em 5em 1em
 		background-color: $verde1
-		// max-height: 80vh
+		max-height: 85vh
+		max-width: 600px
 		overflow: auto
 		font-family: lexia
 		.t
 			color: $verde3
 			font-size: 2.2em
 			padding-bottom: .3em
+		.h
+			font-size: 1.3em
+			color: #fff
+			padding: 1em 0 0 0
 		p
 			font-size: 1.3em
 			color: #fff
