@@ -37,6 +37,19 @@ export default {
 			textoIntroductorio: null,
 			textoModal: null
 		}
+	},
+	head () {
+		const titulo = 'Unete'
+		const descripcion = 'El cambio lo realizamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia'
+		const imagen = '/imagenes/portadaMovil.webp'
+		const url = 'https://boricpresidente.cl/unete'
+		const obj = this.$eo({
+			titulo,
+			descripcion,
+			imagen,
+			url
+		})
+		return obj
 	}
 
 }
