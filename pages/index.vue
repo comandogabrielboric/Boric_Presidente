@@ -13,15 +13,14 @@
 
 		.noCompu.sobreCurva
 			.contenido
-				div Aporta con tus ideas y anhelos a un programa de Gobierno descentralizado y abierto de cara a la ciudadanía.
-				b Súmate a una mesa ciudadana o contesta una consulta.
+				div Responde la consulta online o participa de una mesa ciudadana y suma tus ideas a este proyecto transformador.
 		.noMovil.sobreCurva
 			.contenido
 				h1 Mesas ciudadanas
-				h2 x Boric
-				div Te invitamos a aportar con tus ideas, opiniones y anhelos a un programa de Gobierno diverso, descentralizado y abierto de cara a la ciudadanía. #[b Súmate a una mesa ciudadana o contesta una consulta, y sé parte de un proyecto transformador que construimos juntas y juntos.]
+				h2 ¿Cómo participar?
+				div Responde la consulta online o participa de una mesa ciudadana y suma tus ideas a este proyecto transformador.
 
-
+		a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta online
 		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
 
 		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad"  v-if="cargado").imgSaludo
