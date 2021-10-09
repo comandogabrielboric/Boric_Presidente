@@ -29,8 +29,8 @@ export default {
 		async solicitarFirmas () {
 			const respuesta = await this.$axios({ method: 'get', url: `${process.env.apiURL}/firmantes` }).then(r => r.data).catch(e => console.error('fallo respuesta', e))
 			// console.log('Respuesta', respuesta)
-			this.firmantes = respuesta.firmas
-			const numerofirmas = this.firmantes
+			const numerofirmas = respuesta.firmas
+			this.firmantes = this._.reverse(numerofirmas)
 			this.nFirmas = numerofirmas.length
 		}
 	}
