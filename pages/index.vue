@@ -13,14 +13,14 @@
 
 		.noCompu.sobreCurva
 			.contenido
-				div Responde la consulta online o participa de una mesa ciudadana y suma tus ideas a este proyecto transformador.
+				div Súmate respondiendo nuestra consulta ciudadana o participando en las mesas ciudadanas, donde podrás compartir tus ideas, anhelos y opiniones para aportar a la construcción de este proyecto transformador.
 		.noMovil.sobreCurva
 			.contenido
 				h1 Mesas ciudadanas
 				h2 ¿Cómo participar?
-				div Responde la consulta online o participa de una mesa ciudadana y suma tus ideas a este proyecto transformador.
+				div Súmate respondiendo nuestra consulta ciudadana o participando en las mesas ciudadanas, donde podrás compartir tus ideas, anhelos y opiniones para aportar a la construcción de este proyecto transformador.
 
-		a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta online
+		a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta ciudadana
 		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
 
 		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad"  v-if="cargado").imgSaludo
