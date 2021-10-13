@@ -20,6 +20,7 @@
 		.menuMovil(v-if="activa")
 			+links
 
+	//- buscador
 	//- RedesSocialesnav
 
 	.triggerMenu(@click="activa = !activa")
