@@ -64,7 +64,12 @@
 					"type": 302
 				},
 				{
-					"source": "/wp-content/*",
+					"source": "/wp-content/**",
+					"destination": "/propuestas",
+					"type": 302
+				},
+				{
+					"source": "/wp-content/uploads/**",
 					"destination": "/propuestas",
 					"type": 302
 				},
