@@ -10,7 +10,10 @@
 	.buscadorDePropuestas
 		input(v-model="matchPropuesta").input
 		select(v-if='buscarPropuesta' v-model='seleccionarPropuesta' placeholder='holoooo').input hola hola hola
-			option(v-for='p in buscarPropuesta' v-bind:value='p.titulo').input {{ p.titulo }}
+			option(v-for='p in buscarPropuesta').input {{ p.titulo }}
+		.mostradorBusqueda
+			.propuesta(v-for='p in buscarPropuesta')
+				.titulo {{ p.titulo }}
 </template>
 
 <script>
@@ -43,22 +46,27 @@ export default {
 		buscarPropuesta () {
 			const _ = this._
 
-			const buscar = parameterize(this.matchPropuesta)
+			const buscar = this.matchPropuesta
 			if (buscar) {
 				const prop = this.propuestas
 				console.log('a buscar', buscar)
-				const coincidencia = _.pickBy(prop, p => _.includes(parameterize(p.titulo), buscar) || _.includes(parameterize(p.contenido), buscar))
+				const coincidencia = _.pickBy(prop, p => _.includes(parameterize(p.titulo), parameterize(buscar)) || _.includes(parameterize(p.contenido), parameterize(buscar)))
 				console.log('coincidencia', coincidencia)
-				const array = _.map(coincidencia, c => c)
-				console.log('array', array)
-
+				const arrayCoincidencias = _.map(coincidencia, c => c)
+				console.log('arrayCoincidencias', arrayCoincidencias)
 				// console.log('coincidenciawww', _.map(prop, p => _.includes(p.titulo, buscar)))
-				return array
+				const index = _.map(arrayCoincidencias, p => _.lowerCase(p.contenido).indexOf(_.lowerCase(buscar)))
+				console.log('index', index)
+				return arrayCoincidencias
 			}
 			return null
 		}
+
 	},
 	methods: {
+		buscarIndex (p) {
+			console.log(p)
+		},
 		busca () {
 			const titulobuscado = this.buscar
 			const propuestas = this.propuestas
