@@ -1,7 +1,7 @@
 import Vue from 'vue'
 // import _ from 'lodash'
-import { isEmpty, map, get, filter, find, reverse, mapValues, toLower, matchesProperty } from 'lodash'
-const _ = { isEmpty, map, get, filter, find, reverse, mapValues, toLower, matchesProperty }
+import { isEmpty, map, get, filter, find, reverse, mapValues, toLower, matchesProperty, pickBy, includes, forEach } from 'lodash'
+const _ = { isEmpty, map, get, filter, find, reverse, mapValues, toLower, matchesProperty, pickBy, includes, forEach }
 
 Vue.prototype._ = _
 
