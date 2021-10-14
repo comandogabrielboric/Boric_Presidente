@@ -17,7 +17,7 @@
 
 		a-form-model-item(v-if="regionseleccionada" has-feedback='' prop='comuna')
 			a-select(v-model="formulario.comuna" placeholder='Comuna' @change="handleComuna").input
-				a-select-option(v-for="comuna in comunas" :key="comuna.label" :value="comuna.value") {{ comuna.label }}
+				a-select-option(v-for="comuna in comunas" :key="comuna.label" :value="comuna.label") {{ comuna.label }}
 
 		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }').contenedorbtn
 			a-button(type='primary' @click="submitForm('formulario')").suscribirme
@@ -95,7 +95,8 @@ export default {
 				email: undefined,
 				telefono: undefined,
 				comuna: undefined,
-				region: undefined
+				region: undefined,
+				distrito: undefined
 			},
 			rules: {
 				nombre: [{ validator: validaNombre, trigger: 'change' }],
@@ -110,7 +111,8 @@ export default {
 			},
 			visible: false,
 			tyc: false,
-			regionseleccionada: null
+			regionseleccionada: null,
+			comunaSeleccionada: null
 			// regiones: this.re
 		}
 	},
@@ -124,11 +126,29 @@ export default {
 			const re = this.regiones
 			const com = this._.filter(re, ['value', this.regionseleccionada])
 			const comunas = com[0].children
+			if (this.regionseleccionada) {
+				// console.log(this.regionseleccionada)
+				// console.log('comunas', comunas)
+				// console.log('formulario', this.formulario)
+			}
 			return comunas
+		},
+		distrito () {
+			const comunaSeleccionada = this.comunaSeleccionada
+			if (this.comunaSeleccionada) {
+				const com = this.comunas
+				const comuna = this._.filter(com, ['value', comunaSeleccionada])
+				const distrito = comuna[0].distrito
+				// console.log('distrito', distrito)
+				this.defineDistrito(distrito)
+				return distrito
+			}
+			return null
 		}
 	},
 	methods: {
 		submitForm (formName) {
+			// console.log(this.formulario)
 			this.$refs[formName].validate(valid => {
 				if (valid) {
 					this.suscribirse()
@@ -139,13 +159,18 @@ export default {
 				}
 			})
 		},
+		defineDistrito (d) {
+			this.formulario.distrito = d
+		},
 		handleChange (value) {
-			console.log(`Selected: ${value}`)
+			console.log(`Selectedd: ${value}`)
 			this.regionseleccionada = value
 			console.log('seleccion', this.regionseleccionada)
 		},
 		handleComuna (value) {
 			console.log(`Selected: ${value}`)
+			this.comunaSeleccionada = value
+			console.log('distri', this.distrito)
 		},
 		async suscribirse () {
 			// const { nombre, email, telefono, comuna } = this
