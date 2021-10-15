@@ -8,7 +8,7 @@
 
 	mixin links
 		.links.contenedor-links.link-interno
-			nuxt-link.link.bold(to='/aporta' @click.native="tag('nav participa')") Participa Aquí
+			a.link.bold(href='https://participa.boricpresidente.cl' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'nav-link', hacia: 'nav participa.boricpresidente.cl'})") participa Aquí
 			nuxt-link.link.bold(to='/aporta' @click.native="tag('nav aporta')") aporta
 			nuxt-link.link.bold(to='/propuestas' @click.native="tag('nav propuestas')") Propuestas
 			nuxt-link.link.bold(to='/unete' @click.native="tag('nav Únete')") Únete
