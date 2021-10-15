@@ -34,11 +34,17 @@
 
 	.seccion.consulta
 		.curva.curvaSuperior
-		h2.titulo Consulta ciudadana
-		.mega
-			.circulo
-				img(src='/imagenes/megafono.png')
-		a.btn.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ consulta ciudadana'})") RESPONDE ACÁ
+		.contenido
+			.titulo #[span.primero Consulta]
+				div ciudadana
+			.texto El nuevo Chile lo construimos entre todas y todos. ¡Inscríbete y participa en la construcción de nuestro programa de gobierno!
+		.movible
+			.mega
+				.circulo
+					img.noCompu(src='/imagenes/megafono.png')
+					img.noMovil(src='/imagenes/megafonoReversa.png')
+
+			a.btn.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ consulta ciudadana'})") RESPONDE ACÁ
 
 	.seccion.mesasDigitales
 		.curva.curvaSuperior
@@ -225,44 +231,58 @@ export default {}
 		text-align: center
 		font-weight: 900
 		z-index: 5
-		padding: 1em 1em 0 1em
+		padding: 0 1em 0 1em
 		font-style: italic
-	.mega
-		$lado: 13em
-		width: $lado
-		height: $lado
-		width: 100vw
-		.circulo
-			position: absolute
-			top: 56%
-			left: 50%
-			right: 50%
-			bottom: 0
+		line-height: 1.3
+		.primero
+			font-size: 3rem
+			font-weight: 400
+			font-style: italic
+			color: $verde3
+	.texto
+		font-size: 1.8rem
+		padding: .7em .5em 0 .5em
+		text-align: center
+		margin-bottom: 1em
+	.movible
+		display: flex
+		flex-wrap: wrap
+		justify-content: center
+		.mega
+			$lado: 13em
 			width: $lado
 			height: $lado
-			background: $petroleo3
-			border-radius: 50%
-			transform: translate(-25%, -50%) scale(.9)
-			img
-				position: relative
-				width: 220px
-				left: -50px
-				top: -10px
-				z-index: 1
-				padding: 1em 0 1em 0
-	.btn
-		font-size: 1.2rem
-		max-width: 260px
-		display: block
-		margin: 0 auto
-		cursor: pointer
-		text-transform: uppercase
-		background-color: $verde3
-		color: $verde1
-		padding: .5em 1.3em
-		border-radius: 4px
-		margin: 2.5em 0 2em 0
-		z-index: 5
+			width: 100vw
+			.circulo
+				position: absolute
+				left: 50%
+				right: 50%
+				bottom: 45px
+				width: $lado
+				height: $lado
+				background: $petroleo3
+				border-radius: 50%
+				transform: translate(-25%, -50%) scale(.9)
+				img
+					position: relative
+					width: 220px
+					left: -50px
+					top: -10px
+					z-index: 1
+					padding: 1em 0 1em 0
+		.btn
+			font-size: 1.2rem
+			max-width: 260px
+			display: block
+			margin: 0 auto
+			cursor: pointer
+			text-transform: uppercase
+			background-color: $verde3
+			color: $verde1
+			padding: .5em 1.3em
+			border-radius: 4px
+			margin: 3.5em 0 2em 0
+			z-index: 5
 
 .mesasDigitales
 	background-color: $azul1
@@ -389,6 +409,27 @@ export default {}
 				.circulo
 					top: 28%
 					left: 75%
+			.btn
+				height: 45px
+
+	.consulta
+		flex-wrap: nowrap
+		flex-flow: row-reverse
+		.contenido
+			display: flex
+			flex-wrap: wrap
+			justify-content: center
+			width: 50vw
+			.texto
+				text-align: right
+				padding: 1em 2em
+		.movible
+			width: 50vw
+			z-index: 1
+			.mega
+				.circulo
+					left: 20%
+					top: 30%
 			.btn
 				height: 45px
 
