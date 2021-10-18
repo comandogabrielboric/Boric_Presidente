@@ -123,18 +123,20 @@ export default {}
 
 	.contenido
 		display: flex
-		// flex-flow: column
+		// flex-wrap: wrap-reverse
 		width: 100vw
 		align-items: center
 		justify-content: space-evenly
 		padding: 1em
 		.imagen
 			$lado: 18em
+			width: 250px
+			height: 300px
 			.foto
 				.circulo
 					position: absolute
 					top: 50%
-					left: 15%
+					left: 10%
 					right: 50%
 					bottom: 0
 					width: $lado
@@ -153,9 +155,11 @@ export default {}
 			justify-content: right
 			display: flex
 			flex-wrap: wrap
-			max-width: 800px
+			max-width: 700px
+			// min-width: 400px
 			text-align: right
 			padding: 1em
+			z-index: 2
 			.titulo
 				margin-top: -20px
 				color: #fff
@@ -205,20 +209,20 @@ export default {}
 		align-items: center
 		justify-content: space-evenly
 		width: 100vw
-		padding: 2em
+		padding: 2em 3em
 		.textosYBoton
 			display: flex
 			flex-wrap: wrap
-			justify-content: center
+			justify-content: left
 			max-width: 800px
 			.titulo
 				color: $verde3
 				font-size: 2.5rem
-				text-align: center
+				text-align: left
 				font-weight: 900
 				line-height: 1.3
 				z-index: 5
-				padding: 1em 1em 0 1em
+				padding: 1em 0 0 .5em
 				font-style: italic
 				.primero
 					font-size: 3rem
@@ -228,7 +232,7 @@ export default {}
 				color: $azul2
 				font-size: 1.8rem
 				padding: 0 .5em 0 .5em
-				text-align: center
+				text-align: left
 				margin-bottom: 1em
 			.btn
 				font-size: 1.2rem
@@ -491,6 +495,12 @@ export default {}
 			flex-flow: column-reverse
 			.tituloYBotones
 				text-align: center
+			.imagen
+				.foto
+					.circulo
+						top: 75%
+						left: 35%
+
 	.mesasDigitales
 		.contenido
 			.movible
@@ -506,9 +516,12 @@ export default {}
 			padding: 0
 			.textosYBoton
 				padding: 1em .5em
+				justify-content: center
 				.titulo
 					padding: 0
+					text-align: center
 				.texto
+					text-align: center
 					padding: 0
 			.imagen
 				.mesa
