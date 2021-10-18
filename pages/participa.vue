@@ -12,9 +12,11 @@
 		.contenido
 			.imagen
 				.foto
-					img(src='/imagenes/megafonoReversa.png')
+					.circulo
+						img(src='/imagenes/Mesa.png')
 			.tituloYBotones
-				h1.titulo #[span.primero Participa]
+				h1.titulo #[span.primero Mesas ciudadanas x Boric]
+				.texto El nuevo Chile lo construimos entre todas y todos. Súmate a nuestros mecanismos de participación y sé parte de nuestro programa de gobierno.
 				.botones
 					a.btn.bold(href='https://participa.boricpresidente.cl/sign-in' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl/login'})") CREA UNA MESA
 					a.btn.bold(href='https://participa.boricpresidente.cl/busca-tu-mesa' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ unete a una mesa'})") UNETE A UNA MESA
@@ -38,13 +40,13 @@
 			.titulo #[span.primero Consulta]
 				div ciudadana
 			.texto El nuevo Chile lo construimos entre todas y todos. ¡Inscríbete y participa en la construcción de nuestro programa de gobierno!
+			.boton
+				a.btn.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ consulta ciudadana'})") RESPONDE ACÁ
 		.movible
 			.mega
 				.circulo
 					img.noCompu(src='/imagenes/megafono.png')
 					img.noMovil(src='/imagenes/megafonoReversa.png')
-
-			a.btn.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ consulta ciudadana'})") RESPONDE ACÁ
 
 	.seccion.uneteAUnaMesa
 		.curva.curvaSuperior
@@ -115,7 +117,7 @@ export default {}
 	display: flex
 	flex-wrap: wrap
 	justify-content: center
-	background-color: $petroleo2
+	background-color: $azul2
 	.curva
 		background-color: inherit
 
@@ -125,25 +127,40 @@ export default {}
 		width: 100vw
 		align-items: center
 		justify-content: space-evenly
-		border: 1px solid orange
+		padding: 1em
 		.imagen
-			border: 1px solid red
+			$lado: 18em
 			.foto
-				$lado: 20em
-				img
-					// position: relative
-					width: 25em
-					// left: 15
-					// top: -8em
-					z-index: 1
-					padding: 1em
+				.circulo
+					position: absolute
+					top: 50%
+					left: 15%
+					right: 50%
+					bottom: 0
+					width: $lado
+					height: $lado
+					background: $verde3
+					border-radius: 50%
+					transform: translate(-25%, -50%) scale(.9)
+					img
+						position: relative
+						width: 25em
+						left: 15
+						top: 0
+						z-index: 1
+						padding: 1em
 		.tituloYBotones
-			border: 1px solid white
+			justify-content: right
+			display: flex
+			flex-wrap: wrap
+			max-width: 800px
+			text-align: right
+			padding: 1em
 			.titulo
 				margin-top: -20px
 				color: #fff
 				font-size: 2.5rem
-				text-align: center
+				// text-align: center
 				font-weight: 900
 				z-index: 5
 				padding: 1em 1em 0 1em
@@ -153,20 +170,23 @@ export default {}
 				font-size: 3rem
 				font-weight: 900
 				font-style: italic
-				color: $azul2
+			.texto
+				font-size: 1.2rem
+				max-width: 700px
+				padding: 0 1.5em
 			.botones
 				padding: 2em
 				display: flex
 				flex-wrap: wrap
-				max-width: 400px
+				max-width: 650px
 				.btn
 					font-size: 1.2rem
 					// display: flex
 					margin: 0 auto
 					cursor: pointer
 					text-transform: uppercase
-					background-color: $azul2
-					color: $verde3
+					background-color: $verde3
+					color: $azul2
 					padding: .5em 1.3em
 					border-radius: 4px
 					margin-bottom: 1em
@@ -177,7 +197,6 @@ export default {}
 	display: flex
 	flex-wrap: wrap
 	justify-content: center
-	border: 1px solid orange
 	.curva
 		background-color: inherit
 	.contenido
@@ -190,7 +209,6 @@ export default {}
 		.textosYBoton
 			display: flex
 			flex-wrap: wrap
-			border: 1px solid red
 			justify-content: center
 			max-width: 800px
 			.titulo
@@ -229,7 +247,6 @@ export default {}
 		.imagen
 			width: 300px
 			height: 200px
-			border: 1px solid white
 			.mesa
 				$lado: 15em
 				width: $lado
@@ -269,34 +286,53 @@ export default {}
 
 .consulta
 	display: flex
-	flex-wrap: wrap
+	flex-flow: column
 	justify-content: center
-	background-color: $azul2
+	background-color: $verde2
 	.curva
 		background-color: inherit
-	.titulo
-		color: #fff
-		font-size: 2.5rem
-		text-align: center
-		font-weight: 900
-		z-index: 5
-		padding: 0 1em 0 1em
-		font-style: italic
-		line-height: 1.3
-		.primero
-			font-size: 3rem
-			font-weight: 400
+	.contenido
+		padding: 1em
+		margin-bottom: 2em
+		.titulo
+			color: #fff
+			font-size: 2.5rem
+			text-align: center
+			font-weight: 900
+			z-index: 5
+			padding: 0 1em 0 1em
 			font-style: italic
-			color: $verde3
-	.texto
-		font-size: 1.8rem
-		padding: .7em .5em 0 .5em
-		text-align: center
-		margin-bottom: 1em
+			line-height: 1.3
+			.primero
+				font-size: 3rem
+				font-weight: 400
+				font-style: italic
+				color: $verde3
+		.texto
+			font-size: 1.8rem
+			padding: .7em .5em 0 .5em
+			text-align: center
+			margin-bottom: 1em
+		.boton
+			// width: 100%
+			background-color: inherit
+			text-align: center
+			display: flex
+			.btn
+				font-size: 1.2rem
+				max-width: 260px
+				display: block
+				margin: 0 auto
+				cursor: pointer
+				text-transform: uppercase
+				background-color: $verde3
+				color: $verde1
+				padding: .5em 1.3em
+				border-radius: 4px
+				// margin: 0 0 2em 0
+				z-index: 5
+
 	.movible
-		display: flex
-		flex-wrap: wrap
-		justify-content: center
 		.mega
 			$lado: 13em
 			width: $lado
@@ -309,16 +345,18 @@ export default {}
 				bottom: 45px
 				width: $lado
 				height: $lado
-				background: $petroleo3
+				background: $azul2
 				border-radius: 50%
 				transform: translate(-25%, -50%) scale(.9)
 				img
 					position: relative
 					width: 220px
-					left: -50px
+					left: 10px
 					top: -10px
 					z-index: 1
 					padding: 1em 0 1em 0
+	.boton
+		width: 100vw
 		.btn
 			font-size: 1.2rem
 			max-width: 260px
@@ -330,7 +368,7 @@ export default {}
 			color: $verde1
 			padding: .5em 1.3em
 			border-radius: 4px
-			margin: 3.5em 0 2em 0
+			// margin: 0 0 2em 0
 			z-index: 5
 
 .mesasDigitales
@@ -341,7 +379,6 @@ export default {}
 	.curva
 		background-color: inherit
 	.contenido
-		border: 1px solid orange
 		display: flex
 		flex-flow: column
 		align-items: center
@@ -424,7 +461,7 @@ export default {}
 	.titulo
 		color: #fff
 		font-size: 2.5rem
-		text-align: right
+		text-align: center
 		font-weight: 900
 		z-index: 5
 		padding: 1em 1em 0 1em
@@ -452,6 +489,8 @@ export default {}
 	.mesasYConsulta
 		.contenido
 			flex-flow: column-reverse
+			.tituloYBotones
+				text-align: center
 	.mesasDigitales
 		.contenido
 			.movible
@@ -476,14 +515,22 @@ export default {}
 					.circulo
 						left: 50%
 						top: 120px
+	.consulta
+		padding-bottom: 3em
+		.movible
+			.mega
+				.circulo
+					top: 78%
+					left: 47%
+					right: 0
+					bottom: 0
 
 +compu
-	.mesasYConsulta
-		.contenido
-			.tituloYBotones
-				.botones
-					text-align: left
-					border: 1px solid red
+	// .mesasYConsulta
+	// 	.contenido
+	// 		.tituloYBotones
+	// 			.botones
+	// 				text-align: left
 
 	.consulta
 		flex-wrap: nowrap
@@ -506,7 +553,6 @@ export default {}
 		.movible
 			width: 300px
 			z-index: 1
-			border: 1px solid orange
 			position: relative
 			.mega
 				.circulo
@@ -514,7 +560,6 @@ export default {}
 					bottom: 0
 					left: 37%
 					right: 0
-			.btn
-				height: 45px
+
 
 </style>
