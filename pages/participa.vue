@@ -2,35 +2,35 @@
 .rootParticipa
 	.header
 		.noCompu
-			img.imgHeader(src='/imagenes/headerParticipaMovill.webp')
+			img.imgHeader(src='/imagenes/headerParticipaMovil.webp')
 		.noMovil
 			img.imgHeader(src='/imagenes/headerParticipaWeb.webp')
 
 	.seccion.mesasYConsulta
 		.curva.curvaSuperior
+
 		.contenido
-			h1.titulo #[span.primero Mesas]
-				div ciudadanas
-			.texto Este un espacio de participación donde tod@s 	podemos compartir ideas, propuestas, anhelos y opiniones 	para construir, junt@s el gobierno del cambio.
-		.noCompu
-			.movible
-				.mesas
-					.circulo
-						img(src='/imagenes/Mesa.png')
-				a.btn.bold(href='https://participa.boricpresidente.cl/sign-in' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl/login'})") CREA UNA MESA
-		.noMovil
-			.movible
-				.mesas
-					.circulo
-						img(src='/imagenes/Mesa.png')
-				a.btn.bold(href='https://participa.boricpresidente.cl/sign-in' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl/login'})") CREA UNA MESA
-	.seccion.uneteAUnaMesa
+			.imagen
+				.foto
+					img(src='/imagenes/megafonoReversa.png')
+			.tituloYBotones
+				h1.titulo #[span.primero Participa]
+				.botones
+					a.btn.bold(href='https://participa.boricpresidente.cl/sign-in' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl/login'})") CREA UNA MESA
+					a.btn.bold(href='https://participa.boricpresidente.cl/busca-tu-mesa' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ unete a una mesa'})") UNETE A UNA MESA
+					a.btn.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ consulta ciudadana'})") Consulta ciudadana
+
+	.seccion.mesasDigitales
 		.curva.curvaSuperior
 		.contenido
-			h2.titulo #[span.primero Únete]
-				div a una mesa
-			.texto Súmate a las Mesas Ciudadanas que estamos desarrollando. Podrás elegir entre distintos temas, causas y territorios para conversar sobre el Chile del futuro.
-		a.btn.bold(href='https://participa.boricpresidente.cl/busca-tu-mesa' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ unete a una mesa'})") UNETE A UNA MESA
+			.titulo #[span.primero Mesas ]
+							div ciudadanas digitales
+			.movible
+				.mac
+					.circulo
+						img(src='/imagenes/Mac.png')
+			.texto ¡Únete a una mesa ciudadana de manera digital, fácil y segura! Solo debes elegir dentro del formulario que día y  hora te acomoda más y uno de nuestros coordinadores se contactará contigo. ¡Así de simple!
+			a.btn.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ consulta ciudadana'})") INSCRÍBETE ACÁ
 
 	.seccion.consulta
 		.curva.curvaSuperior
@@ -46,17 +46,18 @@
 
 			a.btn.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ consulta ciudadana'})") RESPONDE ACÁ
 
-	.seccion.mesasDigitales
+	.seccion.uneteAUnaMesa
 		.curva.curvaSuperior
 		.contenido
-			.titulo #[span.primero Mesas]
-							div Digitales
-			.texto ¡Únete a una mesa ciudadana de manera digital, fácil y segura! Solo debes elegir dentro del formulario que día y  hora te acomoda más y uno de nuestros coordinadores se contactará contigo. ¡Así de simple!
-		.movible
-			.mac
-				.circulo
-					img(src='/imagenes/Mac.png')
-			a.btn.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ consulta ciudadana'})") INSCRÍBETE ACÁ
+			.imagen
+				.mesa
+					.circulo
+						img(src='/imagenes/Mesa.png')
+			.textosYBoton
+				h2.titulo #[span.primero Únete]
+					div a una mesa
+				.texto Súmate a las Mesas Ciudadanas que estamos desarrollando. Podrás elegir entre distintos temas, causas y territorios para conversar sobre el Chile del futuro.
+				a.btn.bold(href='https://participa.boricpresidente.cl/busca-tu-mesa' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ unete a una mesa'})") UNETE A UNA MESA
 
 	.seccion.contacto
 		.curva.curvaSuperior
@@ -110,109 +111,157 @@ export default {}
 
 .mesasYConsulta
 	width: 100vw
+	min-height: 500px
 	display: flex
 	flex-wrap: wrap
 	justify-content: center
-	background-color: $azul2
+	background-color: $petroleo2
 	.curva
 		background-color: inherit
-	.titulo
-		margin-top: -20px
-		color: #fff
-		font-size: 2.5rem
-		text-align: center
-		font-weight: 900
-		z-index: 5
-		padding: 1em 1em 0 1em
-		line-height: 1.3
-		// font-style: italic
-		.primero
-			font-size: 3rem
-			font-weight: 400
-			font-style: italic
-			color: $verde3
-	.movible
+
+	.contenido
 		display: flex
-		flex-wrap: wrap
-		justify-content: center
-		.mesas
-			$lado: 13em
-			width: $lado
-			height: $lado
-			width: 100vw
-			.circulo
-				position: absolute
-				top: 73%
-				left: 50%
-				right: 50%
-				bottom: 0
-				width: $lado
-				height: $lado
-				background: $petroleo3
-				border-radius: 50%
-				transform: translate(-25%, -50%) scale(.9)
+		// flex-flow: column
+		width: 100vw
+		align-items: center
+		justify-content: space-evenly
+		border: 1px solid orange
+		.imagen
+			border: 1px solid red
+			.foto
+				$lado: 20em
 				img
-					position: relative
-					width: 220px
-					left: -60px
-					top: 30px
+					// position: relative
+					width: 25em
+					// left: 15
+					// top: -8em
 					z-index: 1
-					padding: 1em 0 1em 0
-	.texto
-		font-size: 1.8rem
-		padding: 0 .5em 0 .5em
-		text-align: center
-		position: relative
-		margin-bottom: 2.2em
-	.btn
-		font-size: 1.2rem
-		display: block
-		margin: 0 auto
-		cursor: pointer
-		text-transform: uppercase
-		background-color: $verde3
-		color: $verde1
-		padding: .5em 1.3em
-		border-radius: 4px
-		margin: 1em 0 2em 0
-		z-index: 5
+					padding: 1em
+		.tituloYBotones
+			border: 1px solid white
+			.titulo
+				margin-top: -20px
+				color: #fff
+				font-size: 2.5rem
+				text-align: center
+				font-weight: 900
+				z-index: 5
+				padding: 1em 1em 0 1em
+				line-height: 1.3
+				// font-style: italic
+			.primero
+				font-size: 3rem
+				font-weight: 900
+				font-style: italic
+				color: $azul2
+			.botones
+				padding: 2em
+				display: flex
+				flex-wrap: wrap
+				max-width: 400px
+				.btn
+					font-size: 1.2rem
+					// display: flex
+					margin: 0 auto
+					cursor: pointer
+					text-transform: uppercase
+					background-color: $azul2
+					color: $verde3
+					padding: .5em 1.3em
+					border-radius: 4px
+					margin-bottom: 1em
+					z-index: 5
 
 .uneteAUnaMesa
-	background-color: $azul1
+	background-color: $petroleo2
 	display: flex
 	flex-wrap: wrap
 	justify-content: center
+	border: 1px solid orange
 	.curva
 		background-color: inherit
-	.titulo
-		color: #fff
-		font-size: 2.5rem
-		text-align: center
-		font-weight: 900
-		line-height: 1.3
-		z-index: 5
-		padding: 1em 1em 0 1em
-		font-style: italic
-		.primero
-			font-size: 3rem
-			font-weight: 400
-			font-style: italic
-			color: $verde3
-	.texto
-		font-size: 1.8rem
-		padding: 0 .5em 0 .5em
-		text-align: center
-		position: relative
-		margin-bottom: 1em
+	.contenido
+		display: flex
+		flex-flow: row-reverse
+		align-items: center
+		justify-content: space-evenly
+		width: 100vw
+		padding: 2em
+		.textosYBoton
+			display: flex
+			flex-wrap: wrap
+			border: 1px solid red
+			justify-content: center
+			max-width: 800px
+			.titulo
+				color: $verde3
+				font-size: 2.5rem
+				text-align: center
+				font-weight: 900
+				line-height: 1.3
+				z-index: 5
+				padding: 1em 1em 0 1em
+				font-style: italic
+				.primero
+					font-size: 3rem
+					font-weight: 400
+					font-style: italic
+			.texto
+				color: $azul2
+				font-size: 1.8rem
+				padding: 0 .5em 0 .5em
+				text-align: center
+				margin-bottom: 1em
+			.btn
+				font-size: 1.2rem
+				max-width: 260px
+				height: 45px
+				display: block
+				margin: 0 auto
+				cursor: pointer
+				text-transform: uppercase
+				background-color: $azul2
+				color: $verde3
+				padding: .5em 1.3em
+				border-radius: 4px
+				margin: 0 0 2em 0
+				z-index: 5
+		.imagen
+			width: 300px
+			height: 200px
+			border: 1px solid white
+			.mesa
+				$lado: 15em
+				width: $lado
+				height: $lado
+				width: 100vw
+				.circulo
+					position: absolute
+					left: 77%
+					right: 0
+					bottom: 45px
+					width: $lado
+					height: $lado
+					background: $petroleo3
+					border-radius: 50%
+					transform: translate(-25%, -50%) scale(.9)
+					img
+						position: relative
+						width: 21em
+						left: -90px
+						top: 15px
+						z-index: 1
+						padding: 1em 0 1em 0
 	.btn
 		font-size: 1.2rem
 		max-width: 260px
+		height: 45px
 		display: block
 		margin: 0 auto
 		cursor: pointer
 		text-transform: uppercase
-		background-color: $verde3
-		color: $verde1
+		background-color: $azul2
+		color: $verde3
 		padding: .5em 1.3em
 		border-radius: 4px
 		margin: 0 0 2em 0
@@ -291,29 +340,54 @@ export default {}
 	justify-content: center
 	.curva
 		background-color: inherit
-	.titulo
-		color: #fff
-		font-size: 2.5rem
-		text-align: center
-		font-weight: 900
-		z-index: 5
-		padding: 0 1em 0 1em
-		font-style: italic
-		line-height: 1.3
-		.primero
-			font-size: 3rem
-			font-weight: 400
+	.contenido
+		border: 1px solid orange
+		display: flex
+		flex-flow: column
+		align-items: center
+		.titulo
+			color: #fff
+			font-size: 2.5rem
+			text-align: center
+			font-weight: 900
+			z-index: 5
+			padding: 1em 1em 0 1em
 			font-style: italic
-			color: $verde3
-	.texto
-		font-size: 1.8rem
-		padding: .7em .5em 0 .5em
-		text-align: center
-		margin-bottom: 1em
+			line-height: 1.3
+			position: relative
+			margin-bottom: 50px
+			.primero
+				font-size: 3rem
+				font-weight: 400
+				font-style: italic
+				color: $verde3
+		.texto
+			font-size: 1.8rem
+			padding: 1em .5em
+			max-width: 800px
+			text-align: center
+			margin-bottom: 1em
+		.btn
+				font-size: 1.2rem
+				max-width: 260px
+				margin: 0 auto
+				cursor: pointer
+				text-transform: uppercase
+				background-color: $verde3
+				color: $verde1
+				padding: .5em 1.3em
+				border-radius: 4px
+				margin: 0 0 4em 0
+				z-index: 5
 	.movible
 		display: flex
 		justify-content: center
 		flex-wrap: wrap
+		position: absolute
+		right: 0
+		top: 0
+		left: 70%
+		bottom: 0
 		.mac
 			$lado: 13em
 			width: $lado
@@ -328,7 +402,7 @@ export default {}
 				bottom: 0
 				width: $lado
 				height: $lado
-				background: $petroleo3
+				background: $verde3
 				border-radius: 50%
 				transform: translate(-25%, -50%) scale(.9)
 				img
@@ -336,33 +410,21 @@ export default {}
 					width: 250px
 					left: -85px
 					top: 10px
-					z-index: 1
+					// z-index: 1
 					padding: 1em 0 1em 0
-		.btn
-			font-size: 1.2rem
-			max-width: 260px
-			display: block
-			margin: 0 auto
-			cursor: pointer
-			text-transform: uppercase
-			background-color: $verde3
-			color: $verde1
-			padding: .5em 1.3em
-			border-radius: 4px
-			margin: 3em 0 3em 0
-			z-index: 5
+
 
 .contacto
 	background-color: $azul2
 	display: flex
-	flex-wrap: wrap
-	justify-content: center
+	flex-flow: column
+	align-items: center
 	.curva
 		background-color: inherit
 	.titulo
 		color: #fff
 		font-size: 2.5rem
-		text-align: center
+		text-align: right
 		font-weight: 900
 		z-index: 5
 		padding: 1em 1em 0 1em
@@ -386,95 +448,73 @@ export default {}
 		margin: 0 0 3em 0
 		z-index: 5
 
++movil
+	.mesasYConsulta
+		.contenido
+			flex-flow: column-reverse
+	.mesasDigitales
+		.contenido
+			.movible
+				position: unset
+				padding: .5em 0 1em 0
+			.titulo
+				margin-bottom: 0
+			.texto
+				margin-top: 1em
+	.uneteAUnaMesa
+		.contenido
+			flex-wrap: wrap
+			padding: 0
+			.textosYBoton
+				padding: 1em .5em
+				.titulo
+					padding: 0
+				.texto
+					padding: 0
+			.imagen
+				.mesa
+					.circulo
+						left: 50%
+						top: 120px
+
 +compu
 	.mesasYConsulta
-		flex-wrap: nowrap
-		justify-content: space-between
 		.contenido
-			width: 50vw
-			.titulo
-				margin-top: -30px
-				font-size: 3rem
-				.primero
-					font-size: 3.8rem
-			.texto
-				text-align: left
-				padding: 0 1em 0 1.5em
-		.movible
-			width: 50vw
-			display: flex
-			height: 100%
-			.mesas
-				z-index: 1
-				.circulo
-					top: 28%
-					left: 75%
-			.btn
-				height: 45px
+			.tituloYBotones
+				.botones
+					text-align: left
+					border: 1px solid red
 
 	.consulta
 		flex-wrap: nowrap
 		flex-flow: row-reverse
+		justify-content: space-evenly
 		.contenido
+			max-width: 750px
 			display: flex
 			flex-wrap: wrap
-			justify-content: center
-			width: 50vw
-			.texto
+			justify-content: right
+			align-items: center
+			padding: 2em
+			.titulo
 				text-align: right
-				padding: 1em 2em
+				padding: 1em 1em 0 1em
+			.texto
+				// max-width: 400px
+				text-align: right
+				padding: 1em 1em
 		.movible
-			width: 50vw
+			width: 300px
 			z-index: 1
+			border: 1px solid orange
+			position: relative
 			.mega
 				.circulo
-					left: 20%
-					top: 30%
+					top: 37%
+					bottom: 0
+					left: 37%
+					right: 0
 			.btn
 				height: 45px
-
-	.uneteAUnaMesa
-		display: flex
-		flex-wrap: wrap
-		.contenido
-			display: flex
-			flex-wrap: wrap
-			justify-content: center
-			.titulo
-				margin-top: -30px
-				width: 100vw
-				font-size: 3rem
-			.primero
-				font-size: 3.3rem
-
-			.texto
-				text-align: center
-				padding: 0 3em
-				max-width: 1000px
-		.btn
-			display: block
-			margin-bottom: 4em
-
-	.mesasDigitales
-		flex-wrap: nowrap
-		.contenido
-			width: 50vw
-			.titulo
-				font-size: 3rem
-				.primero
-					font-size: 3.3rem
-			.texto
-				padding: 1em 2em
-				text-align: left
-		.movible
-			z-index: 1
-			width: 50vw
-			.btn
-				height: 45px
-
-	.contacto
-		display: flex
-		flex-flow: column
-		align-items: center
 
 </style>
