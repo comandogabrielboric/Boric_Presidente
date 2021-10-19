@@ -44,6 +44,11 @@
 			],
 			"redirects": [
 				{
+					"source": "/mesasdigitales",
+					"destination": "/participa#mesasdigitales",
+					"type": 302
+				},
+				{
 					"source": "/wp-content/uploads/2021/07/Programa_Completo.pdf",
 					"destination": "/propuestas",
 					"type": 302
