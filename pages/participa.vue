@@ -21,11 +21,11 @@
 					a.btn.bold(href='https://participa.boricpresidente.cl/sign-in' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl/login'})") CREA UNA MESA
 					a.btn.bold(href='https://participa.boricpresidente.cl/busca-tu-mesa' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ unete a una mesa'})") UNETE A UNA MESA
 					a.btn.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ consulta ciudadana'})" ) Consulta ciudadana
-					.s(id='mesasdigitales')
+					//- .s.noMovil(id='mesasdigitales')
 	.seccion.mesasDigitales
 		.curva.curvaSuperior
 		.contenido
-			.titulo #[span.primero Mesas ]
+			.titulo(id='mesasdigitales') #[span.primero Mesas ]
 							div ciudadanas digitales
 			.movible
 				.mac
