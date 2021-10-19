@@ -32,7 +32,7 @@
 					.circulo
 						img(src='/imagenes/Mac.png')
 			.texto ¡Únete a una mesa ciudadana de manera digital, fácil y segura! Solo debes elegir dentro del formulario que día y  hora te acomoda más y uno de nuestros coordinadores se contactará contigo. ¡Así de simple!
-			a.btn.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ consulta ciudadana'})") INSCRÍBETE ACÁ
+			a.btn.bold(href='https://forms.gle/7MZGycckWDDjDoBw8' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ consulta ciudadana'})") INSCRÍBETE ACÁ
 
 	.seccion.consulta
 		.curva.curvaSuperior
