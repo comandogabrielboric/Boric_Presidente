@@ -91,7 +91,7 @@ export default {
 		const componenteImagen = respuesta.componenteImagen
 		data.imagen = componenteImagen.imagen
 		data.altImg = componenteImagen.textoAlternativoImagen
-		// PILARES
+		// PILARES.
 		// data.pilares = app.$sanitizar(respuesta.Texto_pilares)
 		// PROGRAMA COMPLETO
 		data.programaArchivo = _.get(respuesta, ['Archivo_programa'])
