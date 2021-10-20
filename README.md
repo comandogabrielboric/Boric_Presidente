@@ -1,4 +1,8 @@
-# basefront
+# Gabriel Boric Presidente
+
+Boricpresidente.cl nace de la convicción de un chile mejor, es un desarrollo de código abierto en el cual puedes aportar con tus propias ideas y mejoras.
+
+Te invitamos a revisar nuestro repositorio y realizar tus propios desarrollos sobre el mismo.
 
 ## Build Setup
 
@@ -17,7 +21,8 @@ $ yarn start
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+Para una explicacion dettalada de como funcionan las cosas, lee la documentacion oficial de nuxt
+ [documentation](https://nuxtjs.org).
 
 ## Special Directories
 

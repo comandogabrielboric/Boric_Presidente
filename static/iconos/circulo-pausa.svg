@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-210,-210)">
+        <g id="circulo-pausa" transform="matrix(0.925926,0,0,0.925926,142.407,211.852)">
+            <rect x="73" y="-2" width="54" height="54" style="fill:none;"/>
+            <g transform="matrix(1.08,0,0,1.08,73,-2)">
+                <path d="M25,0C11.2,0 0,11.2 0,25C0,38.8 11.2,50 25,50C38.8,50 50,38.8 50,25C50,11.2 38.8,0 25,0ZM25,46C13.4,46 4,36.6 4,25C4,13.4 13.4,4 25,4C36.6,4 46,13.4 46,25C46,36.6 36.6,46 25,46Z" style="fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(0.957618,0,0,1.13651,75.9146,-3.47066)">
+                <path d="M13.934,17.449L13.934,32.653C13.934,33.674 14.918,34.503 16.129,34.503C17.34,34.503 18.324,33.674 18.324,32.653L18.324,17.449C18.324,16.428 17.34,15.599 16.129,15.599C14.918,15.599 13.934,16.428 13.934,17.449Z"/>
+            </g>
+            <g transform="matrix(0.957618,0,0,1.13651,75.9146,-3.47066)">
+                <path d="M36.368,32.653L36.368,17.449C36.368,16.428 35.385,15.599 34.174,15.599C32.962,15.599 31.979,16.428 31.979,17.449L31.979,32.653C31.979,33.674 32.962,34.503 34.174,34.503C35.385,34.503 36.368,33.674 36.368,32.653Z"/>
+            </g>
+        </g>
+    </g>
+</svg>

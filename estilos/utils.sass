@@ -1,0 +1,35 @@
+
+=saliendo
+	transition: all .3s ease
+	&.v-enter-active, &.v-leave-active
+		@content
+=salir
+	transition: all .3s ease
+	&.v-enter, &.v-leave-to
+		@content
+
+=bgcov
+	background-size: cover
+	background-repeat: no-repeat
+	background-position: center
+=bgcon
+	background-size: contain
+	background-repeat: no-repeat
+	background-position: center
+=micov
+	mask-size: cover
+	mask-repeat: no-repeat
+	mask-position: center
+=micon
+	mask-size: contain
+	mask-repeat: no-repeat
+	mask-position: center
+
+$compu: "(min-width: 760px)"
+$movil: "(max-width: 759.9px)"
+=compu
+	@media #{$compu}
+		@content
+=movil
+	@media #{$movil}
+		@content
