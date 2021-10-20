@@ -23,9 +23,8 @@
 					a.btn.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa/ consulta ciudadana'})" ) Consulta ciudadana
 					//- .s.noMovil(id='mesasdigitales')
 	.seccion.mesasDigitales
-		.curva.curvaSuperior
+		.curva.curvaSuperior#mesasdigitales
 		.contenido
-			a#mesasdigitales
 			.titulo #[span.primero Mesas ]
 							div ciudadanas digitales
 			.movible
