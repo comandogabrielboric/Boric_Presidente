@@ -71,7 +71,7 @@
 <script>
 
 export default {
-	router: {
+	$router: {
 		mode: 'hash'
 	}
 }
