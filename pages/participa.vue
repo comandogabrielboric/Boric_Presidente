@@ -25,7 +25,8 @@
 	.seccion.mesasDigitales
 		.curva.curvaSuperior
 		.contenido
-			.titulo(id='mesasdigitales') #[span.primero Mesas ]
+			a#mesasdigitales
+			.titulo #[span.primero Mesas ]
 							div ciudadanas digitales
 			.movible
 				.mac
@@ -71,8 +72,13 @@
 <script>
 
 export default {
-	$router: {
-		mode: 'hash'
+	mounted () {
+		const ruta = this.$nuxt.$route
+		if (ruta.hash) {
+			const id = this._.lowerCase(ruta.hash)
+			const elemento = document.getElementById(id)
+			elemento.scrollIntoView()
+		}
 	}
 }
 </script>
