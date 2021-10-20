@@ -57,6 +57,7 @@
 
 <script>
 export default {
+	scrollToTop: true,
 	async asyncData ({ app }) {
 		// console.log('context keys', Object.keys(context))
 		const _ = app.$lodash

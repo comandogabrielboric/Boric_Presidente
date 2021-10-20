@@ -69,7 +69,11 @@
 
 </template>
 <script>
-export default {}
+export default {
+	router: {
+		mode: 'hash'
+	}
+}
 </script>
 <style lang="sass" scoped>
 @import '~/estilos/utils'
