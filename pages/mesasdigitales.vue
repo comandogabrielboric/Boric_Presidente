@@ -4,7 +4,7 @@
 <script>
 export default {
 	mounted () {
-		this.$router.replace('/participa#mesasdigitales')
+		this.$router.replace({ name: 'participa', hash: 'mesasciudadanas' })
 	}
 }
 </script>

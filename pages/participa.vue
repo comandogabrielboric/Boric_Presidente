@@ -69,6 +69,7 @@
 
 </template>
 <script>
+
 export default {
 	router: {
 		mode: 'hash'
