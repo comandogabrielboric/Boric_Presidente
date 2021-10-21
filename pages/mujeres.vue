@@ -106,6 +106,7 @@ export default {
 	.texto
 		font-size: 1.2rem
 		padding: 1em
+		line-height: 1.2
 		.Bold
 			font-size: 1.3rem
 			font-weight: 900
@@ -113,7 +114,7 @@ export default {
 .CompromisoFeminista
 	display: flex
 	justify-content: center
-	padding: .5em
+	padding: 1em
 	.contenedorCarta
 		max-width: 740px
 		height: 90vh
