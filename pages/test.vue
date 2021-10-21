@@ -43,6 +43,12 @@ export default {
 		}
 	},
 	computed: {
+		setPropuestas () {
+			const props = this.$store.state.propuestas
+			console.log('props 1', props)
+
+			return props
+		},
 		buscarPropuesta () {
 			const _ = this._
 
@@ -64,7 +70,7 @@ export default {
 
 	},
 	mounted () {
-		console.log('props', this.$store.state.propuestas)
+		console.log('props', this.setPropuestas)
 	},
 	actions: {
 		async nuxtServerInit ({ commit }) {

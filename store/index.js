@@ -1,4 +1,6 @@
-// import axios from 'axios'
+import axios from 'axios'
+// import * as sanitizeHtml from 'sanitize-html'
+// import _ from 'lodash'
 
 export const state = () => {
 	return {
@@ -9,14 +11,17 @@ export const state = () => {
 
 
 export const actions = {
-	async getPropuestas ({ commit }) {
-		const p = await fetch(`${process.env.cmsURL}/programa`)
-		const propuestas = p.propuestas // Array
+	async nuxtServerInit ({ commit }) {
+		console.log('get propuestas')
+		const p = await axios.get(`${process.env.cmsURL}/programa`)
+		const propuestas = p.data // Array
+		// _.map(propuestas, p => {
+		// 	p.contenido = mutations.sanitizar(p.contenido)
+		// 	return p
+		// })
 		commit('propuestas', propuestas)
-		return propuestas
+		// return propuestas
 	}
-
-
 }
 
 export const mutations = {
