@@ -45,7 +45,7 @@ export default {
 	computed: {
 		setPropuestas () {
 			const props = this.$store.state.propuestas
-			console.log('props 1', props)
+			console.log('propscc 1', props)
 
 			return props
 		},
