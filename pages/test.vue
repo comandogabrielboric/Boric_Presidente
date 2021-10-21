@@ -17,8 +17,8 @@
 </template>
 
 <script>
+import axios from 'axios'
 import parameterize from '../plugins/utilidades/parametrizar'
-
 export default {
 	async asyncData ({ app }) {
 		const _ = app.$lodash
@@ -62,6 +62,16 @@ export default {
 			return null
 		}
 
+	},
+	mounted () {
+		console.log('props', this.$store.state.propuestas)
+	},
+	actions: {
+		async nuxtServerInit ({ commit }) {
+			const p = await axios.get(`${process.env.cmsURL}/programa`)
+			const propuestas = p.propuestas // Array
+			commit('propuestas', propuestas)
+		}
 	},
 	methods: {
 		buscarIndex (p) {
