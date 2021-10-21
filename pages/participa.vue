@@ -84,7 +84,7 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
-@import '~/estilos/animaciones'
+
 
 .seccion
 	position: relative

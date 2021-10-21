@@ -84,7 +84,6 @@ export default {
 		overflow: auto
 		background: #fff
 		pading-bottom: 2em
-		border: 1px solid orange
 		margin-bottom: 2em
 	.contenedorfirmas
 		max-width: 320px
