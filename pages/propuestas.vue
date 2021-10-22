@@ -112,6 +112,11 @@ export default {
 		}
 	},
 	watch: {
+		abrirPropuestaDelBuscador () {
+			const ruta = this.$nuxt.$route
+			console.log(ruta)
+			return null
+		},
 		mostrandoPropuesta (v) {
 			if (!v) {
 				if (this.propuestaMostrada) this.$router.push('/propuestas')
