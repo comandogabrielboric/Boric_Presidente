@@ -1,43 +1,28 @@
 <template lang="pug">
 .root
 
-	button(@click='busca') bascaaaaa
-	a-auto-complete(:data-source="titulos"
-    style="width: 200px"
-    placeholder="Propuestas"
-    :filter-option="filterOption" v-model="buscar")
-
 	.buscadorDePropuestas
-		input(v-model="matchPropuesta").input
-		select(v-if='buscarPropuesta' v-model='seleccionarPropuesta' placeholder='holoooo').input hola hola hola
-			option(v-for='p in buscarPropuesta').input {{ p.titulo }}
+		input(v-model="matchPropuesta" type="text" placeholder="Que estas buscando?").input
+		//- select(v-if='buscarPropuesta' v-model='seleccionarPropuesta' placeholder='holoooo').input hola hola hola
+		//- 	option(v-for='p in buscarPropuesta').input {{ p.titulo }}
 		.mostradorBusqueda
 			.propuesta(v-for='p in buscarPropuesta')
-				.titulo {{ p.titulo }}
+				.imagen
+					img(:src="p.imagen.url")
+				.contenidoBuscado
+					.titulo {{ p.titulo }}
+					.contenido {{ p.contenido }}
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import parameterize from '../plugins/utilidades/parametrizar'
 export default {
-	async asyncData ({ app }) {
-		const _ = app.$lodash
-		const respuesta = await app.$olicitar(`${process.env.cmsURL}/programa`)
-		const propuestas = respuesta.propuestas // Array
-		const titulos = _.map(propuestas, p => p.titulo)
-
-		const data = {
-			propuestas,
-			titulos
-		}
-		return data
-	},
 	data () {
 		return {
 			propuestas: [],
-			titulos: [],
 			buscar: '',
-			matchPropuesta: null,
+			matchPropuesta: '',
 			buscarEnPropuestas: '',
 			seleccionarPropuesta: undefined
 		}
@@ -45,63 +30,74 @@ export default {
 	computed: {
 		setPropuestas () {
 			const props = this.$store.state.propuestas
-			console.log('propscc 1', props)
+			// console.log('propscc 1', props)
+			const propuestas = this._.cloneDeep(props)
+			const propuestaslimpias = this._.map(propuestas, c => {
+				c.contenido = this.limpiarHTML(c.contenido)
+				return c
+			})
+			// console.log('propscc 1', propuestas)
 
-			return props
+			return propuestaslimpias
+		},
+		titulos () {
+			const propuestas = this.setPropuestas
+			// console.log('ouon', propuestas)
+			const titulos = this._.map(propuestas, p => p.titulo)
+			return titulos
 		},
 		buscarPropuesta () {
 			const _ = this._
-
 			const buscar = this.matchPropuesta
 			if (buscar) {
-				const prop = this.propuestas
-				console.log('a buscar', buscar)
-				const coincidencia = _.pickBy(prop, p => _.includes(parameterize(p.titulo), parameterize(buscar)) || _.includes(parameterize(p.contenido), parameterize(buscar)))
+				const prop = this.setPropuestas
+				console.log('a buscar', buscar, prop)
+				const coincidencia = _.pickBy(prop, p => _.includes(parameterize(p.contenido), parameterize(buscar)))
 				console.log('coincidencia', coincidencia)
 				const arrayCoincidencias = _.map(coincidencia, c => c)
 				console.log('arrayCoincidencias', arrayCoincidencias)
-				// console.log('coincidenciawww', _.map(prop, p => _.includes(p.titulo, buscar)))
-				const index = _.map(arrayCoincidencias, p => _.lowerCase(p.contenido).indexOf(_.lowerCase(buscar)))
-				console.log('index', index)
-				return arrayCoincidencias
+				const propuestaCortada = _.map(_.cloneDeep(arrayCoincidencias), c => {
+					c.contenido = c.contenido.slice(this.indexInicio(c.contenido), this.indexfinal(c.contenido))
+					return c
+				})
+				console.log('propuesta recortadas', propuestaCortada)
+				// const index = _.map(arrayCoincidencias, p => _.lowerCase(p.contenido).indexOf(_.lowerCase(buscar)))
+				// console.log('index', index)
+				return propuestaCortada
 			}
 			return null
 		}
-
 	},
-	mounted () {
-		console.log('props', this.setPropuestas)
-	},
-	actions: {
-		async nuxtServerInit ({ commit }) {
-			const p = await axios.get(`${process.env.cmsURL}/programa`)
-			const propuestas = p.propuestas // Array
-			commit('propuestas', propuestas)
-		}
-	},
+	// mounted: {
+	// 	titulos () {
+	// 		console.log('props', this.setPropuestas)
+	// 		const propuestas = this.setPropuestas
+	// 		const titulos = this._.map(propuestas, p => p.titulo)
+	// 		return titulos
+	// 	}
+	// },
 	methods: {
-		buscarIndex (p) {
-			console.log(p)
+		indexInicio (v) {
+			// const propuestas = this.buscarPropuesta
+			const buscar = this.matchPropuesta
+			const index = this._.lowerCase(v).indexOf(this._.lowerCase(buscar))
+			const inicioCorte = index - 60
+			if (inicioCorte <= 0) { return 0 }
+			// console.log('index inicio', inicioCorte, buscar)
+			return inicioCorte
 		},
-		busca () {
-			const titulobuscado = this.buscar
-			const propuestas = this.propuestas
-			const propuestabuscada = this._.filter(propuestas, ['titulo', titulobuscado])
-			console.log('propuestabuscada', propuestabuscada)
-			if (propuestabuscada) {
-				console.log('buscarprop', this.buscarPropuesta)
-				console.log('match', this.matchPropuesta)
-				console.log('seleccionada', this.seleccionarPropuesta)
-			} else {
-				const slugPropuesta = propuestabuscada[0]
-				console.log('slug', slugPropuesta)
-			// this.$router.push(`/propuestas/${slugPropuesta}`)
-			}
+		indexfinal (v) {
+			// const propuestas = this.buscarPropuesta
+			const buscar = this.matchPropuesta
+			const index = this._.lowerCase(v).indexOf(this._.lowerCase(buscar))
+			const finCorte = index + 60 + buscar.length
+			// console.log('index fin', finCorte, buscar.length)
+			return finCorte
 		},
-		filterOption (input, option) {
-			return (
-				option.componentOptions.children[0].text.toUpperCase().includes(input.toUpperCase())
-			)
+		limpiarHTML (html) {
+			const temporalDivElement = document.createElement('div')
+			temporalDivElement.innerHTML = html
+			return temporalDivElement.textContent || temporalDivElement.innerText
 		}
 	}
 }
@@ -111,4 +107,28 @@ export default {
 .input
 	color: #000
 	width: 60vw
+
+.mostradorBusqueda
+	width: 100vw
+	padding: 1em
+	border: 1px solid green
+	.propuesta
+		margin: 1em 0
+		display: flex
+		flex-flow: row
+		align-items: center
+		justify-content: center
+		text-align: center
+		border: 1px solid red
+		.imagen
+			width: 150px
+			padding: .5em
+		.contenidoBuscado
+			.titulo
+				padding: .5em
+				border: 1px solid red
+			.contenido
+				padding: .5em
+				border: 1px solid orange
+				text-align: justify
 </style>

@@ -27,12 +27,12 @@ export const mutations = {
 	},
 	sanitizado (state, value) {
 		const propuestas = value.propuestas
-		console.log('p', propuestas)
+		// console.log('p', propuestas)
 		const html = _.map(propuestas, pr => {
 			pr.contenido = sanitizar(pr.contenido)
 			return pr
 		})
-		console.log('propuestas sanitizador', html)
+		// console.log('propuestas sanitizador', html)
 		state.propuestas = html
 	}
 }

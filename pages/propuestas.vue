@@ -16,11 +16,11 @@
 	//- 		.ql-editor.contenidoHTML(v-html='pilares')
 
 
-	section.propuestas(v-if="propuestas")
+	section.propuestas(v-if="setPropuestas")
 
 		.caja-propuestas
 
-			.propuesta(v-for='propuesta in propuestas' :key='propuesta.id' @click='abrirPropuesta(propuesta.id, propuesta.Slug)')
+			.propuesta(v-for='propuesta in setPropuestas' :key='propuesta.id' @click='abrirPropuesta(propuesta.id, propuesta.Slug)')
 				.prop
 					img.imagenDePropuesta(:src='propuesta.imagen.url' :alt="propuesta.textoAlternativoImagen")
 					h2.tituloPropuesta {{ propuesta.titulo }}
@@ -57,47 +57,7 @@
 
 <script>
 export default {
-	scrollToTop: true,
-	async asyncData ({ app }) {
-		// console.log('context keys', Object.keys(context))
-		const _ = app.$lodash
-		// console.log('asyncData')
-		const respuesta = await app.$olicitar(`${process.env.cmsURL}/programa`)
-		const propuestas = respuesta.propuestas // Array
 
-		const data = {
-			propuestas: [],
-
-			seo: null,
-
-			imagen: null,
-			altImg: null,
-			// pilares: null,
-			programaArchivo: null,
-
-
-			propuestaIdMostrada: null,
-			mostrandoPropuesta: null,
-			modoVisualizacion: 'html'
-		}
-		data.propuestas = _.map(propuestas, p => {
-			p.contenido = app.$sanitizar(p.contenido)
-			return p
-		})
-
-		// SEO
-		data.seo = respuesta.SEO
-		// IMAGEN
-		const componenteImagen = respuesta.componenteImagen
-		data.imagen = componenteImagen.imagen
-		data.altImg = componenteImagen.textoAlternativoImagen
-		// PILARES
-		// data.pilares = app.$sanitizar(respuesta.Texto_pilares)
-		// PROGRAMA COMPLETO
-		data.programaArchivo = _.get(respuesta, ['Archivo_programa'])
-
-		return data
-	},
 	data () {
 		return {
 			propuestas: [],
@@ -134,9 +94,14 @@ export default {
 	},
 
 	computed: {
+		setPropuestas () {
+			const props = this.$store.state.propuestas
+			// console.log('propscc 1', props)
+			return props
+		},
 		propuestaMostrada () {
 			if (!this.propuestaIdMostrada) return null
-			const propuestaBruta = this._.find(this.propuestas, p => p.id === this.propuestaIdMostrada)
+			const propuestaBruta = this._.find(this.setPropuestas, p => p.id === this.propuestaIdMostrada)
 			if (!propuestaBruta) return null
 
 			return {
@@ -161,7 +126,7 @@ export default {
 		}
 	},
 	mounted () {
-		window.propuesta = this
+		window.setPropuestas = this
 	},
 	methods: {
 		abrirPropuesta (propuestaID, slug) {
@@ -171,7 +136,7 @@ export default {
 			})
 		},
 		verSiHayQueAbrirUnaPropuesta ({ propuestaSlug }) {
-			const propuestas = this.propuestas
+			const propuestas = this.setPropuestas
 			const propuestaParaAbrir = this._.filter(propuestas, ['Slug', propuestaSlug])
 			console.log('prop a abrir', propuestaParaAbrir, propuestas)
 			if (propuestaSlug) {
