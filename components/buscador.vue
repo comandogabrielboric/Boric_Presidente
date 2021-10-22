@@ -1,29 +1,41 @@
 <template lang="pug">
 .root
-	.buscador(@click='buscar = !buscar')
+	.buscador(@click='abrirBuscador')
 		.oicono.lupa-linea
 
-	.buscadorDePropuestas(v-if='buscar')
-		input(v-model="matchPropuesta" type="text" placeholder="Que estas buscando?").input
-		//- select(v-if='buscarPropuesta' v-model='seleccionarPropuesta' placeholder='holoooo').input hola hola hola
-		//- 	option(v-for='p in buscarPropuesta').input {{ p.titulo }}
-		.mostradorBusqueda
-			.propuesta(v-for='p in buscarPropuesta' :key='p._id' @click='abrirPropuestaBuscada(p)')
-				.imagen.noMovil
-					img(:src="p.imagen.url")
-				.contenidoBuscado
-					.titulo {{ p.titulo }}
-					.contenido {{ p.contenido }}
+	a-modal(:visible="buscar" :header="null" :footer="null" @close="buscar = false" @cancel="buscar = false" centered :width="null")
+		.buscadorDePropuestas
+			.contenedorInput(v-if='buscar')
+				input(v-focus v-model="matchPropuesta" type="text" 	placeholder="Que estas buscando?").input
+
+			.mostradorBusqueda(v-if='buscarPropuesta')
+				.propuesta(v-for='p in buscarPropuesta' :key='p._id' 	@click='abrirPropuestaBuscada(p)')
+					.imagen.noMovil
+						img(:src="p.imagen.url")
+					.contenidoBuscado
+						.titulo {{ p.titulo }}
+						.contenido {{ p.contenido }}
+
+
 </template>
 
 <script>
 // import axios from 'axios'
 import parameterize from '../plugins/utilidades/parametrizar'
+
 export default {
+	directives: {
+		focus: {
+			// Definición de directiva
+			inserted (el) {
+				el.focus()
+			}
+		}
+	},
 	data () {
 		return {
 			propuestas: [],
-			buscar: null,
+			buscar: false,
 			matchPropuesta: '',
 			buscarEnPropuestas: '',
 			seleccionarPropuesta: undefined
@@ -70,21 +82,7 @@ export default {
 			return null
 		}
 	},
-	watch: {
-		abrirPropuestaDelBuscador () {
-			const ruta = this.$nuxt.$route
-			console.log(ruta)
-			return null
-		}
-	},
-	// mounted: {
-	// 	titulos () {
-	// 		console.log('props', this.setPropuestas)
-	// 		const propuestas = this.setPropuestas
-	// 		const titulos = this._.map(propuestas, p => p.titulo)
-	// 		return titulos
-	// 	}
-	// },
+
 	methods: {
 		indexInicio (v) {
 			// const propuestas = this.buscarPropuesta
@@ -108,10 +106,16 @@ export default {
 			temporalDivElement.innerHTML = html
 			return temporalDivElement.textContent || temporalDivElement.innerText
 		},
+		abrirBuscador () {
+			if (!this.buscar) {
+				this.buscar = true
+			} else this.buscar = false
+		},
 		abrirPropuestaBuscada (p) {
 			// console.log(p)
 			this.$router.push('/propuestas/' + p.Slug)
 			this.$nuxt.refresh()
+			this.matchPropuesta = null
 			this.buscar = null
 		}
 	}
@@ -121,31 +125,42 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
-
-.input
-	color: #000
-	width: 60vw
+.buscador
+	.oicono
+		width: 25px
+		height: 25px
 .buscadorDePropuestas
-	display: flex
-	flex-flow: column
-	width: 100vw
-	max-height: calc(100vh - 5em)
-	min-height: 100px
+	max-height: 90vh
 	overflow: auto
-	position: fixed
-	align-items: center
-	top: 5em
-	left: 0
-	right: 0
-	// bottom: 0
-	background-color: rgba(255,255,255,.8)
-	// opacity: .5
-	border: 1px solid orange
-	padding: 2em .5em
+	.contenedorInput
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 100%
+		height: 100px
+		min-height: 0
+		.input
+			color: rgba(20,20,20,.9)
+			background-color: rgba(255,255,255,.1)
+			width: 90vw
+			height: 72px
+			border: none
+			border-bottom: 1px solid rgba(20,20,20,.8)
+			font-size: 1.5rem
+			padding: .5em 1em 0 1em
+			text-align: center
+			+compu
+				max-width: 800px
+				font-size: 3rem
+			&:focus
+				outline: none
 	.mostradorBusqueda
 		max-width: 800px
 		width: 100vw
+		// height: 100%
+		max-height: 90vh
 		padding: 1em
+		overflow: auto
 		// background-color: $blanco
 		.propuesta
 			margin: 1em 0
@@ -154,29 +169,39 @@ export default {
 			align-items: center
 			justify-content: space-between
 			text-align: center
-			border: 1px solid red
-			background-color: $azul2
+			background-color: #fff
 			opacity: 1
+			color: $azul1
+			box-shadow: 2px 7px 7px 1px rgba(0, 0, 0, 0.2)
 			.imagen
+				display: flex
+				justify-content: center
+				align-items: center
 				width: 150px
 				padding: .5em
+				background-color: $azul2
+				+movil
+					display: none
+				img
+					width: 150px
 			.contenidoBuscado
 				.titulo
 					font-size: 1.2rem
 					padding: .5em
 					line-height: 1.2
+					+compu
+						padding: 1em
 				.contenido
 					font-size: 1rem
 					padding: .5em
 					text-align: center
-					color: #fff
+					+compu
+						padding: .5em 1em
 +compu
 	.buscadorDePropuestas
 		padding: 2em 3em
-		.buscadorDePropuestas
+		.mostradorBusqueda
 			padding: 2em 3em
-			.mostradorBusqueda
-				padding: 2em 3em
 
 
 </style>

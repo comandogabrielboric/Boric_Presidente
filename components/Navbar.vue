@@ -17,17 +17,17 @@
 
 		.menuCompu
 			+links
+		buscador
 
 		transition(:duration='300')
 			.menuMovil(v-if="activa")
 				+links
 
-		buscador
 		//- RedesSocialesnav
 
 		.triggerMenu(@click="activa = !activa")
 			.oicono(:class="activa ? 'cruz' : 'menu-relleno'")
-
+	//- .relleno
 </template>
 
 <script>
@@ -55,10 +55,13 @@ export default {
 @import '~/estilos/paleta'
 
 $alturaMenu: 5em
-
+.relleno
+	width: 100vw
+	height: 5em
 .navbar
 	position: sticky
 	top: 0
+	width: 100vw
 	z-index: 1000
 	display: flex
 	align-items: center
@@ -67,7 +70,6 @@ $alturaMenu: 5em
 	background-color: $fondoHeader
 	height: $alturaMenu
 	box-shadow: 0 -3em 0 $fondoHeader
-
 	padding: 0 2em
 	+movil
 		padding: 0 1em
