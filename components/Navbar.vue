@@ -1,32 +1,33 @@
 <template lang="pug">
-.navbar
+.root
+	.navbar
 
-	nuxt-link.alHome.zonaLogo(to='/' alt='home'  @click.native="tag('nav home')")
-		.logo
-			.trasLogo
-				.iconoAprueboDignidad
+		nuxt-link.alHome.zonaLogo(to='/' alt='home'  @click.native="tag('nav home')")
+			.logo
+				.trasLogo
+					.iconoAprueboDignidad
 
-	mixin links
-		.links.contenedor-links.link-interno
-			nuxt-link.link.bold(to='/participa' @click.native="tag('nav participa')") participa aquí
-			nuxt-link.link.bold(to='/aporta' @click.native="tag('nav aporta')") aporta
-			nuxt-link.link.bold(to='/propuestas' @click.native="tag('nav propuestas')") Propuestas
-			//- nuxt-link.link.bold(to='/unete' @click.native="tag('nav Únete')") Únete
-			nuxt-link.link.bold(to='/mujeres' @click.native="tag('nav Mujeres')") Feministas AD
+		mixin links
+			.links.contenedor-links.link-interno
+				nuxt-link.link.bold(to='/participa' @click.native="tag('nav participa')") participa aquí
+				nuxt-link.link.bold(to='/aporta' @click.native="tag('nav aporta')") aporta
+				nuxt-link.link.bold(to='/propuestas' @click.native="tag('nav propuestas')") Propuestas
+				//- nuxt-link.link.bold(to='/unete' @click.native="tag('nav Únete')") Únete
+				nuxt-link.link.bold(to='/mujeres' @click.native="tag('nav Mujeres')") Feministas AD
 
-	.menuCompu
-		+links
-
-	transition(:duration='300')
-		.menuMovil(v-if="activa")
+		.menuCompu
 			+links
 
-	//- buscador
-	//- RedesSocialesnav
+		transition(:duration='300')
+			.menuMovil(v-if="activa")
+				+links
 
-	.triggerMenu(@click="activa = !activa")
-		.oicono(:class="activa ? 'cruz' : 'menu-relleno'")
+		.buscador(@click='buscar === !buscar')
+			.oicono.lupa-linea
+		//- RedesSocialesnav
 
+		.triggerMenu(@click="activa = !activa")
+			.oicono(:class="activa ? 'cruz' : 'menu-relleno'")
 
 </template>
 
@@ -34,7 +35,8 @@
 export default {
 	data () {
 		return {
-			activa: null
+			activa: null,
+			buscar: null
 		}
 	},
 	watch: {
