@@ -22,8 +22,6 @@
 			.menuMovil(v-if="activa")
 				+links
 
-		.buscador(@click='buscar === !buscar')
-			.oicono.lupa-linea
 		//- RedesSocialesnav
 
 		.triggerMenu(@click="activa = !activa")

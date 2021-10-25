@@ -25,7 +25,7 @@
 
 		p(@click='showModal').terminosycondiciones #[span.primero Acepto] &nbspTérminos y Condiciones
 
-	a-modal(v-model="visible" title="Bienvenide !!" centered @ok="handleOk" :footer="null").modal
+	a-modal(v-model="visible" title="Muchas gracias !!" centered @ok="handleOk" :footer="null").modal
 		p Pronto recibiras noticias de nosotros
 
 	a-modal(:visible='tyc' title='Terminos y Condiciones' @ok='handleOk' @cancel="tyc = false" :footer="null").modal
