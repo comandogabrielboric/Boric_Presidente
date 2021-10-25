@@ -14,7 +14,7 @@
 						img(:src="p.imagen.url")
 					.contenidoBuscado
 						.titulo {{ p.titulo }}
-						.contenido {{ p.contenido }}
+						.contenido ... {{ p.contenido }} ...
 
 
 </template>
@@ -88,7 +88,7 @@ export default {
 			// const propuestas = this.buscarPropuesta
 			const buscar = this.matchPropuesta
 			const index = parameterize(v).indexOf(parameterize(buscar))
-			const inicioCorte = index - 60
+			const inicioCorte = index - 70
 			if (inicioCorte <= 0) { return 0 }
 			// console.log('index inicio', inicioCorte, buscar)
 			return inicioCorte
@@ -98,7 +98,7 @@ export default {
 			const buscar = this.matchPropuesta
 			const index = parameterize(v).indexOf(parameterize(buscar))
 
-			const finCorte = index + 60 + buscar.length
+			const finCorte = index + 70 + buscar.length
 			// console.log('index fin', finCorte, buscar.length)
 			return finCorte
 		},
@@ -137,7 +137,7 @@ export default {
 		display: flex
 		align-items: center
 		justify-content: center
-		width: 90%
+		width: 100%
 		height: 100px
 		min-height: 0
 		.input

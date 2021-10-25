@@ -4,7 +4,9 @@
 <script>
 export default {
 	computed: {
-		propuestaSlug () { return this.$route.params.propuestaSlug }
+		propuestaSlug () {
+			return this.$route.params.propuestaSlug
+		}
 	},
 	watch: {
 		'$route.params.propuestaSlug' (v) {

@@ -141,6 +141,9 @@ export default {
 			})
 		},
 		verSiHayQueAbrirUnaPropuesta ({ propuestaSlug }) {
+			console.log('pslug ', { propuestaSlug })
+			console.log('_proSlug', this.$route)
+
 			const propuestas = this.setPropuestas
 			const propuestaParaAbrir = this._.filter(propuestas, ['Slug', propuestaSlug])
 			console.log('prop a abrir', propuestaParaAbrir, propuestas)
