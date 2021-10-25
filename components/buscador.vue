@@ -130,7 +130,7 @@ export default {
 		width: 25px
 		height: 25px
 .buscadorDePropuestas
-	max-height: 90vh
+	// max-height: 90vh
 	overflow: auto
 	.contenedorInput
 		display: flex
