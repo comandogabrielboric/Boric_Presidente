@@ -3,7 +3,7 @@
 	.buscador(@click='abrirBuscador')
 		.oicono.lupa-linea
 
-	a-modal(:visible="buscar" :header="null" :footer="null" @close="buscar = false" @cancel="buscar = false" centered :width="null")
+	a-modal.modalBusqueda(:visible="buscar" :header="null" :footer="null" @close="buscar = false" @cancel="buscar = false" centered :width="null")
 		.buscadorDePropuestas
 			.contenedorInput(v-if='buscar')
 				input(v-focus v-model="matchPropuesta" type="text" 	placeholder="Que estas buscando?").input
@@ -87,7 +87,7 @@ export default {
 		indexInicio (v) {
 			// const propuestas = this.buscarPropuesta
 			const buscar = this.matchPropuesta
-			const index = this._.lowerCase(v).indexOf(this._.lowerCase(buscar))
+			const index = parameterize(v).indexOf(parameterize(buscar))
 			const inicioCorte = index - 60
 			if (inicioCorte <= 0) { return 0 }
 			// console.log('index inicio', inicioCorte, buscar)
@@ -96,7 +96,8 @@ export default {
 		indexfinal (v) {
 			// const propuestas = this.buscarPropuesta
 			const buscar = this.matchPropuesta
-			const index = this._.lowerCase(v).indexOf(this._.lowerCase(buscar))
+			const index = parameterize(v).indexOf(parameterize(buscar))
+
 			const finCorte = index + 60 + buscar.length
 			// console.log('index fin', finCorte, buscar.length)
 			return finCorte
@@ -136,7 +137,7 @@ export default {
 		display: flex
 		align-items: center
 		justify-content: center
-		width: 100%
+		width: 90%
 		height: 100px
 		min-height: 0
 		.input
@@ -156,7 +157,7 @@ export default {
 				outline: none
 	.mostradorBusqueda
 		max-width: 800px
-		width: 100vw
+		// width: 100vw
 		// height: 100%
 		max-height: 90vh
 		padding: 1em
@@ -172,6 +173,7 @@ export default {
 			background-color: #fff
 			opacity: 1
 			color: $azul1
+			border-radius: 5px
 			box-shadow: 2px 7px 7px 1px rgba(0, 0, 0, 0.2)
 			.imagen
 				display: flex
@@ -203,5 +205,18 @@ export default {
 		.mostradorBusqueda
 			padding: 2em 3em
 
+.modalBusqueda
+	::v-deep
+		.ant-modal-mask
+			backdrop-filter: blur(4px)
+		.ant-modal-body
+			text-align: center
+			padding: 2em 1em
+			color: #fff
+			max-height: 85vh
+			overflow: auto
+		.ant-modal-wrap
+			top: 5em
+			bottom: unset
 
 </style>
