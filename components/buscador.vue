@@ -159,7 +159,7 @@ export default {
 		max-width: 800px
 		// width: 100vw
 		// height: 100%
-		max-height: 90vh
+		max-height: 65vh
 		padding: 1em
 		overflow: auto
 		// background-color: $blanco
@@ -214,9 +214,11 @@ export default {
 			padding: 2em 1em
 			color: #fff
 			max-height: 85vh
-			overflow: auto
+			overflow: hidden
 		.ant-modal-wrap
 			top: 5em
 			bottom: unset
+		.ant-modal-content
+			background-color: rgba(255, 255, 255, 0.93)
 
 </style>
