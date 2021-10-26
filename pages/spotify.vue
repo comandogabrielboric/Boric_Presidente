@@ -16,26 +16,31 @@
 				div pieza musical!
 			.texto
 				p Envía tu aporte a: playlist@boricpresidente.cl directamente o a través de wetransfer o similar, a ese mail. Por favor, evitar compartir archivos en un drive, ya que las restricciones de acceso muchas veces no quedan liberadas.
-		.CompromisoFeminista
+			.btn.bold( @click="mostrarInstrucciones = !mostrarInstrucciones") REVISA LAS INSTRUCCIONES
 
+		a-modal.modalInstrucciones(:visible="mostrarInstrucciones" :footer="null" @close="mostrarInstrucciones = false" @cancel="mostrarInstrucciones = false" centered :width="null")
+			div(slot="title")
+				.pretitulo El Árbol
+				h2.titulo  Ideas & Maquetas para un nuevo Chile – Gabriel Boric Presidente
+			.cuerpoInstrucciones
+				.ql-editor.contenidoHTML(v-html='instrucciones')
 </template>
 <script>
 export default {
 	async asyncData ({ app }) {
-		const textos = await app.$olicitar(`${process.env.cmsURL}/compromiso-feminista`)
-		const carta = app.$sanitizar(textos.cartaCompromiso)
-		const textoIntroductorio = app.$sanitizar(textos.texto_introductorio)
+		const textos = await app.$olicitar(`${process.env.cmsURL}/llamado-musicos`)
+		const instrucciones = app.$sanitizar(textos.instrucciones)
 		const data = {
-			carta,
-			textoIntroductorio
+			instrucciones
 		}
 		return data
 	},
 	data () {
 		return {
-			carta: null,
+			instrucciones: null,
 			textoIntroductorio: null,
-			seo: null
+			seo: null,
+			mostrarInstrucciones: null
 		}
 	},
 	head () {
@@ -51,6 +56,10 @@ export default {
 			url
 		})
 		return obj
+	},
+	mounted () {
+		window.vm = this
+		console.log(this.instrucciones)
 	}
 }
 </script>
@@ -112,8 +121,80 @@ export default {
 		.Bold
 			font-size: 1.3rem
 			font-weight: 900
-
+	.subTitulo
+		padding: .5em .2em
+		font-size: 2.3rem
+		font-style: italic
+		z-index: 3
+		line-height: 1.2
+		color: $verde3
+		font-weight: 900
+		// padding: 0 0.5em
+		.primero
+			// font-size: 2.4rem
+			font-weight: 400
+			// color: $verde3
+	.texto
+		font-size: 1.2rem
+		padding: 0 .5em
+		line-height: 1.2
 	.listaSpotify
-		width: 350px
+		width: 300px
+		border-radius: 4px
+		overflow: hidden
+
+	.btn
+		font-size: 1.1rem
+		// display: flex
+		margin: 0 auto
+		cursor: pointer
+		text-transform: uppercase
+		background-color: $verde3
+		color: $petroleo1
+		padding: .5em .5em
+		border-radius: 4px
+		margin-bottom: 1em
+		z-index: 5
+.modalInstrucciones
+	::v-deep
+		.ant-modal-content
+			margin: 0
+			+compu
+				margin: 0 2em
+				max-width: 1300px
+		.ant-modal-header
+			text-align: start
+			padding-top: 1.5em
+			background-color: $petroleo1
+		.ant-modal-title
+			color: #fff
+			font-size: 2.5em
+			font-weight: 700
+			line-height: 1.5
+			+movil
+				font-size: 2em
+			.titulo
+				color: $verde3
+				font-size: 1rem
+		.ant-modal-body
+			text-align: justify
+			padding: 2em 1em
+			max-height: 80vh
+			overflow: auto
+			p
+				font-size: 1.2em
+			+compu
+				padding: 2em 3em
+		.ant-modal-mask
+			backdrop-filter: blur(4px)
+		.ant-modal-close-icon
+			svg
+				border: 1px solid orange
+				border-radius: 50%
+				padding: .1em
+				color: $petroleo1
+				background-color: $verde3
+				width: 1.5em
+				height: 1.5em
 
 </style>
