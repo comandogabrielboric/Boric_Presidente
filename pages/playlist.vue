@@ -148,6 +148,8 @@ export default {
 		padding: 0 1em
 		line-height: 1.2
 		font-style: italic
+		.link
+			font-weight: 700
 	.listaSpotify
 		width: 300px
 		height: 380px
