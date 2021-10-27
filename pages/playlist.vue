@@ -74,6 +74,7 @@ export default {
 	.fondo
 		position: absolute
 		width: 100vw
+		height: 450px
 		img
 			width: 100%
 			height: 67.18%
