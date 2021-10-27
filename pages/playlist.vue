@@ -1,8 +1,11 @@
 <template lang="pug">
 .root
 	.header
-		img(src='/gif/PLAYLIST-EL-ARBOLGIF.gif' alt="")
-		//- img.noCompu(src='' alt="")
+		.fondo
+			img(src='/gif/fondoPortada.gif' alt="")
+			//- img(src='/gif/frameFondo.webp' alt="")
+		.portadaPlaylist
+			img(src='/gif/portadaPlaylist.webp' alt="")
 
 	.Compromiso
 		.curva.curvaSuperior
@@ -11,11 +14,11 @@
 			.titulo #[span.primero El Árbol]
 				div Ideas y Maquetas para un chile nuevo
 			.listaSpotify
-				<iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZypDDXfbyfI?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+				<iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZypDDXfbyfI?utm_source=generator" width="100%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 			.subTitulo #[span.primero ¡Participa con una]
 				div pieza musical!
 			.texto
-				p Envía tu aporte a: playlist@boricpresidente.cl directamente o a través de wetransfer o similar, a ese mail. Por favor, evitar compartir archivos en un drive, ya que las restricciones de acceso muchas veces no quedan liberadas.
+				p Envía tu aporte a: #[a.link(href="mailto:playlist@boricpresidente.cl") playlist@boricpresidente.cl] directamente o a través de wetransfer o similar, a ese mail. Por favor, evitar compartir archivos en un drive, ya que las restricciones de acceso muchas veces no quedan liberadas.
 			.btn.bold( @click="mostrarInstrucciones = !mostrarInstrucciones") REVISA LAS INSTRUCCIONES
 
 		a-modal.modalInstrucciones(:visible="mostrarInstrucciones" :footer="null" @close="mostrarInstrucciones = false" @cancel="mostrarInstrucciones = false" centered :width="null")
@@ -68,9 +71,18 @@ export default {
 @import '~/estilos/paleta'
 
 .header
-	img
-		width: 100%
-		height: 67.18%
+	.fondo
+		position: absolute
+		width: 100vw
+		img
+			width: 100%
+			height: 67.18%
+	.portadaPlaylist
+		position: relative
+		display: flex
+		justify-content: center
+		img
+			width: 45%
 .Compromiso
 	padding-bottom: 5em
 	position: relative
@@ -138,8 +150,10 @@ export default {
 		font-size: 1.2rem
 		padding: 0 .5em
 		line-height: 1.2
+		font-style: italic
 	.listaSpotify
 		width: 300px
+		height: 380px
 		border-radius: 4px
 		overflow: hidden
 
@@ -183,6 +197,11 @@ export default {
 			overflow: auto
 			p
 				font-size: 1.2em
+				a
+					color: $verde2
+			h3
+				font-size: 1.5rem
+				color: $verde1
 			+compu
 				padding: 2em 3em
 		.ant-modal-mask
@@ -197,4 +216,16 @@ export default {
 				width: 1.5em
 				height: 1.5em
 
++compu
+	.contenido
+		.subTitulo
+			font-size: 3.3rem
+		.texto
+			font-size: 1.5rem
+			max-width: 700px
+		.listaSpotify
+			width: 400px
+			height: 400px
+		.btn
+			font-size: 1.5rem
 </style>
