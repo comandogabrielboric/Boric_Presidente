@@ -12,7 +12,7 @@
 
 		.contenido
 			.titulo #[span.primero El Árbol]
-				div Ideas y Maquetas para un chile nuevo
+				div Ideas y Maquetas para un Chile nuevo
 			.listaSpotify
 				<iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZypDDXfbyfI?utm_source=generator" width="100%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 			.subTitulo #[span.primero ¡Participa con una]
@@ -74,7 +74,7 @@ export default {
 	.fondo
 		position: absolute
 		width: 100vw
-		height: 450px
+		min-height: 450px
 		img
 			width: 100%
 			height: 67.18%
@@ -117,8 +117,8 @@ export default {
 	align-items: center
 	padding-bottom: 1.5em
 	.titulo
-		padding: .5em 0 .5em 0
-		font-size: 2.5rem
+		padding: .5em .5em
+		font-size: 2.3rem
 		font-style: italic
 		z-index: 3
 		line-height: 1.2
@@ -127,10 +127,6 @@ export default {
 			font-size: 3rem
 			font-weight: 900
 			color: $verde3
-	.texto
-		font-size: 1.2rem
-		padding: 1em
-		line-height: 1.2
 		.Bold
 			font-size: 1.3rem
 			font-weight: 900
@@ -139,7 +135,7 @@ export default {
 		font-size: 2.3rem
 		font-style: italic
 		z-index: 3
-		line-height: 1.2
+		line-height: 1.1
 		color: $verde3
 		font-weight: 900
 		// padding: 0 0.5em
@@ -149,7 +145,7 @@ export default {
 			// color: $verde3
 	.texto
 		font-size: 1.2rem
-		padding: 0 .5em
+		padding: 0 1em
 		line-height: 1.2
 		font-style: italic
 	.listaSpotify
@@ -159,7 +155,7 @@ export default {
 		overflow: hidden
 
 	.btn
-		font-size: 1.1rem
+		font-size: 1.2em
 		// display: flex
 		margin: 0 auto
 		cursor: pointer
@@ -229,4 +225,10 @@ export default {
 			height: 400px
 		.btn
 			font-size: 1.5rem
++movil
+	.header
+		.portadaPlaylist
+			top: -8px
+			img
+				width: 42%
 </style>
