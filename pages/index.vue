@@ -13,15 +13,13 @@
 
 		.noCompu.sobreCurva
 			.contenido
-				div Súmate respondiendo nuestra consulta ciudadana o participando en las mesas ciudadanas, donde podrás compartir tus ideas, anhelos y opiniones para aportar a la construcción de este proyecto transformador.
+				div Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
 		.noMovil.sobreCurva
 			.contenido
-				h1 Mesas ciudadanas
-				h2 ¿Cómo participar?
-				div Súmate respondiendo nuestra consulta ciudadana o participando en las mesas ciudadanas, donde podrás compartir tus ideas, anhelos y opiniones para aportar a la construcción de este proyecto transformador.
+				div Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
 
-		a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta ciudadana
-		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
+		//- a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta ciudadana
+		//- a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
 
 		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad"  v-if="cargado").imgSaludo
 		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad" v-if="cargado").imgSaludo
