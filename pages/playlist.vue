@@ -18,7 +18,8 @@
 			.subTitulo #[span.primero ¡Participa con una]
 				div pieza musical!
 			.texto
-				p Envía tu aporte a: #[a.link(href="mailto:playlist@boricpresidente.cl") playlist@boricpresidente.cl] directamente o a través de wetransfer o similar, a ese mail. Por favor, evitar compartir archivos en un drive, ya que las restricciones de acceso muchas veces no quedan liberadas.
+				p Envía tu aporte a: #[a.link(href="mailto:playlist@boricpresidente.cl") playlist@boricpresidente.cl] de forma directa o a través de un link de spotify, wetransfer o similar.
+					div Difunde e invita a otros músicos del país a formar parte de este playlist.
 			.btn.bold( @click="mostrarInstrucciones = !mostrarInstrucciones") REVISA LAS INSTRUCCIONES
 
 		a-modal.modalInstrucciones(:visible="mostrarInstrucciones" :footer="null" @close="mostrarInstrucciones = false" @cancel="mostrarInstrucciones = false" centered :width="null")
