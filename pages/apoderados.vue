@@ -32,12 +32,12 @@
 		p(@click='showModal').terminosycondiciones #[span.primero Acepto] &nbspTérminos y Condiciones
 
 	a-modal(v-model="visible" title="Muchas gracias !!" centered @ok="handleOk" :footer="null").modal
-		p Pronto recibiras noticias
+		.procesando(v-if="!procesado")
+			a-spin(size="large")
+		.procusandoCompleto(v-if="procesado")
+			p Pronto recibiras noticias
 
 	a-modal(:visible='tyc' title='Terminos y Condiciones' @ok='handleOk' @cancel="tyc = false" :footer="null").modal
-
-
-
 
 		p El/la usuaria/o declara aceptar el uso de los datos solicitados para la campaña presidencial de Gabriel Boric en el marco de la Ley N° 19.628. Sólo podrán ser usados estos datos para los fines específicos que el usuario autorice, esto es, para la entrega de información de la campaña presidencial respectiva y de la difusión de sus actividades propias. Para estos efectos el usuario autoriza a que lo contacten a través de medios digitales tales como email, Facebook, mensajes de texto (SMS), WhatsApp u otras plataformas similares con las finalidades señaladas, a la casilla de correo electrónico y número de teléfono que haya indicado.
 
@@ -45,7 +45,7 @@
 
 		p La campaña presidencial de Gabriel Boric no podrá, bajo ningún concepto, ceder o transferir dichas bases de datos a terceros sin contar con el consentimiento expreso del usuario titular de los datos privados.
 
-
+	.relleno
 </template>
 
 <script>
@@ -145,7 +145,8 @@ export default {
 			visible: false,
 			tyc: false,
 			regionseleccionada: null,
-			comunaSeleccionada: null
+			comunaSeleccionada: null,
+			procesado: null
 			// regiones: this.re
 		}
 	},
@@ -208,13 +209,24 @@ export default {
 		async suscribirse () {
 			// const { nombre, email, telefono, comuna } = this
 			// const data = { nombre, email, telefono, comuna }
+
+			this.visible = true
 			const config = {}
 			const respuesta = await this.$axios.post(`${process.env.apiURL}/apoderados`, this.formulario, config).then(r => r.data).catch(e => console.error('fallo suscribirse', e))
 			console.log('Respuesta', respuesta)
 			if (!respuesta) {
 				this.visible = false
 			} else {
-				this.visible = true
+				this.procesado = true
+				this.formulario = {
+					nombre: undefined,
+					email: undefined,
+					telefono: undefined,
+					comuna: undefined,
+					region: undefined,
+					distrito: undefined,
+					milita: null
+				}
 			}
 			console.log('suscrito', this.visible)
 		},
@@ -226,6 +238,7 @@ export default {
 			console.log(e)
 			this.visible = false
 			this.tyc = false
+			this.procesado = false
 		}
 	}
 }
@@ -241,6 +254,7 @@ export default {
 	color: $verde3
 	font-style: italic
 	line-height: 1.2
+	max-width: 450px
 .suscribirse
 	display: flex
 	flex-wrap: wrap
@@ -286,9 +300,11 @@ export default {
 		font-weight: 400
 
 .modal
-	height: 200px
+	// height: 200px
 
-
+.relleno
+	width: 90vw
+	height: 5em
 
 
 .rootParticipa
@@ -311,20 +327,21 @@ export default {
 .modal::v-deep
 	.ant-modal-header
 		text-align: center
-		padding-top: 3em
+		padding: 3em
 		background-color: $verde1
 	.ant-modal-title
 		color: $verde3
-		font-size: 2.5em
+		font-size: 2.5rem
 		font-weight: 700
 		line-height: 1.5em
 		+movil
-			font-size: 1.5em
+			font-size: 1.5rem
 	.ant-modal-body
 		text-align: center
-		padding: 2em 1em
-		background-color: $verde1
-		color: #fff
+		padding: 2em 1em .5em 1em
+		background-color: #fff
+		color: $azul2
+		font-size: 1.5rem
 		max-height: 60vh
 		overflow: auto
 		p
