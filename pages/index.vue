@@ -240,7 +240,7 @@ section
 			margin-top: -2em
 
 	.contenido
-		padding: 0 1em
+		padding: 1em 1em .5em 1em
 		line-height: 1.3
 		width: 400px
 		max-width: 100%
