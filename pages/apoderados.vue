@@ -1,11 +1,14 @@
 <template lang="pug">
 .rootParticipa
 	.titulo Inscripciones Apoderados de mesa
+	.texto En estas elecciones Chile pone en juego la protección del proceso de cambios que iniciamos, por eso es necesaria tu participación observando el proceso de votaciones del día 21 de noviembre. Inscríbete como apoderad@ y se parte de esta historia que construímos junt@s
 
 	a-form-model(ref='formulario' :model='formulario' :rules='rules').suscribirse
 
 		a-form-model-item(has-feedback prop='nombre')
 			a-input(v-model='formulario.nombre' type='nombre' placeholder="Nombre").input
+		a-form-model-item(has-feedback prop='apellido')
+			a-input(v-model='formulario.apellido' type='apellido' placeholder="Apellido").input
 		a-form-model-item(has-feedback prop='rut')
 			a-input(v-model='formulario.rut' type='rut' placeholder='Rut').input
 		a-form-model-item(has-feedback prop='email')
@@ -13,6 +16,7 @@
 
 		a-form-model-item(has-feedback prop='telefono')
 			a-input(v-model='formulario.telefono' type='tel' placeholder='+56 x xxxx xxxx').input
+
 		.texto En que comuna deseas participar?
 		a-form-model-item(has-feedback prop='region')
 			a-select(v-model="formulario.region" @change="handleChange" placeholder='Región').input
@@ -22,6 +26,11 @@
 			a-select(v-model="formulario.comuna" placeholder='Comuna' @change="handleComuna").input
 				a-select-option(v-for="comuna in comunas" :key="comuna.label" :value="comuna.label") {{ comuna.label }}
 
+		a-form-model-item(has-feedback prop='local')
+			a-input(v-model='formulario.local' type='local' placeholder="Local de votacion").input
+
+		a-form-model-item.pre ¿has sido vocal de mesa antes? #[span ]
+			a-switch(v-model='formulario.hazSidoVocalAntes')
 		//- a-form-model-item(has-feedback prop='militancia')
 		//- 	a-input(v-model='formulario.milita' type='checkbox').input
 		//- 	div eres militante?
@@ -123,15 +132,19 @@ export default {
 		return {
 			formulario: {
 				nombre: undefined,
+				apellido: undefined,
+				rut: undefined,
 				email: undefined,
 				telefono: undefined,
 				comuna: undefined,
 				region: undefined,
 				distrito: undefined,
-				milita: null
+				hazSidoVocalAntes: false,
+				local: undefined
 			},
 			rules: {
 				nombre: [{ validator: validaNombre, trigger: 'change' }],
+				apellido: [{ validator: validaNombre, trigger: 'change' }],
 				email: [{ validator: validaEmail, trigger: 'change' }],
 				telefono: [{ validator: validaTelefono, trigger: 'change' }],
 				region: [{ validator: validaRegion }],
@@ -253,13 +266,21 @@ export default {
 	font-size: 2.5rem
 	color: $verde3
 	font-style: italic
-	line-height: 1.2
+	line-height: 1.1
 	max-width: 450px
+.texto
+	padding: 0 1em 1em 1em
+	max-width: 730px
+	text-align: center
+	font-size: 1.3rem
 .suscribirse
 	display: flex
 	flex-wrap: wrap
 	justify-content: center
 	max-width: 400px
+	.pre
+		color: #fff
+		font-size: 1rem
 	.texto
 		align-items: center
 		font-size: 1rem
