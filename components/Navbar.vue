@@ -9,7 +9,6 @@
 
 		mixin links
 			.links.contenedor-links.link-interno
-				nuxt-link.link.bold(to='/participa' @click.native="tag('nav participa')") participa aquí
 				nuxt-link.link.bold(to='/aporta' @click.native="tag('nav aporta')") aporta
 				nuxt-link.link.bold(to='/propuestas' @click.native="tag('nav propuestas')") Propuestas
 				//- nuxt-link.link.bold(to='/unete' @click.native="tag('nav Únete')") Únete
