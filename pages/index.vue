@@ -45,6 +45,25 @@
 			img.noMovil(src="/imagenes/participa.webp" alt="Participa")
 			img.noCompu(src="/imagenes/participaMovil.webp" alt="Participa")
 
+		section.elArbol
+			.curva.curvaSuperior
+			.noCompu
+				.titulo #[span.primero Se parte de la]
+					div Playlist
+					.segundo El Árbol
+				.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+				.portadaPlaylist
+					img(src='/gif/portadaPlaylist.webp' alt="")
+
+				.btn.bold( @click="mostrarInstrucciones = !mostrarInstrucciones") MÁS INFORMACIÓN
+
+			a-modal.modalInstrucciones(:visible="mostrarInstrucciones" :footer="null" @close="mostrarInstrucciones = false" @cancel="mostrarInstrucciones = false" centered :width="null")
+				div(slot="title")
+					.pretitulo El Árbol
+					h2.titulo  Ideas & Maquetas para un nuevo Chile – Gabriel Boric Presidente
+				.cuerpoInstrucciones
+					.ql-editor.contenidoHTML(v-html='instrucciones')
+
 
 		section.seccionArmaTuCampana
 			.curva.curvaSuperior
@@ -294,6 +313,30 @@ section
 		.imgSaludo
 			margin-top: -6vw
 
+.elArbol
+	background-color: $petroleo1
+	.curva
+		background-color: inherit
+
+	.titulo
+		font-size: 2.3rem
+		font-style: italic
+		text-align: center
+		line-height: 1.1
+		padding: .5em
+		.segundo
+			color: $verde3
+			font-weight: 900
+	.texto
+		text-align: center
+		font-style: italic
+		padding: 0 1em
+		font-size: 1.3rem
+	.portadaPlaylist
+		display: flex
+		justify-content: center
+		img
+			width: 300px
 
 .precarga
 	height: 100vh

@@ -20,7 +20,7 @@
 			.texto
 				p Envía tu aporte a: #[a.link(href="mailto:playlist@boricpresidente.cl") playlist@boricpresidente.cl] de forma directa o a través de un link de spotify, wetransfer o similar.
 					div Difunde e invita a otros músicos del país a formar parte de este playlist.
-			.btn.bold( @click="mostrarInstrucciones = !mostrarInstrucciones") REVISA LAS INSTRUCCIONES
+			.btn.bold( @click="mostrarInstrucciones = !mostrarInstrucciones") MÁS INFORMACIÓN
 
 		a-modal.modalInstrucciones(:visible="mostrarInstrucciones" :footer="null" @close="mostrarInstrucciones = false" @cancel="mostrarInstrucciones = false" centered :width="null")
 			div(slot="title")
