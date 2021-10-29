@@ -12,11 +12,11 @@
 
 		.contenido
 			.titulo #[span.primero El Árbol]
-				div Ideas y Maquetas para un Chile nuevo
+				div Ideas y Maquetas para un nuevo Chile
 			.listaSpotify
 				<iframe src="https://open.spotify.com/embed/playlist/4uKpFyC9PIeafFy80RAWS1?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-			.subTitulo #[span.primero ¡Participa con una]
-				div pieza musical!
+			.subTitulo #[span.primero ¡Únete con un aporte]
+				div musical propio!
 			.texto
 				p Envía tu aporte a: #[a.link(href="mailto:playlist@boricpresidente.cl") playlist@boricpresidente.cl] de forma directa o a través de un link de spotify, wetransfer o similar.
 					div Difunde e invita a otros músicos del país a formar parte de este playlist.
