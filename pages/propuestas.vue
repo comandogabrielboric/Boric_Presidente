@@ -47,9 +47,9 @@
 				.oicono.descargar
 				.texto Descarga nuestro programa (en construcción)
 	.textoCierre
-		p Estas y muchas otras ideas se están pensando en nuestras mesas de participación.
-		p Súmate y decidamos las propuestas de nuestro programa.
-		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Propuestas participa.boricpresidente.cl'})") Participa Aquí
+		//- p Estas y muchas otras ideas se están pensando en nuestras mesas de participación.
+		//- p Súmate y decidamos las propuestas de nuestro programa.
+		//- a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Propuestas participa.boricpresidente.cl'})") Participa Aquí
 
 
 
@@ -298,6 +298,7 @@ export default {
 .propuestas
 	z-index: 0
 	cursor: pointer
+	padding-bottom: 5em
 	+movil
 		.caja-propuestas
 			padding: 3.5em 0
