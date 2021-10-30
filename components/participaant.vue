@@ -283,7 +283,7 @@ export default {
 
 
 +compu
-	.contenedorbtn
+
 	.suscribirme
 		width: 300px
 		height: 40px

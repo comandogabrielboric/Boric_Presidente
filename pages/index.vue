@@ -230,7 +230,6 @@ section
 		// background-repeat: no-repeat
 		position: absolute
 		display: flex
-		border: 1px solid orange
 		width: 100%
 		top: 0
 		bottom: 0
@@ -290,7 +289,6 @@ section
 		.contenido
 			display: flex
 			flex-flow: column
-			border: 1px solid red
 			position: absolute
 			width: 50vw
 			right: 0
@@ -606,7 +604,6 @@ section.seccionaporta
 			justify-content: space-around
 			padding-bottom: 14em
 		.lado
-			border: 1px solid red
 			.titulo
 				font-size: 3.3rem
 			p
