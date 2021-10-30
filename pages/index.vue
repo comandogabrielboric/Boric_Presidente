@@ -4,9 +4,14 @@
 	section.storytelling
 		.filtroBlur
 			img.noMovil(src="/imagenes/portada.webp" alt="Súmate a cambiar Chile")
-			img.noCompu(v-if="cargado" src="/imagenes/portadaMovil.webp" alt="Súmate a cambiar Chile")
-			img.imgTiny(v-if="!cargado" src="/imagenes/portadaMovilTiny.webp" alt="Súmate a cambiar Chile")
-
+			img.noCompu( src="/imagenes/portadaMovil.webp" alt="Súmate a cambiar Chile")
+			//- img.imgTiny(v-if="!cargado" src="/imagenes/portadaMovilTiny.webp" alt="Súmate a cambiar Chile")
+		.contenido
+			.titulo Programa de
+				.segundo Gobierno
+				.tercero Apruebo Dignidad
+			.contendorBoton
+				nuxt-link.boton(to='/propuestas' @click.native="tag('propuestas')") VER PROGRAMA
 
 	section.seccionCuna
 		.curva.curvaSuperior
@@ -193,23 +198,85 @@ section
 	display: flex
 	justify-content: center
 	max-height: calc(100vh - 5em)
+	background-image: url('/imagenes/portadaMovil.webp')
+	background-size: cover
+	background-repeat: no-repeat
 	img
 		width: 119.45%
 		height: 100%
 		max-width: 100%
-		// max-height: 100%
+		max-height: 100%
+		z-index: 5
 	.imgTiny
 		width: 100vw
-		// height: 90%
+		height: 90%
 		filter: blur(4px)
 	.filtroBlur
+		position: relative
 		min-height: 250px
 		width: 100vw
+		display: flex
+		justify-content: center
+		z-index: 0
+		+movil
+			img
+				width: 100%
+				height: 198.69%
+				max-width: 376px
+				// max-height: 600px
+	.contenido
+		// background-image: url('/imagenes/portadaMovil.webp')
+		// background-size: cover
+		// background-repeat: no-repeat
+		position: absolute
+		display: flex
+		border: 1px solid orange
+		width: 100%
+		top: 0
+		bottom: 0
+		flex-flow: column
+		justify-content: space-between
+		padding: 3em 0
+		text-align: center
+		.titulo
+			font-size: 2rem
+			line-height: 1
+			font-style: italic
+			font-weight: 700
+			.segundo
+				font-size: 3.3rem
+				padding-left: 4px
+				font-weight: 700
+			.tercero
+				font-size: 1.5rem
+				font-weight: 400
+		.contendorBoton
+			padding-top: .5em
+			display: flex
+			justify-content: center
+			.boton
+				display: flex
+				margin: 0 auto
+				cursor: pointer
+				width: 210px
+				height: 42px
+				text-transform: uppercase
+				background-color: $verde3
+				color: $verde1
+				justify-content: center
+				align-items: center
+				padding-top: .8em
+				border: 0
+				border-radius: 5px
+				margin-top: .5em
+				z-index: 5
+				font-size: 1.1rem
 	+compu
 		background-image: url('/imagenes/portada.webp')
 		background-size: cover
 		background-repeat: no-repeat
 		.filtroBlur
+			position: relative
 			display: flex
 			width: 100%
 			height: 100%
@@ -220,6 +287,23 @@ section
 			width: 100%
 			height: 53.4%
 			max-width: 100vw
+		.contenido
+			display: flex
+			flex-flow: column
+			border: 1px solid red
+			position: absolute
+			width: 50vw
+			right: 0
+			top: 0
+			bottom: 0
+			display: flex
+			padding-left: 1em
+			// align-items: center
+			text-align: left
+			justify-content: center
+			.contendorBoton
+				width: 210px
+
 
 .seccionCuna
 	position: relative
