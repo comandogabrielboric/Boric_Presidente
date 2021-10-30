@@ -52,10 +52,10 @@ export default {
 		// let checkPending
 		const validaTelefono = (rule, value, callback) => {
 			if (!value) {
-				return callback(new Error('Ingresa tu telefono'))
+				return callback(new Error('Ingresa tu teléfono'))
 			} if (!phone(value).isValid) {
 				console.log('telefono', phone(value))
-				callback(new Error('Utiliza formato +56 xxxxxxxxx'))
+				callback(new Error('Utiliza el formato +56 xxxxxxxxx'))
 			} else {
 				console.log('telefono ok', phone(value))
 				callback()
@@ -70,21 +70,21 @@ export default {
 		}
 		const validaEmail = (rule, value, callback) => {
 			if (!isEmail(value)) {
-				callback(new Error('Debes ingresar un E mail valido'))
+				callback(new Error('Debes ingresar un Email válido'))
 			} else {
 				callback()
 			}
 		}
 		const validaRegion = (rule, value, callback) => {
 			if (this._.isEmpty(value)) {
-				callback(new Error('Ingresa tu region'))
+				callback(new Error('Ingresa tu región'))
 			} else {
 				callback()
 			}
 		}
 		const validaComuna = (rule, value, callback) => {
 			if (value === '') {
-				callback(new Error('Ingresa tu region'))
+				callback(new Error('Ingresa tu región'))
 			} else {
 				callback()
 			}
