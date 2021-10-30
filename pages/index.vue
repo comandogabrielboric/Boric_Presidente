@@ -534,7 +534,6 @@ section.propuestas
 		display: flex row nowrap
 		text-align: center
 		justify-content: center
-		width: 400
 		max-width: 100%
 		heigth: 10em
 		background-color: rgba(249, 58, 121, 1)
@@ -579,7 +578,6 @@ section.propuestas
 				background-color: $verde3
 	+compu
 		.contenido
-			width: 400px
 			margin: 0 auto
 </style>
 
