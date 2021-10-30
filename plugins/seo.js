@@ -8,7 +8,7 @@ function seo ({ titulo, descripcion, url, imagen }) {
 		},
 		meta: [
 			{ charset: 'utf-8' },
-			{ hid: 'viewport', name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
+			{ hid: 'viewport', name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
 			{ hid: 'description', name: 'description', content: descripcion },
 
 			{ hid: 'iprop:name', itemprop: 'name', content: titulo },
