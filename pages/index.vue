@@ -349,7 +349,7 @@ section
 	align-items: center
 	position: relative
 	justify-content: center
-	padding-bottom: 3em
+	padding-bottom: 5.5em
 	.curva
 		background-color: $petroleo2
 	.contenido
