@@ -53,10 +53,10 @@
 					a(href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0" target="_blank" 	rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico'})").boton KIT GRÁFICO AQUÍ
 
 			.contenido
-				.lado
-					h2 Arma tu
-					h3 Campaña
-					p Descarga nuestro kit y crea tus propios insumos de 	campaña. #[br]¡De ti depende!
+				.lado.ladotitutlo
+					.titulo Arma tu
+						div.segundo Campaña
+					p.texto Descarga nuestro kit y crea tus propios insumos de 	campaña. #[br]¡De ti depende!
 					.noMovil
 						+linkDescarga
 
@@ -81,13 +81,13 @@
 
 			.contenido
 				.lado
-					h2 Súmate
-					h3 y Aporta
+					.titulo Súmate
+						div.segundo y Aporta
 					p El cambio lo financiamos las personas comunes. Aporta y 	construyamos un Chile donde el dinero no haga la diferencia.
 					.noMovil
 						+linkServel
 				.lado.ladoImagen
-					Chanchito
+					Chanchito.chan
 				.noCompu
 					+linkServel
 
@@ -102,7 +102,7 @@
 			.contenido
 				.textoseccion
 					h2.titulo Propuesta
-					h3 Programática
+						div.segundo Programática
 					p Nuestro Gobierno impulsará grandes cambios, paso a paso, 	sin dejar a nadie fuera.
 					p ¿Quieres conocer parte de nuestras propuestas?
 				.link
@@ -322,6 +322,7 @@ section
 		.texto
 			font-style: italic
 			font-size: 1.2rem
+			line-height: 1.3
 		.suscribirse
 			padding: 0 .5em
 			display: flex
@@ -336,8 +337,11 @@ section
 			text-align: left
 			justify-content: space-around
 			.lado
-				border: 1px solid red
 				flex: 4000px 0 1
+			.lado2
+				display: flex
+				align-items: center
+				justify-content: center
 			.titulo
 				font-size: 3rem
 			.texto
@@ -362,14 +366,14 @@ section
 			display: flex
 			flex-flow: column
 			// padding: 0 1em
-		h2,
-		h3
+		.titulo,
+		.segundo
 			font-size: 3rem
-			line-height: .7em
-		h2
+			line-height: 1
+		.titulo
 			color: $verde3
 			font-style: italic
-		h3
+		.segundo
 			font-weight: 900
 			color: #fff
 		p
@@ -401,7 +405,7 @@ section
 			border-radius: 50%
 			transform: translate(-25%, -50%) scale(.9)
 		+compu
-			$lado: 18em
+			$lado: 22em
 			width: $lado
 			height: $lado
 			.circulo
@@ -435,13 +439,28 @@ section
 			text-align: left
 			padding-top: 2em
 			.lado
-				flex: 250px 0 1
+				flex: 400px 0 1
+				padding: 0 0 3em 0
 				&.ladoImagen
 					order: -1
+				&.ladotitutlo
+					z-index: 5
+				.titulo
+					font-size: 3.4rem
+				.texto
+					padding-top: .5em
+					font-size: 1.5rem
+					line-height: 1.3
 			.kitGrafico
 				display: block
 				.texto
+					margin-top: -.8em
 					text-align: left
+					font-size: 2rem
+				.boton
+					font-size: 1.5rem
+					padding: .3em 0 .1em 0
+					// height: 45px
 
 
 
@@ -479,15 +498,15 @@ section.seccionaporta
 		align-items: center
 		text-align: center
 		padding-bottom: 6em
-		h2,
-		h3
+		.titulo,
+		.segundo
 			font-size: 3rem
 			margin: 0
 			line-height: 1
 			font-style: italic
-		h2
+		.titulo
 			color: $verde3
-		h3
+		.segundo
 			font-weight: 900
 			color: #fff
 		p
@@ -502,8 +521,19 @@ section.seccionaporta
 			text-align: left
 			justify-content: space-around
 			padding-bottom: 14em
-			.lado
-				flex: 350px 0 1
+		.lado
+			border: 1px solid red
+			.titulo
+				font-size: 3.3rem
+			p
+				font-size: 1.5rem
+		.linkservel
+			.boton
+				font-size: 1.4rem
+				padding: .4em 1em .3em 1em
+			.instrucciones
+				font-size: 1.1rem
+
 
 section.propuestas
 	position: relative
@@ -546,14 +576,14 @@ section.propuestas
 		+compu
 			padding-bottom: 1em
 		.textoseccion
-			h2,
-			h3
+			.titulo,
+			.segundo
 				font-size: 3rem
-				line-height: 1.5rem
+				line-height: 1
 				font-weight: 900
 				font-style: italic
 				color: $verde3
-			h2
+			.titulo
 				font-weight: 400
 				color: #fff
 			p
@@ -582,8 +612,19 @@ section.propuestas
 				background-color: $verde3
 	+compu
 		.contenido
-			width: 400px
+			width: 600px
 			margin: 0 auto
+			.textoseccion
+				.titulo
+					font-size: 3.4rem
+				p
+					font-size: 1.5rem
+					line-height: 1.2
+			.link
+				.linkpropuestas
+					width: 350px
+					font-size: 1.4rem
+					padding: .5em 1em .3em 1em
 </style>
 
 

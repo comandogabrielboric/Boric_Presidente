@@ -50,7 +50,7 @@ export default {
 		border-radius: 50%
 		transform: translate(-63%, -63%) scale(.8)
 	+compu
-		$lado: 16em
+		$lado: 20em
 		width: $lado
 		height: $lado
 		transform: scaleX(-1)
