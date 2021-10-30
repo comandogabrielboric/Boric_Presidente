@@ -37,7 +37,7 @@
 						p Las transformaciones que Chile necesita las hacemos 		entre todas y todos.
 						P Déjanos tu mail y recibirás más información sobre la 		campaña.
 
-				.lado
+				.lado.lado2
 					.suscribirse
 						participaant
 			img.noMovil(src="/imagenes/participa.webp" alt="Participa")
@@ -312,10 +312,10 @@ section
 			line-height: 1.2
 			font-size: 2.3rem
 			color: #fff
-			font-weight: 900
+			font-weight: 400
 			.primero
 				font-size: 3rem
-				font-weight: 400
+				font-weight: 900
 				font-style: italic
 				color: $verde3
 
@@ -336,7 +336,12 @@ section
 			text-align: left
 			justify-content: space-around
 			.lado
-				flex: 350px 0 1
+				border: 1px solid red
+				flex: 4000px 0 1
+			.titulo
+				font-size: 3rem
+			.texto
+				font-size: 1.5rem
 
 
 
