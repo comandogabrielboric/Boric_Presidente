@@ -3,24 +3,24 @@
 	a-form-model(ref='formulario' :model='formulario' :rules='rules').suscribirse
 
 		a-form-model-item(has-feedback prop='nombre')
-			a-input(v-model='formulario.nombre' type='nombre' placeholder="Nombre").input
+			a-input(v-model='formulario.nombre' aria-label='Nombre' type='nombre' placeholder="Nombre").input
 
 		a-form-model-item(has-feedback prop='email')
-			a-input(v-model='formulario.email' type='email' placeholder='Email').input
+			a-input(v-model='formulario.email' aria-label='Email' type='email' placeholder='Email').input
 
 		a-form-model-item(has-feedback prop='telefono')
-			a-input(v-model='formulario.telefono' type='tel' placeholder='+56 x xxxx xxxx').input
+			a-input(v-model='formulario.telefono' aria-label='Teléfono' type='tel' placeholder='+56 x xxxx xxxx').input
 
 		a-form-model-item(has-feedback prop='region')
-			a-select(v-model="formulario.region" @change="handleChange" placeholder='Región').input
+			a-select(v-model="formulario.region" aria-label='Región' @change="handleChange" placeholder='Región').input
 				a-select-option(v-for="region in regiones" :key="region.label" :value="region.label") {{ region.label }}
 
 		a-form-model-item(v-if="regionseleccionada" has-feedback='' prop='comuna')
-			a-select(v-model="formulario.comuna" placeholder='Comuna' @change="handleComuna").input
+			a-select(v-model="formulario.comuna" aria-label='Comuna' placeholder='Comuna' @change="handleComuna").input
 				a-select-option(v-for="comuna in comunas" :key="comuna.label" :value="comuna.label") {{ comuna.label }}
 
 		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }').contenedorbtn
-			a-button(type='primary' @click="submitForm('formulario')").suscribirme
+			a-button(type='primary' aria-label='Seguimos' @click="submitForm('formulario')").suscribirme
 				| SEGUIMOS
 
 		p(@click='showModal').terminosycondiciones #[span.primero Acepto] &nbspTérminos y Condiciones
