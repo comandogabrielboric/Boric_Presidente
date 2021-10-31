@@ -63,7 +63,7 @@ export default {
 	font-style: italic
 	font-size: 1rem
 	.titulo
-		max-width: 400px
+		// max-width: 400px
 		padding: 1em 1em 0 1em
 		line-height: 1.1
 		color: $verde3
@@ -99,6 +99,9 @@ export default {
 		z-index: 5
 		font-size: 1.1rem
 +compu
+	.encabezado
+		width: 750px
+		display: flex
 	.titulo
 		font-size: 3.2rem
 	.programaBook
