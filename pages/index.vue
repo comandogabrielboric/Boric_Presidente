@@ -3,7 +3,7 @@
 
 	section.storytelling
 		.filtroBlur
-			img.noMovil(src="/imagenes/portada.webp" alt="Súmate a cambiar Chile")
+			img.noMovil(src="/imagenes/portadaWeb.webp" alt="Súmate a cambiar Chile")
 			img.noCompu( src="/imagenes/portadaMovil.webp" alt="Súmate a cambiar Chile")
 			//- img.imgTiny(v-if="!cargado" src="/imagenes/portadaMovilTiny.webp" alt="Súmate a cambiar Chile")
 		.contenido
@@ -18,10 +18,10 @@
 
 		.noCompu.sobreCurva
 			.contenido
-				div Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
+				div.texto Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
 		.noMovil.sobreCurva
 			.contenido
-				div Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
+				div.texto Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
 
 		//- a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta ciudadana
 		//- a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
@@ -35,7 +35,7 @@
 		section.seccionParticipa
 			.curva.curvaSuperior
 			.contenido
-				.lado
+				.lado.lado1
 					h2.titulo #[span.primero Inscríbete]
 						div Únete a la campaña
 					.texto
@@ -243,21 +243,21 @@ section
 			font-style: italic
 			font-weight: 700
 			.segundo
-				font-size: 3.3rem
+				font-size: 3.4rem
 				padding-left: 4px
-				font-weight: 700
+				font-weight: 900
 			.tercero
 				font-size: 1.5rem
 				font-weight: 400
 		.contendorBoton
 			padding-top: .5em
 			display: flex
-			justify-content: center
+			justify-content: flex-start
 			.boton
 				display: flex
 				margin: 0 auto
 				cursor: pointer
-				width: 210px
+				width: 260px
 				height: 42px
 				text-transform: uppercase
 				background-color: $verde3
@@ -269,9 +269,9 @@ section
 				border-radius: 5px
 				margin-top: .5em
 				z-index: 5
-				font-size: 1.1rem
+				font-size: 1.2rem
 	+compu
-		background-image: url('/imagenes/portada.webp')
+		background-image: url('/imagenes/portadaWeb.webp')
 		background-size: cover
 		background-repeat: no-repeat
 		.filtroBlur
@@ -300,8 +300,11 @@ section
 			text-align: left
 			justify-content: center
 			.contendorBoton
-				width: 210px
-
+				width: 290px
+				.boton
+					height: 50px
+					width: 290px
+					font-size: 1.4rem
 
 .seccionCuna
 	position: relative
@@ -315,44 +318,25 @@ section
 	text-align: center
 	.curva
 		background-color: $verde1
-		//+movil
+		+compu
+		// +movil
 			height: 3em
 			margin-top: -1.2em
-		//+compu
+		// +compu
 			margin-top: -2em
 
 	.contenido
 		padding: 1em 1em .5em 1em
+		display: flex
 		line-height: 1.3
-		width: 400px
+		// width: 400px
 		max-width: 100%
 		margin: 0 auto
 		font-size: 1.2rem
-
-		h1, h2
-			font-style: italic
-		h1
-			font-size: 2.5em
-			font-weight: 900
-			color: #fff
-			line-height: 1.3em
-		h2
-			color: $verde3
-			font-size: 2.5em
-			font-weight: 900
-			margin-top: -.7em
-
-	.btnparticipa
-		display: block
-		margin: 0 auto
-		cursor: pointer
-		text-transform: uppercase
-		background-color: $verde3
-		color: $verde1
-		padding: .5em 1.3em
-		border-radius: 4px
-		margin-top: .5em
-		z-index: 5
+		font-style: italic
+		align-items: center
+		.texto
+			padding: 1em
 	.imgSaludo
 		width: 100%
 		height: 66.55%
@@ -363,14 +347,8 @@ section
 
 	+compu
 		.contenido
-			width: 600px
-			font-size: 1.2rem
-			h1
-				font-size: 2.8em
-		.btnparticipa
-			font-size: 1.1rem
-			margin-top: 1em
-
+			max-width: 1100px
+			font-size: 2rem
 		.imgSaludo
 			margin-top: -6vw
 
@@ -389,6 +367,7 @@ section
 		position: relative
 		z-index: 3
 		text-align: center
+		// max-width: 1300px
 		.titulo
 			max-width: 100%
 			line-height: 1.2
@@ -404,7 +383,7 @@ section
 		.texto
 			font-style: italic
 			font-size: 1.2rem
-			line-height: 1.3
+			line-height: 1.2
 		.suscribirse
 			padding: 0 .5em
 			display: flex
@@ -417,9 +396,9 @@ section
 			display: flex
 			flex-flow: row nowrap
 			text-align: left
-			justify-content: space-around
+			justify-content: center
 			.lado
-				flex: 4000px 0 1
+				flex: 600px 0 1
 			.lado2
 				display: flex
 				align-items: center
@@ -517,14 +496,15 @@ section
 		.contenido
 			display: flex
 			flex-flow: row nowrap
-			justify-content: space-around
+			justify-content: center
 			text-align: left
 			padding-top: 2em
 			.lado
-				flex: 400px 0 1
+				flex: 600px 0 1
 				padding: 0 0 3em 0
 				&.ladoImagen
 					order: -1
+					padding-right: 15em
 				&.ladotitutlo
 					z-index: 5
 				.titulo
@@ -535,6 +515,7 @@ section
 					line-height: 1.3
 			.kitGrafico
 				display: block
+				width: 300px
 				.texto
 					margin-top: -.8em
 					text-align: left
@@ -542,6 +523,7 @@ section
 				.boton
 					font-size: 1.5rem
 					padding: .3em 0 .1em 0
+					width: 100%
 					// height: 45px
 
 
@@ -572,6 +554,8 @@ section.seccionaporta
 			justify-content: unset
 			.boton
 				margin: 0 auto 0 0
+		+movil
+			padding-bottom: 2em
 
 	.contenido
 		display: flex
@@ -601,9 +585,10 @@ section.seccionaporta
 			display: flex
 			flex-flow: row nowrap
 			text-align: left
-			justify-content: space-around
+			justify-content: center
 			padding-bottom: 14em
 		.lado
+			flex: 600px 0 1
 			.titulo
 				font-size: 3.3rem
 			p
