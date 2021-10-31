@@ -1,8 +1,8 @@
 <template lang="pug">
 .propuestasRoot
 	.encabezado
-		h1.titulo Propuesta #[span programatica]
-				div.sub para un nuevo Chile
+		h1.titulo Programa para un nuevo Chile
+				div.sub Cambios para vivir mejor
 
 	.programaBook
 		iframe(src="https://docs.google.com/viewer?srcid=1et5iqq8FRzHY7co-RorVHoomzgKqFVOV&pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="100%" height="100%")
@@ -51,7 +51,7 @@ export default {
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
 .propuestasRoot
-	background-color: $azul2
+	background-color: $verde2
 	display: flex
 	align-items: center
 	flex-flow: column
@@ -63,6 +63,7 @@ export default {
 	font-style: italic
 	font-size: 1rem
 	.titulo
+		max-width: 400px
 		padding: 1em 1em 0 1em
 		line-height: 1.1
 		color: $verde3
@@ -72,7 +73,7 @@ export default {
 			font-weight: 400
 .programaBook
 	width: 90vw
-	background-color: $azul1
+	background-color: $petroleo1
 	// max-height: 80vh
 	height: 350px
 	// padding: 1em
@@ -88,8 +89,8 @@ export default {
 		width: 100%
 		height: 40px
 		text-transform: uppercase
-		background-color: $verde3
-		color: $verde1
+		background-color: $petroleo1
+		color: $verde3
 		justify-content: center
 		align-items: center
 		border: 0
