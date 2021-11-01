@@ -8,7 +8,7 @@
 		iframe(src="https://docs.google.com/viewer?srcid=1x75w-xW8xpxiEiJLKAbYMmdZ_d0eM7b9&pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="100%" height="100%")
 
 	.contenedorbtn
-		.button(@click="descargar").boton
+		a.button(href="https://drive.google.com/file/d/1x75w-xW8xpxiEiJLKAbYMmdZ_d0eM7b9/view?usp=sharing" target="_blank").boton
 			.p DESCARGAR PROGRAMA
 
 	.relleno
