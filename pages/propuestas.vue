@@ -5,7 +5,7 @@
 				div.sub Cambios para vivir mejor
 
 	.programaBook
-		iframe(src="https://docs.google.com/viewer?srcid=1et5iqq8FRzHY7co-RorVHoomzgKqFVOV&pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="100%" height="100%")
+		iframe(src="https://docs.google.com/viewer?srcid=1x75w-xW8xpxiEiJLKAbYMmdZ_d0eM7b9&pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="100%" height="100%")
 
 	.contenedorbtn
 		.button(@click="descargar").boton
