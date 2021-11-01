@@ -12,7 +12,7 @@
 				nuxt-link.link.bold(to='/aporta' @click.native="tag('nav aporta')") aporta
 				nuxt-link.link.bold(to='/propuestas' @click.native="tag('nav propuestas')") Propuestas
 				//- nuxt-link.link.bold(to='/unete' @click.native="tag('nav Únete')") Únete
-				nuxt-link.link.bold(to='/mujeres' @click.native="tag('nav Mujeres')") Feministas AD
+				nuxt-link.link.bold(to='/apoderados' @click.native="tag('nav Mujeres')") Apoderados
 
 		.menuCompu
 			+links
