@@ -212,13 +212,13 @@ export default {
 		border-radius: 2px
 		margin-bottom: .1em
 		&::placeholder
-			font-size: 1em
+			font-size: 1.1rem
 	.ant-form-item
 		.ant-form-item-label
 			color: $verde3
 
 .suscribirme
-	// position: stycky
+	position: stycky
 	width: 250px
 	padding: .2em 0 0 0
 	right: 42px
@@ -230,6 +230,7 @@ export default {
 .terminosycondiciones
 	color: $verde3
 	display: inline
+	margin-top: -.5em
 	font-size: .9rem
 	width: 400
 	max-width: 100%
@@ -281,6 +282,31 @@ export default {
 		backdrop-filter: blur(4px)
 
 
++compu
 
+	.suscribirme
+		width: 300px
+		height: 40px
+		right: 50px
+		font-size: 1.5rem
+
+	.suscribirse
+		.input
+			width: 300px
+	.rootParticipa::v-deep
+		.ant-input
+			height: 45px
+		.ant-select-selection--single
+			height: 45px
+		.ant-select-selection__rendered
+			position: unset
+		.ant-select-selection__placeholder
+			padding-left: 1em
+			font-size: 1.1rem
+		.ant-select-selection-selected-value
+			font-size: 1.1rem
+			padding-top: 8px
+		.has-success.has-feedback .ant-form-item-children-icon
+			height: 31px
 
 </style>
