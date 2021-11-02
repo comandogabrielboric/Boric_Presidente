@@ -288,7 +288,6 @@ section
 			// z-index: 50
 	+compu
 		.imgSaludo
-			border: 1px solid white
 		img
 			z-index: 50
 		.contenido
@@ -297,7 +296,6 @@ section
 			flex-flow: row
 			flex-wrap: nowrap
 			justify-content: center
-			border: 1px solid red
 		.lado
 			flex: 600px 0 1
 			z-index: 5
@@ -313,12 +311,10 @@ section
 			.texto
 				font-size: 1.7rem
 		.lado2
-			border: 1px solid white
 			display: flex
 			justify-content: center
 			align-items: center
 			.portadaPlaylist
-				border: 1px solid orange
 				flex: 600px 0 1
 				img
 					z-index: 5
