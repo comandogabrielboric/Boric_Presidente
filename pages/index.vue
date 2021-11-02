@@ -8,20 +8,39 @@
 			img.imgTiny(v-if="!cargado" src="/imagenes/portadaMovilTiny.webp" alt="Súmate a cambiar Chile")
 
 
-	section.seccionCuna
+	section.elArbol
 		.curva.curvaSuperior
+		.noCompu
+			.titulo #[span.primero Se parte de la]
+				div Playlist
+				.segundo El Árbol
+			.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+			.portadaPlaylist
+				img(src='/gif/portadaPlaylist.webp' alt="")
 
-		.noCompu.sobreCurva
+			.boton
+				.btn.bold( @click="mostrarInstrucciones = !mostrarInstrucciones") MÁS INFORMACIÓN
+		.noMovil
 			.contenido
-				div Súmate respondiendo nuestra consulta ciudadana o participando en las mesas ciudadanas, donde podrás compartir tus ideas, anhelos y opiniones para aportar a la construcción de este proyecto transformador.
-		.noMovil.sobreCurva
-			.contenido
-				h1 Mesas ciudadanas
-				h2 ¿Cómo participar?
-				div Súmate respondiendo nuestra consulta ciudadana o participando en las mesas ciudadanas, donde podrás compartir tus ideas, anhelos y opiniones para aportar a la construcción de este proyecto transformador.
+				.lado.lado1
+					.titulo #[span.primero Se parte de la]
+						div Playlist
+						.segundo El Árbol
+					.texto Súmate enviando tu canción o maqueta y sé parte de la 	playlist El Árbol, de Apruebo Dignidad.
+					.boton
+						.btn.bold( @click="mostrarInstrucciones = !mostrarInstrucciones") MÁS INFORMACIÓN
+				.lado.lado2
+					.portadaPlaylist
+						img(src='/gif/portadaPlaylist.webp' alt="")
 
-		a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta ciudadana
-		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
+
+		a-modal.modalInstrucciones(:visible="mostrarInstrucciones" :footer="null" @close="mostrarInstrucciones = false" @cancel="mostrarInstrucciones = false" centered :width="null")
+			div(slot="title")
+			.pretitulo El Árbol
+				h2.titulo  Ideas & Maquetas para un nuevo Chile – Gabriel Boric Presidente
+			.cuerpoInstrucciones
+				.ql-editor.contenidoHTML(v-html='instrucciones')
+
 
 		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad"  v-if="cargado").imgSaludo
 		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad" v-if="cargado").imgSaludo
@@ -44,25 +63,6 @@
 						participaant
 			img.noMovil(src="/imagenes/participa.webp" alt="Participa")
 			img.noCompu(src="/imagenes/participaMovil.webp" alt="Participa")
-
-		section.elArbol
-			.curva.curvaSuperior
-			.noCompu
-				.titulo #[span.primero Se parte de la]
-					div Playlist
-					.segundo El Árbol
-				.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
-				.portadaPlaylist
-					img(src='/gif/portadaPlaylist.webp' alt="")
-
-				.btn.bold( @click="mostrarInstrucciones = !mostrarInstrucciones") MÁS INFORMACIÓN
-
-			a-modal.modalInstrucciones(:visible="mostrarInstrucciones" :footer="null" @close="mostrarInstrucciones = false" @cancel="mostrarInstrucciones = false" centered :width="null")
-				div(slot="title")
-					.pretitulo El Árbol
-					h2.titulo  Ideas & Maquetas para un nuevo Chile – Gabriel Boric Presidente
-				.cuerpoInstrucciones
-					.ql-editor.contenidoHTML(v-html='instrucciones')
 
 
 		section.seccionArmaTuCampana
@@ -242,76 +242,6 @@ section
 			height: 53.4%
 			max-width: 100vw
 
-.seccionCuna
-	position: relative
-	background-color: $verde1
-	min-height: 20em
-	display: flex
-	flex-flow: column nowrap
-	justify-content: center
-	background-color: $verde1
-	color: white
-	text-align: center
-	.curva
-		background-color: $verde1
-		//+movil
-			height: 3em
-			margin-top: -1.2em
-		//+compu
-			margin-top: -2em
-
-	.contenido
-		padding: 0 1em
-		line-height: 1.3
-		width: 400px
-		max-width: 100%
-		margin: 0 auto
-		font-size: 1.2rem
-
-		h1, h2
-			font-style: italic
-		h1
-			font-size: 2.5em
-			font-weight: 900
-			color: #fff
-			line-height: 1.3em
-		h2
-			color: $verde3
-			font-size: 2.5em
-			font-weight: 900
-			margin-top: -.7em
-
-	.btnparticipa
-		display: block
-		margin: 0 auto
-		cursor: pointer
-		text-transform: uppercase
-		background-color: $verde3
-		color: $verde1
-		padding: .5em 1.3em
-		border-radius: 4px
-		margin-top: .5em
-		z-index: 5
-	.imgSaludo
-		width: 100%
-		height: 66.55%
-		min-height: 10em
-		// width: 100vw
-		z-index: 0
-		margin-top: -9vw
-
-	+compu
-		.contenido
-			width: 600px
-			font-size: 1.2rem
-			h1
-				font-size: 2.8em
-		.btnparticipa
-			font-size: 1.1rem
-			margin-top: 1em
-
-		.imgSaludo
-			margin-top: -6vw
 
 .elArbol
 	background-color: $petroleo1
@@ -337,7 +267,62 @@ section
 		justify-content: center
 		img
 			width: 300px
-
+	.boton
+		display: flex
+		justify-content: center
+		background-color: inherit
+		padding-bottom: 4em
+		.btn
+			display: flex
+			justify-content: center
+			align-items: center
+			width: 250px
+			border-radius: 4px
+			color: $azul2
+			background-color: $verde3
+			font-size: 1.1rem
+			padding: .4em 1.5em
+	.imgSaludo
+			margin-top: -8em
+			width: 100%
+			// z-index: 50
+	+compu
+		.imgSaludo
+			border: 1px solid white
+		img
+			z-index: 50
+		.contenido
+			// padding-bottom: 3em
+			display: flex
+			flex-flow: row
+			flex-wrap: nowrap
+			justify-content: center
+			border: 1px solid red
+		.lado
+			flex: 600px 0 1
+			z-index: 5
+			align-items: center
+			img
+				flex: 600px 0 1
+		.lado1
+			display: flex
+			flex-flow: column
+			justify-content: center
+			.titulo
+				font-size: 3rem
+			.texto
+				font-size: 1.7rem
+		.lado2
+			border: 1px solid white
+			display: flex
+			justify-content: center
+			align-items: center
+			.portadaPlaylist
+				border: 1px solid orange
+				flex: 600px 0 1
+				img
+					z-index: 5
+				// height: 100%
 .precarga
 	height: 100vh
 	width: 100vw

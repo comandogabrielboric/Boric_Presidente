@@ -74,11 +74,11 @@ export default {
 .header
 	.fondo
 		position: absolute
-		width: 100vw
+		// width: 100vw
 		min-height: 450px
 		img
 			width: 100%
-			height: 67.18%
+			// height: 67.18%
 	.portadaPlaylist
 		position: relative
 		display: flex
