@@ -2,32 +2,43 @@
 .propuestasRoot
 	.encabezado
 		h1.titulo Programa para un nuevo Chile
-				div.sub Cambios para vivir mejor
+			.sub Cambios para vivir mejor
 
 	.programaBook
-		iframe(src="https://docs.google.com/viewer?srcid=1x75w-xW8xpxiEiJLKAbYMmdZ_d0eM7b9&pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="100%" height="100%")
+		iframe(
+			src="https://docs.google.com/viewer?srcid=1OakBCOpXowsY9430R6gCS8CGcLxeJvJ5&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
+			width="100%",
+			height="100%"
+		)
 
 	.contenedorbtn
-		a.button(href="https://drive.google.com/file/d/1x75w-xW8xpxiEiJLKAbYMmdZ_d0eM7b9/view?usp=sharing" target="_blank").boton
+		a.button.boton(
+			href="https://drive.google.com/file/d/1OakBCOpXowsY9430R6gCS8CGcLxeJvJ5/view?usp=sharing",
+			target="_blank"
+		)
 			.p DESCARGAR PROGRAMA
 
 	.relleno
-
 </template>
 
 <script>
 export default {
-
 	data () {
-		return {
-
-		}
+		return {}
 	},
 	// solicita info a cms
 	head () {
 		// if (!this.seo) return {}
-		const titulo = this._.get(this.seo, ['titulo_pag'], 'Propuesta Programática')
-		const descripcion = this._.get(this.seo, ['descripcion_pag'], 'Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera. ¿Quieres conocer parte de nuestras propuestas?')
+		const titulo = this._.get(
+			this.seo,
+			['titulo_pag'],
+			'Propuesta Programática'
+		)
+		const descripcion = this._.get(
+			this.seo,
+			['descripcion_pag'],
+			'Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera. ¿Quieres conocer parte de nuestras propuestas?'
+		)
 		const imagen = '/imagenes/portadaMovil.web'
 		const url = 'https://boricpresidente.cl/propuestas'
 		const obj = this.$eo({
@@ -37,14 +48,14 @@ export default {
 			url
 		})
 		obj.link = obj.link || []
-		obj.link.push({ hid: 'quill', rel: 'stylesheet', href: 'https://cdn.quilljs.com/1.0.0/quill.snow.css' })
+		obj.link.push({
+			hid: 'quill',
+			rel: 'stylesheet',
+			href: 'https://cdn.quilljs.com/1.0.0/quill.snow.css'
+		})
 		return obj
 	}
-
-
-
 }
-
 </script>
 
 <style lang="sass" scoped>
