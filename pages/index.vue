@@ -39,20 +39,6 @@
 					.portadaPlaylist
 						img(src="/gif/portadaPlaylist.webp", alt="")
 
-		a-modal.modalInstrucciones(
-			:visible="mostrarInstrucciones",
-			:footer="null",
-			@close="mostrarInstrucciones = false",
-			@cancel="mostrarInstrucciones = false",
-			centered,
-			:width="null"
-		)
-			div(slot="title")
-			.pretitulo El Árbol
-				h2.titulo Ideas & Maquetas para un nuevo Chile – Gabriel Boric Presidente
-			.cuerpoInstrucciones
-				.ql-editor.contenidoHTML(v-html="instrucciones")
-
 		img.noMovil.imgSaludo(
 			src="/imagenes/diversidad.webp",
 			alt="Diversidad",
