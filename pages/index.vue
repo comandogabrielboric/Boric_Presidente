@@ -1,12 +1,18 @@
 <template lang="pug">
 .rootIndex
-
 	section.storytelling
 		.filtroBlur
-			img.noMovil(src="/imagenes/portada.webp" alt="Súmate a cambiar Chile")
-			img.noCompu(v-if="cargado" src="/imagenes/portadaMovil.webp" alt="Súmate a cambiar Chile")
-			img.imgTiny(v-if="!cargado" src="/imagenes/portadaMovilTiny.webp" alt="Súmate a cambiar Chile")
-
+			img.noMovil(src="/imagenes/portada.webp", alt="Súmate a cambiar Chile")
+			img.noCompu(
+				v-if="cargado",
+				src="/imagenes/portadaMovil.webp",
+				alt="Súmate a cambiar Chile"
+			)
+			img.imgTiny(
+				v-if="!cargado",
+				src="/imagenes/portadaMovilTiny.webp",
+				alt="Súmate a cambiar Chile"
+			)
 
 	section.elArbol
 		.curva.curvaSuperior
@@ -16,35 +22,52 @@
 				.segundo El Árbol
 			.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
 			.portadaPlaylist
-				img(src='/gif/portadaPlaylist.webp' alt="")
+				img(src="/gif/portadaPlaylist.webp", alt="")
 
-			.boton
-				.btn.bold( @click="mostrarInstrucciones = !mostrarInstrucciones") MÁS INFORMACIÓN
+			nuxt-link.boton(to="/playlist")
+				.btn.bold MÁS INFORMACIÓN
 		.noMovil
 			.contenido
 				.lado.lado1
 					.titulo #[span.primero Se parte de la]
 						div Playlist
 						.segundo El Árbol
-					.texto Súmate enviando tu canción o maqueta y sé parte de la 	playlist El Árbol, de Apruebo Dignidad.
-					.boton
-						.btn.bold( @click="mostrarInstrucciones = !mostrarInstrucciones") MÁS INFORMACIÓN
+					.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+					nuxt-link.boton(to="/playlist")
+						.btn.bold MÁS INFORMACIÓN
 				.lado.lado2
 					.portadaPlaylist
-						img(src='/gif/portadaPlaylist.webp' alt="")
+						img(src="/gif/portadaPlaylist.webp", alt="")
 
-
-		a-modal.modalInstrucciones(:visible="mostrarInstrucciones" :footer="null" @close="mostrarInstrucciones = false" @cancel="mostrarInstrucciones = false" centered :width="null")
+		a-modal.modalInstrucciones(
+			:visible="mostrarInstrucciones",
+			:footer="null",
+			@close="mostrarInstrucciones = false",
+			@cancel="mostrarInstrucciones = false",
+			centered,
+			:width="null"
+		)
 			div(slot="title")
 			.pretitulo El Árbol
-				h2.titulo  Ideas & Maquetas para un nuevo Chile – Gabriel Boric Presidente
+				h2.titulo Ideas & Maquetas para un nuevo Chile – Gabriel Boric Presidente
 			.cuerpoInstrucciones
-				.ql-editor.contenidoHTML(v-html='instrucciones')
+				.ql-editor.contenidoHTML(v-html="instrucciones")
 
-
-		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad"  v-if="cargado").imgSaludo
-		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad" v-if="cargado").imgSaludo
-		img.imgTiny(src="/imagenes/diversidadMovilTiny.webp" alt="Diversidad" v-if="!cargado").imgSaludo
+		img.noMovil.imgSaludo(
+			src="/imagenes/diversidad.webp",
+			alt="Diversidad",
+			v-if="cargado"
+		)
+		img.noCompu.imgSaludo(
+			src="/imagenes/diversidadMovil.webp",
+			alt="Diversidad",
+			v-if="cargado"
+		)
+		img.imgTiny.imgSaludo(
+			src="/imagenes/diversidadMovilTiny.webp",
+			alt="Diversidad",
+			v-if="!cargado"
+		)
 
 	.precarga(v-if="!cargado")
 	.postcarga(v-if="cargado")
@@ -55,15 +78,14 @@
 					h2.titulo #[span.primero Inscríbete]
 						div Únete a la campaña
 					.texto
-						p Las transformaciones que Chile necesita las hacemos 		entre todas y todos.
-						P Déjanos tu mail y recibirás más información sobre la 		campaña.
+						p Las transformaciones que Chile necesita las hacemos entre todas y todos.
+						P Déjanos tu mail y recibirás más información sobre la campaña.
 
 				.lado
 					.suscribirse
 						participaant
-			img.noMovil(src="/imagenes/participa.webp" alt="Participa")
-			img.noCompu(src="/imagenes/participaMovil.webp" alt="Participa")
-
+			img.noMovil(src="/imagenes/participa.webp", alt="Participa")
+			img.noCompu(src="/imagenes/participaMovil.webp", alt="Participa")
 
 		section.seccionArmaTuCampana
 			.curva.curvaSuperior
@@ -71,32 +93,39 @@
 			mixin linkDescarga
 				.kitGrafico
 					.texto Descarga tu
-					a(href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0" target="_blank" 	rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico'})").boton KIT GRÁFICO AQUÍ
+					a.boton(
+						href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0",
+						target="_blank",
+						rel="noreferer noopener",
+						@click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico' })"
+					) KIT GRÁFICO AQUÍ
 
 			.contenido
 				.lado
 					h2 Arma tu
 					h3 Campaña
-					p Descarga nuestro kit y crea tus propios insumos de 	campaña. #[br]¡De ti depende!
+					p Descarga nuestro kit y crea tus propios insumos de campaña. #[br]¡De ti depende!
 					.noMovil
 						+linkDescarga
 
-
 				.lado.ladoImagen
 					.cajaHerramienta
-						img(src="/imagenes/cajaHerramientas.webp" 	alt="Herramientas")
+						img(src="/imagenes/cajaHerramientas.webp", alt="Herramientas")
 						.circulo
 
 			.noCompu
 				+linkDescarga
 
-
 		section.seccionaporta
-
 			mixin linkServel
 				.linkservel
-					a.boton(href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml" target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Home Aportes Servel'})") 	QUIERO APORTAR
-					n-link.instrucciones(to="/aporta" @click.native="tag('instrucciones')") Ver instrucciones para 	donar
+					a.boton(
+						href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml",
+						target="_blank",
+						rel="noreferer noopener",
+						@click="$gtm.push({ event: 'link-home', hacia: 'Home Aportes Servel' })"
+					) QUIERO APORTAR
+					n-link.instrucciones(to="/aporta", @click.native="tag('instrucciones')") Ver instrucciones para donar
 
 			.curva.curvaSuperior
 
@@ -104,7 +133,7 @@
 				.lado
 					h2 Súmate
 					h3 y Aporta
-					p El cambio lo financiamos las personas comunes. Aporta y 	construyamos un Chile donde el dinero no haga la diferencia.
+					p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia.
 					.noMovil
 						+linkServel
 				.lado.ladoImagen
@@ -124,11 +153,13 @@
 				.textoseccion
 					h2.titulo Propuesta
 					h3 Programática
-					p Nuestro Gobierno impulsará grandes cambios, paso a paso, 	sin dejar a nadie fuera.
+					p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
 					p ¿Quieres conocer parte de nuestras propuestas?
 				.link
-					nuxt-link(to="/propuestas" @click.native="tag('Propuestas')").linkpropuestas VER PROPUESTAS
-
+					nuxt-link.linkpropuestas(
+						to="/propuestas",
+						@click.native="tag('Propuestas')"
+					) VER PROPUESTAS
 </template>
 
 <script>
@@ -142,7 +173,8 @@ export default {
 	},
 	head () {
 		const titulo = 'Boric Presidente'
-		const descripcion = 'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
+		const descripcion =
+			'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
 		const imagen = '/imagenes/portadaMovil.webp'
 		const url = 'https://boricpresidente.cl'
 		const meta = this.$eo({
@@ -242,7 +274,6 @@ section
 			height: 53.4%
 			max-width: 100vw
 
-
 .elArbol
 	background-color: $petroleo1
 	.curva
@@ -283,11 +314,10 @@ section
 			font-size: 1.1rem
 			padding: .4em 1.5em
 	.imgSaludo
-			margin-top: -8em
-			width: 100%
-			// z-index: 50
+		margin-top: -8em
+		width: 100%
+		// z-index: 50
 	+compu
-		.imgSaludo
 		img
 			z-index: 50
 		.contenido
@@ -363,8 +393,6 @@ section
 			justify-content: space-around
 			.lado
 				flex: 350px 0 1
-
-
 
 .seccionArmaTuCampana
 	background-color: $petroleo2
@@ -463,8 +491,6 @@ section
 				display: block
 				.texto
 					text-align: left
-
-
 
 section.seccionaporta
 	background-color: $azul2
