@@ -6,15 +6,16 @@
 
 	.programaBook
 		iframe(
-			src="https://docs.google.com/viewer?srcid=1OakBCOpXowsY9430R6gCS8CGcLxeJvJ5&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
+			src="https://docs.google.com/viewer?srcid=1-4lFR0liw_O7Vvuxr51Xq4wk3wiP_zL9&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
 			width="100%",
 			height="100%"
 		)
 
 	.contenedorbtn
 		a.button.boton(
-			href="https://drive.google.com/file/d/1OakBCOpXowsY9430R6gCS8CGcLxeJvJ5/view?usp=sharing",
-			target="_blank"
+			href="https://drive.google.com/file/d/1-4lFR0liw_O7Vvuxr51Xq4wk3wiP_zL9/view?usp=sharing",
+			target="_blank",
+			download
 		)
 			.p DESCARGAR PROGRAMA
 
