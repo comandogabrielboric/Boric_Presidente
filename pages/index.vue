@@ -1,34 +1,59 @@
 <template lang="pug">
 .rootIndex
-
 	section.storytelling
 		.filtroBlur
-			img.noMovil(src="/imagenes/portadaWeb.webp" alt="Súmate a cambiar Chile")
-			img.noCompu( src="/imagenes/portadaMovil.webp" alt="Súmate a cambiar Chile")
-			//- img.imgTiny(v-if="!cargado" src="/imagenes/portadaMovilTiny.webp" alt="Súmate a cambiar Chile")
-		.contenido
-			.titulo Programa de
-				.segundo Gobierno
-				.tercero Apruebo Dignidad
-			.contendorBoton
-				nuxt-link.boton(to='/propuestas' @click.native="tag('propuestas')") VER PROGRAMA
+			img.noMovil(src="/imagenes/portada.webp", alt="Súmate a cambiar Chile")
+			img.noCompu(
+				v-if="cargado",
+				src="/imagenes/portadaMovil.webp",
+				alt="Súmate a cambiar Chile"
+			)
+			img.imgTiny(
+				v-if="!cargado",
+				src="/imagenes/portadaMovilTiny.webp",
+				alt="Súmate a cambiar Chile"
+			)
 
-	section.seccionCuna
+	section.elArbol
 		.curva.curvaSuperior
+		.noCompu
+			.titulo #[span.primero Se parte de la]
+				div Playlist
+				.segundo El Árbol
+			.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+			.portadaPlaylist
+				img(src="/gif/portadaPlaylist.webp", alt="")
 
-		.noCompu.sobreCurva
+			nuxt-link.boton(to="/playlist")
+				.btn.bold MÁS INFORMACIÓN
+		.noMovil
 			.contenido
-				div.texto Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
-		.noMovil.sobreCurva
-			.contenido
-				div.texto Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
+				.lado.lado1
+					.titulo #[span.primero Se parte de la]
+						div Playlist
+						.segundo El Árbol
+					.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+					nuxt-link.boton(to="/playlist")
+						.btn.bold MÁS INFORMACIÓN
+				.lado.lado2
+					.portadaPlaylist
+						img(src="/gif/portadaPlaylist.webp", alt="")
 
-		//- a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta ciudadana
-		//- a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
-
-		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad"  v-if="cargado").imgSaludo
-		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad" v-if="cargado").imgSaludo
-		img.imgTiny(src="/imagenes/diversidadMovilTiny.webp" alt="Diversidad" v-if="!cargado").imgSaludo
+		img.noMovil.imgSaludo(
+			src="/imagenes/diversidad.webp",
+			alt="Diversidad",
+			v-if="cargado"
+		)
+		img.noCompu.imgSaludo(
+			src="/imagenes/diversidadMovil.webp",
+			alt="Diversidad",
+			v-if="cargado"
+		)
+		img.imgTiny.imgSaludo(
+			src="/imagenes/diversidadMovilTiny.webp",
+			alt="Diversidad",
+			v-if="!cargado"
+		)
 
 	.precarga(v-if="!cargado")
 	.postcarga(v-if="cargado")
@@ -39,15 +64,14 @@
 					h2.titulo #[span.primero Inscríbete]
 						div Únete a la campaña
 					.texto
-						p Las transformaciones que Chile necesita las hacemos 		entre todas y todos.
-						P Déjanos tu mail y recibirás más información sobre la 		campaña.
+						p Las transformaciones que Chile necesita las hacemos entre todas y todos.
+						P Déjanos tu mail y recibirás más información sobre la campaña.
 
 				.lado.lado2
 					.suscribirse
 						participaant
-			img.noMovil(src="/imagenes/participa.webp" alt="Participa")
-			img.noCompu(src="/imagenes/participaMovil.webp" alt="Participa")
-
+			img.noMovil(src="/imagenes/participa.webp", alt="Participa")
+			img.noCompu(src="/imagenes/participaMovil.webp", alt="Participa")
 
 		section.seccionArmaTuCampana
 			.curva.curvaSuperior
@@ -55,40 +79,47 @@
 			mixin linkDescarga
 				.kitGrafico
 					.texto Descarga tu
-					a(href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0" target="_blank" 	rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico'})").boton KIT GRÁFICO AQUÍ
+					a.boton(
+						href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0",
+						target="_blank",
+						rel="noreferer noopener",
+						@click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico' })"
+					) KIT GRÁFICO AQUÍ
 
 			.contenido
-				.lado.ladotitutlo
-					.titulo Arma tu
-						div.segundo Campaña
-					p.texto Descarga nuestro kit y crea tus propios insumos de 	campaña. #[br]¡De ti depende!
+				.lado
+					h2 Arma tu
+					h3 Campaña
+					p Descarga nuestro kit y crea tus propios insumos de campaña. #[br]¡De ti depende!
 					.noMovil
 						+linkDescarga
 
-
 				.lado.ladoImagen
 					.cajaHerramienta
-						img(src="/imagenes/cajaHerramientas.webp" 	alt="Herramientas")
+						img(src="/imagenes/cajaHerramientas.webp", alt="Herramientas")
 						.circulo
 
 			.noCompu
 				+linkDescarga
 
-
 		section.seccionaporta
-
 			mixin linkServel
 				.linkservel
-					a.boton(href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml" target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Home Aportes Servel'})") 	QUIERO APORTAR
-					n-link.instrucciones(to="/aporta" @click.native="tag('instrucciones')") Ver instrucciones para 	donar
+					a.boton(
+						href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml",
+						target="_blank",
+						rel="noreferer noopener",
+						@click="$gtm.push({ event: 'link-home', hacia: 'Home Aportes Servel' })"
+					) QUIERO APORTAR
+					n-link.instrucciones(to="/aporta", @click.native="tag('instrucciones')") Ver instrucciones para donar
 
 			.curva.curvaSuperior
 
 			.contenido
 				.lado
-					.titulo Súmate
-						div.segundo y Aporta
-					p El cambio lo financiamos las personas comunes. Aporta y 	construyamos un Chile donde el dinero no haga la diferencia.
+					h2 Súmate
+					h3 y Aporta
+					p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia.
 					.noMovil
 						+linkServel
 				.lado.ladoImagen
@@ -107,12 +138,14 @@
 			.contenido
 				.textoseccion
 					h2.titulo Propuesta
-						div.segundo Programática
-					p Nuestro Gobierno impulsará grandes cambios, paso a paso, 	sin dejar a nadie fuera.
+					h3 Programática
+					p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
 					p ¿Quieres conocer parte de nuestras propuestas?
 				.link
-					nuxt-link(to="/propuestas" @click.native="tag('Propuestas')").linkpropuestas VER PROPUESTAS
-
+					nuxt-link.linkpropuestas(
+						to="/propuestas",
+						@click.native="tag('Propuestas')"
+					) VER PROPUESTAS
 </template>
 
 <script>
@@ -126,7 +159,8 @@ export default {
 	},
 	head () {
 		const titulo = 'Boric Presidente'
-		const descripcion = 'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
+		const descripcion =
+			'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
 		const imagen = '/imagenes/portadaMovil.webp'
 		const url = 'https://boricpresidente.cl'
 		const meta = this.$eo({
@@ -306,53 +340,81 @@ section
 					width: 290px
 					font-size: 1.4rem
 
-.seccionCuna
-	position: relative
-	background-color: $verde1
-	min-height: 20em
-	display: flex
-	flex-flow: column nowrap
-	justify-content: center
-	background-color: $verde1
-	color: white
-	text-align: center
+.elArbol
+	background-color: $petroleo1
 	.curva
-		background-color: $verde1
-		+compu
-		// +movil
-			height: 3em
-			margin-top: -1.2em
-		// +compu
-			margin-top: -2em
+		background-color: inherit
 
-	.contenido
-		padding: 1em 1em .5em 1em
-		display: flex
-		line-height: 1.3
-		// width: 400px
-		max-width: 100%
-		margin: 0 auto
-		font-size: 1.2rem
+	.titulo
+		font-size: 2.3rem
 		font-style: italic
-		align-items: center
-		.texto
-			padding: 1em
+		text-align: center
+		line-height: 1.1
+		padding: .5em
+		.segundo
+			color: $verde3
+			font-weight: 900
+	.texto
+		text-align: center
+		font-style: italic
+		padding: 0 1em
+		font-size: 1.3rem
+	.portadaPlaylist
+		display: flex
+		justify-content: center
+		img
+			width: 300px
+	.boton
+		display: flex
+		justify-content: center
+		background-color: inherit
+		padding-bottom: 4em
+		.btn
+			display: flex
+			justify-content: center
+			align-items: center
+			width: 250px
+			border-radius: 4px
+			color: $azul2
+			background-color: $verde3
+			font-size: 1.1rem
+			padding: .4em 1.5em
 	.imgSaludo
+		margin-top: -8em
 		width: 100%
-		height: 66.55%
-		min-height: 10em
-		// width: 100vw
-		z-index: 0
-		margin-top: -9vw
-
+		// z-index: 50
 	+compu
+		img
+			z-index: 50
 		.contenido
-			max-width: 1100px
-			font-size: 2rem
-		.imgSaludo
-			margin-top: -6vw
-
-
+			// padding-bottom: 3em
+			display: flex
+			flex-flow: row
+			flex-wrap: nowrap
+			justify-content: center
+		.lado
+			flex: 600px 0 1
+			z-index: 5
+			align-items: center
+			img
+				flex: 600px 0 1
+		.lado1
+			display: flex
+			flex-flow: column
+			justify-content: center
+			.titulo
+				font-size: 3rem
+			.texto
+				font-size: 1.7rem
+		.lado2
+			display: flex
+			justify-content: center
+			align-items: center
+			.portadaPlaylist
+				flex: 600px 0 1
+				img
+					z-index: 5
+				// height: 100%
 .precarga
 	height: 100vh
 	width: 100vw
@@ -407,8 +469,6 @@ section
 				font-size: 3rem
 			.texto
 				font-size: 1.5rem
-
-
 
 .seccionArmaTuCampana
 	background-color: $petroleo2
@@ -526,8 +586,6 @@ section
 					width: 100%
 					// height: 45px
 
-
-
 section.seccionaporta
 	background-color: $azul2
 	position: relative
@@ -599,7 +657,6 @@ section.seccionaporta
 				padding: .4em 1em .3em 1em
 			.instrucciones
 				font-size: 1.1rem
-
 
 section.propuestas
 	position: relative
