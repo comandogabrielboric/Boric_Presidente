@@ -91,7 +91,7 @@ export default {
 		// width: 100vw
 		min-height: 450px
 		img
-			width: 100%
+			width: 100vw
 			// height: 67.18%
 	.portadaPlaylist
 		position: relative
