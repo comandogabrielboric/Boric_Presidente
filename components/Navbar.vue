@@ -1,24 +1,31 @@
 <template lang="pug">
 .root
 	.navbar
-
-		nuxt-link.alHome.zonaLogo(to='/' alt='home'  @click.native="tag('nav home')")
+		nuxt-link.alHome.zonaLogo(
+			to="/",
+			alt="home",
+			@click.native="tag('nav home')"
+		)
 			.logo
 				.trasLogo
 					.iconoAprueboDignidad
 
 		mixin links
 			.links.contenedor-links.link-interno
-				nuxt-link.link.bold(to='/participa' @click.native="tag('nav participa')") participa aquí
-				nuxt-link.link.bold(to='/aporta' @click.native="tag('nav aporta')") aporta
-				nuxt-link.link.bold(to='/propuestas' @click.native="tag('nav propuestas')") Propuestas
+				nuxt-link.link.bold(to="/participa", @click.native="tag('nav participa')") participa aquí
+				nuxt-link.link.bold(to="/aporta", @click.native="tag('nav aporta')") aporta
+				nuxt-link.link.bold(
+					to="/propuestas",
+					@click.native="tag('nav propuestas')"
+				) Propuestas
 				//- nuxt-link.link.bold(to='/unete' @click.native="tag('nav Únete')") Únete
-				nuxt-link.link.bold(to='/mujeres' @click.native="tag('nav Mujeres')") Feministas AD
+				nuxt-link.link.bold(to="/mujeres", @click.native="tag('nav Mujeres')") Feministas AD
+				nuxt-link.link.bold(to="/playlist", @click.native="tag('nav playlist')") Playlist
 
 		.menuCompu
 			+links
 
-		transition(:duration='300')
+		transition(:duration="300")
 			.menuMovil(v-if="activa")
 				+links
 
@@ -26,7 +33,6 @@
 
 		.triggerMenu(@click="activa = !activa")
 			.oicono(:class="activa ? 'cruz' : 'menu-relleno'")
-
 </template>
 
 <script>
@@ -166,7 +172,7 @@ $alturaMenu: 5em
 		@media screen and (min-width: 760px)
 			display: none
 
-		transition: all 0.1s ease
+			transition: all 0.1s ease
 		+salir
 			opacity: 0
 			max-height: 0
@@ -188,10 +194,7 @@ $alturaMenu: 5em
 				font-size: 1.4em
 				margin: 1.2em 0
 
-
 	.triggerMenu
 		@media screen and (min-width: 760px)
 			display: none
-
-
 </style>
