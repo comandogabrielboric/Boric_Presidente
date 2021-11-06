@@ -1,34 +1,45 @@
 <template lang="pug">
 .rootIndex
-
 	section.storytelling
 		.filtroBlur
-			img.noMovil(src="/imagenes/portadaWeb.webp" alt="Súmate a cambiar Chile")
-			img.noCompu( src="/imagenes/portadaMovil.webp" alt="Súmate a cambiar Chile")
+			img.noMovil(src="/imagenes/portadaWeb.webp", alt="Súmate a cambiar Chile")
+			img.noCompu(src="/imagenes/portadaMovil.webp", alt="Súmate a cambiar Chile")
 			//- img.imgTiny(v-if="!cargado" src="/imagenes/portadaMovilTiny.webp" alt="Súmate a cambiar Chile")
 		.contenido
 			.titulo Programa de
 				.segundo Gobierno
 				.tercero Apruebo Dignidad
 			.contendorBoton
-				nuxt-link.boton(to='/propuestas' @click.native="tag('propuestas')") VER PROGRAMA
+				nuxt-link.boton(to="/propuestas", @click.native="tag('propuestas')") VER PROGRAMA
 
 	section.seccionCuna
 		.curva.curvaSuperior
 
 		.noCompu.sobreCurva
 			.contenido
-				div.texto Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
+				.texto Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
 		.noMovil.sobreCurva
 			.contenido
-				div.texto Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
+				.texto Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
 
 		//- a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta ciudadana
 		//- a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
 
-		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad"  v-if="cargado").imgSaludo
-		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad" v-if="cargado").imgSaludo
-		img.imgTiny(src="/imagenes/diversidadMovilTiny.webp" alt="Diversidad" v-if="!cargado").imgSaludo
+		img.noMovil.imgSaludo(
+			src="/imagenes/diversidad.webp",
+			alt="Diversidad",
+			v-if="cargado"
+		)
+		img.noCompu.imgSaludo(
+			src="/imagenes/diversidadMovil.webp",
+			alt="Diversidad",
+			v-if="cargado"
+		)
+		img.imgTiny.imgSaludo(
+			src="/imagenes/diversidadMovilTiny.webp",
+			alt="Diversidad",
+			v-if="!cargado"
+		)
 
 	.precarga(v-if="!cargado")
 	.postcarga(v-if="cargado")
@@ -39,15 +50,14 @@
 					h2.titulo #[span.primero Inscríbete]
 						div Únete a la campaña
 					.texto
-						p Las transformaciones que Chile necesita las hacemos 		entre todas y todos.
-						P Déjanos tu mail y recibirás más información sobre la 		campaña.
+						p Las transformaciones que Chile necesita las hacemos entre todas y todos.
+						P Déjanos tu mail y recibirás más información sobre la campaña.
 
 				.lado.lado2
 					.suscribirse
 						participaant
-			img.noMovil(src="/imagenes/participa.webp" alt="Participa")
-			img.noCompu(src="/imagenes/participaMovil.webp" alt="Participa")
-
+			img.noMovil(src="/imagenes/participa.webp", alt="Participa")
+			img.noCompu(src="/imagenes/participaMovil.webp", alt="Participa")
 
 		section.seccionArmaTuCampana
 			.curva.curvaSuperior
@@ -55,40 +65,47 @@
 			mixin linkDescarga
 				.kitGrafico
 					.texto Descarga tu
-					a(href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0" target="_blank" 	rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico'})").boton KIT GRÁFICO AQUÍ
+					a.boton(
+						href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0",
+						target="_blank",
+						rel="noreferer noopener",
+						@click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico' })"
+					) KIT GRÁFICO AQUÍ
 
 			.contenido
 				.lado.ladotitutlo
 					.titulo Arma tu
-						div.segundo Campaña
-					p.texto Descarga nuestro kit y crea tus propios insumos de 	campaña. #[br]¡De ti depende!
+						.segundo Campaña
+					p.texto Descarga nuestro kit y crea tus propios insumos de campaña. #[br]¡De ti depende!
 					.noMovil
 						+linkDescarga
 
-
 				.lado.ladoImagen
 					.cajaHerramienta
-						img(src="/imagenes/cajaHerramientas.webp" 	alt="Herramientas")
+						img(src="/imagenes/cajaHerramientas.webp", alt="Herramientas")
 						.circulo
 
 			.noCompu
 				+linkDescarga
 
-
 		section.seccionaporta
-
 			mixin linkServel
 				.linkservel
-					a.boton(href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml" target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Home Aportes Servel'})") 	QUIERO APORTAR
-					n-link.instrucciones(to="/aporta" @click.native="tag('instrucciones')") Ver instrucciones para 	donar
+					a.boton(
+						href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml",
+						target="_blank",
+						rel="noreferer noopener",
+						@click="$gtm.push({ event: 'link-home', hacia: 'Home Aportes Servel' })"
+					) QUIERO APORTAR
+					n-link.instrucciones(to="/aporta", @click.native="tag('instrucciones')") Ver instrucciones para donar
 
 			.curva.curvaSuperior
 
 			.contenido
 				.lado
 					.titulo Súmate
-						div.segundo y Aporta
-					p El cambio lo financiamos las personas comunes. Aporta y 	construyamos un Chile donde el dinero no haga la diferencia.
+						.segundo y Aporta
+					p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia.
 					.noMovil
 						+linkServel
 				.lado.ladoImagen
@@ -107,12 +124,11 @@
 			.contenido
 				.textoseccion
 					h2.titulo Propuesta
-						div.segundo Programática
-					p Nuestro Gobierno impulsará grandes cambios, paso a paso, 	sin dejar a nadie fuera.
+						.segundo Programática
+					p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
 					p ¿Quieres conocer parte de nuestras propuestas?
 				.link
-					nuxt-link(to="/propuestas" @click.native="tag('Propuestas')").linkpropuestas VER PROPUESTAS
-
+					nuxt-link.linkpropuestas(to="/propuestas", @click.native="tag('Propuestas')") VER PROPUESTAS
 </template>
 
 <script>
@@ -126,7 +142,8 @@ export default {
 	},
 	head () {
 		const titulo = 'Boric Presidente'
-		const descripcion = 'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
+		const descripcion =
+			'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
 		const imagen = '/imagenes/portadaMovil.webp'
 		const url = 'https://boricpresidente.cl'
 		const meta = this.$eo({
@@ -352,7 +369,6 @@ section
 		.imgSaludo
 			margin-top: -6vw
 
-
 .precarga
 	height: 100vh
 	width: 100vw
@@ -407,8 +423,6 @@ section
 				font-size: 3rem
 			.texto
 				font-size: 1.5rem
-
-
 
 .seccionArmaTuCampana
 	background-color: $petroleo2
@@ -526,8 +540,6 @@ section
 					width: 100%
 					// height: 45px
 
-
-
 section.seccionaporta
 	background-color: $azul2
 	position: relative
@@ -599,7 +611,6 @@ section.seccionaporta
 				padding: .4em 1em .3em 1em
 			.instrucciones
 				font-size: 1.1rem
-
 
 section.propuestas
 	position: relative
