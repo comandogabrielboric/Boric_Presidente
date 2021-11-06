@@ -12,15 +12,32 @@
 			.contendorBoton
 				nuxt-link.boton(to="/propuestas", @click.native="tag('propuestas')") VER PROGRAMA
 
-	section.seccionCuna
-		.curva.curvaSuperior
+	// desde aca
 
-		.noCompu.sobreCurva
+	section.elArbol
+		.curva.curvaSuperior
+		.noCompu
+			.titulo #[span.primero Se parte de la]
+				div Playlist
+				.segundo El Árbol
+			.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+			.portadaPlaylist
+				img(src="/gif/portadaPlaylist.webp", alt="")
+
+			nuxt-link.boton(to="/playlist")
+				.btn.bold MÁS INFORMACIÓN
+		.noMovil
 			.contenido
-				.texto Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
-		.noMovil.sobreCurva
-			.contenido
-				.texto Nos dimos cuenta que el cambio es más potente cuando lo construimos entre todas y todos, cuando viene desde la diversidad de la gente, que nutre y aporta con nuevas ideas, sumándose y uniéndose para comenzar un nuevo proyecto de vida, nutriendo de manera colectiva la tierra y las raíces del árbol del Cambio.
+				.lado.lado1
+					.titulo #[span.primero Se parte de la]
+						div Playlist
+						.segundo El Árbol
+					.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+					nuxt-link.boton(to="/playlist")
+						.btn.bold MÁS INFORMACIÓN
+				.lado.lado2
+					.portadaPlaylist
+						img(src="/gif/portadaPlaylist.webp", alt="")
 
 		//- a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta ciudadana
 		//- a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
@@ -128,7 +145,10 @@
 					p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
 					p ¿Quieres conocer parte de nuestras propuestas?
 				.link
-					nuxt-link.linkpropuestas(to="/propuestas", @click.native="tag('Propuestas')") VER PROPUESTAS
+					nuxt-link.linkpropuestas(
+						to="/propuestas",
+						@click.native="tag('Propuestas')"
+					) VER PROPUESTAS
 </template>
 
 <script>
@@ -323,51 +343,81 @@ section
 					width: 290px
 					font-size: 1.4rem
 
-.seccionCuna
-	position: relative
-	background-color: $verde1
-	min-height: 20em
-	display: flex
-	flex-flow: column nowrap
-	justify-content: center
-	background-color: $verde1
-	color: white
-	text-align: center
+.elArbol
+	background-color: $petroleo1
 	.curva
-		background-color: $verde1
-		+compu
-		// +movil
-			height: 3em
-			margin-top: -1.2em
-		// +compu
-			margin-top: -2em
+		background-color: inherit
 
-	.contenido
-		padding: 1em 1em .5em 1em
-		display: flex
-		line-height: 1.3
-		// width: 400px
-		max-width: 100%
-		margin: 0 auto
-		font-size: 1.2rem
+	.titulo
+		font-size: 2.3rem
 		font-style: italic
-		align-items: center
-		.texto
-			padding: 1em
+		text-align: center
+		line-height: 1.1
+		padding: .5em
+		.segundo
+			color: $verde3
+			font-weight: 900
+	.texto
+		text-align: center
+		font-style: italic
+		padding: 0 1em
+		font-size: 1.3rem
+	.portadaPlaylist
+		display: flex
+		justify-content: center
+		img
+			width: 300px
+	.boton
+		display: flex
+		justify-content: center
+		background-color: inherit
+		padding-bottom: 4em
+		.btn
+			display: flex
+			justify-content: center
+			align-items: center
+			width: 250px
+			border-radius: 4px
+			color: $azul2
+			background-color: $verde3
+			font-size: 1.1rem
+			padding: .4em 1.5em
 	.imgSaludo
+		margin-top: -8em
 		width: 100%
-		height: 66.55%
-		min-height: 10em
-		// width: 100vw
-		z-index: 0
-		margin-top: -9vw
-
+		// z-index: 50
 	+compu
+		img
+			z-index: 50
 		.contenido
-			max-width: 1100px
-			font-size: 2rem
-		.imgSaludo
-			margin-top: -6vw
+			// padding-bottom: 3em
+			display: flex
+			flex-flow: row
+			flex-wrap: nowrap
+			justify-content: center
+		.lado
+			flex: 600px 0 1
+			z-index: 5
+			align-items: center
+			img
+				flex: 600px 0 1
+		.lado1
+			display: flex
+			flex-flow: column
+			justify-content: center
+			.titulo
+				font-size: 3rem
+			.texto
+				font-size: 1.7rem
+		.lado2
+			display: flex
+			justify-content: center
+			align-items: center
+			.portadaPlaylist
+				flex: 600px 0 1
+				img
+					z-index: 5
+				// height: 100%
 
 .precarga
 	height: 100vh
