@@ -18,6 +18,13 @@
 			download
 		)
 			.p DESCARGAR PROGRAMA
+	.contenedorbtn
+		a.button.boton(
+			href="https://drive.google.com/file/d/1vhT3qM8oxAlIOQR-mVYRJRrRSa7eb2dR/view?usp=sharing",
+			target="_blank",
+			download
+		)
+			.p Informe proceso participativo
 
 	.relleno
 </template>
@@ -95,6 +102,7 @@ export default {
 	display: flex
 	justify-content: center
 	.boton
+		// transform: translateY(50%)
 		display: flex
 		margin: 0 auto
 		cursor: pointer
