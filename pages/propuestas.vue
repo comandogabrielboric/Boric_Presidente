@@ -20,11 +20,10 @@
 			.p DESCARGAR PROGRAMA
 	.contenedorbtn
 		a.button.boton(
-			href="https://drive.google.com/file/d/1vhT3qM8oxAlIOQR-mVYRJRrRSa7eb2dR/view?usp=sharing",
+			href="https://drive.google.com/file/d/1kKP7eIUIM_4KJMvsL4VZv8l2lp89PXlX/view?usp=sharing",
 			target="_blank",
 			download
-		)
-			.p Informe proceso participativo
+		) Informe proceso participativo
 
 	.relleno
 </template>
