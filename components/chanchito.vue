@@ -1,7 +1,7 @@
 <template lang="pug">
 .rootChanchito
-	.chanchito(@mouseover="animar" @click="animar" :class="{animando}")
-		img(src="/imagenes/chanchitoPomaire.webp" alt="Chanchito de Pomaire")
+	.chanchito(@mouseover="animar", @click="animar", :class="{ animando }")
+		img(src="/imagenes/chanchitoPomaire.webp", alt="Chanchito de Pomaire")
 		.circulo
 </template>
 <script>
@@ -55,9 +55,17 @@ export default {
 		height: $lado
 		transform: scaleX(-1)
 		//img
-			transform: scaleX(-1)
+		transform: scaleX(-1)
 		.circulo
 			width: $lado
 			height: $lado
 			transform: translate(-65%, -65%) scale(.8)
+	+wide
+		$lado: 28em
+		width: $lado
+		height: $lado
+		.circulo
+			width: $lado
+			height: $lado
+			transform: translate(-47%, -65%) scale(.8)
 </style>

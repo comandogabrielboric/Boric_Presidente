@@ -1,45 +1,82 @@
 <template lang="pug">
 .rootParticipa
-	a-form-model(ref='formulario' :model='formulario' :rules='rules').suscribirse
+	a-form-model.suscribirse(
+		ref="formulario",
+		:model="formulario",
+		:rules="rules"
+	)
+		a-form-model-item(has-feedback, prop="nombre")
+			a-input.input(
+				v-model="formulario.nombre",
+				type="nombre",
+				placeholder="Nombre"
+			)
 
-		a-form-model-item(has-feedback prop='nombre')
-			a-input(v-model='formulario.nombre' type='nombre' placeholder="Nombre").input
+		a-form-model-item(has-feedback, prop="email")
+			a-input.input(
+				v-model="formulario.email",
+				type="email",
+				placeholder="Email"
+			)
 
-		a-form-model-item(has-feedback prop='email')
-			a-input(v-model='formulario.email' type='email' placeholder='Email').input
+		a-form-model-item(has-feedback, prop="telefono")
+			a-input.input(
+				v-model="formulario.telefono",
+				type="tel",
+				placeholder="+56 x xxxx xxxx"
+			)
 
-		a-form-model-item(has-feedback prop='telefono')
-			a-input(v-model='formulario.telefono' type='tel' placeholder='+56 x xxxx xxxx').input
+		a-form-model-item(has-feedback, prop="region")
+			a-select.input(
+				v-model="formulario.region",
+				@change="handleChange",
+				placeholder="Región"
+			)
+				a-select-option(
+					v-for="region in regiones",
+					:key="region.label",
+					:value="region.label"
+				) {{ region.label }}
 
-		a-form-model-item(has-feedback prop='region')
-			a-select(v-model="formulario.region" @change="handleChange" placeholder='Región').input
-				a-select-option(v-for="region in regiones" :key="region.label" :value="region.label") {{ region.label }}
+		a-form-model-item(v-if="regionseleccionada", has-feedback="", prop="comuna")
+			a-select.input(
+				v-model="formulario.comuna",
+				placeholder="Comuna",
+				@change="handleComuna"
+			)
+				a-select-option(
+					v-for="comuna in comunas",
+					:key="comuna.label",
+					:value="comuna.label"
+				) {{ comuna.label }}
 
-		a-form-model-item(v-if="regionseleccionada" has-feedback='' prop='comuna')
-			a-select(v-model="formulario.comuna" placeholder='Comuna' @change="handleComuna").input
-				a-select-option(v-for="comuna in comunas" :key="comuna.label" :value="comuna.label") {{ comuna.label }}
-
-		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }').contenedorbtn
-			a-button(type='primary' @click="submitForm('formulario')").suscribirme
+		a-form-model-item.contenedorbtn(:wrapper-col="{ span: 14, offset: 4 }")
+			a-button.suscribirme(type="primary", @click="submitForm('formulario')")
 				| SEGUIMOS
 
-		p(@click='showModal').terminosycondiciones #[span.primero Acepto] &nbspTérminos y Condiciones
+		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
 
-	a-modal(v-model="visible" title="Muchas gracias !!" centered @ok="handleOk" :footer="null").modal
+	a-modal.modal(
+		v-model="visible",
+		title="Muchas gracias !!",
+		centered,
+		@ok="handleOk",
+		:footer="null"
+	)
 		p Pronto recibiras noticias de nosotros
 
-	a-modal(:visible='tyc' title='Terminos y Condiciones' @ok='handleOk' @cancel="tyc = false" :footer="null").modal
-
-
-
-
+	a-modal.modal(
+		:visible="tyc",
+		title="Terminos y Condiciones",
+		@ok="handleOk",
+		@cancel="tyc = false",
+		:footer="null"
+	)
 		p El/la usuaria/o declara aceptar el uso de los datos solicitados para la campaña presidencial de Gabriel Boric en el marco de la Ley N° 19.628. Sólo podrán ser usados estos datos para los fines específicos que el usuario autorice, esto es, para la entrega de información de la campaña presidencial respectiva y de la difusión de sus actividades propias. Para estos efectos el usuario autoriza a que lo contacten a través de medios digitales tales como email, Facebook, mensajes de texto (SMS), WhatsApp u otras plataformas similares con las finalidades señaladas, a la casilla de correo electrónico y número de teléfono que haya indicado.
 
 		p La permanencia en estas bases de datos tendrá siempre la posibilidad de que la/el usuaria/o pueda darse de baja o solicitar dejar de estar registrado en las mismas, pudiendo al efecto revocar su autorización, y disponiendo, en todo caso, de los derechos que confiere la Ley N° 19.628.
 
 		p La campaña presidencial de Gabriel Boric no podrá, bajo ningún concepto, ceder o transferir dichas bases de datos a terceros sin contar con el consentimiento expreso del usuario titular de los datos privados.
-
-
 </template>
 
 <script>
@@ -53,7 +90,8 @@ export default {
 		const validaTelefono = (rule, value, callback) => {
 			if (!value) {
 				return callback(new Error('Ingresa tu telefono'))
-			} if (!phone(value).isValid) {
+			}
+			if (!phone(value).isValid) {
 				console.log('telefono', phone(value))
 				callback(new Error('Utiliza formato +56 xxxxxxxxx'))
 			} else {
@@ -152,7 +190,11 @@ export default {
 			this.$refs[formName].validate(valid => {
 				if (valid) {
 					this.suscribirse()
-					this.$gtm.push({ event: 'Registro_mailing', nombre: 'Registro en Mailchimp', estado: 'completo' })
+					this.$gtm.push({
+						event: 'Registro_mailing',
+						nombre: 'Registro en Mailchimp',
+						estado: 'completo'
+					})
 				} else {
 					console.log('error submit!!')
 					return false
@@ -176,7 +218,10 @@ export default {
 			// const { nombre, email, telefono, comuna } = this
 			// const data = { nombre, email, telefono, comuna }
 			const config = {}
-			const respuesta = await this.$axios.post(`${process.env.apiURL}/suscribirse`, this.formulario, config).then(r => r.data).catch(e => console.error('fallo suscribirse', e))
+			const respuesta = await this.$axios
+				.post(`${process.env.apiURL}/suscribirse`, this.formulario, config)
+				.then(r => r.data)
+				.catch(e => console.error('fallo suscribirse', e))
 			console.log('Respuesta', respuesta)
 			if (!respuesta) {
 				this.visible = false
@@ -187,7 +232,10 @@ export default {
 		},
 		showModal () {
 			this.tyc = true
-			this.$gtm.push({ event: 'gtm.linkClick', hacia: 'terminos y condiciones' })
+			this.$gtm.push({
+				event: 'gtm.linkClick',
+				hacia: 'terminos y condiciones'
+			})
 		},
 		handleOk (e) {
 			console.log(e)
@@ -242,9 +290,6 @@ export default {
 .modal
 	height: 200px
 
-
-
-
 .rootParticipa
 	text-align: left
 
@@ -281,7 +326,6 @@ export default {
 	.ant-modal-mask
 		backdrop-filter: blur(4px)
 
-
 +compu
 
 	.suscribirme
@@ -309,4 +353,31 @@ export default {
 		.has-success.has-feedback .ant-form-item-children-icon
 			height: 31px
 
++wide
+	.suscribirme
+		width: 400px
+		height: 60px
+		right: 67px
+		font-size: 1.5rem
+	.terminosycondiciones
+		font-size: 1.1rem
+		padding-top: .2em
+	.suscribirse
+		.input
+			width: 400px
+	.rootParticipa::v-deep
+		.ant-input
+			height: 55px
+		.ant-select-selection--single
+			height: 55px
+		.ant-select-selection__rendered
+			position: unset
+		.ant-select-selection__placeholder
+			padding-left: 1em
+			font-size: 1.1rem
+		.ant-select-selection-selected-value
+			font-size: 1.1rem
+			padding-top: 8px
+		.has-success.has-feedback .ant-form-item-children-icon
+			height: 31px
 </style>

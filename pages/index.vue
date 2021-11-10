@@ -30,8 +30,8 @@
 			.contenido
 				.lado.lado1
 					.titulo #[span.primero Se parte de la]
-						div Playlist
-						.segundo El Árbol
+						.segundo Playlist El Árbol
+
 					.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
 					nuxt-link.boton(to="/playlist")
 						.btn.bold MÁS INFORMACIÓN
@@ -406,9 +406,17 @@ section
 			flex-flow: column
 			justify-content: center
 			.titulo
+				width: 100%
+				text-align: left
 				font-size: 3rem
 			.texto
+				text-align: left
 				font-size: 1.7rem
+				padding-right: 6em
+			.boton
+				width: 100%
+				display: flex
+				justify-content: flex-start
 		.lado2
 			display: flex
 			justify-content: center
@@ -418,6 +426,18 @@ section
 				img
 					z-index: 5
 				// height: 100%
+	+wide
+		.titulo
+			font-size: 4.2rem
+		.texto
+			font-size: 2.5rem
+			line-height: 1.2
+		.boton
+			padding-top: 1em
+			.btn
+				font-size: 1.5rem
+				width: 350px
+				padding: .7em 1em .4em
 
 .precarga
 	height: 100vh
@@ -464,7 +484,7 @@ section
 			text-align: left
 			justify-content: center
 			.lado
-				flex: 600px 0 1
+				flex: 700px 0 1
 			.lado2
 				display: flex
 				align-items: center
@@ -473,6 +493,16 @@ section
 				font-size: 3rem
 			.texto
 				font-size: 1.5rem
+	+wide
+		.contenido
+			.titulo
+				line-height: 1.1
+				font-size: 3.5rem
+				.primero
+					font-size: 3.4rem
+			.texto
+				font-size: 2rem
+				padding-right: 1em
 
 .seccionArmaTuCampana
 	background-color: $petroleo2
@@ -490,6 +520,7 @@ section
 		.texto
 			display: flex
 			flex-flow: column
+			font-weight: 300
 			// padding: 0 1em
 		.titulo,
 		.segundo
@@ -589,7 +620,44 @@ section
 					padding: .3em 0 .1em 0
 					width: 100%
 					// height: 45px
-
+	+wide
+		.contenido
+			.lado
+				&.ladoImagen
+					order: -1
+					padding-right: 6em
+				&.ladotitutlo
+					z-index: 5
+				.titulo,
+				.segundo
+					font-size: 3.5rem
+				.texto
+					font-size: 2rem
+			.kitGrafico
+				width: 300px
+				.texto
+					font-size: 2rem
+				.boton
+					font-size: 1.5rem
+					padding: 12px 0 .1em 0
+					width: 100%
+					height: 56px
+		.cajaHerramienta
+			$lado: 28em
+			width: $lado
+			height: $lado
+			img
+				width: 100.13%
+				height: 100%
+				padding: 1em 0 1em 0
+			.circulo
+				top: 50%
+				left: 40%
+				right: 0
+				bottom: 0
+				width: $lado
+				height: $lado
+				transform: translate(-25%, -50%) scale(.9)
 section.seccionaporta
 	background-color: $azul2
 	position: relative
@@ -653,6 +721,11 @@ section.seccionaporta
 			flex: 600px 0 1
 			.titulo
 				font-size: 3.3rem
+				display: flex
+				flex-flow: row nowrap
+				.segundo
+					padding-left: .3em
+
 			p
 				font-size: 1.5rem
 		.linkservel
@@ -661,6 +734,23 @@ section.seccionaporta
 				padding: .4em 1em .3em 1em
 			.instrucciones
 				font-size: 1.1rem
+	+wide
+		.contenido
+			min-height: 900px
+			// border: 1px solid green
+			.titulo
+				font-size: 4.2rem
+				.segundo
+					font-size: 4.1rem
+			p
+				font-size: 2.2rem
+				line-height: 1.2
+			.linkservel
+				.boton
+					font-size: 1.5rem
+					padding: .6em 1em .3em 1em
+				.instrucciones
+					font-size: 1.2rem
 
 section.propuestas
 	position: relative
@@ -752,6 +842,19 @@ section.propuestas
 					width: 350px
 					font-size: 1.4rem
 					padding: .5em 1em .3em 1em
+	+wide
+		.contenido
+			.titulo
+				font-size: 3.5rem
+				.segundo
+					font-size: 3.4rem
+			.textoseccion
+				p
+					font-size: 2rem
+		.link
+			.linkpropuestas
+				width: 350px
+				font-size: 1.5rem
 </style>
 
 
