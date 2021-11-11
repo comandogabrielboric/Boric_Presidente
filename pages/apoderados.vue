@@ -1,7 +1,7 @@
 <template lang="pug">
 .rootParticipa
 	.titulo Inscripciones Apoderados de mesa
-	.texto En estas elecciones Chile pone en juego la protección del proceso de cambios que iniciamos, por eso es necesaria tu participación observando el proceso de votaciones del día 21 de noviembre. Inscríbete como apoderad@ y se parte de esta historia que construímos junt@s
+	.texto Este 21 de noviembre ponemos en juego las transformaciones que empujamos desde hace años. Para defender estos cambios, necesitamos much@s apoderad@s mesa que velen por nuestra democracia en este proceso histórico. ¡Súmate!
 
 	a-form-model.suscribirse(
 		ref="formulario",
