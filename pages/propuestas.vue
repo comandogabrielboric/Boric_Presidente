@@ -15,18 +15,19 @@
 		a.button.boton(
 			href="https://drive.google.com/file/d/1-4lFR0liw_O7Vvuxr51Xq4wk3wiP_zL9/view?usp=sharing",
 			target="_blank",
-			download @click="$gtm.push({ event: 'link-home', hacia: 'Decarga Programa completo' })
+			@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
+			download
 		)
 			.p DESCARGAR PROGRAMA
 	.contenedorbtn
 		a.button.boton(
 			href="https://drive.google.com/file/d/1kKP7eIUIM_4KJMvsL4VZv8l2lp89PXlX/view?usp=sharing",
 			target="_blank",
-			download @click="$gtm.push({ event: 'link-home', hacia: 'Link informe Proceso Participativo' })
+			@click="$gtm.push({ event: 'link-home', hacia: 'Link informe Proceso Participativo' })",
+			download
 		) Informe proceso participativo
 
 	.relleno
-
 </template>
 
 <script>
