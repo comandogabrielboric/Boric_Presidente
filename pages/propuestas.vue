@@ -61,8 +61,6 @@ export default {
 			href: 'https://cdn.quilljs.com/1.0.0/quill.snow.css'
 		})
 		return obj
-<<<<<<< HEAD
-=======
 	},
 
 	computed: {
@@ -73,7 +71,10 @@ export default {
 		},
 		propuestaMostrada () {
 			if (!this.propuestaIdMostrada) return null
-			const propuestaBruta = this._.find(this.setPropuestas, p => p.id === this.propuestaIdMostrada)
+			const propuestaBruta = this._.find(
+				this.setPropuestas,
+				p => p.id === this.propuestaIdMostrada
+			)
 			if (!propuestaBruta) return null
 
 			return {
@@ -114,14 +115,16 @@ export default {
 		},
 		verSiHayQueAbrirUnaPropuesta ({ propuestaSlug }) {
 			const propuestas = this.setPropuestas
-			const propuestaParaAbrir = this._.filter(propuestas, ['Slug', propuestaSlug])
+			const propuestaParaAbrir = this._.filter(propuestas, [
+				'Slug',
+				propuestaSlug
+			])
 			// console.log('prop a abrir', propuestaParaAbrir, propuestas)
 			if (propuestaSlug) {
 				const propuestaID = propuestaParaAbrir[0]._id
 				this.abrirPropuesta(propuestaID, propuestaSlug)
 			}
 		}
->>>>>>> version_buscador
 	}
 }
 </script>
