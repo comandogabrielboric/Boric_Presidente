@@ -61,6 +61,67 @@ export default {
 			href: 'https://cdn.quilljs.com/1.0.0/quill.snow.css'
 		})
 		return obj
+<<<<<<< HEAD
+=======
+	},
+
+	computed: {
+		setPropuestas () {
+			const props = this.$store.state.propuestas
+			// console.log('propscc 1', props)
+			return props
+		},
+		propuestaMostrada () {
+			if (!this.propuestaIdMostrada) return null
+			const propuestaBruta = this._.find(this.setPropuestas, p => p.id === this.propuestaIdMostrada)
+			if (!propuestaBruta) return null
+
+			return {
+				titulo: propuestaBruta.titulo,
+				html: propuestaBruta.contenido,
+				pdfURL: this._.get(propuestaBruta, ['archivoPDF', 'url'])
+			}
+		}
+	},
+	watch: {
+		abrirPropuestaDelBuscador () {
+			const ruta = this.$nuxt.$route
+			console.log(ruta)
+			return null
+		},
+		mostrandoPropuesta (v) {
+			if (!v) {
+				if (this.propuestaMostrada) this.$router.push('/propuestas')
+				setTimeout(() => {
+					this.propuestaIdMostrada = false
+					this.modoVisualizacion = 'html'
+				}, 400)
+			}
+		},
+		propuestaIdMostrada (v) {
+			if (v) this.mostrandoPropuesta = true
+		}
+	},
+	mounted () {
+		window.setPropuestas = this
+	},
+	methods: {
+		abrirPropuesta (propuestaID, slug) {
+			this.propuestaIdMostrada = propuestaID
+			this.$nextTick(() => {
+				if (this.propuestaMostrada) this.$router.push(`/propuestas/${slug}`)
+			})
+		},
+		verSiHayQueAbrirUnaPropuesta ({ propuestaSlug }) {
+			const propuestas = this.setPropuestas
+			const propuestaParaAbrir = this._.filter(propuestas, ['Slug', propuestaSlug])
+			// console.log('prop a abrir', propuestaParaAbrir, propuestas)
+			if (propuestaSlug) {
+				const propuestaID = propuestaParaAbrir[0]._id
+				this.abrirPropuesta(propuestaID, propuestaSlug)
+			}
+		}
+>>>>>>> version_buscador
 	}
 }
 </script>
