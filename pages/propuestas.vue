@@ -26,6 +26,7 @@
 		) Informe proceso participativo
 
 	.relleno
+
 </template>
 
 <script>
