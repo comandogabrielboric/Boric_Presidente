@@ -3,51 +3,104 @@
 	.titulo Inscripciones Apoderados de mesa
 	.texto En estas elecciones Chile pone en juego la protección del proceso de cambios que iniciamos, por eso es necesaria tu participación observando el proceso de votaciones del día 21 de noviembre. Inscríbete como apoderad@ y se parte de esta historia que construímos junt@s
 
-	a-form-model(ref='formulario' :model='formulario' :rules='rules').suscribirse
+	a-form-model.suscribirse(
+		ref="formulario",
+		:model="formulario",
+		:rules="rules"
+	)
+		a-form-model-item(has-feedback, prop="nombre")
+			a-input.input(
+				v-model="formulario.nombre",
+				type="nombre",
+				placeholder="Nombre"
+			)
+		a-form-model-item(has-feedback, prop="apellido")
+			a-input.input(
+				v-model="formulario.apellido",
+				type="apellido",
+				placeholder="Apellido"
+			)
+		a-form-model-item(has-feedback, prop="rut")
+			a-input.input(v-model="formulario.rut", type="rut", placeholder="Rut")
+		a-form-model-item(has-feedback, prop="email")
+			a-input.input(
+				v-model="formulario.email",
+				type="email",
+				placeholder="Email"
+			)
 
-		a-form-model-item(has-feedback prop='nombre')
-			a-input(v-model='formulario.nombre' type='nombre' placeholder="Nombre").input
-		a-form-model-item(has-feedback prop='apellido')
-			a-input(v-model='formulario.apellido' type='apellido' placeholder="Apellido").input
-		a-form-model-item(has-feedback prop='rut')
-			a-input(v-model='formulario.rut' type='rut' placeholder='Rut').input
-		a-form-model-item(has-feedback prop='email')
-			a-input(v-model='formulario.email' type='email' placeholder='Email').input
-
-		a-form-model-item(has-feedback prop='telefono')
-			a-input(v-model='formulario.telefono' type='tel' placeholder='+56 x xxxx xxxx').input
+		a-form-model-item(has-feedback, prop="telefono")
+			a-input.input(
+				v-model="formulario.telefono",
+				type="tel",
+				placeholder="+56 x xxxx xxxx"
+			)
 
 		.texto En que comuna deseas participar?
-		a-form-model-item(has-feedback prop='region')
-			a-select(v-model="formulario.region" @change="handleChange" placeholder='Región').input
-				a-select-option(v-for="region in regiones" :key="region.label" :value="region.label") {{ region.label }}
+		a-form-model-item(has-feedback, prop="region")
+			a-select.input(
+				v-model="formulario.region",
+				@change="handleChange",
+				placeholder="Región"
+			)
+				a-select-option(
+					v-for="region in regiones",
+					:key="region.label",
+					:value="region.label"
+				) {{ region.label }}
 
-		a-form-model-item(v-if="regionseleccionada" has-feedback='' prop='comuna')
-			a-select(v-model="formulario.comuna" placeholder='Comuna' @change="handleComuna").input
-				a-select-option(v-for="comuna in comunas" :key="comuna.label" :value="comuna.label") {{ comuna.label }}
+		a-form-model-item(v-if="regionseleccionada", has-feedback="", prop="comuna")
+			a-select.input(
+				v-model="formulario.comuna",
+				placeholder="Comuna",
+				@change="handleComuna"
+			)
+				a-select-option(
+					v-for="comuna in comunas",
+					:key="comuna.label",
+					:value="comuna.label"
+				) {{ comuna.label }}
 
-		a-form-model-item(has-feedback prop='local')
-			a-input(v-model='formulario.local' type='local' placeholder="Local de votacion").input
+		a-form-model-item(has-feedback, prop="local")
+			a-input.input(
+				v-model="formulario.local",
+				type="local",
+				placeholder="Local de votacion"
+			)
 
-		a-form-model-item.pre ¿has sido vocal de mesa antes? #[span ]
-			a-switch(v-model='formulario.hazSidoVocalAntes')
+		a-form-model-item.pre ¿has sido vocal de mesa antes? #[span]
+			a-switch(v-model="formulario.hazSidoVocalAntes")
 		//- a-form-model-item(has-feedback prop='militancia')
 		//- 	a-input(v-model='formulario.milita' type='checkbox').input
 		//- 	div eres militante?
-		a-form-model-item(:wrapper-col='{ span: 14, offset: 4 }').contenedorbtn
-			a-button(type='primary' @click="submitForm('formulario')").suscribirme
+		a-form-model-item.contenedorbtn(:wrapper-col="{ span: 14, offset: 4 }")
+			a-button.suscribirme(type="primary", @click="submitForm('formulario')")
 				| INSCRIBIRME
 
-		p(@click='showModal').terminosycondiciones #[span.primero Acepto] &nbspTérminos y Condiciones
+		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
 
-	a-modal(v-model="visible" title="Muchas gracias !!" centered @ok="handleOk" :footer="null").modal
+	.imgFooter
+		img(src="/imagenes/apoderadosFooter.webp", alt="grupo")
+
+	a-modal.modal(
+		v-model="visible",
+		title="Muchas gracias !!",
+		centered,
+		@ok="handleOk",
+		:footer="null"
+	)
 		.procesando(v-if="!procesado")
 			a-spin(size="large")
 		.procusandoCompleto(v-if="procesado")
 			p Pronto recibiras noticias
 
-	a-modal(:visible='tyc' title='Terminos y Condiciones' @ok='handleOk' @cancel="tyc = false" :footer="null").modal
-
+	a-modal.modal(
+		:visible="tyc",
+		title="Terminos y Condiciones",
+		@ok="handleOk",
+		@cancel="tyc = false",
+		:footer="null"
+	)
 		p El/la usuaria/o declara aceptar el uso de los datos solicitados para la campaña presidencial de Gabriel Boric en el marco de la Ley N° 19.628. Sólo podrán ser usados estos datos para los fines específicos que el usuario autorice, esto es, para la entrega de información de la campaña presidencial respectiva y de la difusión de sus actividades propias. Para estos efectos el usuario autoriza a que lo contacten a través de medios digitales tales como email, Facebook, mensajes de texto (SMS), WhatsApp u otras plataformas similares con las finalidades señaladas, a la casilla de correo electrónico y número de teléfono que haya indicado.
 
 		p La permanencia en estas bases de datos tendrá siempre la posibilidad de que la/el usuaria/o pueda darse de baja o solicitar dejar de estar registrado en las mismas, pudiendo al efecto revocar su autorización, y disponiendo, en todo caso, de los derechos que confiere la Ley N° 19.628.
@@ -63,14 +116,14 @@ import { phone } from 'phone'
 import { validate, format, clean } from 'rut.js'
 import regionesComunas from '../regiones/regioneschile'
 
-
 export default {
 	data () {
 		// let checkPending
 		const validaTelefono = (rule, value, callback) => {
 			if (!value) {
 				return callback(new Error('Ingresa tu telefono'))
-			} if (!phone(value).isValid) {
+			}
+			if (!phone(value).isValid) {
 				console.log('telefono', phone(value))
 				callback(new Error('Utiliza formato +56 xxxxxxxxx'))
 			} else {
@@ -225,7 +278,10 @@ export default {
 
 			this.visible = true
 			const config = {}
-			const respuesta = await this.$axios.post(`${process.env.apiURL}/apoderados`, this.formulario, config).then(r => r.data).catch(e => console.error('fallo suscribirse', e))
+			const respuesta = await this.$axios
+				.post(`${process.env.apiURL}/apoderados`, this.formulario, config)
+				.then(r => r.data)
+				.catch(e => console.error('fallo suscribirse', e))
 			console.log('Respuesta', respuesta)
 			if (!respuesta) {
 				this.visible = false
@@ -260,6 +316,9 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/paleta'
 @import '~/estilos/utils'
+.imgFooter
+	img
+		width: 100vw
 .titulo
 	padding: 1em .5em .5em .5em
 	text-align: center
@@ -327,13 +386,13 @@ export default {
 	width: 90vw
 	height: 5em
 
-
 .rootParticipa
 	text-align: left
 	display: flex
 	flex-flow: column
 	justify-content: center
 	align-items: center
+	background-color: #19CBB5
 
 .suscribirse::v-deep
 
@@ -369,8 +428,4 @@ export default {
 			font-size: 1.2em
 	.ant-modal-mask
 		backdrop-filter: blur(4px)
-
-
-
-
 </style>
