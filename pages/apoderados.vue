@@ -1,7 +1,7 @@
 <template lang="pug">
 .rootParticipa
 	.titulo Inscripciones Apoderados de mesa
-	.texto Este 21 de noviembre ponemos en juego las transformaciones que empujamos desde hace años. Para defender estos cambios, necesitamos much@s apoderad@s mesa que velen por nuestra democracia en este proceso histórico. ¡Súmate!
+	.texto Este 21 de noviembre ponemos en juego las transformaciones que empujamos desde hace años. Para defender estos cambios, necesitamos much@s apoderad@s de mesa que velen por nuestra democracia en este proceso histórico. ¡Súmate!
 
 	a-form-model.suscribirse(
 		ref="formulario",
