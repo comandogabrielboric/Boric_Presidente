@@ -360,18 +360,6 @@ $anchoMaximo: 800px
 
 					.destacado
 						color: $verde2
-<<<<<<< HEAD
-
-=======
-	&:hover
-		.contenidoBuscado
-			background-color: $verde2
-			.titulo,
-			.contenido
-				color: #fff
-				.destacado
-					color: $verde3
->>>>>>> origin/camilo
 +compu
 	.buscadorDePropuestas
 		padding: 2em 3em
