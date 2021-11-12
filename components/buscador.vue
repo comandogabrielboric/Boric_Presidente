@@ -4,12 +4,11 @@
 		.oicono.lupa-linea
 
 	a-modal.modalBusqueda(
-		:visible="buscar",
-		:header="null",
-		:footer="null",
-		@close="buscar = false",
-		@cancel="buscar = false",
-		centered,
+		:visible="buscar"
+		:header="null"
+		:footer="null"
+		@close="buscar = false"
+		@cancel="buscar = false"
 		:width="null"
 	)
 		.buscadorDePropuestas
@@ -24,34 +23,26 @@
 				.lineaDelFocus
 
 
-			//- osoCoder.oso(v-if="_.isEmpty(buscarPropuesta)")
-				//- img.lupa(src="/iconos/lupa-linea.svg")
 			transition(:duration="300")
 				.mostradorBusqueda(v-if="!_.isEmpty(buscarPropuesta)")
-					.titulo Propuestas
-					.propuesta(
-						v-for="(p, i) in buscarPropuesta",
-						v-observe-visibility="{callback: activarBarra, once: true}",
-						:class="p.clase",
-						:key="p._id",
-						@click="abrirPropuestaBuscada(p)"
-					)
 
-						//- .imagen.noMovil
-						//- 	img(
-						//- 		v-if="p.imagen",
-						//- 		:src="p.imagen.url",
-						//- 		:alt="p.textoAlternativoImagen"
-						//- 	)
-						//- pre {{p.posiciones}}
-						//- pre {{p.coincidencias}}
-						.contenidoBuscado
-							.titulo {{ p.titulo }}
-							.contenido
+					.titulo Propuestas
+
+					.propuestas
+						.propuesta(
+							v-for="(p, i) in buscarPropuesta",
+							v-observe-visibility="{callback: activarBarra, once: true}",
+							:class="p.clase",
+							:key="p._id",
+							@click="abrirPropuestaBuscada(p)"
+						)
+							.titulo.light {{ p.titulo }}
+
+							.coincidencias
 								.coincidencia(v-for="coincidencia in p.coincidencias")
-									| {{coincidencia.texto[0]}}
+									| ... {{coincidencia.texto[0]}}
 									span.destacado {{coincidencia.texto[1]}}
-									| {{coincidencia.texto[2]}}
+									| {{coincidencia.texto[2]}} ...
 
 </template>
 
@@ -61,6 +52,8 @@ import Vue from 'vue'
 import { gsap } from 'gsap'
 import { sinCaracteresEspeciales } from '../plugins/utilidades/parametrizar'
 
+
+const amplitudTexto = 80
 export default {
 	directives: {
 		focus: {
@@ -136,9 +129,9 @@ export default {
 
 				c.coincidencias = _.map(c.posiciones, ({ inicio, fin, destacar }) => ({
 					texto: [
-						c.contenido.slice(inicio - 50, inicio),
+						c.contenido.slice(inicio - amplitudTexto, inicio),
 						c.contenido.slice(inicio, fin),
-						c.contenido.slice(fin, fin + 50)
+						c.contenido.slice(fin, fin + amplitudTexto)
 					],
 					destacar
 				}))
@@ -221,20 +214,25 @@ $anchoMaximo: 800px
 		height: $lado
 
 .modalBusqueda::v-deep
+	.ant-modal-mask
+		top: 5em
+		backdrop-filter: blur(.5em)
+	.ant-modal-wrap
+		top: 5em
+		padding: 5em
+	.ant-modal
+		top: 0
 	.ant-modal-content
 		background-color: transparent
 		box-shadow: none
-	.ant-modal-mask
-		backdrop-filter: blur(.5em)
+		max-height: 100vh
+		max-width: $anchoMaximo
+		margin: 0 auto
 	.ant-modal-body
 		text-align: center
-		padding: 2em 1em
+		padding: 0
 		color: #fff
-		max-height: 85vh
-		overflow: hidden
-	.ant-modal-wrap
-		top: 5em
-		bottom: unset
+		max-height: 100vh
 	.ant-modal-close-x
 		color: white
 		$lado: 2.4em
@@ -245,7 +243,20 @@ $anchoMaximo: 800px
 			height: $lado
 
 .buscadorDePropuestas
-	overflow: auto
+	// overflow: auto
+	$alturaBuscador: 5em
+	$separacion: 3em
+
+	.contenedorInput
+		flex: auto 0 0
+		height: $alturaBuscador
+	.mostradorBusqueda
+		flex: auto 1 1
+		margin-top: 3em
+		overflow-y: auto
+		max-height: calc(100vh - #{$separacion} - #{$alturaBuscador})
+
+
 	.contenedorInput
 		display: flex
 		align-items: center
@@ -274,7 +285,8 @@ $anchoMaximo: 800px
 			flex: auto 1 1
 			border: none
 			font-size: 1.4rem
-			padding: .25em 0
+			line-height: 1
+			padding-bottom: .25em
 			text-align: left
 			position: relative
 			transition: all .05s ease
@@ -282,7 +294,7 @@ $anchoMaximo: 800px
 			caret-color: white
 			+compu
 				max-width: $anchoMaximo
-				font-size: 3rem
+				font-size: 2.8rem
 		.lineaDelFocus
 			position: absolute
 			bottom: 0
@@ -298,11 +310,9 @@ $anchoMaximo: 800px
 				height: 4px
 
 	.mostradorBusqueda
-		margin-top: 3em
 		max-width: $anchoMaximo
-		// width: 100vw
-		// height: 100%
-		max-height: 65vh
+		min-height: 0
+		// max-height: 65vh
 		padding: 0
 		overflow: auto
 		// background-color: $blanco
@@ -328,41 +338,39 @@ $anchoMaximo: 800px
 			text-align: center
 			opacity: 1
 			color: $azul1
-			.contenidoBuscado
-				background-color: #fff
-				border-radius: 5px
+			background-color: #fff
+			border-radius: 5px
+
+			font-size: 1.1rem
+			.titulo
+				font-size: 1.2em
 				padding: 1rem
-				font-size: 1.1rem
-				.titulo
-					font-size: 1.2em
-					// padding: .5em
-					line-height: 1.2
-					width: 100%
-					text-align: left
-					color: $verde2
-					// +compu
-						// padding: 1em
-				.contenido
-					font-size: 1em
-					padding-top: .5em
-					text-align: left
-					.coincidencia
-						margin: 0.2em 0
-						padding: .25em 0
+				line-height: 1.2
+				width: 100%
+				text-align: left
+				color: $azul1
+				border-bottom: 1px solid transparentize(black, .9)
 
-						&:hover
-							background-color: $verde2
-							border-radius: 5px
-							.contenido
-								color: #fff
-							.destacado
-								color: $verde3
-
+			.coincidencias
+				font-size: 1em
+				text-align: left
+				.coincidencia
+					padding: 1rem 3rem
+					color: $azul2
 					.destacado
-						color: $verde2
-+compu
-	.buscadorDePropuestas
-		padding: 2em 3em
-		.mostradorBusqueda
-			// padding: 2em 3em
+						color: $verde3
+					+ .coincidencia
+						position: relative
+						&::before
+							content: ''
+							position: absolute
+							top: 0
+							left: 1em
+							right: 1em
+							border-top: 2px solid transparentize(black, .95)
+					&:hover
+						background-color: $verde1
+						color: #fff
+						.destacado
+							color: $verde3
 </style>
