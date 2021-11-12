@@ -43,12 +43,16 @@
 						//- 		:src="p.imagen.url",
 						//- 		:alt="p.textoAlternativoImagen"
 						//- 	)
+						//- pre {{p.posiciones}}
+						//- pre {{p.coincidencias}}
 						.contenidoBuscado
 							.titulo {{ p.titulo }}
 							.contenido
-								| ... {{ p.contenidoDestacado[0] }}
-								span.destacado {{ p.contenidoDestacado[1] }}
-								| {{ p.contenidoDestacado[2] }} ...
+								.coincidencia(v-for="coincidencia in p.coincidencias")
+									| {{coincidencia.texto[0]}}
+									span.destacado {{coincidencia.texto[1]}}
+									| {{coincidencia.texto[2]}}
+
 </template>
 
 <script>
@@ -95,55 +99,52 @@ export default {
 			const titulos = this._.map(propuestas, p => p.titulo)
 			return titulos
 		},
+		buscadoSinEspeciales () {
+			return sinCaracteresEspeciales(this.matchPropuesta)
+		},
 		buscarPropuesta () {
 			const _ = this._
 			const buscar = this.matchPropuesta
-			if (buscar) {
-				const prop = this.setPropuestas
-				// console.log('a buscar', buscar, prop)
-				const coincidencia = _.pickBy(prop, p =>
-					_.includes(
-						sinCaracteresEspeciales(p.contenido),
-						sinCaracteresEspeciales(buscar)
-					)
+			const buscadoSinEspeciales = sinCaracteresEspeciales(buscar)
+			if (!buscar) return null
+
+			const prop = this.setPropuestas
+			// console.log('a buscar', buscar, prop)
+			const coincidencia = _.pickBy(prop, p =>
+				_.includes(sinCaracteresEspeciales(p.contenido), buscadoSinEspeciales)
+			)
+			// console.log('coincidencia', coincidencia)
+			const arrayCoincidencias = _.map(coincidencia, c => {
+				const trozos = sinCaracteresEspeciales(c.contenido).split(
+					buscadoSinEspeciales
 				)
-				// console.log('coincidencia', coincidencia)
-				const arrayCoincidencias = _.map(coincidencia, c => c)
-				// console.log('arrayCoincidencias', arrayCoincidencias)
-				const propuestaCortada = _.map(_.cloneDeep(arrayCoincidencias), c => {
-					c.contenidoAMostrar = c.contenido.slice(
-						this.indexInicio(c.contenido, 0),
-						this.indexfinal(c.contenido, 0)
-					)
-					c.contenidoDestacado = [
-						c.contenido.slice(
-							this.indexInicio(c.contenido, 50),
-							this.indexInicio(c.contenido, 0)
-						),
-						c.contenido.slice(
-							this.indexInicio(c.contenido, 0),
-							this.indexfinal(c.contenido, 0)
-						),
-						c.contenido.slice(
-							this.indexfinal(c.contenido, 0),
-							this.indexfinal(c.contenido, 50)
-						)
-					]
-					console.log(propuestaCortada, buscar.length)
-					return c
+				let longitud = 0
+				c.posiciones = []
+
+				_.forEach(trozos, (t, i) => {
+					if (i > 0) {
+						c.posiciones.push({
+							inicio: longitud,
+							fin: longitud + buscadoSinEspeciales.length,
+							destacar: true
+						})
+						longitud = longitud + buscadoSinEspeciales.length
+					}
+					longitud = longitud + t.length
+					// posiciones.push([longitud, longitud + t.length])
 				})
 
-				const claseEntrando = _.map(propuestaCortada, c => {
-					c.clase = 'entrando'
-					return c
-				})
-				console.log('clase', propuestaCortada)
-				// console.log('propuesta recortadas', propuestaCortada)
-				// const index = _.map(arrayCoincidencias, p => _.lowerCase(p.contenido).indexOf(_.lowerCase(buscar)))
-				// console.log('index', index)
-				return claseEntrando
-			}
-			return null
+				c.coincidencias = _.map(c.posiciones, ({ inicio, fin, destacar }) => ({
+					texto: [
+						c.contenido.slice(inicio - 50, inicio),
+						c.contenido.slice(inicio, fin),
+						c.contenido.slice(fin, fin + 50)
+					],
+					destacar
+				}))
+				return c
+			})
+			return arrayCoincidencias
 		}
 	},
 
@@ -296,7 +297,6 @@ $anchoMaximo: 800px
 			+ .lineaDelFocus
 				height: 4px
 
-
 	.mostradorBusqueda
 		margin-top: 3em
 		max-width: $anchoMaximo
@@ -346,20 +346,23 @@ $anchoMaximo: 800px
 					font-size: 1em
 					padding-top: .5em
 					text-align: left
+					.coincidencia
+						margin: 0.2em 0
+						padding: .25em 0
+
+						&:hover
+							background-color: $verde2
+							border-radius: 5px
+							.contenido
+								color: #fff
+							.destacado
+								color: $verde3
+
 					.destacado
 						color: $verde2
-			&:hover
-				.contenidoBuscado
-					background-color: $verde2
-					.titulo,
-					.contenido
-						color: #fff
-						.destacado
-							color: $verde3
 +compu
 	.buscadorDePropuestas
 		padding: 2em 3em
 		.mostradorBusqueda
 			// padding: 2em 3em
-
 </style>
