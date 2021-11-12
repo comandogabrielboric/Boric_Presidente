@@ -4,11 +4,11 @@
 		.oicono.lupa-linea
 
 	a-modal.modalBusqueda(
-		:visible="buscar"
-		:header="null"
-		:footer="null"
-		@close="buscar = false"
-		@cancel="buscar = false"
+		:visible="buscar",
+		:header="null",
+		:footer="null",
+		@close="buscar = false",
+		@cancel="buscar = false",
 		:width="null"
 	)
 		.buscadorDePropuestas
@@ -22,16 +22,15 @@
 				)
 				.lineaDelFocus
 
-
 			transition(:duration="300")
-				.mostradorBusqueda(v-if="!_.isEmpty(buscarPropuesta)")
-
+				.mostradorBusqueda(
+					v-if="!_.isEmpty(buscarPropuesta) && matchPropuesta.length >= 2"
+				)
 					.titulo Propuestas
 
 					.propuestas
 						.propuesta(
 							v-for="(p, i) in buscarPropuesta",
-							v-observe-visibility="{callback: activarBarra, once: true}",
 							:class="p.clase",
 							:key="p._id",
 							@click="abrirPropuestaBuscada(p)"
@@ -40,18 +39,15 @@
 
 							.coincidencias
 								.coincidencia(v-for="coincidencia in p.coincidencias")
-									| ... {{coincidencia.texto[0]}}
-									span.destacado {{coincidencia.texto[1]}}
-									| {{coincidencia.texto[2]}} ...
-
+									| ... {{ coincidencia.texto[0] }}
+									span.destacado {{ coincidencia.texto[1] }}
+									| {{ coincidencia.texto[2] }} ...
 </template>
 
 <script>
 // import axios from 'axios'
 import Vue from 'vue'
-import { gsap } from 'gsap'
 import { sinCaracteresEspeciales } from '../plugins/utilidades/parametrizar'
-
 
 const amplitudTexto = 80
 export default {
@@ -142,18 +138,6 @@ export default {
 	},
 
 	methods: {
-		activarBarra (isVisible, entry, i) {
-			// console.log('activando barra', isVisible, entry, i)
-			// const emisiones = this.consumototal
-			// const inicio = 0
-
-			gsap.fromTo('.entrando', { x: 3000 }, { x: 0, duration: 0.8 })
-			// gsap.fromTo(
-			// 	'.contador',
-			// 	{ textContent: inicio },
-			// 	{ textContent: emisiones[1], snap: { textContent: 1 }, duration: 2 }
-			// )
-		},
 		indexInicio (v, caracteresPrevios = 50) {
 			// const propuestas = this.buscarPropuesta
 			const buscar = this.matchPropuesta
@@ -256,7 +240,6 @@ $anchoMaximo: 800px
 		overflow-y: auto
 		max-height: calc(100vh - #{$separacion} - #{$alturaBuscador})
 
-
 	.contenedorInput
 		display: flex
 		align-items: center
@@ -358,7 +341,7 @@ $anchoMaximo: 800px
 					padding: 1rem 3rem
 					color: $azul2
 					.destacado
-						color: $verde3
+						color: $verde2
 					+ .coincidencia
 						position: relative
 						&::before
