@@ -43,7 +43,10 @@
 						//- 	)
 						.contenidoBuscado
 							.titulo {{ p.titulo }}
-							.contenido ... {{ p.contenidoDestacado[0] }}{{ p.contenidoDestacado[1] }}{{ p.contenidoDestacado[2] }} ...
+							.contenido
+								| ... {{ p.contenidoDestacado[0] }}
+								span.destacado {{ p.contenidoDestacado[1] }}
+								| {{ p.contenidoDestacado[2] }} ...
 </template>
 
 <script>
@@ -310,6 +313,8 @@ export default {
 					.titulo,
 					.contenido
 						color: #fff
+						.destacado
+							color: $verde3
 +compu
 	.buscadorDePropuestas
 		padding: 2em 3em
