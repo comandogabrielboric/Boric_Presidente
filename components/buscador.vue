@@ -1,34 +1,64 @@
 <template lang="pug">
 .root
-	.buscador(@click='abrirBuscador')
+	.buscador(@click="abrirBuscador")
 		.oicono.lupa-linea
 
-	a-modal.modalBusqueda(:visible="buscar" :header="null" :footer="null" @close="buscar = false" @cancel="buscar = false" centered :width="null")
+	a-modal.modalBusqueda(
+		:visible="buscar",
+		:header="null",
+		:footer="null",
+		@close="buscar = false",
+		@cancel="buscar = false",
+		centered,
+		:width="null"
+	)
 		.buscadorDePropuestas
-			.contenedorInput(v-if='buscar')
-				input(v-focus v-model="matchPropuesta" type="text" 	placeholder="Que estas buscando?").input
+			.contenedorInput(v-if="buscar")
+				input.input(
+					v-focus,
+					v-model="matchPropuesta",
+					type="text",
+					placeholder="Que estas buscando?"
+				)
+				.oicono.lupa-linea.lupa
 
-			.mostradorBusqueda(v-if='buscarPropuesta')
-				.propuesta(v-for='p in buscarPropuesta' :key='p._id' 	@click='abrirPropuestaBuscada(p)')
-					.imagen.noMovil
-						img(:src="p.imagen.url")
-					.contenidoBuscado
-						.titulo {{ p.titulo }}
-						.contenido ... {{ p.contenido }} ...
+			//- osoCoder.oso(v-if="_.isEmpty(buscarPropuesta)")
+				//- img.lupa(src="/iconos/lupa-linea.svg")
+			transition(:duration="300")
+				.mostradorBusqueda(v-if="!_.isEmpty(buscarPropuesta)")
+					.titulo Propuestas
+					.propuesta(
+						v-for="(p, i) in buscarPropuesta",
+						v-observe-visibility="{callback: activarBarra, once: true}",
+						:class="p.clase",
+						:key="p._id",
+						@click="abrirPropuestaBuscada(p)"
+					)
 
-
+						//- .imagen.noMovil
+						//- 	img(
+						//- 		v-if="p.imagen",
+						//- 		:src="p.imagen.url",
+						//- 		:alt="p.textoAlternativoImagen"
+						//- 	)
+						.contenidoBuscado
+							.titulo {{ p.titulo }}
+							.contenido ... {{ p.contenidoDestacado[0] }}{{ p.contenidoDestacado[1] }}{{ p.contenidoDestacado[2] }} ...
 </template>
 
 <script>
 // import axios from 'axios'
-import parameterize from '../plugins/utilidades/parametrizar'
+import Vue from 'vue'
+import { gsap } from 'gsap'
+import { sinCaracteresEspeciales } from '../plugins/utilidades/parametrizar'
 
 export default {
 	directives: {
 		focus: {
 			// Definición de directiva
 			inserted (el) {
-				el.focus()
+				// console.log('el', el)
+				Vue.nextTick(() => el.focus())
 			}
 		}
 	},
@@ -66,39 +96,86 @@ export default {
 			if (buscar) {
 				const prop = this.setPropuestas
 				// console.log('a buscar', buscar, prop)
-				const coincidencia = _.pickBy(prop, p => _.includes(parameterize(p.contenido), parameterize(buscar)))
+				const coincidencia = _.pickBy(prop, p =>
+					_.includes(
+						sinCaracteresEspeciales(p.contenido),
+						sinCaracteresEspeciales(buscar)
+					)
+				)
 				// console.log('coincidencia', coincidencia)
 				const arrayCoincidencias = _.map(coincidencia, c => c)
 				// console.log('arrayCoincidencias', arrayCoincidencias)
 				const propuestaCortada = _.map(_.cloneDeep(arrayCoincidencias), c => {
-					c.contenido = c.contenido.slice(this.indexInicio(c.contenido), this.indexfinal(c.contenido))
+					c.contenidoAMostrar = c.contenido.slice(
+						this.indexInicio(c.contenido, 0),
+						this.indexfinal(c.contenido, 0)
+					)
+					c.contenidoDestacado = [
+						c.contenido.slice(
+							this.indexInicio(c.contenido, 50),
+							this.indexInicio(c.contenido, 0)
+						),
+						c.contenido.slice(
+							this.indexInicio(c.contenido, 0),
+							this.indexfinal(c.contenido, 0)
+						),
+						c.contenido.slice(
+							this.indexfinal(c.contenido, 0),
+							this.indexfinal(c.contenido, 50)
+						)
+					]
+					console.log(propuestaCortada, buscar.length)
 					return c
 				})
+
+				const claseEntrando = _.map(propuestaCortada, c => {
+					c.clase = 'entrando'
+					return c
+				})
+				console.log('clase', propuestaCortada)
 				// console.log('propuesta recortadas', propuestaCortada)
 				// const index = _.map(arrayCoincidencias, p => _.lowerCase(p.contenido).indexOf(_.lowerCase(buscar)))
 				// console.log('index', index)
-				return propuestaCortada
+				return claseEntrando
 			}
 			return null
 		}
 	},
 
 	methods: {
-		indexInicio (v) {
+		activarBarra (isVisible, entry, i) {
+			// console.log('activando barra', isVisible, entry, i)
+			// const emisiones = this.consumototal
+			// const inicio = 0
+
+			gsap.fromTo('.entrando', { x: 3000 }, { x: 0, duration: 0.8 })
+			// gsap.fromTo(
+			// 	'.contador',
+			// 	{ textContent: inicio },
+			// 	{ textContent: emisiones[1], snap: { textContent: 1 }, duration: 2 }
+			// )
+		},
+		indexInicio (v, caracteresPrevios = 50) {
 			// const propuestas = this.buscarPropuesta
 			const buscar = this.matchPropuesta
-			const index = parameterize(v).indexOf(parameterize(buscar))
-			const inicioCorte = index - 70
-			if (inicioCorte <= 0) { return 0 }
+			const index = sinCaracteresEspeciales(v).indexOf(
+				sinCaracteresEspeciales(buscar)
+			)
+			const inicioCorte = index - caracteresPrevios
+			if (inicioCorte <= 0) {
+				return 0
+			}
 			// console.log('index inicio', inicioCorte, buscar)
 			return inicioCorte
 		},
-		indexfinal (v) {
+		indexfinal (v, caracteresPosteriores = 50) {
 			// const propuestas = this.buscarPropuesta
 			const buscar = this.matchPropuesta
-			const index = parameterize(v).indexOf(parameterize(buscar))
+			const index = sinCaracteresEspeciales(v).indexOf(
+				sinCaracteresEspeciales(buscar)
+			)
 
-			const finCorte = index + 70 + buscar.length
+			const finCorte = index + caracteresPosteriores + buscar.length
 			// console.log('index fin', finCorte, buscar.length)
 			return finCorte
 		},
@@ -118,6 +195,10 @@ export default {
 			this.$nuxt.refresh()
 			this.matchPropuesta = null
 			this.buscar = null
+		},
+
+		contenidoDestacado (texto) {
+			// const destacable = this.matchPropuesta
 		}
 	}
 }
@@ -138,7 +219,7 @@ export default {
 		align-items: center
 		justify-content: center
 		width: 100%
-		height: 100px
+		height: 80px
 		min-height: 0
 		.input
 			color: rgba(20,20,20,.9)
@@ -146,15 +227,33 @@ export default {
 			width: 90vw
 			height: 72px
 			border: none
-			border-bottom: 1px solid rgba(20,20,20,.8)
+			border-bottom: 1px solid $verde2
 			font-size: 1.5rem
-			padding: .5em 1em 0 1em
-			text-align: center
+			padding: .5em 1em 0 2.3em
+			text-align: left
+			position: relative
 			+compu
+				padding-left: 1.5em
 				max-width: 800px
 				font-size: 3rem
 			&:focus
 				outline: none
+				border-bottom: 3px solid $verde2
+				transition: all .3s
+
+		.lupa
+			position: absolute
+			width: 30px
+			height: 30px
+			left: 2em
+			top: 4em
+			color: $verde2
+			+compu
+				width: 40px
+				height: 35px
+				left: 5em
+				top: 6em
+
 	.mostradorBusqueda
 		max-width: 800px
 		// width: 100vw
@@ -163,42 +262,54 @@ export default {
 		padding: 1em
 		overflow: auto
 		// background-color: $blanco
+		transition: all 0.1s ease
+		+salir
+			opacity: 0
+			max-height: 0
+		+saliendo
+			max-height: 100vh
+			overflow: hidden
+		> .titulo
+			width: 100%
+			text-align: left
+			padding: 1em 0 0 .3em
+			font-size: 2rem
+			color: $verde1
 		.propuesta
 			margin: 1em 0
 			display: flex
-			flex-flow: row
+			flex-flow: column nowrap
 			align-items: center
 			justify-content: space-between
 			text-align: center
-			background-color: #fff
 			opacity: 1
 			color: $azul1
-			border-radius: 5px
-			box-shadow: 2px 7px 7px 1px rgba(0, 0, 0, 0.2)
-			.imagen
-				display: flex
-				justify-content: center
-				align-items: center
-				width: 150px
-				padding: .5em
-				background-color: $azul2
-				+movil
-					display: none
-				img
-					width: 150px
 			.contenidoBuscado
+				background-color: #fff
+				border-radius: 5px
+				padding: 1rem
+				font-size: 1.1rem
 				.titulo
-					font-size: 1.2rem
-					padding: .5em
+					font-size: 1.2em
+					// padding: .5em
 					line-height: 1.2
-					+compu
-						padding: 1em
+					width: 100%
+					text-align: left
+					color: $verde2
+					// +compu
+						// padding: 1em
 				.contenido
-					font-size: 1rem
-					padding: .5em
-					text-align: center
-					+compu
-						padding: .5em 1em
+					font-size: 1em
+					padding-top: .5em
+					text-align: left
+					.destacado
+						color: $verde2
+			&:hover
+				.contenidoBuscado
+					background-color: $verde2
+					.titulo,
+					.contenido
+						color: #fff
 +compu
 	.buscadorDePropuestas
 		padding: 2em 3em
@@ -220,5 +331,4 @@ export default {
 			bottom: unset
 		.ant-modal-content
 			background-color: rgba(255, 255, 255, 0.93)
-
 </style>

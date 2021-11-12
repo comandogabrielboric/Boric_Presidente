@@ -15,6 +15,7 @@
 			)
 				.prop
 					img.imagenDePropuesta(
+						v-if="propuesta.imagen",
 						:src="propuesta.imagen.url",
 						:alt="propuesta.textoAlternativoImagen"
 					)
