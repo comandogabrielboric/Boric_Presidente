@@ -18,7 +18,7 @@
 					v-focus,
 					v-model="matchPropuesta",
 					type="text",
-					placeholder="Que estas buscando?"
+					placeholder="¿Qué estas buscando?"
 				)
 				.lineaDelFocus
 
@@ -49,7 +49,7 @@
 import Vue from 'vue'
 import { sinCaracteresEspeciales } from '../plugins/utilidades/parametrizar'
 
-const amplitudTexto = 80
+const amplitudTexto = 90
 export default {
 	directives: {
 		focus: {
