@@ -6,7 +6,7 @@
 		img(src="/imagenes/donaciones3.webp" alt="dona")
 		img(src="/imagenes/donaciones4.webp" alt="dona")
 	.link
-		a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" alt="dona" target="_blank" rel="noreferer noopener") QUIERO APORTAR
+		a(href="https://aportes.servel.cl/servel-aportes/inicio.xhtml" alt="dona" target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: '/aporta Aportes Servel'})") QUIERO APORTAR
 	.relleno
 </template>
 <script>

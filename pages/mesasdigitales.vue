@@ -1,8 +1,11 @@
 <template lang="pug">
 .root
-	h1 Test
 </template>
 <script>
-export default {}
+export default {
+	mounted () {
+		this.$router.replace('/participa#mesasdigitales')
+	}
+}
 </script>
 <style lang="sass" scoped></style>

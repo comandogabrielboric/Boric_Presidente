@@ -27,22 +27,27 @@
 					]
 				},
 				{
-					"source": "**/*.@(svg|png|webp)",
+					"source": "**/*.@(svg|png|webp|js)",
 					"headers": [
 						{
 							"key": "Cache-Control",
-							"value": "max-age=604800"
+							"value": "max-age=309600000"
 						}
 					]
 				}
 			],
-      "rewrites": [
-        {
-          "source": "/propuestas/**",
-          "destination": "/propuestas/elemento/index.html"
-        }
-      ],
+			"rewrites": [
+				{
+					"source": "/propuestas/**",
+					"destination": "/propuestas/elemento/index.html"
+				}
+			],
 			"redirects": [
+				{
+					"source": "/mesasdigitales",
+					"destination": "/participa#mesasdigitales",
+					"type": 302
+				},
 				{
 					"source": "/wp-content/uploads/2021/07/Programa_Completo.pdf",
 					"destination": "/propuestas",
@@ -64,13 +69,23 @@
 					"type": 302
 				},
 				{
-					"source": "/wp-content/*",
+					"source": "/wp-content/**",
+					"destination": "/propuestas",
+					"type": 302
+				},
+				{
+					"source": "/wp-content/uploads/**",
 					"destination": "/propuestas",
 					"type": 302
 				},
 				{
 					"source": "/propuestas/elemento",
 					"destination": "/propuestas",
+					"type": 302
+				},
+				{
+					"source": "/programa",
+					"destination": "/",
 					"type": 302
 				}
 			]
@@ -102,12 +117,12 @@
 					]
 				}
 			],
-      "rewrites": [
-        {
-          "source": "/propuestas/**",
-          "destination": "/propuestas/elemento/index.html"
-        }
-      ],
+			"rewrites": [
+				{
+					"source": "/propuestas/**",
+					"destination": "/propuestas/elemento/index.html"
+				}
+			],
 			"redirects": [
 				{
 					"source": "/wp-content/uploads/2021/07/Programa_Completo.pdf",

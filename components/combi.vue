@@ -1,9 +1,17 @@
 <template lang="pug">
 .rootCombi
-	.espacioCompi(@mouseover="animar" @click="animar" :class="{animando}")
-		img(src="/imagenes/combiVerde.webp" alt="Combi").combi
+	.espacioCompi(
+		@mouseover="animar",
+		v-observe-visibility="animar",
+		@click="animar",
+		:class="{ animando }"
+	)
+		img.combi(src="/imagenes/combiVerde.webp", alt="Combi")
 </template>
 <script>
+import Vue from 'vue'
+import { ObserveVisibility } from 'vue-observe-visibility'
+Vue.directive('observe-visibility', ObserveVisibility)
 export default {
 	data () {
 		return {
@@ -24,7 +32,6 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/animaciones'
-
 
 @keyframes avanzar
 	0%
@@ -57,10 +64,11 @@ export default {
 			z-index: 6
 			+compu
 				width: 22em
+			+wide
+				width: 33em
 
 		&.animando
 			animation: avanzar 3s linear 1
 			.combi
 				animation: vibrar 1.5s 2
-
 </style>

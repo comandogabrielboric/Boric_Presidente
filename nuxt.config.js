@@ -58,7 +58,12 @@ const config = {
 			{ hid: 'canonical', rel: 'canonical', href: url	},
 
 			{ hid: 'icon', rel: 'icon', href: '/favicon.svg' },
-			{ hid: 'mask-icon', rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' }
+			{ hid: 'mask-icon', rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' },
+			{ hid: 'analytics', rel: 'dns-prefetch', href: 'https://www.google-analytics.com' },
+			{ hid: 'tagManager', rel: 'dns-prefetch', href: 'https://www.googletagmanager.com' },
+			{ hid: 'analytics', href: 'https://www.google-analytics.com', rel: 'preconnect' },
+			{ hid: 'tagManager', href: 'https://www.googletagmanager.com', rel: 'preconnect' }
+
 			// { hid: 'tkfonts', rel: 'stylesheet', href: 'https://use.typekit.net/jem8rnn.css' }
 		]
 	},
@@ -68,7 +73,6 @@ const config = {
 		'ant-design-vue/dist/antd.css',
 		'~/estilos/base.sass'
 	],
-
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 	plugins: [
 		'@/plugins/antd-ui',
@@ -88,7 +92,8 @@ const config = {
 
 	// Modules: https://go.nuxtjs.dev/config-modules
 	modules: [
-		'nuxt-svg-loader'
+		'nuxt-svg-loader',
+		'@nuxtjs/gtm'
 	],
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
@@ -106,13 +111,29 @@ const config = {
 			maxAge: 1000 * 60 * 60 * 24 * 7
 		}
 	},
-	modern: 'client',
 
 	fontLoader: {
 		url: 'https://use.typekit.net/jem8rnn.css'
-
 		// prefetch: true,
 		// preconnect: true
+	},
+	pixel: {
+		lenguage: 'JavaScript1.1',
+		scriptURL: 'http://pixel.mathtag.com/event/js?mt_id=1566982&mt_adid=249599&mt_exem=&mt_excl=&v1=&v2=&v3=&s1=&s2=&s3='
+	},
+	gtm: {
+		enabled: true,
+		id: 'GTM-TG9JT2J',
+		pageTracking: true,
+		pageViewEventName: 'nuxtRoute',
+		scriptId: 'gtm-script',
+		scriptDefer: false,
+		scriptURL: 'https://www.googletagmanager.com/gtm.js',
+		crossOrigin: false,
+
+		noscript: true,
+		noscriptId: 'gtm-noscript',
+		noscriptURL: 'https://www.googletagmanager.com/ns.html'
 	}
 }
 

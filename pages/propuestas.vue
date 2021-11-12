@@ -1,102 +1,72 @@
 <template lang="pug">
 .propuestasRoot
-
 	n-child(@montado="verSiHayQueAbrirUnaPropuesta")
-	//- .zonaImagen(v-if="imagen")
-	//- 	img.imagenPrograma(:src='imagen.url' :alt='altImg')
+
 	.encabezado
-		h1 Propuesta
-		h1 Programática
-		h1 para un nuevo Chile
-		p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
-		p ¿Quieres conocer parte de nuestras propuestas?
+		h1.titulo Programa para un nuevo Chile
+			.sub Cambios para vivir mejor
 
-	//- section.pilares(v-if="pilares")
-	//- 	.contenido
-	//- 		.ql-editor.contenidoHTML(v-html='pilares')
-
-
-	section.propuestas(v-if="propuestas")
-
+	section.propuestas(v-if="setPropuestas")
 		.caja-propuestas
-
-			.propuesta(v-for='propuesta in propuestas' :key='propuesta.id' @click='abrirPropuesta(propuesta.id)')
+			.propuesta(
+				v-for="propuesta in setPropuestas",
+				:key="propuesta.id",
+				@click="abrirPropuesta(propuesta.id, propuesta.Slug)"
+			)
 				.prop
-					img.imagenDePropuesta(:src='propuesta.imagen.url' :alt="propuesta.textoAlternativoImagen")
+					img.imagenDePropuesta(
+						v-if="propuesta.imagen",
+						:src="propuesta.imagen.url",
+						:alt="propuesta.textoAlternativoImagen"
+					)
 					h2.tituloPropuesta {{ propuesta.titulo }}
 
-
-			a-modal.modalPropuesta(:visible="mostrandoPropuesta" :footer="null" @close="mostrandoPropuesta = false" @cancel="mostrandoPropuesta = false" centered :width="null")
+			a-modal.modalPropuesta(
+				:visible="mostrandoPropuesta",
+				:footer="null",
+				@close="mostrandoPropuesta = false",
+				@cancel="mostrandoPropuesta = false",
+				centered,
+				:width="null"
+			)
 				div(slot="title")
 					.pretitulo Propuestas programáticas
-					h2.titulo {{propuestaMostrada && propuestaMostrada.titulo}}
+					h2.titulo {{ propuestaMostrada && propuestaMostrada.titulo }}
 					//- .modoVisualizacion(v-if="propuestaMostrada && propuestaMostrada.pdfURL")
 					//- 	.modo(@click="modoVisualizacion = 'html'" :class="{activo: modoVisualizacion === 'html'}") Ver texto
 						//- .modo(@click="modoVisualizacion = 'pdf'" :class="{activo: modoVisualizacion === 'pdf'}") Ver en PDF
 						//- a.modo(:href="propuestaMostrada.pdfURL" download target="_blank" rel="noreferer noopener") Descargar PDF
 				.cuerpoPropuesta(v-if="propuestaMostrada")
 					transition-group(mode="out-in")
-						.pdf(v-show="modoVisualizacion === 'pdf'" key="pdf")
-							iframe(:src='`https://docs.google.com/viewer?url=${propuestaMostrada.pdfURL}&embedded=true`' frameborder='0' height='500px' width='100%')
-						.html(v-show="modoVisualizacion === 'html'" key="html")
-							.ql-editor.contenidoHTML(v-html='propuestaMostrada.html')
+						.pdf(v-show="modoVisualizacion === 'pdf'", key="pdf")
+							iframe(
+								:src="`https://docs.google.com/viewer?url=${propuestaMostrada.pdfURL}&embedded=true`",
+								frameborder="0",
+								height="500px",
+								width="100%"
+							)
+						.html(v-show="modoVisualizacion === 'html'", key="html")
+							.ql-editor.contenidoHTML(v-html="propuestaMostrada.html")
 
-	.zonaDescargas
-		a.descargable(v-if="programaArchivo" :href='programaArchivo.url' target="_blank" rel="noreferer noopener" download :name="programaArchivo.name" :title="programaArchivo.name")
-			.dentro
-				.oicono.descargar
-				.texto Descarga nuestro programa (en construcción)
-	.textoCierre
-		p Estas y muchas otras ideas se están pensando en nuestras mesas de participación.
-		p Súmate y decidamos las propuestas de nuestro programa.
-		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener") Participa Aquí
+	.contenedorbtn
+		a.button.boton(
+			href="https://drive.google.com/file/d/1-4lFR0liw_O7Vvuxr51Xq4wk3wiP_zL9/view?usp=sharing",
+			target="_blank",
+			download
+		)
+			.p DESCARGAR PROGRAMA
+	.contenedorbtn
+		a.button.boton(
+			href="https://drive.google.com/file/d/1kKP7eIUIM_4KJMvsL4VZv8l2lp89PXlX/view?usp=sharing",
+			target="_blank",
+			download
+		) Informe proceso participativo
 
-
-
+	.relleno
 </template>
 
 <script>
 export default {
-	async asyncData ({ app }) {
-		// console.log('context keys', Object.keys(context))
-		const _ = app.$lodash
-		// console.log('asyncData')
-		const respuesta = await app.$olicitar(`${process.env.cmsURL}/programa`)
-		const propuestas = respuesta.propuestas // Array
-
-		const data = {
-			propuestas: [],
-
-			seo: null,
-
-			imagen: null,
-			altImg: null,
-			pilares: null,
-			programaArchivo: null,
-
-
-			propuestaIdMostrada: null,
-			mostrandoPropuesta: null,
-			modoVisualizacion: 'html'
-		}
-		data.propuestas = _.map(propuestas, p => {
-			p.contenido = app.$sanitizar(p.contenido)
-			return p
-		})
-
-		// SEO
-		data.seo = respuesta.SEO
-		// IMAGEN
-		const componenteImagen = respuesta.componenteImagen
-		data.imagen = componenteImagen.imagen
-		data.altImg = componenteImagen.textoAlternativoImagen
-		// PILARES
-		data.pilares = app.$sanitizar(respuesta.Texto_pilares)
-		// PROGRAMA COMPLETO
-		data.programaArchivo = _.get(respuesta, ['Archivo_programa'])
-
-		return data
-	},
 	data () {
 		return {
 			propuestas: [],
@@ -105,9 +75,8 @@ export default {
 
 			imagen: null,
 			altImg: null,
-			pilares: null,
+			// pilares: null,
 			programaArchivo: null,
-
 
 			propuestaIdMostrada: null,
 			mostrandoPropuesta: null,
@@ -117,8 +86,16 @@ export default {
 	// solicita info a cms
 	head () {
 		// if (!this.seo) return {}
-		const titulo = this._.get(this.seo, ['titulo_pag'], 'Propuesta Programática')
-		const descripcion = this._.get(this.seo, ['descripcion_pag'], 'Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera. ¿Quieres conocer parte de nuestras propuestas?')
+		const titulo = this._.get(
+			this.seo,
+			['titulo_pag'],
+			'Propuesta Programática'
+		)
+		const descripcion = this._.get(
+			this.seo,
+			['descripcion_pag'],
+			'Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera. ¿Quieres conocer parte de nuestras propuestas?'
+		)
 		const imagen = '/imagenes/portadaMovil.web'
 		const url = 'https://boricpresidente.cl/propuestas'
 		const obj = this.$eo({
@@ -128,14 +105,26 @@ export default {
 			url
 		})
 		obj.link = obj.link || []
-		obj.link.push({ hid: 'quill', rel: 'stylesheet', href: 'https://cdn.quilljs.com/1.0.0/quill.snow.css' })
+		obj.link.push({
+			hid: 'quill',
+			rel: 'stylesheet',
+			href: 'https://cdn.quilljs.com/1.0.0/quill.snow.css'
+		})
 		return obj
 	},
 
 	computed: {
+		setPropuestas () {
+			const props = this.$store.state.propuestas
+			// console.log('propscc 1', props)
+			return props
+		},
 		propuestaMostrada () {
 			if (!this.propuestaIdMostrada) return null
-			const propuestaBruta = this._.find(this.propuestas, p => p.id === this.propuestaIdMostrada)
+			const propuestaBruta = this._.find(
+				this.setPropuestas,
+				p => p.id === this.propuestaIdMostrada
+			)
 			if (!propuestaBruta) return null
 
 			return {
@@ -146,6 +135,11 @@ export default {
 		}
 	},
 	watch: {
+		abrirPropuestaDelBuscador () {
+			const ruta = this.$nuxt.$route
+			console.log(ruta)
+			return null
+		},
 		mostrandoPropuesta (v) {
 			if (!v) {
 				if (this.propuestaMostrada) this.$router.push('/propuestas')
@@ -160,64 +154,56 @@ export default {
 		}
 	},
 	mounted () {
-		window.propuesta = this
+		window.setPropuestas = this
 	},
 	methods: {
-		abrirPropuesta (propuestaID) {
+		abrirPropuesta (propuestaID, slug) {
 			this.propuestaIdMostrada = propuestaID
 			this.$nextTick(() => {
-				if (this.propuestaMostrada) this.$router.push(`/propuestas/${propuestaID}`)
+				if (this.propuestaMostrada) this.$router.push(`/propuestas/${slug}`)
 			})
 		},
-		verSiHayQueAbrirUnaPropuesta ({ propuestaID }) {
-			if (propuestaID) this.abrirPropuesta(propuestaID)
+		verSiHayQueAbrirUnaPropuesta ({ propuestaSlug }) {
+			const propuestas = this.setPropuestas
+			const propuestaParaAbrir = this._.filter(propuestas, [
+				'Slug',
+				propuestaSlug
+			])
+			// console.log('prop a abrir', propuestaParaAbrir, propuestas)
+			if (propuestaSlug) {
+				const propuestaID = propuestaParaAbrir[0]._id
+				this.abrirPropuesta(propuestaID, propuestaSlug)
+			}
 		}
 	}
 }
-
-
-
 </script>
 
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
 .propuestasRoot
-	background-color: $azul2
-	section
-		padding: 2em
-		+movil
-			padding: 0
-
-// ENCABEZADO
+	background-color: $verde2
+	display: flex
+	align-items: center
+	flex-flow: column
+.relleno
+	width: 100vw
+	height: 7em
 .encabezado
 	text-align: center
-	padding-top: 1.5rem
-	h1
-		padding: 0 1rem 0 1rem
-		margin: 0
-		line-height: 1
+	font-style: italic
+	font-size: 1rem
+	.titulo
+		// max-width: 400px
+		padding: 1em 1em 0 1em
+		line-height: 1.1
 		color: $verde3
-		font-style: italic
 		font-weight: 900
-		font-size: 3em
-		&:nth-child(1)
-			padding-top: 2rem
-		&:nth-child(3)
+		.sub
 			color: #fff
 			font-weight: 400
-	p
-		padding: 0 2.5rem
-		color: #fff
-		font-size: 1.2rem
-		&:nth-of-type(1)
-			padding-top: 4rem
-	+movil
-		p
-			padding: 0 1em
 
-
-// CONTENIDO HTML
 .contenidoHTML
 	width: 900px
 	max-width: 100%
@@ -233,16 +219,32 @@ export default {
 	justify-content: justify
 	::v-deep
 		*
-			font-family: roboto
-		line-height: 1.4
+			font-family: lexia, Lucida Sans, Lucida Grande, sans-serif
+			line-height: 1.4
+		h1
+			font-weight: 900
+			font-style: italic
+			margin-top: 2rem
+			color: #19CBB5
+		h2
+			font-size: 1.4rem
+			margin-bottom: 1em
+			margin-top: 1.4rem
+			font-weight: 900
+			font-style: italic
+			color: #094C67
 		h1 + p
 			margin-top: 2rem
-		p
+		p,
+		li
+			font-size: 1rem
 			line-height: 1.8
+			margin-bottom: .8rem
 			+movil
 				line-height: 1.6
 		strong
 			font-weight: bold
+			font-style: italic
 		b
 			font-weight: bold
 		ol
@@ -250,63 +252,47 @@ export default {
 		a
 			all: revert
 
-.zonaImagen
-	.imagenPrograma
-		min-width: 100%
-		min-height: 230px
-		position: relative
-		left: 50%
-		transform: translateX(-50%)
+.programaBook
+	width: 90vw
+	background-color: $petroleo1
+	// max-height: 80vh
+	height: 350px
+	// padding: 1em
 
-.zonaDescargas
-	display: none
-	// display: flex
-	justify-content: center
-	padding: 1em 1em 6em 1em
-	.descargable
-		padding-bottom: 3em
-		.dentro
-			display: flex
-			align-items: center
-			background-color: transparentize($colorBody, .9)
-			.oicono
-				color: $verde3
-				flex: auto 0 0
-				font-size: 3em
-				margin: 2rem
-			.texto
-				color: #fff
-				flex: auto 1 1
-				margin: 2rem 2rem 2rem 0
-
-.textoCierre
+.contenedorbtn
+	padding-top: 1.5em
 	display: flex
-	flex-flow: column
 	justify-content: center
-	padding: 1em 1em 6em 1em
-	align-items: center
-	font-size: 1.2rem
-	text-align: center
-	p
-		&:nth-child(1)
-			margin-bottom: .3em
-	.btnparticipa
-		display: block
+	.boton
+		// transform: translateY(50%)
+		display: flex
 		margin: 0 auto
 		cursor: pointer
+		width: 100%
+		height: 40px
 		text-transform: uppercase
-		background-color: $verde3
-		color: $verde1
-		padding: .5em 1.3em
-		border-radius: 4px
+		background-color: $petroleo1
+		color: $verde3
+		justify-content: center
+		align-items: center
+		border: 0
+		border-radius: 5px
 		margin-top: .5em
 		z-index: 5
-// PILARES
-.pilares
-	+movil
-		.contenidoHTML
-			padding: 5em 1em
-// PROPUESTAS
+		font-size: 1.1rem
++compu
+	.encabezado
+		width: 750px
+		display: flex
+	.titulo
+		font-size: 3.2rem
+	.programaBook
+		height: 90vh
+		padding: 2em 6em
+	.contenedorbtn
+		.boton
+			font-size: 1.3rem
+
 .propuestas
 	z-index: 0
 	cursor: pointer
@@ -352,7 +338,6 @@ export default {
 						max-width: $lado
 						max-height: $lado
 
-
 		.contenido-propuesta
 			width: 80vw
 			height: 40vh
@@ -367,7 +352,6 @@ export default {
 			+saliendo
 				max-height: 100vh
 				overflow: hidden
-
 
 .modalPropuesta
 	::v-deep
@@ -450,6 +434,5 @@ export default {
 						max-width: 100%
 					+salir
 						opacity: 0
-
 </style>
 

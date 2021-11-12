@@ -4,7 +4,6 @@ footer
 	.capa.capaLinks
 	.capa.capaFooter
 		.logo
-		p.textoFooter Por un Chile en el que nadie quede fuera.
 		RedesSociales
 		.logos
 			.aprueboDignidad
@@ -50,6 +49,7 @@ footer
 			width: 1em
 			font-size: 10em
 		.redesSociales
+			padding-top: 1em
 			font-size: 1.4em
 			// padding: 1em 0 1em 0
 		.textoFooter

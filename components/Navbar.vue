@@ -1,42 +1,59 @@
 <template lang="pug">
-.navbar
+.root
+	.navbar
+		nuxt-link.alHome.zonaLogo(
+			to="/",
+			alt="home",
+			@click.native="tag('nav home')"
+		)
+			.logo
+				.trasLogo
+					.iconoAprueboDignidad
 
-	nuxt-link.alHome.zonaLogo(to='/')
-		.logo
-			.trasLogo
-				.iconoAprueboDignidad
+		mixin links
+			.links.contenedor-links.link-interno
+				nuxt-link.link.bold(to="/aporta", @click.native="tag('nav aporta')") aporta
+				nuxt-link.link.bold(
+					to="/propuestas",
+					@click.native="tag('nav propuestas')"
+				) Propuestas
+				//- nuxt-link.link.bold(to='/unete' @click.native="tag('nav Únete')") Únete
+				nuxt-link.link.bold(
+					to="/apoderados",
+					@click.native="tag('nav apoderados')"
+				) Apoderados
+				nuxt-link.link.bold(to="/playlist", @click.native="tag('nav playlist')") playlist
 
-	mixin links
-		.links.contenedor-links.link-interno
-			a.link.bold(href='https://participa.boricpresidente.cl' target="_blank" rel="noreferer noopener") participa Aquí
-			nuxt-link.link.bold(to='/aporta') aporta
-			nuxt-link.link.bold(to='/propuestas') Propuestas
-
-	.menuCompu
-		+links
-
-	transition(:duration='300')
-		.menuMovil(v-if="activa")
+		.menuCompu
 			+links
+		buscador
 
-	//- RedesSocialesnav
+		transition(:duration="300")
+			.menuMovil(v-if="activa")
+				+links
 
-	.triggerMenu(@click="activa = !activa")
-		.oicono(:class="activa ? 'cruz' : 'menu-relleno'")
+		//- RedesSocialesnav
 
-
+		.triggerMenu(@click="activa = !activa")
+			.oicono(:class="activa ? 'cruz' : 'menu-relleno'")
 </template>
 
 <script>
 export default {
 	data () {
 		return {
-			activa: null
+			activa: null,
+			buscar: null
 		}
 	},
 	watch: {
 		$route () {
 			this.activa = false
+		}
+	},
+	methods: {
+		tag (valor) {
+			this.$gtm.push({ event: 'nav-link', hacia: valor })
 		}
 	}
 }
@@ -46,10 +63,13 @@ export default {
 @import '~/estilos/paleta'
 
 $alturaMenu: 5em
-
+.relleno
+	width: 100vw
+	height: 5em
 .navbar
 	position: sticky
 	top: 0
+	width: 100vw
 	z-index: 1000
 	display: flex
 	align-items: center
@@ -58,7 +78,6 @@ $alturaMenu: 5em
 	background-color: $fondoHeader
 	height: $alturaMenu
 	box-shadow: 0 -3em 0 $fondoHeader
-
 	padding: 0 2em
 	+movil
 		padding: 0 1em
@@ -158,7 +177,7 @@ $alturaMenu: 5em
 		@media screen and (min-width: 760px)
 			display: none
 
-		transition: all 0.1s ease
+			transition: all 0.1s ease
 		+salir
 			opacity: 0
 			max-height: 0
@@ -180,10 +199,7 @@ $alturaMenu: 5em
 				font-size: 1.4em
 				margin: 1.2em 0
 
-
 	.triggerMenu
 		@media screen and (min-width: 760px)
 			display: none
-
-
 </style>
