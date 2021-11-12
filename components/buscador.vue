@@ -14,13 +14,15 @@
 	)
 		.buscadorDePropuestas
 			.contenedorInput(v-if="buscar")
-				input.input(
+				.oicono.lupa-linea.lupa
+				input(
 					v-focus,
 					v-model="matchPropuesta",
 					type="text",
 					placeholder="Que estas buscando?"
 				)
-				.oicono.lupa-linea.lupa
+				.lineaDelFocus
+
 
 			//- osoCoder.oso(v-if="_.isEmpty(buscarPropuesta)")
 				//- img.lupa(src="/iconos/lupa-linea.svg")
@@ -210,59 +212,98 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
+$anchoMaximo: 800px
 .buscador
 	.oicono
-		width: 25px
-		height: 25px
+		$lado: 25px
+		width: $lado
+		height: $lado
+
+.modalBusqueda::v-deep
+	.ant-modal-content
+		background-color: transparent
+		box-shadow: none
+	.ant-modal-mask
+		backdrop-filter: blur(.5em)
+	.ant-modal-body
+		text-align: center
+		padding: 2em 1em
+		color: #fff
+		max-height: 85vh
+		overflow: hidden
+	.ant-modal-wrap
+		top: 5em
+		bottom: unset
+	.ant-modal-close-x
+		color: white
+		$lado: 2.4em
+		width: $lado
+		height: $lado
+		svg
+			width: $lado
+			height: $lado
+
 .buscadorDePropuestas
-	// max-height: 90vh
 	overflow: auto
 	.contenedorInput
 		display: flex
 		align-items: center
 		justify-content: center
 		width: 100%
-		height: 80px
+		position: relative
 		min-height: 0
-		.input
-			color: rgba(20,20,20,.9)
-			background-color: rgba(255,255,255,.1)
-			width: 90vw
-			height: 72px
-			border: none
-			border-bottom: 1px solid $verde2
-			font-size: 1.5rem
-			padding: .5em 1em 0 2.3em
-			text-align: left
-			position: relative
-			+compu
-				padding-left: 1.5em
-				max-width: 800px
-				font-size: 3rem
-			&:focus
-				outline: none
-				border-bottom: 3px solid $verde2
-				transition: all .3s
 
 		.lupa
-			position: absolute
-			width: 30px
-			height: 30px
-			left: 2em
-			top: 4em
+			flex: auto 0 0
 			color: $verde2
+			$lado: 3em
+			width: $lado
+			height: $lado
 			+compu
-				width: 40px
-				height: 35px
-				left: 5em
-				top: 6em
+				$lado: 4em
+				width: $lado
+				height: $lado
+
+		input::placeholder
+			color: transparentize(white, .3)
+		input
+			margin-left: 1em
+			color: white
+			background-color: transparent
+			flex: auto 1 1
+			border: none
+			font-size: 1.4rem
+			padding: .25em 0
+			text-align: left
+			position: relative
+			transition: all .05s ease
+			caret-shape: underscore
+			caret-color: white
+			+compu
+				max-width: $anchoMaximo
+				font-size: 3rem
+		.lineaDelFocus
+			position: absolute
+			bottom: 0
+			height: 0
+			left: 0
+			right: 0
+			background-color: #fff
+			transform: translate(0, 50%)
+			transition: height .1s ease
+		input:focus
+			outline: none
+			+ .lineaDelFocus
+				height: 4px
+
 
 	.mostradorBusqueda
-		max-width: 800px
+		margin-top: 3em
+		max-width: $anchoMaximo
 		// width: 100vw
 		// height: 100%
 		max-height: 65vh
-		padding: 1em
+		padding: 0
 		overflow: auto
 		// background-color: $blanco
 		transition: all 0.1s ease
@@ -275,9 +316,9 @@ export default {
 		> .titulo
 			width: 100%
 			text-align: left
-			padding: 1em 0 0 .3em
+			padding: 1em 0 0 0
 			font-size: 2rem
-			color: $verde1
+			color: transparentize(white, .2)
 		.propuesta
 			margin: 1em 0
 			display: flex
@@ -319,21 +360,6 @@ export default {
 	.buscadorDePropuestas
 		padding: 2em 3em
 		.mostradorBusqueda
-			padding: 2em 3em
+			// padding: 2em 3em
 
-.modalBusqueda
-	::v-deep
-		.ant-modal-mask
-			backdrop-filter: blur(4px)
-		.ant-modal-body
-			text-align: center
-			padding: 2em 1em
-			color: #fff
-			max-height: 85vh
-			overflow: hidden
-		.ant-modal-wrap
-			top: 5em
-			bottom: unset
-		.ant-modal-content
-			background-color: rgba(255, 255, 255, 0.93)
 </style>
