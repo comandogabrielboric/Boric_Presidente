@@ -174,7 +174,8 @@ export default {
 		},
 		abrirPropuestaBuscada (p) {
 			// console.log(p)
-			this.$router.push('/propuestas/' + p.Slug)
+			const aDestacar = this.matchPropuesta
+			this.$router.push(`/propuestas/${p.Slug}#:~:text=${aDestacar}`)
 			this.$nuxt.refresh()
 			this.matchPropuesta = null
 			this.buscar = null
