@@ -6,14 +6,14 @@
 
 	.programaBook
 		iframe(
-			src="https://docs.google.com/viewer?srcid=1-4lFR0liw_O7Vvuxr51Xq4wk3wiP_zL9&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
+			src="https://docs.google.com/viewer?srcid=1dyxLh6kl6-gS60lW1CPjHf7LV_QSOOr_&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
 			width="100%",
 			height="100%"
 		)
 
 	.contenedorbtn
 		a.button.boton(
-			href="https://drive.google.com/file/d/1-4lFR0liw_O7Vvuxr51Xq4wk3wiP_zL9/view?usp=sharing",
+			href="https://drive.google.com/file/d/1dyxLh6kl6-gS60lW1CPjHf7LV_QSOOr_/view?usp=sharing",
 			target="_blank",
 			@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
 			download
