@@ -76,6 +76,12 @@
 		a-form-model-item.contenedorbtn(:wrapper-col="{ span: 14, offset: 4 }")
 			a-button.suscribirme(type="primary", @click="submitForm('formulario')")
 				| INSCRIBIRME
+		a-form-model-item.contenedorbtn(:wrapper-col="{ span: 14, offset: 7 }") #[span.pre ¿Votar en el extranjero?]
+			a-button.suscribirme(
+				type="primary",
+				to="https://docs.google.com/forms/d/e/1FAIpQLSe3bTgWo9CWLZGSQcYMSW625ssbK6TmL0WcuO49cx48rqY24Q/viewform"
+			)
+				| Inscríbete aquí
 
 		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
 
@@ -344,7 +350,8 @@ export default {
 		align-items: center
 		font-size: 1rem
 		color: #fff
-
+	.contenedorbtn
+		color: #fff
 	.input
 		width: 250px
 		border-radius: 2px
