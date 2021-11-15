@@ -226,6 +226,10 @@ $anchoMaximo: 800px
 		svg
 			width: $lado
 			height: $lado
+	+movil
+		.ant-modal-close
+			top: -25px
+			right: -35px
 
 .buscadorDePropuestas
 	// overflow: auto

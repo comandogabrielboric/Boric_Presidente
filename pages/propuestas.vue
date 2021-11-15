@@ -260,16 +260,18 @@ export default {
 	// padding: 1em
 
 .contenedorbtn
-	padding-top: 1.5em
+	// padding-top: 1.5em
+	padding: 1.5em 1em
 	display: flex
 	justify-content: center
+	text-align: center
 	.boton
 		// transform: translateY(50%)
 		display: flex
 		margin: 0 auto
 		cursor: pointer
 		width: 100%
-		height: 40px
+		max-height: 80px
 		text-transform: uppercase
 		background-color: $petroleo1
 		color: $verde3
@@ -309,32 +311,35 @@ export default {
 			margin: 10px
 			text-align: center
 			padding: 5px
-			width: 250px
-			height: 250px
-			background-color: rgba(14, 107, 139, 1)
+			flex: 340px 0 1
+			// width: 300px
+			// height: 300px
+			// background-color: rgba(14, 107, 139, 1)
 			.prop
 				display: flex
 				flex-flow: column
 				align-items: center
 				justify-content: center
 				.imagenDePropuesta
-					$lado: 130px
+					$lado: 300px
 					padding-top: 1em
 					max-width: $lado
 					max-height: $lado
 					z-index: 1
 				.tituloPropuesta
-					margin-top: 1rem
-					font-size: 1rem
+					// margin-top: 1rem
+					font-size: 2.3rem
 					padding: 0 .3em
 					font-style: italic
 					color: #fff
 
-				+movil
-					width: 250px
-					height: 250px
+			+movil
+				// width: 250px
+				.prop
+					// width: 250px
+					// height: 300px
 					.imagenDePropuesta
-						$lado: 100px
+						$lado: 260px
 						max-width: $lado
 						max-height: $lado
 
