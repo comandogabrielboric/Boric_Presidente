@@ -1,19 +1,17 @@
 <template lang="pug">
 .propuestasRoot
 	n-child(@montado="verSiHayQueAbrirUnaPropuesta")
-	//- .zonaImagen(v-if="imagen")
-	//- 	img.imagenPrograma(:src='imagen.url' :alt='altImg')
+
 	.encabezado
-		h1 Propuesta
-		h1 Programática
-		h1 para un nuevo Chile
-		p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
-		p ¿Quieres conocer parte de nuestras propuestas?
+		h1.titulo Propuestas para un nuevo Chile
+			.sub Cambios para vivir mejor
 
-	//- section.pilares(v-if="pilares")
-	//- 	.contenido
-	//- 		.ql-editor.contenidoHTML(v-html='pilares')
-
+	//- .programaBook
+		iframe(
+			src="https://docs.google.com/viewer?srcid=1dyxLh6kl6-gS60lW1CPjHf7LV_QSOOr_&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
+			width="100%",
+			height="100%"
+		)
 	section.propuestas(v-if="setPropuestas")
 		.caja-propuestas
 			.propuesta(
@@ -23,6 +21,7 @@
 			)
 				.prop
 					img.imagenDePropuesta(
+						v-if="propuesta.imagen",
 						:src="propuesta.imagen.url",
 						:alt="propuesta.textoAlternativoImagen"
 					)
@@ -55,28 +54,23 @@
 						.html(v-show="modoVisualizacion === 'html'", key="html")
 							.ql-editor.contenidoHTML(v-html="propuestaMostrada.html")
 
-	.zonaDescargas
-		a.descargable(
-			v-if="programaArchivo",
-			:href="programaArchivo.url",
+	.contenedorbtn
+		a.button.boton(
+			href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(1).pdf",
 			target="_blank",
-			rel="noreferer noopener",
-			download,
-			:name="programaArchivo.name",
-			:title="programaArchivo.name"
+			@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
+			download
 		)
-			.dentro
-				.oicono.descargar
-				.texto Descarga nuestro programa (en construcción)
-	.textoCierre
-		p Estas y muchas otras ideas se están pensando en nuestras mesas de participación.
-		p Súmate y decidamos las propuestas de nuestro programa.
-		a.btnparticipa.bold(
-			href="https://participa.boricpresidente.cl/",
+			.p DESCARGAR PROGRAMA
+	//- .contenedorbtn
+		a.button.boton(
+			href="https://drive.google.com/file/d/1kKP7eIUIM_4KJMvsL4VZv8l2lp89PXlX/view?usp=sharing",
 			target="_blank",
-			rel="noreferer noopener",
-			@click="$gtm.push({ event: 'link-home', hacia: 'Propuestas participa.boricpresidente.cl' })"
-		) Participa Aquí
+			@click="$gtm.push({ event: 'link-home', hacia: 'Link informe Proceso Participativo' })",
+			download
+		) Informe proceso participativo
+
+	.relleno
 </template>
 
 <script>
@@ -92,7 +86,7 @@ export default {
 			// pilares: null,
 			programaArchivo: null,
 
-			propuestaIdMostrada: null,
+			propuestaIdMostrada: this.propuestaSlug,
 			mostrandoPropuesta: null,
 			modoVisualizacion: 'html'
 		}
@@ -128,6 +122,9 @@ export default {
 	},
 
 	computed: {
+		propuestaSlug () {
+			return this.$route.params.propuestaSlug
+		},
 		setPropuestas () {
 			const props = this.$store.state.propuestas
 			// console.log('propscc 1', props)
@@ -149,11 +146,6 @@ export default {
 		}
 	},
 	watch: {
-		abrirPropuestaDelBuscador () {
-			const ruta = this.$nuxt.$route
-			console.log(ruta)
-			return null
-		},
 		mostrandoPropuesta (v) {
 			if (!v) {
 				if (this.propuestaMostrada) this.$router.push('/propuestas')
@@ -174,7 +166,10 @@ export default {
 		abrirPropuesta (propuestaID, slug) {
 			this.propuestaIdMostrada = propuestaID
 			this.$nextTick(() => {
-				if (this.propuestaMostrada) this.$router.push(`/propuestas/${slug}`)
+				// console.log('ruta', this.$route)
+				if (this.propuestaMostrada) {
+					this.$router.push(`/propuestas/${slug}/${this.$route.hash}`)
+				}
 			})
 		},
 		verSiHayQueAbrirUnaPropuesta ({ propuestaSlug }) {
@@ -197,40 +192,28 @@ export default {
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
 .propuestasRoot
-	background-color: $azul2
-	section
-		padding: 2em
-		+movil
-			padding: 0
-
-// ENCABEZADO
+	background-color: $petroleo2
+	display: flex
+	align-items: center
+	flex-flow: column
+.relleno
+	width: 100vw
+	height: 7em
 .encabezado
 	text-align: center
-	padding-top: 1.5rem
-	h1
-		padding: 0 1rem 0 1rem
-		margin: 0
-		line-height: 1
+	font-style: italic
+	font-size: 1rem
+	.titulo
+		// max-width: 400px
+		padding: 1em 1em 0 1em
+		line-height: 1.1
 		color: $verde3
-		font-style: italic
 		font-weight: 900
-		font-size: 3em
-		&:nth-child(1)
-			padding-top: 2rem
-		&:nth-child(3)
+		font-size: 3rem
+		.sub
 			color: #fff
 			font-weight: 400
-	p
-		padding: 0 2.5rem
-		color: #fff
-		font-size: 1.2rem
-		&:nth-of-type(1)
-			padding-top: 4rem
-	+movil
-		p
-			padding: 0 1em
 
-// CONTENIDO HTML
 .contenidoHTML
 	width: 900px
 	max-width: 100%
@@ -279,105 +262,87 @@ export default {
 		a
 			all: revert
 
-.zonaImagen
-	.imagenPrograma
-		min-width: 100%
-		min-height: 230px
-		position: relative
-		left: 50%
-		transform: translateX(-50%)
+.programaBook
+	width: 90vw
+	background-color: $petroleo1
+	// max-height: 80vh
+	height: 350px
+	// padding: 1em
 
-.zonaDescargas
-	display: none
-	// display: flex
-	justify-content: center
-	padding: 1em 1em 6em 1em
-	.descargable
-		padding-bottom: 3em
-		.dentro
-			display: flex
-			align-items: center
-			background-color: transparentize($colorBody, .9)
-			.oicono
-				color: $verde3
-				flex: auto 0 0
-				font-size: 3em
-				margin: 2rem
-			.texto
-				color: #fff
-				flex: auto 1 1
-				margin: 2rem 2rem 2rem 0
-
-.textoCierre
+.contenedorbtn
+	// padding-top: 1.5em
+	padding: 1.5em 1em
 	display: flex
-	flex-flow: column
 	justify-content: center
-	padding: 1em 1em 6em 1em
-	align-items: center
-	font-size: 1.2rem
 	text-align: center
-	p
-		&:nth-child(1)
-			margin-bottom: .3em
-	.btnparticipa
-		display: block
+	.boton
+		// transform: translateY(50%)
+		display: flex
 		margin: 0 auto
 		cursor: pointer
+		width: 100%
+		max-height: 80px
 		text-transform: uppercase
-		background-color: $verde3
-		color: $verde1
-		padding: .5em 1.3em
-		border-radius: 4px
+		background-color: $petroleo1
+		color: $verde3
+		justify-content: center
+		align-items: center
+		border: 0
+		border-radius: 5px
 		margin-top: .5em
 		z-index: 5
-// PILARES
-// .pilares
-// 	+movil
-// 		.contenidoHTML
-// 			padding: 5em 1em
-// PROPUESTAS
+		font-size: 1.1rem
++compu
+	.encabezado
+		width: 750px
+		display: flex
+	.titulo
+		font-size: 3.2rem
+	.programaBook
+		height: 90vh
+		padding: 2em 6em
+	.contenedorbtn
+		.boton
+			font-size: 1.3rem
+
 .propuestas
 	z-index: 0
 	cursor: pointer
 	+movil
 		.caja-propuestas
-			padding: 3.5em 0
+			padding: 1em 0
 
 	.caja-propuestas
 		display: flex
 		flex-flow: row wrap
 		justify-content: center
 		.propuesta
-			// flex: 12em 0 0
 			margin: 10px
 			text-align: center
 			padding: 5px
-			width: 250px
-			height: 250px
-			background-color: rgba(14, 107, 139, 1)
+			flex: 340px 0 1
 			.prop
+				min-height: 340px
 				display: flex
 				flex-flow: column
 				align-items: center
 				justify-content: center
 				.imagenDePropuesta
-					$lado: 130px
-					padding-top: 1em
+					$lado: 350px
 					max-width: $lado
 					max-height: $lado
 					z-index: 1
 				.tituloPropuesta
-					margin-top: 1rem
-					font-size: 1rem
+					margin-top: .5em
+					font-size: 2.3rem
+					font-weight: 700
 					padding: 0 .3em
 					font-style: italic
 					color: #fff
 
 				+movil
-					width: 250px
-					height: 250px
 					.imagenDePropuesta
-						$lado: 100px
+						$lado: 310px
 						max-width: $lado
 						max-height: $lado
 

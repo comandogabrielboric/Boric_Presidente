@@ -421,7 +421,7 @@ section
 				text-align: left
 			.texto
 				text-align: left
-				padding-right: 6em
+				padding-right: 2em
 			.boton
 				width: 100%
 				display: flex
@@ -437,6 +437,7 @@ section
 				// height: 100%
 	+wide
 		.texto
+			padding-right: 6em
 			line-height: 1.2
 		.boton
 			padding-top: 1em
