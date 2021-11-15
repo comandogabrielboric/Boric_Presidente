@@ -209,7 +209,7 @@ export default {
 		line-height: 1.1
 		color: $verde3
 		font-weight: 900
-		font-size: 2.5rem
+		font-size: 3rem
 		.sub
 			color: #fff
 			font-weight: 400

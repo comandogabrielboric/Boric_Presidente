@@ -328,7 +328,7 @@ export default {
 .titulo
 	padding: 1em .5em .5em .5em
 	text-align: center
-	font-size: 2.5rem
+	font-size: 3rem
 	color: $verde3
 	font-style: italic
 	line-height: 1.1

@@ -87,6 +87,7 @@ export default {
 		padding: 1em 1em 0 1em
 		line-height: 1.1
 		color: $verde3
+		font-size: 3rem
 		font-weight: 900
 		.sub
 			color: #fff

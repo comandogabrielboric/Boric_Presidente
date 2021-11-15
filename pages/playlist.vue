@@ -133,7 +133,7 @@ export default {
 	padding-bottom: 1.5em
 	.titulo
 		padding: .5em .5em
-		font-size: 2.3rem
+		font-size: 3rem
 		font-style: italic
 		z-index: 3
 		line-height: 1.2

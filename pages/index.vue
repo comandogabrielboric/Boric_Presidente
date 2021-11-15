@@ -67,8 +67,8 @@
 					h2.titulo #[span.primero Inscríbete]
 						div Únete a la campaña
 					.texto
-						p Las transformaciones que Chile necesita las hacemos entre todas y todos.
-						P Déjanos tu mail y recibirás más información sobre la campaña.
+						div Las transformaciones que Chile necesita las hacemos entre todas y todos.
+						div Déjanos tu mail y recibirás más información sobre la campaña.
 
 				.lado.lado2
 					.suscribirse
@@ -93,7 +93,7 @@
 				.lado.ladotitutlo
 					.titulo Arma tu
 						.segundo Campaña
-					p.texto Descarga nuestro kit y crea tus propios insumos de campaña. #[br]¡De ti depende!
+					.texto Descarga nuestro kit y crea tus propios insumos de campaña. #[br]¡De ti depende!
 					.noMovil
 						+linkDescarga
 
@@ -122,7 +122,7 @@
 				.lado
 					.titulo Súmate
 						.segundo y Aporta
-					p El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia.
+					.texto El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia.
 					.noMovil
 						+linkServel
 				.lado.ladoImagen
@@ -130,7 +130,7 @@
 				.noCompu
 					+linkServel
 
-		section.propuestas
+		//- section.propuestas
 			.ondaonda
 				wave.wave
 			.zonaCombi
@@ -231,6 +231,20 @@ section
 		justify-content: center
 		align-items: center
 
+.titulo
+	+movil
+		font-size: 2rem
+	+compu
+		font-size: 3rem
+	+wide
+		font-size: 4rem
+.texto
+	+movil
+		font-size: 1.3rem
+	+compu
+		font-size: 1.5rem
+	+wide
+		font-size: 2rem
 .storytelling
 	display: flex
 	justify-content: center
@@ -275,7 +289,6 @@ section
 		padding: 3em 0
 		text-align: center
 		.titulo
-			font-size: 2rem
 			line-height: 1
 			font-style: italic
 			font-weight: 700
@@ -349,7 +362,6 @@ section
 		background-color: inherit
 
 	.titulo
-		font-size: 2.3rem
 		font-style: italic
 		text-align: center
 		line-height: 1.1
@@ -361,7 +373,6 @@ section
 		text-align: center
 		font-style: italic
 		padding: 0 1em
-		font-size: 1.3rem
 	.portadaPlaylist
 		display: flex
 		justify-content: center
@@ -408,10 +419,8 @@ section
 			.titulo
 				width: 100%
 				text-align: left
-				font-size: 3rem
 			.texto
 				text-align: left
-				font-size: 1.7rem
 				padding-right: 6em
 			.boton
 				width: 100%
@@ -427,10 +436,7 @@ section
 					z-index: 5
 				// height: 100%
 	+wide
-		.titulo
-			font-size: 4.2rem
 		.texto
-			font-size: 2.5rem
 			line-height: 1.2
 		.boton
 			padding-top: 1em
@@ -457,7 +463,6 @@ section
 		.titulo
 			max-width: 100%
 			line-height: 1.2
-			font-size: 2.3rem
 			color: #fff
 			font-weight: 400
 			.primero
@@ -468,7 +473,6 @@ section
 
 		.texto
 			font-style: italic
-			font-size: 1.2rem
 			line-height: 1.2
 		.suscribirse
 			padding: 0 .5em
@@ -491,19 +495,13 @@ section
 				justify-content: center
 			.lado1
 				padding-left: 2em
-			.titulo
-				font-size: 3rem
-			.texto
-				font-size: 1.5rem
 	+wide
 		.contenido
 			.titulo
 				line-height: 1.1
-				font-size: 3.5rem
 				.primero
 					font-size: 3.4rem
 			.texto
-				font-size: 2rem
 				padding-right: 1em
 
 .seccionArmaTuCampana
@@ -526,7 +524,6 @@ section
 			// padding: 0 1em
 		.titulo,
 		.segundo
-			font-size: 3rem
 			line-height: 1
 		.titulo
 			color: $verde3
@@ -579,8 +576,9 @@ section
 		text-align: center
 		color: $azul2
 		font-weight: 700
-		.texto
-			font-size: 1em
+		padding-top: .7em
+		> .texto
+			font-size: 1.5rem
 			font-style: italic
 		.boton
 			background-color: $verde3
@@ -604,11 +602,8 @@ section
 					padding-right: 15em
 				&.ladotitutlo
 					z-index: 5
-				.titulo
-					font-size: 3.4rem
 				.texto
 					padding-top: .5em
-					font-size: 1.5rem
 					line-height: 1.3
 			.kitGrafico
 				display: block
@@ -616,7 +611,6 @@ section
 				.texto
 					margin-top: -.8em
 					text-align: left
-					font-size: 2rem
 				.boton
 					font-size: 1.5rem
 					padding: .3em 0 .1em 0
@@ -630,15 +624,8 @@ section
 					padding-right: 6em
 				&.ladotitutlo
 					z-index: 5
-				.titulo,
-				.segundo
-					font-size: 3.5rem
-				.texto
-					font-size: 2rem
 			.kitGrafico
 				width: 300px
-				.texto
-					font-size: 2rem
 				.boton
 					font-size: 1.5rem
 					padding: 12px 0 .1em 0
@@ -698,7 +685,6 @@ section.seccionaporta
 		padding-bottom: 6em
 		.titulo,
 		.segundo
-			font-size: 3rem
 			margin: 0
 			line-height: 1
 			font-style: italic
@@ -707,10 +693,10 @@ section.seccionaporta
 		.segundo
 			font-weight: 900
 			color: #fff
-		p
+		.texto
 			margin: 1em 0
 			font-style: italic
-			font-size: 1.2rem
+			// font-size: 1.2rem
 
 	+compu
 		.contenido
@@ -722,7 +708,6 @@ section.seccionaporta
 		.lado
 			flex: 600px 0 1
 			.titulo
-				font-size: 3.3rem
 				display: flex
 				flex-flow: row nowrap
 				.segundo
@@ -741,7 +726,6 @@ section.seccionaporta
 			min-height: 900px
 			// border: 1px solid green
 			.titulo
-				font-size: 4.2rem
 				.segundo
 					font-size: 4.1rem
 			p
@@ -797,7 +781,6 @@ section.propuestas
 		.textoseccion
 			.titulo,
 			.segundo
-				font-size: 3rem
 				line-height: 1
 				font-weight: 900
 				font-style: italic
@@ -834,8 +817,6 @@ section.propuestas
 			width: 600px
 			margin: 0 auto
 			.textoseccion
-				.titulo
-					font-size: 3.4rem
 				p
 					font-size: 1.5rem
 					line-height: 1.2
@@ -847,7 +828,6 @@ section.propuestas
 	+wide
 		.contenido
 			.titulo
-				font-size: 3.5rem
 				.segundo
 					font-size: 3.4rem
 			.textoseccion
