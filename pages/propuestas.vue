@@ -319,6 +319,7 @@ export default {
 			padding: 5px
 			flex: 340px 0 1
 			.prop
+				min-height: 340px
 				display: flex
 				flex-flow: column
 				align-items: center
