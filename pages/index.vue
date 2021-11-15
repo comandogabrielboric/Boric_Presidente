@@ -484,11 +484,13 @@ section
 			text-align: left
 			justify-content: center
 			.lado
-				flex: 700px 0 1
+				flex: 600px 0 1
 			.lado2
 				display: flex
 				align-items: center
 				justify-content: center
+			.lado1
+				padding-left: 2em
 			.titulo
 				font-size: 3rem
 			.texto
