@@ -17,6 +17,7 @@
 					to="/propuestas",
 					@click.native="tag('nav propuestas')"
 				) Propuestas
+				nuxt-link.link.bold(to="/programa", @click.native="tag('nav programa')") Programa
 				//- nuxt-link.link.bold(to='/unete' @click.native="tag('nav Únete')") Únete
 				nuxt-link.link.bold(
 					to="/apoderados",

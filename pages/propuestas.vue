@@ -86,7 +86,7 @@ export default {
 			// pilares: null,
 			programaArchivo: null,
 
-			propuestaIdMostrada: null,
+			propuestaIdMostrada: this.propuestaSlug,
 			mostrandoPropuesta: null,
 			modoVisualizacion: 'html'
 		}
@@ -122,6 +122,9 @@ export default {
 	},
 
 	computed: {
+		propuestaSlug () {
+			return this.$route.params.propuestaSlug
+		},
 		setPropuestas () {
 			const props = this.$store.state.propuestas
 			// console.log('propscc 1', props)
