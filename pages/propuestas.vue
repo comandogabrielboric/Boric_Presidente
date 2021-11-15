@@ -3,7 +3,7 @@
 	n-child(@montado="verSiHayQueAbrirUnaPropuesta")
 
 	.encabezado
-		h1.titulo Programa para un nuevo Chile
+		h1.titulo Propuestas para un nuevo Chile
 			.sub Cambios para vivir mejor
 
 	section.propuestas(v-if="setPropuestas")
@@ -135,11 +135,6 @@ export default {
 		}
 	},
 	watch: {
-		abrirPropuestaDelBuscador () {
-			const ruta = this.$nuxt.$route
-			console.log(ruta)
-			return null
-		},
 		mostrandoPropuesta (v) {
 			if (!v) {
 				if (this.propuestaMostrada) this.$router.push('/propuestas')
@@ -186,7 +181,7 @@ export default {
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
 .propuestasRoot
-	background-color: $verde2
+	background-color: $petroleo2
 	display: flex
 	align-items: center
 	flex-flow: column
@@ -203,6 +198,7 @@ export default {
 		line-height: 1.1
 		color: $verde3
 		font-weight: 900
+		font-size: 2.5rem
 		.sub
 			color: #fff
 			font-weight: 400
@@ -303,49 +299,38 @@ export default {
 	cursor: pointer
 	+movil
 		.caja-propuestas
-			padding: 3.5em 0
+			padding: 1em 0
 
 	.caja-propuestas
 		display: flex
 		flex-flow: row wrap
 		justify-content: center
-		align-items: center
 		.propuesta
-			// flex: 12em 0 0
 			margin: 10px
 			text-align: center
 			padding: 5px
 			flex: 340px 0 1
-			// width: 300px
-			// height: 300px
-			// background-color: rgba(14, 107, 139, 1)
 			.prop
 				display: flex
 				flex-flow: column
 				align-items: center
 				justify-content: center
-				// max-height: 450px
-				// border: 1px solid red
 				.imagenDePropuesta
-					$lado: 290px
-					padding-top: 1em
+					$lado: 350px
 					max-width: $lado
-					max-height: 280px
+					max-height: $lado
 					z-index: 1
 				.tituloPropuesta
 					margin-top: .5em
-					font-size: 2rem
+					font-size: 2.3rem
+					font-weight: 700
 					padding: 0 .3em
 					font-style: italic
 					color: #fff
 
-			+movil
-				// width: 250px
-				.prop
-					// width: 250px
-					height: auto
+				+movil
 					.imagenDePropuesta
-						$lado: 260px
+						$lado: 310px
 						max-width: $lado
 						max-height: $lado
 
