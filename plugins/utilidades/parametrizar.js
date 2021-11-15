@@ -73,5 +73,17 @@ const parameterize = function (stringPorProcesar, numChars, delimiter) {
 	return stringPorProcesar.substring(0, numChars)// trim to first numChars chars
 }
 
+const sinCaracteresEspeciales = function (stringPorProcesar) {
+	if (!stringPorProcesar) return stringPorProcesar
+	if (typeof stringPorProcesar !== 'string') throw 'stringPorProcesar debe ser string'
+	stringPorProcesar = downcode(stringPorProcesar)
+	stringPorProcesar = stringPorProcesar.toLowerCase() // convert to lowercase
+	return stringPorProcesar
+}
+
 
 export default parameterize
+
+export {
+	sinCaracteresEspeciales
+}

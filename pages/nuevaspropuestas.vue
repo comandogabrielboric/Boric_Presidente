@@ -1,17 +1,19 @@
 <template lang="pug">
 .propuestasRoot
 	n-child(@montado="verSiHayQueAbrirUnaPropuesta")
-
+	//- .zonaImagen(v-if="imagen")
+	//- 	img.imagenPrograma(:src='imagen.url' :alt='altImg')
 	.encabezado
-		h1.titulo Propuestas para un nuevo Chile
-			.sub Cambios para vivir mejor
+		h1 Propuesta
+		h1 Programática
+		h1 para un nuevo Chile
+		p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
+		p ¿Quieres conocer parte de nuestras propuestas?
 
-	//- .programaBook
-		iframe(
-			src="https://docs.google.com/viewer?srcid=1dyxLh6kl6-gS60lW1CPjHf7LV_QSOOr_&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
-			width="100%",
-			height="100%"
-		)
+	//- section.pilares(v-if="pilares")
+	//- 	.contenido
+	//- 		.ql-editor.contenidoHTML(v-html='pilares')
+
 	section.propuestas(v-if="setPropuestas")
 		.caja-propuestas
 			.propuesta(
@@ -21,7 +23,6 @@
 			)
 				.prop
 					img.imagenDePropuesta(
-						v-if="propuesta.imagen",
 						:src="propuesta.imagen.url",
 						:alt="propuesta.textoAlternativoImagen"
 					)
@@ -54,23 +55,28 @@
 						.html(v-show="modoVisualizacion === 'html'", key="html")
 							.ql-editor.contenidoHTML(v-html="propuestaMostrada.html")
 
-	.contenedorbtn
-		a.button.boton(
-			href="https://drive.google.com/file/d/1dyxLh6kl6-gS60lW1CPjHf7LV_QSOOr_/view?usp=sharing",
+	.zonaDescargas
+		a.descargable(
+			v-if="programaArchivo",
+			:href="programaArchivo.url",
 			target="_blank",
-			@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
-			download
+			rel="noreferer noopener",
+			download,
+			:name="programaArchivo.name",
+			:title="programaArchivo.name"
 		)
-			.p DESCARGAR PROGRAMA
-	.contenedorbtn
-		a.button.boton(
-			href="https://drive.google.com/file/d/1kKP7eIUIM_4KJMvsL4VZv8l2lp89PXlX/view?usp=sharing",
+			.dentro
+				.oicono.descargar
+				.texto Descarga nuestro programa (en construcción)
+	.textoCierre
+		p Estas y muchas otras ideas se están pensando en nuestras mesas de participación.
+		p Súmate y decidamos las propuestas de nuestro programa.
+		a.btnparticipa.bold(
+			href="https://participa.boricpresidente.cl/",
 			target="_blank",
-			@click="$gtm.push({ event: 'link-home', hacia: 'Link informe Proceso Participativo' })",
-			download
-		) Informe proceso participativo
-
-	.relleno
+			rel="noreferer noopener",
+			@click="$gtm.push({ event: 'link-home', hacia: 'Propuestas participa.boricpresidente.cl' })"
+		) Participa Aquí
 </template>
 
 <script>
@@ -143,6 +149,11 @@ export default {
 		}
 	},
 	watch: {
+		abrirPropuestaDelBuscador () {
+			const ruta = this.$nuxt.$route
+			console.log(ruta)
+			return null
+		},
 		mostrandoPropuesta (v) {
 			if (!v) {
 				if (this.propuestaMostrada) this.$router.push('/propuestas')
@@ -163,10 +174,7 @@ export default {
 		abrirPropuesta (propuestaID, slug) {
 			this.propuestaIdMostrada = propuestaID
 			this.$nextTick(() => {
-				// console.log('ruta', this.$route)
-				if (this.propuestaMostrada) {
-					this.$router.push(`/propuestas/${slug}/${this.$route.hash}`)
-				}
+				if (this.propuestaMostrada) this.$router.push(`/propuestas/${slug}`)
 			})
 		},
 		verSiHayQueAbrirUnaPropuesta ({ propuestaSlug }) {
@@ -189,28 +197,40 @@ export default {
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
 .propuestasRoot
-	background-color: $petroleo2
-	display: flex
-	align-items: center
-	flex-flow: column
-.relleno
-	width: 100vw
-	height: 7em
+	background-color: $azul2
+	section
+		padding: 2em
+		+movil
+			padding: 0
+
+// ENCABEZADO
 .encabezado
 	text-align: center
-	font-style: italic
-	font-size: 1rem
-	.titulo
-		// max-width: 400px
-		padding: 1em 1em 0 1em
-		line-height: 1.1
+	padding-top: 1.5rem
+	h1
+		padding: 0 1rem 0 1rem
+		margin: 0
+		line-height: 1
 		color: $verde3
+		font-style: italic
 		font-weight: 900
-		font-size: 2.5rem
-		.sub
+		font-size: 3em
+		&:nth-child(1)
+			padding-top: 2rem
+		&:nth-child(3)
 			color: #fff
 			font-weight: 400
+	p
+		padding: 0 2.5rem
+		color: #fff
+		font-size: 1.2rem
+		&:nth-of-type(1)
+			padding-top: 4rem
+	+movil
+		p
+			padding: 0 1em
 
+// CONTENIDO HTML
 .contenidoHTML
 	width: 900px
 	max-width: 100%
@@ -259,86 +279,105 @@ export default {
 		a
 			all: revert
 
-.programaBook
-	width: 90vw
-	background-color: $petroleo1
-	// max-height: 80vh
-	height: 350px
-	// padding: 1em
+.zonaImagen
+	.imagenPrograma
+		min-width: 100%
+		min-height: 230px
+		position: relative
+		left: 50%
+		transform: translateX(-50%)
 
-.contenedorbtn
-	// padding-top: 1.5em
-	padding: 1.5em 1em
-	display: flex
+.zonaDescargas
+	display: none
+	// display: flex
 	justify-content: center
+	padding: 1em 1em 6em 1em
+	.descargable
+		padding-bottom: 3em
+		.dentro
+			display: flex
+			align-items: center
+			background-color: transparentize($colorBody, .9)
+			.oicono
+				color: $verde3
+				flex: auto 0 0
+				font-size: 3em
+				margin: 2rem
+			.texto
+				color: #fff
+				flex: auto 1 1
+				margin: 2rem 2rem 2rem 0
+
+.textoCierre
+	display: flex
+	flex-flow: column
+	justify-content: center
+	padding: 1em 1em 6em 1em
+	align-items: center
+	font-size: 1.2rem
 	text-align: center
-	.boton
-		// transform: translateY(50%)
-		display: flex
+	p
+		&:nth-child(1)
+			margin-bottom: .3em
+	.btnparticipa
+		display: block
 		margin: 0 auto
 		cursor: pointer
-		width: 100%
-		max-height: 80px
 		text-transform: uppercase
-		background-color: $petroleo1
-		color: $verde3
-		justify-content: center
-		align-items: center
-		border: 0
-		border-radius: 5px
+		background-color: $verde3
+		color: $verde1
+		padding: .5em 1.3em
+		border-radius: 4px
 		margin-top: .5em
 		z-index: 5
-		font-size: 1.1rem
-+compu
-	.encabezado
-		width: 750px
-		display: flex
-	.titulo
-		font-size: 3.2rem
-	.programaBook
-		height: 90vh
-		padding: 2em 6em
-	.contenedorbtn
-		.boton
-			font-size: 1.3rem
-
+// PILARES
+// .pilares
+// 	+movil
+// 		.contenidoHTML
+// 			padding: 5em 1em
+// PROPUESTAS
 .propuestas
 	z-index: 0
 	cursor: pointer
 	+movil
 		.caja-propuestas
-			padding: 1em 0
+			padding: 3.5em 0
 
 	.caja-propuestas
 		display: flex
 		flex-flow: row wrap
 		justify-content: center
 		.propuesta
+			// flex: 12em 0 0
 			margin: 10px
 			text-align: center
 			padding: 5px
-			flex: 340px 0 1
+			width: 250px
+			height: 250px
+			background-color: rgba(14, 107, 139, 1)
 			.prop
 				display: flex
 				flex-flow: column
 				align-items: center
 				justify-content: center
 				.imagenDePropuesta
-					$lado: 350px
+					$lado: 130px
+					padding-top: 1em
 					max-width: $lado
 					max-height: $lado
 					z-index: 1
 				.tituloPropuesta
-					margin-top: .5em
-					font-size: 2.3rem
-					font-weight: 700
+					margin-top: 1rem
+					font-size: 1rem
 					padding: 0 .3em
 					font-style: italic
 					color: #fff
 
 				+movil
+					width: 250px
+					height: 250px
 					.imagenDePropuesta
-						$lado: 310px
+						$lado: 100px
 						max-width: $lado
 						max-height: $lado
 
