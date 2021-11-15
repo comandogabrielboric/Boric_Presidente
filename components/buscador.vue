@@ -99,8 +99,14 @@ export default {
 
 			const prop = this.setPropuestas
 			// console.log('a buscar', buscar, prop)
-			const coincidencia = _.pickBy(prop, p =>
-				_.includes(sinCaracteresEspeciales(p.contenido), buscadoSinEspeciales)
+			const coincidencia = _.pickBy(
+				prop,
+				p =>
+					_.includes(
+						sinCaracteresEspeciales(p.contenido),
+						buscadoSinEspeciales
+					) ||
+					_.includes(sinCaracteresEspeciales(p.titulo), buscadoSinEspeciales)
 			)
 			// console.log('coincidencia', coincidencia)
 			const arrayCoincidencias = _.map(coincidencia, c => {
@@ -175,7 +181,7 @@ export default {
 		abrirPropuestaBuscada (p) {
 			// console.log(p)
 			const aDestacar = this.matchPropuesta
-			this.$router.push(`/propuestas/${p.Slug}#:~:text=${aDestacar}`)
+			this.$router.push(`/propuestas/${p.Slug}/#:~:text=${aDestacar}`)
 			this.$nuxt.refresh()
 			this.matchPropuesta = null
 			this.buscar = null

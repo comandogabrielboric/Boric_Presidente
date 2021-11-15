@@ -9,12 +9,15 @@ export default {
 		}
 	},
 	watch: {
-		'$route.params.propuestaSlug' (v) {
+		'$route.params.propuestaSlug' (v, h) {
 			this.$emit('montado', { propuestaSlug: v })
 		}
 	},
 	mounted () {
-		this.$emit('montado', { propuestaSlug: this.$route.params.propuestaSlug })
+		this.$emit('montado', {
+			propuestaSlug: this.$route.params.propuestaSlug
+		})
+		console.log('montado slug', this.$route)
 		window.pSlug = this
 	}
 }

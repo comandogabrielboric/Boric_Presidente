@@ -160,7 +160,10 @@ export default {
 		abrirPropuesta (propuestaID, slug) {
 			this.propuestaIdMostrada = propuestaID
 			this.$nextTick(() => {
-				if (this.propuestaMostrada) this.$router.push(`/propuestas/${slug}`)
+				console.log('ruta', this.$route)
+				if (this.propuestaMostrada) {
+					this.$router.push(`/propuestas/${slug}/${this.$route.hash}`)
+				}
 			})
 		},
 		verSiHayQueAbrirUnaPropuesta ({ propuestaSlug }) {
@@ -306,6 +309,7 @@ export default {
 		display: flex
 		flex-flow: row wrap
 		justify-content: center
+		align-items: center
 		.propuesta
 			// flex: 12em 0 0
 			margin: 10px
@@ -320,15 +324,17 @@ export default {
 				flex-flow: column
 				align-items: center
 				justify-content: center
+				// max-height: 450px
+				// border: 1px solid red
 				.imagenDePropuesta
-					$lado: 300px
+					$lado: 290px
 					padding-top: 1em
 					max-width: $lado
-					max-height: $lado
+					max-height: 280px
 					z-index: 1
 				.tituloPropuesta
-					// margin-top: 1rem
-					font-size: 2.3rem
+					margin-top: .5em
+					font-size: 2rem
 					padding: 0 .3em
 					font-style: italic
 					color: #fff
@@ -337,7 +343,7 @@ export default {
 				// width: 250px
 				.prop
 					// width: 250px
-					// height: 300px
+					height: auto
 					.imagenDePropuesta
 						$lado: 260px
 						max-width: $lado
