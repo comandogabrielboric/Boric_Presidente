@@ -56,7 +56,7 @@
 
 	.contenedorbtn
 		a.button.boton(
-			href="https://drive.google.com/file/d/1dyxLh6kl6-gS60lW1CPjHf7LV_QSOOr_/view?usp=sharing",
+			href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(1).pdf",
 			target="_blank",
 			@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
 			download
