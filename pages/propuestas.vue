@@ -62,7 +62,7 @@
 			download
 		)
 			.p DESCARGAR PROGRAMA
-	.contenedorbtn
+	//- .contenedorbtn
 		a.button.boton(
 			href="https://drive.google.com/file/d/1kKP7eIUIM_4KJMvsL4VZv8l2lp89PXlX/view?usp=sharing",
 			target="_blank",
