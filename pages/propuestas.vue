@@ -160,7 +160,7 @@ export default {
 		abrirPropuesta (propuestaID, slug) {
 			this.propuestaIdMostrada = propuestaID
 			this.$nextTick(() => {
-				console.log('ruta', this.$route)
+				// console.log('ruta', this.$route)
 				if (this.propuestaMostrada) {
 					this.$router.push(`/propuestas/${slug}/${this.$route.hash}`)
 				}

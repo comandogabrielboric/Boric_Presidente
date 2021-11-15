@@ -17,7 +17,7 @@ export default {
 		this.$emit('montado', {
 			propuestaSlug: this.$route.params.propuestaSlug
 		})
-		console.log('montado slug', this.$route)
+		// console.log('montado slug', this.$route)
 		window.pSlug = this
 	}
 }
