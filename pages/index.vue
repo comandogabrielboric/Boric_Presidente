@@ -706,6 +706,8 @@ section.seccionaporta
 			text-align: left
 			justify-content: center
 			padding-bottom: 14em
+		.lado1
+			padding-left: 1em
 		.lado
 			flex: 600px 0 1
 			.titulo
