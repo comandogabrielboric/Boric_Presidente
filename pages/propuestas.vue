@@ -48,8 +48,13 @@
 				div(slot="title")
 					.pretitulo Propuestas programáticas
 					.titulo {{ propuestaMostrada && propuestaMostrada.titulo }}
-					//- .modoVisualizacion(v-if="propuestaMostrada && propuestaMostrada.pdfURL")
-					//- 	.modo(@click="modoVisualizacion = 'html'" :class="{activo: modoVisualizacion === 'html'}") Ver texto
+					.modoVisualizacion
+						a.modo(
+							href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(1).pdf",
+							target="_blank",
+							@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
+							download
+						) Ver programa completo
 						//- .modo(@click="modoVisualizacion = 'pdf'" :class="{activo: modoVisualizacion === 'pdf'}") Ver en PDF
 						//- a.modo(:href="propuestaMostrada.pdfURL" download target="_blank" rel="noreferer noopener") Descargar PDF
 				.cuerpoPropuesta(v-if="propuestaMostrada")
