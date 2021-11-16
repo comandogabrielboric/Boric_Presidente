@@ -4,14 +4,17 @@
 	section.storytelling
 		.filtroBlur
 			img.noMovil(
-				src="/imagenes/header-propuestas-web.webp",
+				src="/imagenes/header-boric-1920x850.jpg",
 				alt="Súmate a cambiar Chile"
 			)
 			img.noCompu(
 				src="/imagenes/header-propuestas-movil-boric.webp",
 				alt="Súmate a cambiar Chile"
 			)
-
+		.tituloHead.noCompu
+			.tit Propuestas #[span.light para]
+			.tit #[span.light un] nuevo Chile
+			.sub Cambios para vivir mejor
 	//- .programaBook
 		iframe(
 			src="https://docs.google.com/viewer?srcid=1dyxLh6kl6-gS60lW1CPjHf7LV_QSOOr_&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
@@ -20,7 +23,7 @@
 		)
 	section.propuestas(v-if="setPropuestas")
 		.curva.curvaSuperior
-		.encabezado
+		//- .encabezado
 			h1.titulo Propuestas para un nuevo Chile
 				.sub Cambios para vivir mejor
 		.caja-propuestas
@@ -243,6 +246,22 @@ export default {
 				height: 198.69%
 				max-width: 376px
 				// max-height: 600px
+	.tituloHead
+		position: absolute
+		top: 1.9em
+		.tit
+			text-align: center
+			font-size: 2rem
+			font-weight: 900
+			font-style: italic
+			line-height: 1.1
+			.light
+				font-weight: 400
+		.sub
+			text-align: center
+			font-size: 1.5rem
+			font-style: italic
+			font-weight: 100
 section
 	position: relative
 	.curvaSuperior
@@ -466,7 +485,7 @@ section
 					.pretitulo
 						color: rgba(219, 248, 123, 1)
 						font-weight: 900
-						margin-bottom: 1em
+						margin-bottom: .5em
 						opacity: .6
 					.titulo
 						color: #fff
@@ -481,9 +500,10 @@ section
 						// margin-top: .5em
 
 						.modo
+							color: #fff
+							text-decoration: underline
 							cursor: pointer
-							font-size: .8em
-							opacity: .8
+							// font-size: .8em
 							transition: opacity .15s ease
 							&.activo
 								// opacity: 1

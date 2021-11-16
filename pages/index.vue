@@ -17,7 +17,7 @@
 	section.elArbol
 		.curva.curvaSuperior
 		.noCompu
-			.titulo #[span.primero Se parte de la]
+			.titulo #[span.primero Sé parte de la]
 				div Playlist
 				.segundo El Árbol
 			.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
@@ -29,7 +29,7 @@
 		.noMovil
 			.contenido
 				.lado.lado1
-					.titulo #[span.primero Se parte de la]
+					.titulo #[span.primero Sé parte de la]
 						.segundo Playlist El Árbol
 
 					.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.

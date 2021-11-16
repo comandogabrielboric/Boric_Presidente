@@ -69,7 +69,7 @@ $alturaMenu: 5em
 .navbar
 	position: sticky
 	top: 0
-	width: 100vw
+	width: 100%
 	z-index: 1000
 	display: flex
 	align-items: center
