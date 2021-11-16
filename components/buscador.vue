@@ -181,6 +181,10 @@ export default {
 		abrirPropuestaBuscada (p) {
 			// console.log(p)
 			const aDestacar = this.matchPropuesta
+			this.$gtm.push({
+				event: 'gtm.linkClick',
+				hacia: 'Buscar propuesta'
+			})
 			this.$router.push(`/propuestas/${p.Slug}#:~:text=${aDestacar}`)
 			this.$nuxt.refresh()
 			this.matchPropuesta = null
