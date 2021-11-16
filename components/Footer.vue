@@ -1,6 +1,5 @@
 <template lang="pug">
 footer
-
 	.capa.capaLinks
 	.capa.capaFooter
 		.logo
@@ -9,7 +8,6 @@ footer
 			.aprueboDignidad
 				.iconoAprueboDignidad
 				.textoAprueboDignidad
-
 </template>
 
 <script>
@@ -48,8 +46,17 @@ footer
 			height: 0.3965em
 			width: 1em
 			font-size: 10em
+			+compu
+				width: 1.5em
+				height: 0.9em
+			+wide
+				width: 2em
+				height: 1.3em
+			+ultra
+				width: 2.5em
+				height: 1.6em
 		.redesSociales
-			padding-top: 1em
+			padding: 1em 0
 			font-size: 1.4em
 			// padding: 1em 0 1em 0
 		.textoFooter
@@ -78,7 +85,6 @@ footer
 			clip-path: ellipse(60% 100% at 50% 100%)
 			background-color: $fondoFooter
 
-
 		.link-footer
 			padding: .25em
 			margin: .25em
@@ -100,9 +106,7 @@ footer
 				height: 1em
 				width: 1.458em
 
-
-
-	@media screen and (max-width: 760px)
+	+compu
 		flex-flow: column nowrap
 		.redesSociales
 			// margin-top: 2em
@@ -113,8 +117,12 @@ footer
 			flex-flow: column nowrap
 		.capaFooter
 			flex-flow: column nowrap
-
-
-
-
+	+wide
+		.logos
+			.aprueboDignidad
+				font-size: 9em
+	+ultra
+		.logos
+			.aprueboDignidad
+				font-size: 13em
 </style>

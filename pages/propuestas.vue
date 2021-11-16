@@ -164,6 +164,7 @@ export default {
 	},
 	methods: {
 		abrirPropuesta (propuestaID, slug) {
+			console.log(this.prop)
 			this.propuestaIdMostrada = propuestaID
 			this.$nextTick(() => {
 				// console.log('ruta', this.$route)
@@ -327,6 +328,7 @@ export default {
 				flex-flow: column
 				align-items: center
 				justify-content: center
+				transition: .3s all
 				.imagenDePropuesta
 					$lado: 350px
 					max-width: $lado
@@ -345,6 +347,13 @@ export default {
 						$lado: 310px
 						max-width: $lado
 						max-height: $lado
+			&:hover
+				.imagenDePropuesta
+					padding: -2em
+					margin: -2em
+					$lado: 380px
+					max-width: $lado
+					max-height: $lado
 
 		.contenido-propuesta
 			width: 80vw

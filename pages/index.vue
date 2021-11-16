@@ -119,7 +119,7 @@
 			.curva.curvaSuperior
 
 			.contenido
-				.lado
+				.lado.lado1
 					.titulo Súmate
 						.segundo y Aporta
 					.texto El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia.
@@ -238,13 +238,25 @@ section
 		font-size: 3rem
 	+wide
 		font-size: 4rem
+	+ultra
+		font-size: 6em
 .texto
+	line-height: 1.2
 	+movil
 		font-size: 1.3rem
 	+compu
 		font-size: 1.5rem
 	+wide
 		font-size: 2rem
+	+ultra
+		font-size: 3rem
+.lado
+	+compu
+		flex: 600px 0 1
+	+wide
+		flex: 700px 0 1
+	+ultra
+		flex: 800px 0 1
 .storytelling
 	display: flex
 	justify-content: center
@@ -365,14 +377,14 @@ section
 		font-style: italic
 		text-align: center
 		line-height: 1.1
-		padding: .5em
+		padding: 0 .5em
 		.segundo
 			color: $verde3
 			font-weight: 900
 	.texto
 		text-align: center
 		font-style: italic
-		padding: 0 1em
+		padding: .5em 1em
 	.portadaPlaylist
 		display: flex
 		justify-content: center
@@ -407,11 +419,10 @@ section
 			flex-wrap: nowrap
 			justify-content: center
 		.lado
-			flex: 600px 0 1
 			z-index: 5
 			align-items: center
 			img
-				flex: 600px 0 1
+				width: 400px
 		.lado1
 			display: flex
 			flex-flow: column
@@ -423,6 +434,7 @@ section
 				text-align: left
 				padding-right: 2em
 			.boton
+				padding-left: 2em
 				width: 100%
 				display: flex
 				justify-content: flex-start
@@ -436,6 +448,11 @@ section
 					z-index: 5
 				// height: 100%
 	+wide
+		.boton
+			padding-left: 4em
+		.lado
+			img
+				width: 550px
 		.texto
 			padding-right: 6em
 			line-height: 1.2
@@ -445,6 +462,13 @@ section
 				font-size: 1.5rem
 				width: 350px
 				padding: .7em 1em .4em
+
+	+ultra
+		.boton
+			margin-left: 1em
+		.lado
+			img
+				width: 800px
 
 .precarga
 	height: 100vh
@@ -467,7 +491,7 @@ section
 			color: #fff
 			font-weight: 400
 			.primero
-				font-size: 3rem
+				// font-size: 3rem
 				font-weight: 900
 				font-style: italic
 				color: $verde3
@@ -488,8 +512,6 @@ section
 			flex-flow: row nowrap
 			text-align: left
 			justify-content: center
-			.lado
-				flex: 600px 0 1
 			.lado2
 				display: flex
 				align-items: center
@@ -500,10 +522,13 @@ section
 		.contenido
 			.titulo
 				line-height: 1.1
-				.primero
-					font-size: 3.4rem
+				// .primero
+					// font-size: 3.4rem
 			.texto
 				padding-right: 1em
+	+ultra
+		.contenido
+			padding-bottom: 3em
 
 .seccionArmaTuCampana
 	background-color: $petroleo2
@@ -521,7 +546,7 @@ section
 		.texto
 			display: flex
 			flex-flow: column
-			font-weight: 300
+			// font-weight: 300
 			// padding: 0 1em
 		.titulo,
 		.segundo
@@ -596,7 +621,6 @@ section
 			text-align: left
 			padding-top: 2em
 			.lado
-				flex: 600px 0 1
 				padding: 0 0 3em 0
 				&.ladoImagen
 					order: -1
@@ -604,8 +628,8 @@ section
 				&.ladotitutlo
 					z-index: 5
 				.texto
-					padding-top: .5em
-					line-height: 1.3
+					padding: .5em 0
+					// line-height: 1.3
 			.kitGrafico
 				display: block
 				width: 300px
@@ -706,8 +730,9 @@ section.seccionaporta
 			text-align: left
 			justify-content: center
 			padding-bottom: 14em
+		.lado1
+			padding-left: 2em
 		.lado
-			flex: 600px 0 1
 			.titulo
 				display: flex
 				flex-flow: row nowrap

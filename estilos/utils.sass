@@ -28,6 +28,7 @@
 $compu: "(min-width: 760px)"
 $movil: "(max-width: 759.9px)"
 $wide: "(min-width: 1100px)"
+$ultra: "(min-width: 1550px)"
 =compu
 	@media #{$compu}
 		@content
@@ -36,4 +37,7 @@ $wide: "(min-width: 1100px)"
 		@content
 =wide
 	@media #{$wide}
+		@content
+=ultra
+	@media #{$ultra}
 		@content
