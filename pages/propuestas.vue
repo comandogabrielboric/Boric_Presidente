@@ -37,7 +37,7 @@
 			)
 				div(slot="title")
 					.pretitulo Propuestas programáticas
-					h2.titulo {{ propuestaMostrada && propuestaMostrada.titulo }}
+					.titulo {{ propuestaMostrada && propuestaMostrada.titulo }}
 					//- .modoVisualizacion(v-if="propuestaMostrada && propuestaMostrada.pdfURL")
 					//- 	.modo(@click="modoVisualizacion = 'html'" :class="{activo: modoVisualizacion === 'html'}") Ver texto
 						//- .modo(@click="modoVisualizacion = 'pdf'" :class="{activo: modoVisualizacion === 'pdf'}") Ver en PDF
@@ -408,7 +408,7 @@ export default {
 					.modoVisualizacion
 						color: rgba(23, 117, 150, 1)
 						display: flex
-						margin-top: .5em
+						// margin-top: .5em
 
 						.modo
 							cursor: pointer
