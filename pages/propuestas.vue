@@ -398,10 +398,6 @@ section
 .propuestas
 	z-index: 0
 	cursor: pointer
-	+movil
-		.caja-propuestas
-			padding: 1em 0
-
 	.caja-propuestas
 		display: flex
 		flex-flow: row wrap

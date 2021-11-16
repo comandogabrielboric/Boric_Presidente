@@ -3,6 +3,21 @@
 	.encabezado
 		h1.titulo Programa para un nuevo Chile
 			.sub Cambios para vivir mejor
+	//- .programaBook.noMovil
+		a.fbo-embed(
+			href="https://online.flippingbook.com/view/447789273/",
+			data-fbo-id="447789273",
+			data-fbo-ratio="16:9",
+			data-fbo-width="100%",
+			data-fbo-height="auto",
+			data-fbo-version="1",
+			style="max-width: 1000px"
+		) Plan de gobierno AD 2022-2026
+			script(
+				async="",
+				defer="",
+				src="https://online.flippingbook.com/EmbedScriptUrl.aspx?m=redir&hid=447789273"
+			)
 
 	.programaBook
 		iframe(
@@ -98,6 +113,8 @@ export default {
 	// max-height: 80vh
 	height: 350px
 	// padding: 1em
+	iframe
+		border-radius: 5px
 
 .contenedorbtn
 	padding-top: 1.5em
