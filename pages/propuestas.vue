@@ -1,10 +1,16 @@
 <template lang="pug">
 .propuestasRoot
 	n-child(@montado="verSiHayQueAbrirUnaPropuesta")
-
-	.encabezado
-		h1.titulo Propuestas para un nuevo Chile
-			.sub Cambios para vivir mejor
+	section.storytelling
+		.filtroBlur
+			img.noMovil(
+				src="/imagenes/header-propuestas-web.webp",
+				alt="Súmate a cambiar Chile"
+			)
+			img.noCompu(
+				src="/imagenes/header-propuestas-movil-boric.webp",
+				alt="Súmate a cambiar Chile"
+			)
 
 	//- .programaBook
 		iframe(
@@ -13,6 +19,10 @@
 			height="100%"
 		)
 	section.propuestas(v-if="setPropuestas")
+		.curva.curvaSuperior
+		.encabezado
+			h1.titulo Propuestas para un nuevo Chile
+				.sub Cambios para vivir mejor
 		.caja-propuestas
 			.propuesta(
 				v-for="propuesta in setPropuestas",
@@ -197,6 +207,60 @@ export default {
 	display: flex
 	align-items: center
 	flex-flow: column
+.storytelling
+	display: flex
+	justify-content: center
+	max-height: calc(100vh - 5em)
+	background-image: url('/imagenes/header-propuestas-movil-boric.webp')
+	background-size: cover
+	background-repeat: no-repeat
+	img
+		width: 119.45%
+		height: 100%
+		max-width: 100%
+		max-height: 100%
+		z-index: 5
+	.imgTiny
+		width: 100vw
+		height: 90%
+		filter: blur(4px)
+	.filtroBlur
+		position: relative
+		min-height: 250px
+		width: 100vw
+		display: flex
+		justify-content: center
+		z-index: 0
+		backdrop-filter: blur(4px)
+		+movil
+			img
+				width: 100%
+				height: 198.69%
+				max-width: 376px
+				// max-height: 600px
+section
+	position: relative
+	.curvaSuperior
+		display: flex
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		width: 100vw
+		background-color: $petroleo2
+		justify-content: center
+		clip-path: ellipse(65% 100% at 50% 100%)
+
+		height: 3em
+		margin-top: -1.2em
+		+compu
+			height: 5em
+			margin-top: -2em
+			z-index: 1
+		+ *,
+		~ .sobreCurva
+			position: relative
+			z-index: 2
 .relleno
 	width: 100vw
 	height: 7em
@@ -295,7 +359,8 @@ export default {
 		font-size: 1.1rem
 +compu
 	.encabezado
-		width: 750px
+		// width: 750px
+		justify-content: center
 		display: flex
 	.titulo
 		font-size: 3.2rem

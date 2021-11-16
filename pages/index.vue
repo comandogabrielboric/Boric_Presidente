@@ -262,6 +262,7 @@ section
 	justify-content: center
 	max-height: calc(100vh - 5em)
 	background-image: url('/imagenes/portadaMovil.webp')
+	filter: blur()
 	background-size: cover
 	background-repeat: no-repeat
 	img
@@ -270,10 +271,6 @@ section
 		max-width: 100%
 		max-height: 100%
 		z-index: 5
-	.imgTiny
-		width: 100vw
-		height: 90%
-		filter: blur(4px)
 	.filtroBlur
 		position: relative
 		min-height: 250px
@@ -283,6 +280,7 @@ section
 		z-index: 0
 		+movil
 			img
+				// backdrop-filter: blur(4px)
 				width: 100%
 				height: 198.69%
 				max-width: 376px
