@@ -117,7 +117,6 @@ const config = {
 		// prefetch: true,
 		// preconnect: true
 	},
-
 	gtm: {
 		enabled: true,
 		id: 'GTM-TG9JT2J',

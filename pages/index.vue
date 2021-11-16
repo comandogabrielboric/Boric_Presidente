@@ -1,50 +1,80 @@
 <template lang="pug">
 .rootIndex
-
 	section.storytelling
 		.filtroBlur
-			img.noMovil(src="/imagenes/portada.webp" alt="Súmate a cambiar Chile")
-			img.noCompu(v-if="cargado" src="/imagenes/portadaMovil.webp" alt="Súmate a cambiar Chile")
-			img.imgTiny(v-if="!cargado" src="/imagenes/portadaMovilTiny.webp" alt="Súmate a cambiar Chile")
+			img.noMovil(src="/imagenes/portadaWeb.webp", alt="Súmate a cambiar Chile")
+			img.noCompu(src="/imagenes/portadaMovil.webp", alt="Súmate a cambiar Chile")
+			//- img.imgTiny(v-if="!cargado" src="/imagenes/portadaMovilTiny.webp" alt="Súmate a cambiar Chile")
+		.contenido
+			.titulo Programa de
+				.segundo Gobierno
+				.tercero Apruebo Dignidad
+			.contendorBoton
+				nuxt-link.boton(to="/propuestas", @click.native="tag('propuestas')") VER PROGRAMA
 
+	// desde aca
 
-	section.seccionCuna
+	section.elArbol
 		.curva.curvaSuperior
+		.noCompu
+			.titulo #[span.primero Sé parte de la]
+				div Playlist
+				.segundo El Árbol
+			.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+			.portadaPlaylist
+				img(src="/gif/portadaPlaylist.webp", alt="")
 
-		.noCompu.sobreCurva
+			nuxt-link.boton(to="/playlist")
+				.btn.bold MÁS INFORMACIÓN
+		.noMovil
 			.contenido
-				div Súmate respondiendo nuestra consulta ciudadana o participando en las mesas ciudadanas, donde podrás compartir tus ideas, anhelos y opiniones para aportar a la construcción de este proyecto transformador.
-		.noMovil.sobreCurva
-			.contenido
-				h1 Mesas ciudadanas
-				h2 ¿Cómo participar?
-				div Súmate respondiendo nuestra consulta ciudadana o participando en las mesas ciudadanas, donde podrás compartir tus ideas, anhelos y opiniones para aportar a la construcción de este proyecto transformador.
+				.lado.lado1
+					.titulo #[span.primero Sé parte de la]
+						.segundo Playlist El Árbol
 
-		a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta ciudadana
-		a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
+					.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+					nuxt-link.boton(to="/playlist")
+						.btn.bold MÁS INFORMACIÓN
+				.lado.lado2
+					.portadaPlaylist
+						img(src="/gif/portadaPlaylist.webp", alt="")
 
-		img.noMovil(src="/imagenes/diversidad.webp" alt="Diversidad"  v-if="cargado").imgSaludo
-		img.noCompu(src="/imagenes/diversidadMovil.webp" alt="Diversidad" v-if="cargado").imgSaludo
-		img.imgTiny(src="/imagenes/diversidadMovilTiny.webp" alt="Diversidad" v-if="!cargado").imgSaludo
+		//- a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta ciudadana
+		//- a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
+
+		img.noMovil.imgSaludo(
+			src="/imagenes/diversidad.webp",
+			alt="Diversidad",
+			v-if="cargado"
+		)
+		img.noCompu.imgSaludo(
+			src="/imagenes/diversidadMovil.webp",
+			alt="Diversidad",
+			v-if="cargado"
+		)
+		img.imgTiny.imgSaludo(
+			src="/imagenes/diversidadMovilTiny.webp",
+			alt="Diversidad",
+			v-if="!cargado"
+		)
 
 	.precarga(v-if="!cargado")
 	.postcarga(v-if="cargado")
 		section.seccionParticipa
 			.curva.curvaSuperior
 			.contenido
-				.lado
+				.lado.lado1
 					h2.titulo #[span.primero Inscríbete]
 						div Únete a la campaña
 					.texto
-						p Las transformaciones que Chile necesita las hacemos 		entre todas y todos.
-						P Déjanos tu mail y recibirás más información sobre la 		campaña.
+						div Las transformaciones que Chile necesita las hacemos entre todas y todos.
+						div Déjanos tu mail y recibirás más información sobre la campaña.
 
-				.lado
+				.lado.lado2
 					.suscribirse
 						participaant
-			img.noMovil(src="/imagenes/participa.webp" alt="Participa")
-			img.noCompu(src="/imagenes/participaMovil.webp" alt="Participa")
-
+			img.noMovil(src="/imagenes/participa.webp", alt="Participa")
+			img.noCompu(src="/imagenes/participaMovil.webp", alt="Participa")
 
 		section.seccionArmaTuCampana
 			.curva.curvaSuperior
@@ -52,48 +82,55 @@
 			mixin linkDescarga
 				.kitGrafico
 					.texto Descarga tu
-					a(href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0" target="_blank" 	rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico'})").boton KIT GRÁFICO AQUÍ
+					a.boton(
+						href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0",
+						target="_blank",
+						rel="noreferer noopener",
+						@click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico' })"
+					) KIT GRÁFICO AQUÍ
 
 			.contenido
-				.lado
-					h2 Arma tu
-					h3 Campaña
-					p Descarga nuestro kit y crea tus propios insumos de 	campaña. #[br]¡De ti depende!
+				.lado.ladotitutlo
+					.titulo Arma tu
+						.segundo Campaña
+					.texto Descarga nuestro kit y crea tus propios insumos de campaña. #[br]¡De ti depende!
 					.noMovil
 						+linkDescarga
 
-
 				.lado.ladoImagen
 					.cajaHerramienta
-						img(src="/imagenes/cajaHerramientas.webp" 	alt="Herramientas")
+						img(src="/imagenes/cajaHerramientas.webp", alt="Herramientas")
 						.circulo
 
 			.noCompu
 				+linkDescarga
 
-
 		section.seccionaporta
-
 			mixin linkServel
 				.linkservel
-					a.boton(href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml" target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'Home Aportes Servel'})") 	QUIERO APORTAR
-					n-link.instrucciones(to="/aporta" @click.native="tag('instrucciones')") Ver instrucciones para 	donar
+					a.boton(
+						href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml",
+						target="_blank",
+						rel="noreferer noopener",
+						@click="$gtm.push({ event: 'link-home', hacia: 'Home Aportes Servel' })"
+					) QUIERO APORTAR
+					n-link.instrucciones(to="/aporta", @click.native="tag('instrucciones')") Ver instrucciones para donar
 
 			.curva.curvaSuperior
 
 			.contenido
-				.lado
-					h2 Súmate
-					h3 y Aporta
-					p El cambio lo financiamos las personas comunes. Aporta y 	construyamos un Chile donde el dinero no haga la diferencia.
+				.lado.lado1
+					.titulo Súmate
+						.segundo y Aporta
+					.texto El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia.
 					.noMovil
 						+linkServel
 				.lado.ladoImagen
-					Chanchito
+					Chanchito.chan
 				.noCompu
 					+linkServel
 
-		section.propuestas
+		//- section.propuestas
 			.ondaonda
 				wave.wave
 			.zonaCombi
@@ -104,12 +141,14 @@
 			.contenido
 				.textoseccion
 					h2.titulo Propuesta
-					h3 Programática
-					p Nuestro Gobierno impulsará grandes cambios, paso a paso, 	sin dejar a nadie fuera.
+						.segundo Programática
+					p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
 					p ¿Quieres conocer parte de nuestras propuestas?
 				.link
-					nuxt-link(to="/propuestas" @click.native="tag('Propuestas')").linkpropuestas VER PROPUESTAS
-
+					nuxt-link.linkpropuestas(
+						to="/propuestas",
+						@click.native="tag('Propuestas')"
+					) VER PROPUESTAS
 </template>
 
 <script>
@@ -123,7 +162,8 @@ export default {
 	},
 	head () {
 		const titulo = 'Boric Presidente'
-		const descripcion = 'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
+		const descripcion =
+			'Votemos para hacer realidad un Chile en que nadie quede fuera. Votemos Gabriel Boric Presidente'
 		const imagen = '/imagenes/portadaMovil.webp'
 		const url = 'https://boricpresidente.cl'
 		const meta = this.$eo({
@@ -191,27 +231,111 @@ section
 		justify-content: center
 		align-items: center
 
+.titulo
+	+movil
+		font-size: 2rem
+	+compu
+		font-size: 3rem
+	+wide
+		font-size: 4rem
+	+ultra
+		font-size: 6em
+.texto
+	line-height: 1.2
+	+movil
+		font-size: 1.3rem
+	+compu
+		font-size: 1.5rem
+	+wide
+		font-size: 2rem
+	+ultra
+		font-size: 3rem
+.lado
+	+compu
+		flex: 600px 0 1
+	+wide
+		flex: 700px 0 1
+	+ultra
+		flex: 800px 0 1
 .storytelling
 	display: flex
 	justify-content: center
 	max-height: calc(100vh - 5em)
+	background-image: url('/imagenes/portadaMovil.webp')
+	filter: blur()
+	background-size: cover
+	background-repeat: no-repeat
 	img
 		width: 119.45%
 		height: 100%
 		max-width: 100%
-		// max-height: 100%
-	.imgTiny
-		width: 100vw
-		// height: 90%
-		filter: blur(4px)
+		max-height: 100%
+		z-index: 5
 	.filtroBlur
+		position: relative
 		min-height: 250px
 		width: 100vw
+		display: flex
+		justify-content: center
+		z-index: 0
+		+movil
+			img
+				// backdrop-filter: blur(4px)
+				width: 100%
+				height: 198.69%
+				max-width: 376px
+				// max-height: 600px
+	.contenido
+		// background-image: url('/imagenes/portadaMovil.webp')
+		// background-size: cover
+		// background-repeat: no-repeat
+		position: absolute
+		display: flex
+		width: 100%
+		top: 0
+		bottom: 0
+		flex-flow: column
+		justify-content: space-between
+		padding: 3em 0
+		text-align: center
+		.titulo
+			line-height: 1
+			font-style: italic
+			font-weight: 700
+			.segundo
+				font-size: 3.4rem
+				padding-left: 4px
+				font-weight: 900
+			.tercero
+				font-size: 1.5rem
+				font-weight: 400
+		.contendorBoton
+			padding-top: .5em
+			display: flex
+			justify-content: flex-start
+			.boton
+				display: flex
+				margin: 0 auto
+				cursor: pointer
+				width: 260px
+				height: 42px
+				text-transform: uppercase
+				background-color: $verde3
+				color: $verde1
+				justify-content: center
+				align-items: center
+				padding-top: .8em
+				border: 0
+				border-radius: 5px
+				margin-top: .5em
+				z-index: 5
+				font-size: 1.2rem
 	+compu
-		background-image: url('/imagenes/portada.webp')
+		background-image: url('/imagenes/portadaWeb.webp')
 		background-size: cover
 		background-repeat: no-repeat
 		.filtroBlur
+			position: relative
 			display: flex
 			width: 100%
 			height: 100%
@@ -222,78 +346,127 @@ section
 			width: 100%
 			height: 53.4%
 			max-width: 100vw
-
-.seccionCuna
-	position: relative
-	background-color: $verde1
-	min-height: 20em
-	display: flex
-	flex-flow: column nowrap
-	justify-content: center
-	background-color: $verde1
-	color: white
-	text-align: center
-	.curva
-		background-color: $verde1
-		//+movil
-			height: 3em
-			margin-top: -1.2em
-		//+compu
-			margin-top: -2em
-
-	.contenido
-		padding: 0 1em
-		line-height: 1.3
-		width: 400px
-		max-width: 100%
-		margin: 0 auto
-		font-size: 1.2rem
-
-		h1, h2
-			font-style: italic
-		h1
-			font-size: 2.5em
-			font-weight: 900
-			color: #fff
-			line-height: 1.3em
-		h2
-			color: $verde3
-			font-size: 2.5em
-			font-weight: 900
-			margin-top: -.7em
-
-	.btnparticipa
-		display: block
-		margin: 0 auto
-		cursor: pointer
-		text-transform: uppercase
-		background-color: $verde3
-		color: $verde1
-		padding: .5em 1.3em
-		border-radius: 4px
-		margin-top: .5em
-		z-index: 5
-	.imgSaludo
-		width: 100%
-		height: 66.55%
-		min-height: 10em
-		// width: 100vw
-		z-index: 0
-		margin-top: -9vw
-
-	+compu
 		.contenido
-			width: 600px
-			font-size: 1.2rem
-			h1
-				font-size: 2.8em
-		.btnparticipa
+			display: flex
+			flex-flow: column
+			position: absolute
+			width: 50vw
+			right: 0
+			top: 0
+			bottom: 0
+			display: flex
+			padding-left: 1em
+			// align-items: center
+			text-align: left
+			justify-content: center
+			.contendorBoton
+				width: 290px
+				.boton
+					height: 50px
+					width: 290px
+					font-size: 1.4rem
+
+.elArbol
+	background-color: $petroleo1
+	.curva
+		background-color: inherit
+
+	.titulo
+		font-style: italic
+		text-align: center
+		line-height: 1.1
+		padding: 0 .5em
+		.segundo
+			color: $verde3
+			font-weight: 900
+	.texto
+		text-align: center
+		font-style: italic
+		padding: .5em 1em
+	.portadaPlaylist
+		display: flex
+		justify-content: center
+		img
+			width: 300px
+	.boton
+		display: flex
+		justify-content: center
+		background-color: inherit
+		padding-bottom: 4em
+		.btn
+			display: flex
+			justify-content: center
+			align-items: center
+			width: 250px
+			border-radius: 4px
+			color: $azul2
+			background-color: $verde3
 			font-size: 1.1rem
-			margin-top: 1em
+			padding: .4em 1.5em
+	.imgSaludo
+		margin-top: -8em
+		width: 100%
+		// z-index: 50
+	+compu
+		img
+			z-index: 50
+		.contenido
+			// padding-bottom: 3em
+			display: flex
+			flex-flow: row
+			flex-wrap: nowrap
+			justify-content: center
+		.lado
+			z-index: 5
+			align-items: center
+			img
+				width: 400px
+		.lado1
+			display: flex
+			flex-flow: column
+			justify-content: center
+			.titulo
+				width: 100%
+				text-align: left
+			.texto
+				text-align: left
+				padding-right: 2em
+			.boton
+				padding-left: 2em
+				width: 100%
+				display: flex
+				justify-content: flex-start
+		.lado2
+			display: flex
+			justify-content: center
+			align-items: center
+			.portadaPlaylist
+				flex: 600px 0 1
+				img
+					z-index: 5
+				// height: 100%
+	+wide
+		.boton
+			padding-left: 4em
+		.lado
+			img
+				width: 550px
+		.texto
+			padding-right: 6em
+			line-height: 1.2
+		.boton
+			padding-top: 1em
+			.btn
+				font-size: 1.5rem
+				width: 350px
+				padding: .7em 1em .4em
 
-		.imgSaludo
-			margin-top: -6vw
-
+	+ultra
+		.boton
+			margin-left: 1em
+		.lado
+			img
+				width: 800px
 
 .precarga
 	height: 100vh
@@ -309,21 +482,21 @@ section
 		position: relative
 		z-index: 3
 		text-align: center
+		// max-width: 1300px
 		.titulo
 			max-width: 100%
 			line-height: 1.2
-			font-size: 2.3rem
 			color: #fff
-			font-weight: 900
+			font-weight: 400
 			.primero
-				font-size: 3rem
-				font-weight: 400
+				// font-size: 3rem
+				font-weight: 900
 				font-style: italic
 				color: $verde3
 
 		.texto
 			font-style: italic
-			font-size: 1.2rem
+			line-height: 1.2
 		.suscribirse
 			padding: 0 .5em
 			display: flex
@@ -336,11 +509,24 @@ section
 			display: flex
 			flex-flow: row nowrap
 			text-align: left
-			justify-content: space-around
-			.lado
-				flex: 350px 0 1
-
-
+			justify-content: center
+			.lado2
+				display: flex
+				align-items: center
+				justify-content: center
+			.lado1
+				padding-left: 2em
+	+wide
+		.contenido
+			.titulo
+				line-height: 1.1
+				// .primero
+					// font-size: 3.4rem
+			.texto
+				padding-right: 1em
+	+ultra
+		.contenido
+			padding-bottom: 3em
 
 .seccionArmaTuCampana
 	background-color: $petroleo2
@@ -358,15 +544,15 @@ section
 		.texto
 			display: flex
 			flex-flow: column
+			// font-weight: 300
 			// padding: 0 1em
-		h2,
-		h3
-			font-size: 3rem
-			line-height: .7em
-		h2
+		.titulo,
+		.segundo
+			line-height: 1
+		.titulo
 			color: $verde3
 			font-style: italic
-		h3
+		.segundo
 			font-weight: 900
 			color: #fff
 		p
@@ -398,7 +584,7 @@ section
 			border-radius: 50%
 			transform: translate(-25%, -50%) scale(.9)
 		+compu
-			$lado: 18em
+			$lado: 22em
 			width: $lado
 			height: $lado
 			.circulo
@@ -414,8 +600,9 @@ section
 		text-align: center
 		color: $azul2
 		font-weight: 700
-		.texto
-			font-size: 1em
+		padding-top: .7em
+		> .texto
+			font-size: 1.5rem
 			font-style: italic
 		.boton
 			background-color: $verde3
@@ -428,20 +615,61 @@ section
 		.contenido
 			display: flex
 			flex-flow: row nowrap
-			justify-content: space-around
+			justify-content: center
 			text-align: left
 			padding-top: 2em
 			.lado
-				flex: 250px 0 1
+				padding: 0 0 3em 0
 				&.ladoImagen
 					order: -1
+					padding-right: 15em
+				&.ladotitutlo
+					z-index: 5
+				.texto
+					padding: .5em 0
+					// line-height: 1.3
 			.kitGrafico
 				display: block
+				width: 300px
 				.texto
+					margin-top: -.8em
 					text-align: left
-
-
-
+				.boton
+					font-size: 1.5rem
+					padding: .3em 0 .1em 0
+					width: 100%
+					// height: 45px
+	+wide
+		.contenido
+			.lado
+				&.ladoImagen
+					order: -1
+					padding-right: 6em
+				&.ladotitutlo
+					z-index: 5
+			.kitGrafico
+				width: 300px
+				.boton
+					font-size: 1.5rem
+					padding: 12px 0 .1em 0
+					width: 100%
+					height: 56px
+		.cajaHerramienta
+			$lado: 28em
+			width: $lado
+			height: $lado
+			img
+				width: 100.13%
+				height: 100%
+				padding: 1em 0 1em 0
+			.circulo
+				top: 50%
+				left: 40%
+				right: 0
+				bottom: 0
+				width: $lado
+				height: $lado
+				transform: translate(-25%, -50%) scale(.9)
 section.seccionaporta
 	background-color: $azul2
 	position: relative
@@ -468,6 +696,8 @@ section.seccionaporta
 			justify-content: unset
 			.boton
 				margin: 0 auto 0 0
+		+movil
+			padding-bottom: 2em
 
 	.contenido
 		display: flex
@@ -476,31 +706,61 @@ section.seccionaporta
 		align-items: center
 		text-align: center
 		padding-bottom: 6em
-		h2,
-		h3
-			font-size: 3rem
+		.titulo,
+		.segundo
 			margin: 0
 			line-height: 1
 			font-style: italic
-		h2
+		.titulo
 			color: $verde3
-		h3
+		.segundo
 			font-weight: 900
 			color: #fff
-		p
+		.texto
 			margin: 1em 0
 			font-style: italic
-			font-size: 1.2rem
+			// font-size: 1.2rem
 
 	+compu
 		.contenido
 			display: flex
 			flex-flow: row nowrap
 			text-align: left
-			justify-content: space-around
+			justify-content: center
 			padding-bottom: 14em
-			.lado
-				flex: 350px 0 1
+		.lado1
+			padding-left: 2em
+		.lado
+			.titulo
+				display: flex
+				flex-flow: row nowrap
+				.segundo
+					padding-left: .3em
+
+			p
+				font-size: 1.5rem
+		.linkservel
+			.boton
+				font-size: 1.4rem
+				padding: .4em 1em .3em 1em
+			.instrucciones
+				font-size: 1.1rem
+	+wide
+		.contenido
+			min-height: 900px
+			// border: 1px solid green
+			.titulo
+				.segundo
+					font-size: 4.1rem
+			p
+				font-size: 2.2rem
+				line-height: 1.2
+			.linkservel
+				.boton
+					font-size: 1.5rem
+					padding: .6em 1em .3em 1em
+				.instrucciones
+					font-size: 1.2rem
 
 section.propuestas
 	position: relative
@@ -543,14 +803,13 @@ section.propuestas
 		+compu
 			padding-bottom: 1em
 		.textoseccion
-			h2,
-			h3
-				font-size: 3rem
-				line-height: 1.5rem
+			.titulo,
+			.segundo
+				line-height: 1
 				font-weight: 900
 				font-style: italic
 				color: $verde3
-			h2
+			.titulo
 				font-weight: 400
 				color: #fff
 			p
@@ -579,8 +838,29 @@ section.propuestas
 				background-color: $verde3
 	+compu
 		.contenido
-			width: 400px
+			width: 600px
 			margin: 0 auto
+			.textoseccion
+				p
+					font-size: 1.5rem
+					line-height: 1.2
+			.link
+				.linkpropuestas
+					width: 350px
+					font-size: 1.4rem
+					padding: .5em 1em .3em 1em
+	+wide
+		.contenido
+			.titulo
+				.segundo
+					font-size: 3.4rem
+			.textoseccion
+				p
+					font-size: 2rem
+		.link
+			.linkpropuestas
+				width: 350px
+				font-size: 1.5rem
 </style>
 
 

@@ -3,15 +3,25 @@
 Boricpresidente.cl nace de la convicción de un chile mejor, es un desarrollo de código abierto en el cual puedes aportar con tus propias ideas y mejoras.
 
 Te invitamos a revisar nuestro repositorio y realizar tus propios desarrollos sobre el mismo.
+<<<<<<< HEAD
+=======
+
+
+Parametrizar y regiones gracias a Camilo 
+https://gist.github.com/camonunez
+>>>>>>> master
 
 ## Build Setup
 
 ```bash
-# install dependencies
+# Instalar dependencias
 $ yarn install
 
 # serve with hot reload at localhost:3000
 $ yarn dev
+
+# para trabajo remoto
+$ yarn devRemoto
 
 # build for production and launch server
 $ yarn build

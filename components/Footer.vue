@@ -1,16 +1,25 @@
 <template lang="pug">
 footer
+<<<<<<< HEAD
 
 	.capa.capaLinks
 	.capa.capaFooter
 		.logo
 		p.textoFooter Por un Chile en el que nadie quede fuera.
+=======
+	.capa.capaLinks
+	.capa.capaFooter
+		.logo
+>>>>>>> master
 		RedesSociales
 		.logos
 			.aprueboDignidad
 				.iconoAprueboDignidad
 				.textoAprueboDignidad
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 </template>
 
 <script>
@@ -49,7 +58,17 @@ footer
 			height: 0.3965em
 			width: 1em
 			font-size: 10em
+			+compu
+				width: 1.5em
+				height: 0.9em
+			+wide
+				width: 2em
+				height: 1.3em
+			+ultra
+				width: 2.5em
+				height: 1.6em
 		.redesSociales
+			padding: 1em 0
 			font-size: 1.4em
 			// padding: 1em 0 1em 0
 		.textoFooter
@@ -78,10 +97,13 @@ footer
 			clip-path: ellipse(60% 100% at 50% 100%)
 			background-color: $fondoFooter
 
+<<<<<<< HEAD
 
-		.link-footer
-			padding: .25em
-			margin: .25em
+=======
+>>>>>>> master
+	.link-footer
+		padding: .25em
+		margin: .25em
 	.logos
 		.aprueboDignidad
 			font-size: 5em
@@ -100,11 +122,14 @@ footer
 				height: 1em
 				width: 1.458em
 
-
+<<<<<<< HEAD
 
 	@media screen and (max-width: 760px)
-		flex-flow: column nowrap
-		.redesSociales
+=======
+	+compu
+>>>>>>> master
+	flex-flow: column nowrap
+	.redesSociales
 			// margin-top: 2em
 		.logos
 			.aprueboDignidad
@@ -113,8 +138,16 @@ footer
 			flex-flow: column nowrap
 		.capaFooter
 			flex-flow: column nowrap
+<<<<<<< HEAD
 
-
-
-
+=======
+	+wide
+		.logos
+			.aprueboDignidad
+				font-size: 9em
+	+ultra
+		.logos
+			.aprueboDignidad
+				font-size: 13em
+>>>>>>> master
 </style>
