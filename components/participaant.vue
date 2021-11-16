@@ -32,7 +32,7 @@
 				@change="handleChange",
 				placeholder="Región"
 			)
-				a-select-option(
+				a-select-option.option(
 					v-for="region in regiones",
 					:key="region.label",
 					:value="region.label"
@@ -378,6 +378,34 @@ export default {
 		.ant-select-selection-selected-value
 			font-size: 1.1rem
 			padding-top: 8px
+		.has-success.has-feedback .ant-form-item-children-icon
+			height: 31px
++ultra
+	.suscribirme
+		width: 550px
+		height: 70px
+		right: 92px
+		font-size: 1.5rem
+	.terminosycondiciones
+		font-size: 1.2rem
+		padding-top: .2em
+	.suscribirse
+		.input
+			width: 550px
+	.rootParticipa::v-deep
+		.ant-input
+			height: 65px
+			font-size: 2rem
+		.ant-select-selection--single
+			height: 65px
+		.ant-select-selection__rendered
+			position: unset
+		.ant-select-selection__placeholder
+			// padding-left: 1em
+			// font-size: 2rem
+		.ant-select-selection-selected-value
+			font-size: 2rem
+			padding-top: 20px
 		.has-success.has-feedback .ant-form-item-children-icon
 			height: 31px
 </style>
