@@ -218,13 +218,13 @@ export default {
 .storytelling
 	display: flex
 	justify-content: center
-	max-height: calc(100vh - 5em)
+	// max-height: calc(100vh - 5em)
 	background-image: url('/imagenes/header-propuestas-movil-boric.webp')
 	background-size: cover
 	background-repeat: no-repeat
 	img
 		width: 100%
-		// height: 44%
+		height: 100%
 		max-width: 100vw
 		max-height: 100%
 		z-index: 5
