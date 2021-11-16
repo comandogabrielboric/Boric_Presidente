@@ -182,7 +182,7 @@ export default {
 			// console.log(p)
 			const aDestacar = this.matchPropuesta
 			this.$gtm.push({
-				event: 'gtm.linkClick',
+				event: 'link-home',
 				hacia: 'Buscar propuesta'
 			})
 			this.$router.push(`/propuestas/${p.Slug}#:~:text=${aDestacar}`)
