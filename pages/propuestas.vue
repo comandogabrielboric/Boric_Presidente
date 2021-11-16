@@ -328,17 +328,19 @@ export default {
 				flex-flow: column
 				align-items: center
 				justify-content: center
-				transition: .3s all
 				.imagenDePropuesta
 					$lado: 350px
+					margin: 1em
+					padding: 1em
 					max-width: $lado
 					max-height: $lado
+					transition: .3s
 					z-index: 1
 				.tituloPropuesta
-					margin-top: .5em
+					margin-top: -1em
 					font-size: 2.3rem
 					font-weight: 700
-					padding: 0 .3em
+					// padding: 0 .3em
 					font-style: italic
 					color: #fff
 
@@ -349,11 +351,8 @@ export default {
 						max-height: $lado
 			&:hover
 				.imagenDePropuesta
-					padding: -2em
-					margin: -2em
-					$lado: 380px
-					max-width: $lado
-					max-height: $lado
+					padding: 0
+					filter: brightness(1.2)
 
 		.contenido-propuesta
 			width: 80vw
