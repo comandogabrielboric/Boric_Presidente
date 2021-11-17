@@ -406,7 +406,6 @@ section
 	.imgSaludo
 		margin-top: -8em
 		width: 100%
-		// z-index: 50
 	+compu
 		img
 			z-index: 50

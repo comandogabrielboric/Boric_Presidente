@@ -3,7 +3,8 @@
 	.navbar
 		nuxt-link.alHome.zonaLogo(
 			to="/",
-			alt="home",
+			alt="Inicio",
+			title="Inicio",
 			@click.native="tag('nav home')"
 		)
 			.logo
