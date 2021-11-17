@@ -117,10 +117,6 @@ const config = {
 		// prefetch: true,
 		// preconnect: true
 	},
-	pixel: {
-		lenguage: 'JavaScript1.1',
-		scriptURL: 'http://pixel.mathtag.com/event/js?mt_id=1566982&mt_adid=249599&mt_exem=&mt_excl=&v1=&v2=&v3=&s1=&s2=&s3='
-	},
 	gtm: {
 		enabled: true,
 		id: 'GTM-TG9JT2J',
