@@ -60,7 +60,7 @@ export default {
 		.oicono
 			font-size: 1.4em
 			+compu
-				font-size: 2em
-			+wide
-				font-size: 3em
+				font-size: 2.5em
+			// +wide
+			// 	font-size: 3em
 </style>

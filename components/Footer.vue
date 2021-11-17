@@ -49,12 +49,12 @@ footer
 			+compu
 				width: 1.5em
 				height: 0.9em
-			+wide
-				width: 2em
-				height: 1.3em
-			+ultra
-				width: 2.5em
-				height: 1.6em
+			// +wide
+			// 	width: 2em
+			// 	height: 1.3em
+			// +ultra
+			// 	width: 2.5em
+			// 	height: 1.6em
 		.redesSociales
 			padding: 1em 0
 			font-size: 1.4em
