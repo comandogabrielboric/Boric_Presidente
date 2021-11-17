@@ -221,6 +221,8 @@ export default {
 		max-width: 100%
 		max-height: 100%
 		z-index: 5
+		object-fit: cover
+
 	.filtroBlur
 		position: relative
 		min-height: 250px
@@ -443,7 +445,7 @@ section
 						color: rgba(219, 248, 123, 1)
 						font-weight: 900
 						margin-bottom: .5em
-						opacity: .6
+						color: #0E6B8B
 					.titulo
 						color: #fff
 						font-weight: 900
@@ -451,14 +453,13 @@ section
 						line-height: 1.4
 						display: flex
 						max-width: 95vw
+						font-size: 2rem
 					.modoVisualizacion
 						color: rgba(23, 117, 150, 1)
 						display: flex
 						// margin-top: .5em
-
 						.modo
-							color: #fff
-							text-decoration: underline
+							color: #0E6B8B
 							cursor: pointer
 							// font-size: .8em
 							transition: opacity .15s ease
