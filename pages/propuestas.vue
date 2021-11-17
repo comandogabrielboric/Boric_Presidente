@@ -1,7 +1,7 @@
 <template lang="pug">
 .propuestasRoot
 	n-child(@montado="verSiHayQueAbrirUnaPropuesta")
-	section.storytelling
+	.storytelling
 		.filtroBlur
 			img.noMovil(
 				src="/imagenes/header-boric-1920x850.jpg",
@@ -15,17 +15,10 @@
 			.tit Propuestas #[span.light para]
 			.tit #[span.light un] nuevo Chile
 			.sub Cambios para vivir mejor
-	//- .programaBook
-		iframe(
-			src="https://docs.google.com/viewer?srcid=1dyxLh6kl6-gS60lW1CPjHf7LV_QSOOr_&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
-			width="100%",
-			height="100%"
-		)
+
 	section.propuestas(v-if="setPropuestas")
 		.curva.curvaSuperior
-		//- .encabezado
-			h1.titulo Propuestas para un nuevo Chile
-				.sub Cambios para vivir mejor
+
 		.caja-propuestas
 			.propuesta(
 				v-for="propuesta in setPropuestas",
@@ -218,20 +211,16 @@ export default {
 .storytelling
 	display: flex
 	justify-content: center
-	// max-height: calc(100vh - 5em)
+	max-height: calc(100vh - 5em)
 	background-image: url('/imagenes/header-propuestas-movil-boric.webp')
 	background-size: cover
 	background-repeat: no-repeat
 	img
-		width: 100%
+		width: 225.89%
 		height: 100%
-		max-width: 100vw
+		max-width: 100%
 		max-height: 100%
 		z-index: 5
-	.imgTiny
-		width: 100vw
-		height: 90%
-		filter: blur(4px)
 	.filtroBlur
 		position: relative
 		min-height: 250px
@@ -244,8 +233,8 @@ export default {
 			img
 				width: 100%
 				height: 198.69%
-				max-width: 376px
-				// max-height: 600px
+				max-width: 350px
+				max-height: 100%
 	.tituloHead
 		position: absolute
 		top: 1.9em
@@ -262,6 +251,8 @@ export default {
 			font-size: 1.5rem
 			font-style: italic
 			font-weight: 100
+		+movil
+			top: 6.5em
 section
 	position: relative
 	.curvaSuperior
@@ -288,28 +279,12 @@ section
 .relleno
 	width: 100vw
 	height: 7em
-.encabezado
-	text-align: center
-	font-style: italic
-	font-size: 1rem
-	.titulo
-		// max-width: 400px
-		padding: 1em 1em 0 1em
-		line-height: 1.1
-		color: $verde3
-		font-weight: 900
-		font-size: 3rem
-		.sub
-			color: #fff
-			font-weight: 400
 
 .contenidoHTML
 	width: 900px
 	max-width: 100%
 	margin: 0 auto
-	// border: 3px dashed orangered
 	background-color: #fff
-	// box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
 	padding: 4rem
 	+movil
 		padding: 1rem
@@ -351,21 +326,12 @@ section
 		a
 			all: revert
 
-.programaBook
-	width: 90vw
-	background-color: $petroleo1
-	// max-height: 80vh
-	height: 350px
-	// padding: 1em
-
 .contenedorbtn
-	// padding-top: 1.5em
 	padding: 1.5em 1em
 	display: flex
 	justify-content: center
 	text-align: center
 	.boton
-		// transform: translateY(50%)
 		display: flex
 		margin: 0 auto
 		cursor: pointer
@@ -382,15 +348,6 @@ section
 		z-index: 5
 		font-size: 1.1rem
 +compu
-	.encabezado
-		// width: 750px
-		justify-content: center
-		display: flex
-	.titulo
-		font-size: 3.2rem
-	.programaBook
-		height: 90vh
-		padding: 2em 6em
 	.contenedorbtn
 		.boton
 			font-size: 1.3rem
@@ -407,31 +364,35 @@ section
 			text-align: center
 			padding: 5px
 			flex: 340px 0 1
+			transform-style: preserve-3d
+
 			.prop
 				min-height: 340px
 				display: flex
 				flex-flow: column
 				align-items: center
 				justify-content: center
+				perspective: 500px
 				.imagenDePropuesta
-					$lado: 350px
-					margin: 1em
+					$lado: 400px
 					padding: 1em
 					max-width: $lado
 					max-height: $lado
-					transition: .3s
+					transition: all .3s ease
 					z-index: 1
 				.tituloPropuesta
 					margin-top: -1em
 					font-size: 2.3rem
 					font-weight: 700
-					// padding: 0 .3em
 					font-style: italic
+					line-height: 1.1
 					color: #fff
 
 				+movil
+					.tituloPropuesta
+						padding: 0 .5em
 					.imagenDePropuesta
-						$lado: 310px
+						$lado: 350px
 						max-width: $lado
 						max-height: $lado
 			&:hover
