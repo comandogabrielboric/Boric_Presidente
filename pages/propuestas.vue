@@ -204,7 +204,7 @@ export default {
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
 .propuestasRoot
-	background-color: $petroleo2
+	background-image: url('/imagenes/textura.webp')
 	display: flex
 	align-items: center
 	flex-flow: column
