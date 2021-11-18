@@ -224,6 +224,7 @@ export default {
 		object-fit: cover
 
 	.filtroBlur
+		position: relative
 		min-height: 250px
 		width: 100vw
 		display: flex
@@ -239,7 +240,7 @@ export default {
 	.tituloHead
 		position: absolute
 		bottom: 1.9em
-		z-index: 5
+		z-index: 10
 		.tit
 			text-align: center
 			font-size: 2rem
@@ -256,7 +257,7 @@ export default {
 			line-height: 1.1
 		+compu
 			top: 30%
-			// bottom: 48%
+			bottom: 0
 			left: 15%
 			z-index: 100
 			.tit
