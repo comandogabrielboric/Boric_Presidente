@@ -41,7 +41,11 @@
 			@click="$gtm.push({ event: 'link-home', hacia: 'Link informe Proceso Participativo' })",
 			download
 		) Informe proceso participativo
-
+	.plantas
+		.lado.derecha
+			img(src="/svg/plantas-09.svg")
+		.lado.izquierda
+			img(src="/svg/plantas-08.svg")
 	.relleno
 </template>
 
@@ -85,8 +89,17 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
+.titulo
+	+movil
+		font-size: 2rem
+	+compu
+		font-size: 3rem
+	+wide
+		font-size: 4rem
+	+ultra
+		font-size: 5.4rem
 .propuestasRoot
-	background-color: $verde2
+	background: linear-gradient(180deg, #119D88 0%, #16B6A1 55.21%, #19CBB5 100%)
 	display: flex
 	align-items: center
 	flex-flow: column
@@ -98,21 +111,20 @@ export default {
 	font-style: italic
 	font-size: 1rem
 	.titulo
-		// max-width: 400px
 		padding: 1em 1em 0 1em
 		line-height: 1.1
 		color: $verde3
-		font-size: 3rem
 		font-weight: 900
 		.sub
 			color: #fff
 			font-weight: 400
 .programaBook
 	width: 90vw
-	background-color: $petroleo1
+	// background-color: $petroleo1
 	// max-height: 80vh
 	height: 350px
 	// padding: 1em
+	z-index: 5
 	iframe
 		border-radius: 5px
 
@@ -126,8 +138,9 @@ export default {
 		margin: 0 auto
 		cursor: pointer
 		width: 100%
-		height: 40px
+		max-height: 80px
 		text-transform: uppercase
+		text-align: center
 		background-color: $petroleo1
 		color: $verde3
 		justify-content: center
@@ -139,15 +152,50 @@ export default {
 		font-size: 1.1rem
 +compu
 	.encabezado
-		width: 750px
+		max-width: 1200px
 		display: flex
 	.titulo
-		font-size: 3.2rem
+		// font-size: 3.2rem
 	.programaBook
-		height: 90vh
-		padding: 2em 6em
+		max-width: 1150px
+		height: 95vh
+		padding: 1em 6em
 	.contenedorbtn
 		.boton
 			font-size: 1.3rem
+.plantas
+	bottom: 22em
+	position: absolute
+	width: 100%
+	// height: 300px
+	display: flex
+	flex-flow: row-reverse nowrap
+	justify-content: space-between
+	z-index: 0
+	.lado
+		margin: 0 -.5em
+		img
+			width: 100px
+			transition: 1s all ease
+	.izquierda > img
+		width: 135px
+	+compu
+		bottom: 30em
+		.lado
+			margin: 0 -1em
+			img
+				width: 300px
+		.izquierda > img
+			width: 400px
+	+wide
+		bottom: 35em
+	+ultra
+		bottom: 42em
+		.lado
+			margin: 0 -1.5em
+			img
+				width: 320px
+		.izquierda > img
+			width: 435px
 </style>
 
