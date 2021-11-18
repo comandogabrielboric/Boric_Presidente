@@ -382,6 +382,7 @@ section
 		display: flex
 		flex-flow: row wrap
 		justify-content: center
+		max-width: 1800px
 		.propuesta
 			margin: 10px
 			text-align: center

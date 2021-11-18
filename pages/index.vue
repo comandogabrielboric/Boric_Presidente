@@ -303,7 +303,7 @@ section
 			font-style: italic
 			font-weight: 700
 			.segundo
-				font-size: 3.4rem
+				font-size: 4rem
 				padding-left: 4px
 				font-weight: 900
 			.tercero
