@@ -4,17 +4,17 @@
 	.storytelling
 		.filtroBlur
 			img.noMovil(
-				src="/imagenes/header-boric-1920x850.jpg",
+				src="/imagenes/foto-cabecera.jpg",
 				alt="Súmate a cambiar Chile"
 			)
 			img.noCompu(
-				src="/imagenes/header-propuestas-movil-boric.webp",
+				src="/imagenes/foto-cabecera-movil-06 1.jpg",
 				alt="Súmate a cambiar Chile"
 			)
-		.tituloHead.noCompu
-			.tit Propuestas #[span.light para]
-			.tit #[span.light un] nuevo Chile
-			.sub Cambios para vivir mejor
+			.tituloHead
+				.tit Propuestas #[span.light para]
+				.tit #[span.light un] nuevo Chile
+				.sub Cambios para vivir mejor
 
 	section.propuestas(v-if="setPropuestas")
 		.curva.curvaSuperior
@@ -224,7 +224,6 @@ export default {
 		object-fit: cover
 
 	.filtroBlur
-		position: relative
 		min-height: 250px
 		width: 100vw
 		display: flex
@@ -235,11 +234,12 @@ export default {
 			img
 				width: 100%
 				height: 198.69%
-				max-width: 350px
+				max-width: 375px
 				max-height: 100%
 	.tituloHead
 		position: absolute
-		top: 1.9em
+		bottom: 1.9em
+		z-index: 5
 		.tit
 			text-align: center
 			font-size: 2rem
@@ -253,8 +253,28 @@ export default {
 			font-size: 1.5rem
 			font-style: italic
 			font-weight: 100
-		+movil
-			top: 6.5em
+			line-height: 1.1
+		+compu
+			top: 30%
+			// bottom: 48%
+			left: 15%
+			z-index: 100
+			.tit
+				text-align: left
+				font-size: 2.5rem
+			.sub
+				text-align: left
+				font-size: 1.8rem
+		+wide
+			.tit
+				font-size: 3rem
+			.sub
+				font-size: 2rem
+		+ultra
+			.tit
+				font-size: 4.5rem
+			.sub
+				font-size: 3rem
 section
 	position: relative
 	.curvaSuperior
@@ -263,13 +283,12 @@ section
 		top: 0
 		left: 0
 		right: 0
-		width: 100vw
+		width: 100%
 		background-color: $petroleo2
 		justify-content: center
 		clip-path: ellipse(65% 100% at 50% 100%)
-
-		height: 3em
-		margin-top: -1.2em
+		height: 4em
+		margin-top: -1.5em
 		+compu
 			height: 5em
 			margin-top: -2em
@@ -278,6 +297,7 @@ section
 		~ .sobreCurva
 			position: relative
 			z-index: 2
+
 .relleno
 	width: 100vw
 	height: 7em

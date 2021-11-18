@@ -38,7 +38,7 @@ footer
 		flex-flow: column
 		.logo
 			+bgcon
-			background-color: currentColor
+			background-color: #072B3F
 			mask-image: url('/logos/logo.svg')
 			mask-size: contain
 			mask-repeat: no-repeat
@@ -101,7 +101,7 @@ footer
 				width: 1em
 			.textoAprueboDignidad
 				+micon
-				background-color: currentColor
+				background-color: #072B3F
 				mask-image: url('/logos/apruebo dignidad texto.svg')
 				height: 1em
 				width: 1.458em
