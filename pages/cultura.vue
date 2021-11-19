@@ -1,8 +1,8 @@
 <template lang="pug">
 .propuestasRoot
 	.encabezado
-		h1.titulo Programa para un nuevo Chile
-			.sub Cambios para vivir mejor
+		h1.titulo Hasta que la dignidad se haga cultura
+			.sub se haga cultura
 	.programaBook
 		#adobe-dc-view
 		script(src="https://documentcloud.adobe.com/view-sdk/main.js")
