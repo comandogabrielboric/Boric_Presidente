@@ -14,7 +14,7 @@
 				});
 				adobeDCView.previewFile(
 					{
-						content: { location: { url: 'https://s3.amazonaws.com/cdn.boricpresidente.cl/web/ManifiestoCultura.pdf' } },
+						content: { location: { url: '/pdf/ManifiestoCultura.pdf' } },
 						metaData: { fileName: 'ManifiestoCultura.pdf' },
 					},
 					{ defaultViewMode: 'SIZED_CONTAINER', showAnnotationTools: false, showLeftHandPanel: false, dockPageControls: false }
