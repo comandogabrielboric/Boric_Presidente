@@ -23,12 +23,12 @@
 
 	.contenedorbtn
 		a.button.boton(
-			href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(1).pdf",
+			href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/ManifiestoCultura.pdf",
 			target="_blank",
-			@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
+			@click="$gtm.push({ event: 'link-home', hacia: 'descargar manifiesto' })",
 			download
 		)
-			.p DESCARGAR PROGRAMA
+			.p DESCARGAR MANIFIESTO
 	//- .contenedorbtn
 		a.button.boton(
 			href="https://drive.google.com/file/d/1kKP7eIUIM_4KJMvsL4VZv8l2lp89PXlX/view?usp=sharing",
