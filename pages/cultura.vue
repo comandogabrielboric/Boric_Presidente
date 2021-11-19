@@ -9,12 +9,12 @@
 		script(type="text/javascript").
 			document.addEventListener('adobe_dc_view_sdk.ready', function () {
 				var adobeDCView = new AdobeDC.View({
-					clientId: '2f8fd37627184271bf84540c32751729',
+					clientId: '6f75c4d89e5f44e2b53d1f9299835800',
 					divId: 'adobe-dc-view',
 				});
 				adobeDCView.previewFile(
 					{
-						content: { location: { url: '/pdf/ManifiestoCultura.pdf' } },
+						content: { location: { url: 'https://s3.amazonaws.com/cdn.boricpresidente.cl/web/ManifiestoCultura.pdf' } },
 						metaData: { fileName: 'ManifiestoCultura.pdf' },
 					},
 					{ defaultViewMode: 'SIZED_CONTAINER', showAnnotationTools: false, showLeftHandPanel: false, dockPageControls: false }
