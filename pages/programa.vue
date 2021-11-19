@@ -3,23 +3,25 @@
 	.encabezado
 		h1.titulo Programa para un nuevo Chile
 			.sub Cambios para vivir mejor
-	//- .programaBook.noMovil
-		a.fbo-embed(
-			href="https://online.flippingbook.com/view/447789273/",
-			data-fbo-id="447789273",
-			data-fbo-ratio="16:9",
-			data-fbo-width="100%",
-			data-fbo-height="auto",
-			data-fbo-version="1",
-			style="max-width: 1000px"
-		) Plan de gobierno AD 2022-2026
-			script(
-				async="",
-				defer="",
-				src="https://online.flippingbook.com/EmbedScriptUrl.aspx?m=redir&hid=447789273"
-			)
-
 	.programaBook
+		#adobe-dc-view
+		script(src="https://documentcloud.adobe.com/view-sdk/main.js")
+		script(type="text/javascript").
+			document.addEventListener('adobe_dc_view_sdk.ready', function () {
+				var adobeDCView = new AdobeDC.View({
+					clientId: '6f75c4d89e5f44e2b53d1f9299835800',
+					divId: 'adobe-dc-view',
+				});
+				adobeDCView.previewFile(
+					{
+						content: { location: { url: '/pdf/PlanDeGobiernoAD2022-2026.pdf' } },
+						metaData: { fileName: 'PlanDeGobiernoAD2022-2026.pdf' },
+					},
+					{ defaultViewMode: 'SIZED_CONTAINER', showAnnotationTools: false, showLeftHandPanel: false, dockPageControls: false }
+				);
+			});
+
+	//- .programaBook
 		iframe(
 			src="https://docs.google.com/viewer?srcid=1dyxLh6kl6-gS60lW1CPjHf7LV_QSOOr_&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
 			width="100%",
@@ -157,9 +159,9 @@ export default {
 	.titulo
 		// font-size: 3.2rem
 	.programaBook
-		max-width: 1000px
+		max-width: 800px
 		height: 95vh
-		padding: 1em 6em
+		// padding: 1em 6em
 	.contenedorbtn
 		.boton
 			font-size: 1.3rem
