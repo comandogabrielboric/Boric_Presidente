@@ -2,10 +2,14 @@
 .rootIndex
 	section.storytelling
 		.filtroBlur
-			img.noMovil(src="/imagenes/portadaWeb.webp", alt="Súmate a cambiar Chile")
-			img.noCompu(src="/imagenes/portadaMovil.webp", alt="Súmate a cambiar Chile")
+			img(
+				@click="unete",
+				src="/imagenes/WEB-BANDERA.webp",
+				alt="Súmate a cambiar Chile"
+			)
+			//- img.noCompu(src="/imagenes/WEB-BANDERA.webp", alt="Súmate a cambiar Chile")
 			//- img.imgTiny(v-if="!cargado" src="/imagenes/portadaMovilTiny.webp" alt="Súmate a cambiar Chile")
-		.contenido
+		//- .contenido
 			.titulo Programa de
 				.segundo Gobierno
 				.tercero Apruebo Dignidad
@@ -177,6 +181,9 @@ export default {
 		this.cargado = true
 	},
 	methods: {
+		unete () {
+			this.$router.replace('/#uneteALaCampaña')
+		},
 		tag (valor) {
 			console.log('tag')
 			this.$gtm.push({ event: 'link-home', hacia: valor })
@@ -259,91 +266,31 @@ section
 	display: flex
 	justify-content: center
 	max-height: calc(100vh - 5em)
-	background-image: url('/imagenes/portadaMovil.webp')
+	background-image: url('/imagenes/WEB-BANDERA.webp')
 	filter: blur()
 	background-size: cover
 	background-repeat: no-repeat
 	img
-		width: 119.45%
+		width: 100%
 		height: 100%
 		max-width: 100%
 		max-height: 100%
 		z-index: 5
+		object-fit: cover
 	.filtroBlur
 		position: relative
-		min-height: 250px
+		// min-height: 200px
 		width: 100vw
 		display: flex
 		justify-content: center
 		z-index: 0
 		+movil
 			img
-				// backdrop-filter: blur(4px)
 				width: 100%
-				height: 198.69%
-				max-width: 376px
-				// max-height: 600px
-	.contenido
-		// background-image: url('/imagenes/portadaMovil.webp')
-		// background-size: cover
-		// background-repeat: no-repeat
-		position: absolute
-		display: flex
-		width: 100%
-		top: 0
-		bottom: 0
-		flex-flow: column
-		justify-content: space-between
-		padding: 3em 0
-		text-align: center
-		.titulo
-			line-height: 1
-			font-style: italic
-			font-weight: 700
-			.segundo
-				font-size: 4rem
-				padding-left: 4px
-				font-weight: 900
-			.tercero
-				font-size: 1.5rem
-				font-weight: 400
-		.contendorBoton
-			padding-top: .5em
-			display: flex
-			justify-content: flex-start
-			.boton
-				display: flex
-				margin: 0 auto
-				cursor: pointer
-				width: 260px
-				height: 42px
-				text-transform: uppercase
-				background-color: $verde3
-				color: $verde1
-				justify-content: center
-				align-items: center
-				padding-top: .8em
-				border: 0
-				border-radius: 5px
-				margin-top: .5em
-				z-index: 5
-				font-size: 1.2rem
-	+compu
-		background-image: url('/imagenes/portadaWeb.webp')
-		background-size: cover
-		background-repeat: no-repeat
-		.filtroBlur
-			position: relative
-			display: flex
-			width: 100%
-			height: 100%
-			backdrop-filter: blur(8px)
-			justify-content: center
-		img
-			margin: 0 0 -2.5em 0
-			width: 100%
-			height: 53.4%
-			max-width: 100vw
+				height: 100%
+				max-width: 100%
+				max-height: 100%
+
 		.contenido
 			display: flex
 			flex-flow: column
