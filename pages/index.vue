@@ -12,32 +12,19 @@
 			.contendorBoton
 				nuxt-link.boton(to="/propuestas", @click.native="tag('propuestas')") VER PROGRAMA
 
-	// desde aca
-
-	section.elArbol
+	section.seccionParticipa
 		.curva.curvaSuperior
-		.noCompu
-			.titulo #[span.primero Sé parte de la]
-				div Playlist
-				.segundo El Árbol
-			.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
-			.portadaPlaylist
-				img(src="/gif/portadaPlaylist.webp", alt="")
+		.contenido
+			.lado.lado1
+				h2.titulo #[span.primero Inscríbete]
+					div Únete a la campaña
+				.texto
+					div Las transformaciones que Chile necesita las hacemos entre todas y todos.
+					div Déjanos tu mail y recibirás más información sobre la campaña.
 
-			nuxt-link.boton(to="/playlist")
-				.btn.bold MÁS INFORMACIÓN
-		.noMovil
-			.contenido
-				.lado.lado1
-					.titulo #[span.primero Sé parte de la]
-						.segundo Playlist El Árbol
-
-					.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
-					nuxt-link.boton(to="/playlist")
-						.btn.bold MÁS INFORMACIÓN
-				.lado.lado2
-					.portadaPlaylist
-						img(src="/gif/portadaPlaylist.webp", alt="")
+			.lado.lado2
+				.suscribirse
+					participaant
 
 		//- a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta ciudadana
 		//- a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
@@ -60,21 +47,32 @@
 
 	.precarga(v-if="!cargado")
 	.postcarga(v-if="cargado")
-		section.seccionParticipa
+		section.elArbol
 			.curva.curvaSuperior
-			.contenido
-				.lado.lado1
-					h2.titulo #[span.primero Inscríbete]
-						div Únete a la campaña
-					.texto
-						div Las transformaciones que Chile necesita las hacemos entre todas y todos.
-						div Déjanos tu mail y recibirás más información sobre la campaña.
+			.noCompu
+				.titulo #[span.primero Sé parte de la]
+					div Playlist
+					.segundo El Árbol
+				.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+				.portadaPlaylist
+					img(src="/gif/portadaPlaylist.webp", alt="")
 
-				.lado.lado2
-					.suscribirse
-						participaant
-			img.noMovil(src="/imagenes/participa.webp", alt="Participa")
-			img.noCompu(src="/imagenes/participaMovil.webp", alt="Participa")
+				nuxt-link.boton(to="/playlist")
+					.btn.bold MÁS INFORMACIÓN
+			.noMovil
+				.contenido
+					.lado.lado1
+						.titulo #[span.primero Sé parte de la]
+							.segundo Playlist El Árbol
+
+						.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+						nuxt-link.boton(to="/playlist")
+							.btn.bold MÁS INFORMACIÓN
+					.lado.lado2
+						.portadaPlaylist
+							img(src="/gif/portadaPlaylist.webp", alt="")
+			img.noMovil.imgP(src="/imagenes/participa.webp", alt="Participa")
+			img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
 
 		section.seccionArmaTuCampana
 			.curva.curvaSuperior
@@ -403,8 +401,8 @@ section
 			background-color: $verde3
 			font-size: 1.1rem
 			padding: .4em 1.5em
-	.imgSaludo
-		margin-top: -8em
+	.imgP
+		// margin-top: -8em
 		width: 100%
 	+compu
 		img

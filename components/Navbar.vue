@@ -14,7 +14,7 @@
 		mixin links
 			.links.contenedor-links.link-interno
 				nuxt-link.link.bold(to="/aporta", @click.native="tag('nav aporta')") aporta
-				nuxt-link.link.bold(to="/cultura", @click.native="tag('nav cultura')") Cultura
+				//- nuxt-link.link.bold(to="/cultura", @click.native="tag('nav cultura')") Cultura
 				nuxt-link.link.bold(
 					to="/propuestas",
 					@click.native="tag('nav propuestas')"
@@ -24,7 +24,7 @@
 					to="/apoderados",
 					@click.native="tag('nav apoderados')"
 				) Apoderados
-				nuxt-link.link.bold(to="/playlist", @click.native="tag('nav playlist')") playlist
+				//- nuxt-link.link.bold(to="/playlist", @click.native="tag('nav playlist')") playlist
 
 		.menuCompu
 			+links
