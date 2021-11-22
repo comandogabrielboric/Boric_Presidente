@@ -1,25 +1,13 @@
 <template lang="pug">
 footer
-<<<<<<< HEAD
-
 	.capa.capaLinks
 	.capa.capaFooter
 		.logo
-		p.textoFooter Por un Chile en el que nadie quede fuera.
-=======
-	.capa.capaLinks
-	.capa.capaFooter
-		.logo
->>>>>>> master
 		RedesSociales
 		.logos
 			.aprueboDignidad
 				.iconoAprueboDignidad
 				.textoAprueboDignidad
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 </template>
 
 <script>
@@ -70,7 +58,6 @@ footer
 		.redesSociales
 			padding: 1em 0
 			font-size: 1.4em
-			// padding: 1em 0 1em 0
 		.textoFooter
 			text-align: center
 			margin-top: 2em
@@ -97,10 +84,6 @@ footer
 			clip-path: ellipse(60% 100% at 50% 100%)
 			background-color: $fondoFooter
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 	.link-footer
 		padding: .25em
 		margin: .25em
@@ -122,15 +105,9 @@ footer
 				height: 1em
 				width: 1.458em
 
-<<<<<<< HEAD
-
-	@media screen and (max-width: 760px)
-=======
 	+compu
->>>>>>> master
 	flex-flow: column nowrap
 	.redesSociales
-			// margin-top: 2em
 		.logos
 			.aprueboDignidad
 				font-size: 5em
@@ -138,9 +115,6 @@ footer
 			flex-flow: column nowrap
 		.capaFooter
 			flex-flow: column nowrap
-<<<<<<< HEAD
-
-=======
 	+wide
 		.logos
 			.aprueboDignidad
@@ -149,5 +123,4 @@ footer
 		.logos
 			.aprueboDignidad
 				font-size: 13em
->>>>>>> master
 </style>
