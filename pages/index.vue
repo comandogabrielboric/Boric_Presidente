@@ -14,7 +14,7 @@
 
 	section.seccionParticipa
 		.curva.curvaSuperior
-		.contenido
+		.contenido(id="uneteALaCampaña")
 			.lado.lado1
 				h2.titulo #[span.primero Inscríbete]
 					div Únete a la campaña
