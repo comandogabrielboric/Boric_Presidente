@@ -1,6 +1,10 @@
 <template lang="pug">
 .rootParticipa
-	a-form-model.suscribirse(ref="formulario", :model="formulario", :rules="rules")
+	a-form-model.suscribirse(
+		ref="formulario",
+		:model="formulario",
+		:rules="rules"
+	)
 		a-form-model-item(has-feedback, prop="nombre")
 			a-input.input(
 				v-model="formulario.nombre",
@@ -222,6 +226,8 @@ export default {
 		async suscribirse () {
 			// const { nombre, email, telefono, comuna } = this
 			// const data = { nombre, email, telefono, comuna }
+			this.visible = true
+
 			const config = {}
 			const respuesta = await this.$axios
 				.post(`${process.env.apiURL}/suscribirse`, this.formulario, config)
