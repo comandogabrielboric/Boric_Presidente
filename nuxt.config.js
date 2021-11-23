@@ -71,6 +71,7 @@ const nuxtConfig = {
 	plugins: [
 		'@/plugins/antd-ui',
 		'@/plugins/axios',
+		'@/plugins/tagManager',
 		'@/plugins/seo',
 		'@/plugins/lodash'
 	],
