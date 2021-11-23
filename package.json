@@ -3,8 +3,8 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "MODO=dev nuxt",
-		"devRemoto": "REMOTO=1 MODO=dev nuxt",
+		"devLocal": "MODO=dev nuxt",
+		"dev": "REMOTO=1 MODO=dev nuxt",
 		"a": "nuxt build -a",
 		"build": "nuxt build",
 		"start": "nuxt start",
