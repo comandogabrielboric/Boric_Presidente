@@ -17,14 +17,15 @@
 				.link.bold(@click="unete") unete
 				//- nuxt-link.link.bold(to="/cultura", @click.native="tag('nav cultura')") Cultura
 				nuxt-link.link.bold(
-					to="/propuestas",
-					@click.native="tag('nav propuestas')"
-				) Propuestas
-				nuxt-link.link.bold(to="/programa", @click.native="tag('nav programa')") Programa
-				nuxt-link.link.bold(
 					to="/apoderados",
 					@click.native="tag('nav apoderados')"
 				) Apoderados
+				nuxt-link.link.bold(
+					to="/propuestas",
+					@click.native="tag('nav propuestas')"
+				) Propuestas
+				//- nuxt-link.link.bold(to="/programa", @click.native="tag('nav programa')") Programa
+
 				//- nuxt-link.link.bold(to="/playlist", @click.native="tag('nav playlist')") playlist
 
 		.menuCompu
