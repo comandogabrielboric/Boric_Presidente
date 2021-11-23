@@ -3,6 +3,8 @@
 	a.redSocial.facebook(
 		target="_blank",
 		rel="noreferer noopener",
+		title="Facebook",
+		alt="Facebook",
 		href="https://www.facebook.com/gabrielboric",
 		@click="$gtm.push({ event: 'nav-link', hacia: 'facebook footer' })"
 	)
@@ -10,6 +12,8 @@
 	a.redSocial.twitter(
 		target="_blank",
 		rel="noreferer noopener",
+		title="Twitter",
+		alt="Twitter",
 		href="https://twitter.com/gabrielboric",
 		@click="$gtm.push({ event: 'nav-link', hacia: 'twitter footer' })"
 	)
@@ -17,6 +21,8 @@
 	a.redSocial.instagram(
 		target="_blank",
 		rel="noreferer noopener",
+		title="Instagram",
+		alt="Instagram",
 		href="https://www.instagram.com/gabrielboric",
 		@click="$gtm.push({ event: 'nav-link', hacia: 'instagram footer' })"
 	)
@@ -24,6 +30,8 @@
 	a.redSocial.tiktok(
 		target="_blank",
 		rel="noreferer noopener",
+		title="TikTok",
+		alt="TikTok",
 		href="https://www.tiktok.com/@gabrielboric",
 		@click="$gtm.push({ event: 'nav-link', hacia: 'tiktok footer' })"
 	)
@@ -31,6 +39,8 @@
 	a.redSocial.whatsapp(
 		target="_blank",
 		rel="noreferer noopener",
+		title="WhatsApp",
+		alt="WhatsApp",
 		href="https://api.whatsapp.com/send?phone=56957603153",
 		@click="$gtm.push({ event: 'nav-link', hacia: 'whatsapp footer' })"
 	)
@@ -38,6 +48,8 @@
 	a.redSocial.github(
 		target="_blank",
 		rel="noreferer noopener",
+		title="GitHub",
+		alt="GitHub",
 		href="https://github.com/comandogabrielboric/Boric_Presidente",
 		@click="$gtm.push({ event: 'nav-link', hacia: 'GitHub footer' })"
 	)

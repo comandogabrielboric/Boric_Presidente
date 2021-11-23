@@ -105,7 +105,11 @@ export default {
 	// solicita info a cms
 	head () {
 		// if (!this.seo) return {}
-		const titulo = this._.get(this.seo, ['titulo_pag'], 'Manifiesto cultura')
+		const titulo = this._.get(
+			this.seo,
+			['titulo_pag'],
+			'Propuesta Programática'
+		)
 		const descripcion = this._.get(
 			this.seo,
 			['descripcion_pag'],
