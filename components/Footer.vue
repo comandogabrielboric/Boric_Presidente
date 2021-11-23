@@ -3,6 +3,7 @@ footer
 	.capa.capaLinks
 	.capa.capaFooter
 		.logo
+		a(href="https://activate.boricpresidente.cl/", target="_blank") Actívate y súmate a nuestros grupos
 		RedesSociales
 		.logos
 			.aprueboDignidad
