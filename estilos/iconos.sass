@@ -1,0 +1,56 @@
+@import './utils'
+$carpetaIconos: '/svg/sociales'
+
+$iconos: adelantar altura amigos amigos2 ampolleta apagar ascendente asistiendo asistir atencion aumentando audiencia avatar-circulo avatar-mas avatar-menos avatar avion bandera bandita base-datos basura bolsa brujula caca calendario campana-no campana candado canje canje2 cargar carrito carta-comida casa casa2 celu chat check checkbox chirlito-bruto chirlito circulo-check circulo-cruz circulo-exclamacion circulo-info circulo-lleno circulo-mas circulo-entrar circulo-salir circulo-menos circulo click clip colapsar compartir compra-token concentracion corazon-lleno corazon-vacio cruz cuadros descargar descendente devolver direccion divergencia documento duo duracion ejercicio elmenu email embudo-no embudo-no2 embudo embudo2 emitir enchufe-delgado enchufe enchufe2 engranaje escaner escaner2 escribir estrella-vacia estrella eticket etiqueta evento exclamacion expandir experimento exportar externo fechas femenino filtro flecha-ascendente flecha-descendente folleto foto genero grafico gratis hash hash2 hoja huelladedo idioma iman igual igual2 importar impresora indicaciones individual info info2 info3 inicio lapiz latido lectorQr link link2 link3 lista llama luna lupa-linea lupa lupa2 lupa3 maleta mancuerna mancuerna2 mapa marcador-check marcador-cruz marcador-lleno marcador-mas marcador-menos marcador mas mas2 masculino medalla medidor medidor2 megafono menos menos2 mensaje menu-puntos-relleno menu-puntos menu-relleno menu mi-ubicacion microfono mosaico mundo noticia notificacion-vibrada notificacion nover nover2 nube obiqu obiqu2 obiqu3 objetivo ojo pago-celular papu parada pasaporte pedido peso pin pincho plato-tapa plato play polera portapapeles precio precio2 pregunta pregunta2 punto puntos6 puntos9 qr-error qr-qr qr radar ranking rayo rayo-relleno recibo recopilar recopilar2 recopilar3 recopilar3a recopilar3c recopilar4 reembolso region regla reloj repetir repetir3 senal senal2 sincronizar sol target tarjeta telefono texto tres-puntos ticket-cortado ticket-espera-campana ticket-espera-rayo ticket-espera ticket tickets token transferencia trio union ver video-no video volver volver2 zap firmar puntaje candado-abierto ojo2 ojo-cerrado play-relleno resetear flipY flipX girarIzq girarDer camara candado-abriendo candado-clave candadote-abierto candadote circulo-atras circulo-cuadrado circulo-pausa circulo-play circulo-triangulo contador cronometro-pausa cronometro-play cronometro cuadrado-atras cuadrado-pausa cuadrado-play cuadrado-triangulo gamepad giraPaisaje giraRetrato joypad llave-grande llave microfono-corto microfono-mute microfono-mute2 redondeado-atras redondeado-pausa redondeado-play sitio-externo trofeo-2 trofeo videocamara-grabando
+
+.oicono
+	flex: auto 0 0
+	display: inline-block
+	width: 1em
+	height: 1em
+	&.b
+		+bgcon
+	&, &.m
+		+micon
+		background-color: currentColor
+
+	@each $icono in $iconos
+		&.#{$icono}
+			$loc: '/iconos/#{$icono}.svg'
+			mask-image: url($loc)
+
+	&.nada,
+	&.vacio
+		background-color: transparent
+	&.tiktok
+		$loc: $carpetaIconos + '/tiktok.svg'
+		mask-image: url($loc)
+	&.github
+		$loc: $carpetaIconos + '/github.svg'
+		mask-image: url($loc)
+	&.twitter
+		$loc: $carpetaIconos + '/twitter.svg'
+		mask-image: url($loc)
+	&.facebook
+		$loc: $carpetaIconos + '/facebook.svg'
+		mask-image: url($loc)
+	&.instagram
+		$loc: $carpetaIconos + '/instagram.svg'
+		mask-image: url($loc)
+	&.youtube
+		$loc: $carpetaIconos + '/youtube.svg'
+		mask-image: url($loc)
+		&.bgi
+			mask-image: none
+			background-image: url($loc)
+			background-color: transparent
+	&.spotify
+		$loc: $carpetaIconos + '/spotify.svg'
+		mask-image: url($loc)
+		&.bgi
+			mask-image: none
+			background-image: url($loc)
+			background-color: transparent
+	&.whatsapp
+		$loc: $carpetaIconos + '/whatsapp.svg'
+		mask-image: url($loc)

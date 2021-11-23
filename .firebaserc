@@ -1,0 +1,17 @@
+{
+	"projects": {
+		"default": "boric-presidente"
+	},
+	"targets": {
+		"boric-presidente": {
+			"hosting": {
+				"produccion": [
+					"boric-presidente"
+				],
+				"tests": [
+					"bp-tests"
+				]
+			}
+		}
+	}
+}

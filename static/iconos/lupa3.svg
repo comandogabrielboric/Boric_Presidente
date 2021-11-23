@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1"
+	xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 50 50"
+	style="enable-background:new 0 0 50 50;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<g>
+	<path d="M21,4c9.4,0,17,7.6,17,17c0,4-1.4,7.6-3.7,10.5l11.1,11.1c0.8,0.8,0.8,2,0,2.8C45,45.8,44.5,46,44,46s-1-0.2-1.4-0.6
+		L31.5,34.3C28.6,36.6,25,38,21,38c-9.4,0-17-7.6-17-17S11.6,4,21,4 M21,0C9.4,0,0,9.4,0,21s9.4,21,21,21c3.5,0,6.9-0.9,10-2.5
+		l8.8,8.8c1.1,1.1,2.6,1.8,4.2,1.8c1.6,0,3.1-0.6,4.2-1.8c1.1-1.1,1.8-2.6,1.8-4.2s-0.6-3.1-1.8-4.2L39.5,31c1.7-3,2.5-6.4,2.5-10
+		C42,9.4,32.6,0,21,0L21,0z"/>
+</g>
+<g>
+	<path d="M21,4c9.4,0,17,7.6,17,17s-7.6,17-17,17S4,30.4,4,21S11.6,4,21,4 M21,0C9.4,0,0,9.4,0,21s9.4,21,21,21s21-9.4,21-21
+		S32.6,0,21,0L21,0z"/>
+</g>
+<path class="st0" d="M21,32c-6.1,0-11-4.9-11-11"/>
+</svg>

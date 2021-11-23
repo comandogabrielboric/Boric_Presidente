@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-140,-280)">
+        <g id="cronometro" transform="matrix(0.925926,0,0,0.925926,72.4074,281.852)">
+            <rect x="73" y="-2" width="54" height="54" style="fill:none;"/>
+            <clipPath id="_clip1">
+                <rect x="73" y="-2" width="54" height="54"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g transform="matrix(1.08,0,0,1.08,73,-2)">
+                    <path d="M23,4L21.978,4C20.874,4 19.978,3.104 19.978,2C19.978,0.896 20.874,-0 21.978,-0L28.022,0C29.126,-0 30.022,0.896 30.022,2C30.022,3.104 29.126,4 28.022,4L27,4L27,6.056C31.33,6.448 35.565,8.117 39.092,11.06L41.957,8.195C42.738,7.415 44.005,7.415 44.785,8.195C45.566,8.976 45.566,10.243 44.785,11.024L41.921,13.889C49.137,22.537 48.686,35.434 40.57,43.551C31.977,52.144 18.023,52.144 9.43,43.551C0.837,34.957 0.837,21.004 9.43,12.411C13.218,8.623 18.047,6.505 23,6.056L23,4ZM37.741,15.239C44.774,22.272 44.774,33.69 37.741,40.722C30.709,47.755 19.291,47.755 12.259,40.722C5.226,33.69 5.226,22.272 12.259,15.239C19.291,8.207 30.709,8.207 37.741,15.239L37.741,15.239ZM23,18L23,32C23,33.104 23.896,34 25,34C26.104,34 27,33.104 27,32L27,18C27,16.896 26.104,16 25,16C23.896,16 23,16.896 23,18Z"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
