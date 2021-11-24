@@ -74,7 +74,7 @@
 	)
 		p Actívate, es ahora, es urgente
 		.activateOpciones
-			a.activate(
+			a.activate.rrss(
 				href="https://drive.google.com/drive/folders/		1vwqqSnxHIyv9wI617h8pUers1OudaBo0",
 				target="_blank",
 				rel="noreferer noopener",
@@ -82,7 +82,7 @@
 			)
 				.texto Actívate en redes sociales
 
-			a.activate(
+			a.activate.gruposW(
 				href="https://activate.boricpresidente.cl",
 				target="_blank",
 				rel="noreferer noopener",
@@ -90,13 +90,13 @@
 			)
 				.texto Súmate a los grupos de whatsapp
 
-			.activate(@click="describirTalento('terreno')")
+			.activate.aportaEnTerreno(@click="describirTalento('terreno')")
 				.texto Quiero ayudar en terreno
 
-			.activate(@click="describirTalento('talento')")
+			.activate.aportaTalento(@click="describirTalento('talento')")
 				.texto Tengo un talento que quiero poner a disposición
 
-			nuxt-link.activate(to="/aporta", target="_blank")
+			nuxt-link.activate.dona(to="/aporta", target="_blank")
 				.texto Aporta
 
 	a-modal.modalTalentos(
@@ -106,18 +106,28 @@
 		centered
 	)
 		.describeTuTalento(v-if="tipoDeAporte === 'talento'")
-			a-form-model.AporteTalento(ref="Talent", :model="talento", :rules="rules")
-				.titulo Describe tu talento en 70 caracteres
-				a-form-model-item(has-feedback, prop="Talento")
-					a-textarea.textArea(
-						v-model="talento.texto",
-						aria-label="Talento",
-						type="Talento",
-						placeholder="Describe en que puedes aportar",
-						:maxLength="70",
-						:auto-size="{ minRows: 3 }"
+			a-spin(:spinning="spinning", :delay="delayTime")
+				.exito(v-if="completado")
+					.titulo te has registrado exitosamente, pronto te contactaremos
+				.spin-content(v-else)
+					a-form-model.AporteTalento(
+						ref="Talent",
+						:model="talento",
+						:rules="rules"
 					)
-			.boton(@click="Ayudar('talento')") enviar
+						.titulo Describe tu talento en 70 caracteres
+						a-form-model-item(has-feedback, prop="Talento")
+							a-textarea.textArea(
+								v-model="talento.texto",
+								aria-label="Talento",
+								type="Talento",
+								placeholder="Describe en que puedes aportar",
+								:maxLength="70",
+								:auto-size="{ minRows: 3 }"
+							)
+					.boton(@click="Ayudar('talento')") enviar
+					.cargando
+
 		.describeTuTalento(v-if="tipoDeAporte === 'terreno'")
 			.titulo Gracias por inscribirte, pronto te contactaremos
 	a-modal.modal(
@@ -223,7 +233,10 @@ export default {
 			regionseleccionada: null,
 			comunaSeleccionada: null,
 
-			quieroAportarConTalento: null
+			quieroAportarConTalento: null,
+			spinning: false,
+			delayTime: 200,
+			completado: null
 
 			// regiones: this.re
 		}
@@ -276,6 +289,11 @@ export default {
 			})
 		},
 		async Ayudar (tipo) {
+			const descripcion = this.talento.texto
+			if (this._.isEmpty(descripcion)) return
+			if (tipo === 'talento') {
+				this.spinning = !this.spinning
+			}
 			const solicitud = {
 				descripcion: this.talento.texto,
 				tipo,
@@ -288,6 +306,10 @@ export default {
 				.then(r => r.data)
 				.catch(e => console.error('fallo ayudar', e))
 			console.log('Respuesta', respuesta)
+			if (!respuesta.error && respuesta.ok) {
+				this.completado = true
+				this.spinning = false
+			}
 		},
 		describirTalento (v) {
 			this.quieroAportarConTalento = !this.quieroAportarConTalento
@@ -393,32 +415,36 @@ export default {
 	.activate
 		display: flex
 		flex-flow: column nowrap
-		background-color: rgb(200, 200, 200)
+		background-color: transparent
 		margin: 1em
 		height: 230px
 		width: 190px
 		text-align: center
-		justify-content: center
+		justify-content: flex-end
 		border-radius: 5px
 		padding: .5em
-		transition: 1s all ease
-.describeTuTalento
-	display: flex
-	flex-flow: column nowrap
-	justify-content: space-between
-	padding: .5em
-	height: 100%
-	transition: 1s all ease
-
-.boton
-	background-color: $verde3
-	color: $verde1
-	height: 30px
-	padding: .45em 1em 0 1em
-.tipo
-	padding-bottom: 1em
-.textArea
-	width: 100%
+		transition: .2s all ease
+		cursor: pointer
+		&.rrss
+			background-image: url('/imagenes/celuRRSS.webp')
+			background-size: cover
+		&.gruposW
+			background-image: url('/imagenes/celuWhatsapp.webp')
+			background-size: cover
+		&.aportaEnTerreno
+			background-image: url('static/imagenes/terreno.webp')
+			background-size: cover
+		&.aportaTalento
+			background-image: url('/imagenes/talentos.webp')
+			background-size: cover
+		&.dona
+			background-image: url('static/imagenes/terreno.webp')
+			background-size: cover
+		.texto
+			font-size: 1.3rem
+		&:hover
+			transform: scale(1.1)
+			filter: brightness(1.1)
 
 .rootParticipa
 	text-align: left
@@ -474,7 +500,7 @@ export default {
 		color: #19CBB5
 	.textArea
 		margin: 1em 0
-	>.boton
+	.spin-content>.boton
 		background-color: $verde3
 		color: $verde1
 		padding: 0.4rem 0 0 0
