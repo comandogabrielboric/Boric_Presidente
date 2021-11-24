@@ -58,7 +58,7 @@
 					div Playlist
 					.segundo El Árbol
 				.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
-				.portadaPlaylist
+				a(class="portadaPlaylist" href="https://open.spotify.com/playlist/4uKpFyC9PIeafFy80RAWS1?si=ad935434a243417a" target="_blank")
 					img(src="/gif/portadaPlaylist.webp", alt="")
 
 				nuxt-link.boton(to="/playlist")
@@ -73,7 +73,7 @@
 						nuxt-link.boton(to="/playlist")
 							.btn.bold MÁS INFORMACIÓN
 					.lado.lado2
-						.portadaPlaylist
+						a(class="portadaPlaylist" href="https://open.spotify.com/playlist/4uKpFyC9PIeafFy80RAWS1?si=ad935434a243417a" target="_blank")
 							img(src="/gif/portadaPlaylist.webp", alt="")
 			img.noMovil.imgP(src="/imagenes/participa.webp", alt="Participa")
 			img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
