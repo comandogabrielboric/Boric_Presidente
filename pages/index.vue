@@ -7,14 +7,6 @@
 				src="/imagenes/WEB-BANDERA.webp",
 				alt="Súmate a cambiar Chile"
 			)
-			//- img.noCompu(src="/imagenes/WEB-BANDERA.webp", alt="Súmate a cambiar Chile")
-			//- img.imgTiny(v-if="!cargado" src="/imagenes/portadaMovilTiny.webp" alt="Súmate a cambiar Chile")
-		//- .contenido
-			.titulo Programa de
-				.segundo Gobierno
-				.tercero Apruebo Dignidad
-			.contendorBoton
-				nuxt-link.boton(to="/propuestas", @click.native="tag('propuestas')") VER PROGRAMA
 
 	section.seccionParticipa
 		.curva.curvaSuperior
@@ -29,9 +21,6 @@
 			.lado.lado2
 				.suscribirse
 					participaant
-
-		//- a.btnparticipa.bold(href='https://tll5o6hb21g.typeform.com/to/gRt8fnSE' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'encuesta participa'})") Consulta ciudadana
-		//- a.btnparticipa.bold(href='https://participa.boricpresidente.cl/' target="_blank" rel="noreferer noopener" @click="$gtm.push({ event: 'link-home', hacia: 'participa.boricpresidente.cl'})") Participa Aquí
 
 		img.noMovil.imgSaludo(
 			src="/imagenes/diversidad.webp",

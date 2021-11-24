@@ -428,7 +428,6 @@ export default {
 	.activate
 		display: flex
 		flex-flow: column nowrap
-		background-color: transparent
 		margin: 1em
 		height: 230px
 		width: 190px
