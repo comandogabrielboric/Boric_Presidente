@@ -67,7 +67,7 @@
 
 	a-modal.modal.modalBienvenido(
 		v-model="visible",
-		title="Bienvenid@ !!",
+		title="Bienvenido, ahora actívate",
 		@ok="handleOk",
 		:footer="null",
 		centered
@@ -80,7 +80,7 @@
 				rel="noreferer noopener",
 				@click="$gtm.push({ event: 'link-home', hacia: 'Decarga 	Kit grafico' })"
 			)
-				.texto Actívate en redes sociales
+				.texto Comparte en tus redes sociales
 
 			a.activate.gruposW(
 				href="https://activate.boricpresidente.cl",
@@ -309,6 +309,12 @@ export default {
 			if (!respuesta.error && respuesta.ok) {
 				this.completado = true
 				this.spinning = false
+				setTimeout(() => {
+					this.tipoDeAporte = null
+					this.quieroAportarConTalento = null
+					this.completado = null
+					this.talento.texto = null
+				}, 2000)
 			}
 			if (respuesta.error) {
 				this.errorRecibido = respuesta.error
@@ -316,7 +322,7 @@ export default {
 			}
 		},
 		describirTalento (v) {
-			this.quieroAportarConTalento = !this.quieroAportarConTalento
+			this.quieroAportarConTalento = true
 			this.tipoDeAporte = v
 			if (v === 'terreno') {
 				this.Ayudar(v)
@@ -433,19 +439,19 @@ export default {
 		transition: .2s all ease
 		cursor: pointer
 		&.rrss
-			background-image: url('/imagenes/celuRRSS.webp')
+			background-image: url('/imagenes/adherentes/redes sociales.webp')
 			background-size: cover
 		&.gruposW
-			background-image: url('/imagenes/celuWhatsapp.webp')
+			background-image: url('/imagenes/adherentes/whatsapp.webp')
 			background-size: cover
 		&.aportaEnTerreno
-			background-image: url('static/imagenes/terreno.webp')
+			background-image: url('/imagenes/adherentes/terreno.webp')
 			background-size: cover
 		&.aportaTalento
-			background-image: url('/imagenes/talentos.webp')
+			background-image: url('/imagenes/adherentes/talento.webp')
 			background-size: cover
 		&.dona
-			background-image: url('static/imagenes/terreno.webp')
+			background-image: url('/imagenes/adherentes/aporta.webp')
 			background-size: cover
 		.texto
 			font-size: 1.3rem
@@ -531,6 +537,9 @@ export default {
 		overflow: auto
 		p
 			font-size: 1.2em
+	+movil
+		.ant-modal
+			width: 90vh !important
 
 +compu
 

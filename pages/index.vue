@@ -51,33 +51,6 @@
 
 	.precarga(v-if="!cargado")
 	.postcarga(v-if="cargado")
-		section.elArbol
-			.curva.curvaSuperior
-			.noCompu
-				.titulo #[span.primero Sé parte de la]
-					div Playlist
-					.segundo El Árbol
-				.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
-				.portadaPlaylist
-					img(src="/gif/portadaPlaylist.webp", alt="")
-
-				nuxt-link.boton(to="/playlist")
-					.btn.bold MÁS INFORMACIÓN
-			.noMovil
-				.contenido
-					.lado.lado1
-						.titulo #[span.primero Sé parte de la]
-							.segundo Playlist El Árbol
-
-						.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
-						nuxt-link.boton(to="/playlist")
-							.btn.bold MÁS INFORMACIÓN
-					.lado.lado2
-						.portadaPlaylist
-							img(src="/gif/portadaPlaylist.webp", alt="")
-			img.noMovil.imgP(src="/imagenes/participa.webp", alt="Participa")
-			img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
-
 		section.seccionArmaTuCampana
 			.curva.curvaSuperior
 
@@ -106,6 +79,33 @@
 
 			.noCompu
 				+linkDescarga
+
+		section.elArbol
+			.curva.curvaSuperior
+			.noCompu
+				.titulo #[span.primero Sé parte de la]
+					div Playlist
+					.segundo El Árbol
+				.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+				.portadaPlaylist
+					img(src="/gif/portadaPlaylist.webp", alt="")
+
+				nuxt-link.boton(to="/playlist")
+					.btn.bold MÁS INFORMACIÓN
+			.noMovil
+				.contenido
+					.lado.lado1
+						.titulo #[span.primero Sé parte de la]
+							.segundo Playlist El Árbol
+
+						.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
+						nuxt-link.boton(to="/playlist")
+							.btn.bold MÁS INFORMACIÓN
+					.lado.lado2
+						.portadaPlaylist
+							img(src="/gif/portadaPlaylist.webp", alt="")
+			img.noMovil.imgP(src="/imagenes/participa.webp", alt="Participa")
+			img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
 
 		section.seccionaporta
 			mixin linkServel
