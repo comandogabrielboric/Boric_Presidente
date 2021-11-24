@@ -80,6 +80,9 @@
 			.noCompu
 				+linkDescarga
 
+			img.noMovil.imgP(src="/imagenes/participa.webp", alt="Participa")
+			img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
+
 		section.elArbol
 			.curva.curvaSuperior
 			.noCompu
@@ -104,8 +107,6 @@
 					.lado.lado2
 						.portadaPlaylist
 							img(src="/gif/portadaPlaylist.webp", alt="")
-			img.noMovil.imgP(src="/imagenes/participa.webp", alt="Participa")
-			img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
 
 		section.seccionaporta
 			mixin linkServel
@@ -262,6 +263,9 @@ section
 		flex: 700px 0 1
 	+ultra
 		flex: 800px 0 1
+.imgP
+	margin-top: 3em
+	width: 100%
 .storytelling
 	display: flex
 	justify-content: center
@@ -312,6 +316,7 @@ section
 					font-size: 1.4rem
 
 .elArbol
+	margin-top: -5em
 	background-color: $petroleo1
 	.curva
 		background-color: inherit
@@ -348,9 +353,6 @@ section
 			background-color: $verde3
 			font-size: 1.1rem
 			padding: .4em 1.5em
-	.imgP
-		// margin-top: -8em
-		width: 100%
 	+compu
 		img
 			z-index: 50
