@@ -125,11 +125,14 @@
 								:maxLength="70",
 								:auto-size="{ minRows: 3 }"
 							)
+							.textoError(v-if="errorRecibido") {{ errorRecibido }}
+
 					.boton(@click="Ayudar('talento')") enviar
-					.cargando
 
 		.describeTuTalento(v-if="tipoDeAporte === 'terreno'")
-			.titulo Gracias por inscribirte, pronto te contactaremos
+			a-spin(:spinning="spinning", :delay="delayTime")
+				.spin-content
+					.titulo Gracias por inscribirte, pronto te contactaremos
 	a-modal.modal(
 		:visible="tyc",
 		title="Terminos y Condiciones",
@@ -236,7 +239,8 @@ export default {
 			quieroAportarConTalento: null,
 			spinning: false,
 			delayTime: 200,
-			completado: null
+			completado: null,
+			errorRecibido: null
 
 			// regiones: this.re
 		}
@@ -289,11 +293,7 @@ export default {
 			})
 		},
 		async Ayudar (tipo) {
-			const descripcion = this.talento.texto
-			if (this._.isEmpty(descripcion)) return
-			if (tipo === 'talento') {
-				this.spinning = !this.spinning
-			}
+			this.spinning = true
 			const solicitud = {
 				descripcion: this.talento.texto,
 				tipo,
@@ -308,6 +308,10 @@ export default {
 			console.log('Respuesta', respuesta)
 			if (!respuesta.error && respuesta.ok) {
 				this.completado = true
+				this.spinning = false
+			}
+			if (respuesta.error) {
+				this.errorRecibido = respuesta.error
 				this.spinning = false
 			}
 		},
@@ -507,6 +511,9 @@ export default {
 		margin: 0
 		line-height: 2rem
 		font-size: 1.3rem
+	.textoError
+		margin-top: -.7em
+		line-height: 1.1
 
 .modalTalentos::v-deep
 	.ant-modal
