@@ -208,12 +208,12 @@ export default {
 		}
 		return {
 			formulario: {
-				nombre: 'cris',
-				email: 'cristian.hadad.g@gmail.com',
-				telefono: '+56982061888',
-				comuna: 'undefined',
-				region: 'undefined',
-				distrito: 'undefined'
+				nombre: undefined,
+				email: undefined,
+				telefono: undefined,
+				comuna: undefined,
+				region: undefined,
+				distrito: undefined
 			},
 			rules: {
 				nombre: [{ validator: validaNombre, trigger: 'change' }],
