@@ -65,15 +65,61 @@
 
 		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
 
-	a-modal.modal(
+	a-modal.modal.modalBienvenido(
 		v-model="visible",
-		title="Bienvenide !!",
-		centered,
+		title="Bienvenid@ !!",
 		@ok="handleOk",
-		:footer="null"
+		:footer="null",
+		centered
 	)
-		p Pronto recibiras noticias de nosotros
+		p Actívate, es ahora, es urgente
+		.activateOpciones
+			a.activate(
+				href="https://drive.google.com/drive/folders/		1vwqqSnxHIyv9wI617h8pUers1OudaBo0",
+				target="_blank",
+				rel="noreferer noopener",
+				@click="$gtm.push({ event: 'link-home', hacia: 'Decarga 	Kit grafico' })"
+			)
+				.texto Actívate en redes sociales
 
+			a.activate(
+				href="https://activate.boricpresidente.cl",
+				target="_blank",
+				rel="noreferer noopener",
+				@click="$gtm.push({ event: 'link-home', hacia: 'link 	activate' })"
+			)
+				.texto Súmate a los grupos de whatsapp
+
+			.activate(@click="describirTalento('terreno')")
+				.texto Quiero ayudar en terreno
+
+			.activate(@click="describirTalento('talento')")
+				.texto Tengo un talento que quiero poner a disposición
+
+			nuxt-link.activate(to="/aporta", target="_blank")
+				.texto Aporta
+
+	a-modal.modalTalentos(
+		v-model="quieroAportarConTalento",
+		@ok="handleOk",
+		:footer="null",
+		centered
+	)
+		.describeTuTalento(v-if="tipoDeAporte === 'talento'")
+			a-form-model.AporteTalento(ref="Talent", :model="talento", :rules="rules")
+				.titulo Describe tu talento en 70 caracteres
+				a-form-model-item(has-feedback, prop="Talento")
+					a-textarea.textArea(
+						v-model="talento.texto",
+						aria-label="Talento",
+						type="Talento",
+						placeholder="Describe en que puedes aportar",
+						:maxLength="70",
+						:auto-size="{ minRows: 3 }"
+					)
+			.boton(@click="Ayudar('talento')") enviar
+		.describeTuTalento(v-if="tipoDeAporte === 'terreno'")
+			.titulo Gracias por inscribirte, pronto te contactaremos
 	a-modal.modal(
 		:visible="tyc",
 		title="Terminos y Condiciones",
@@ -136,30 +182,49 @@ export default {
 				callback()
 			}
 		}
+		const validaTextArea = (rule, value, callback) => {
+			if (value === '') {
+				callback(new Error('Describe tu talento'))
+			}
+			if (value.length > 70) {
+				console.log(value)
+				callback(new Error('Describe tu talento en maximo 70 caracteres'))
+			} else {
+				callback()
+			}
+		}
 		return {
 			formulario: {
-				nombre: undefined,
-				email: undefined,
-				telefono: undefined,
-				comuna: undefined,
-				region: undefined,
-				distrito: undefined
+				nombre: 'cris',
+				email: 'cristian.hadad.g@gmail.com',
+				telefono: '+56982061888',
+				comuna: 'undefined',
+				region: 'undefined',
+				distrito: 'undefined'
 			},
 			rules: {
 				nombre: [{ validator: validaNombre, trigger: 'change' }],
 				email: [{ validator: validaEmail, trigger: 'change' }],
 				telefono: [{ validator: validaTelefono, trigger: 'change' }],
 				region: [{ validator: validaRegion }],
-				comuna: [{ validator: validaComuna, trigger: 'change' }]
+				comuna: [{ validator: validaComuna, trigger: 'change' }],
+				talento: [{ validator: validaTextArea, trigger: 'change' }]
 			},
 			layout: {
 				labelCol: { span: 4 },
 				wrapperCol: { span: 14 }
 			},
+			talento: {
+				texto: null
+			},
+			tipoDeAporte: null,
 			visible: false,
 			tyc: false,
 			regionseleccionada: null,
-			comunaSeleccionada: null
+			comunaSeleccionada: null,
+
+			quieroAportarConTalento: null
+
 			// regiones: this.re
 		}
 	},
@@ -210,6 +275,24 @@ export default {
 				}
 			})
 		},
+		async Ayudar (tipo) {
+			const solicitud = {
+				descripcion: this.talento.texto,
+				tipo,
+				usuario: this.formulario
+			}
+			console.log(solicitud)
+			const config = {}
+			const respuesta = await this.$axios
+				.post(`${process.env.apiURL}/ayudar`, solicitud, config)
+				.then(r => r.data)
+				.catch(e => console.error('fallo ayudar', e))
+			console.log('Respuesta', respuesta)
+		},
+		describirTalento (v) {
+			this.quieroAportarConTalento = !this.quieroAportarConTalento
+			this.tipoDeAporte = v
+		},
 		defineDistrito (d) {
 			this.formulario.distrito = d
 		},
@@ -234,6 +317,7 @@ export default {
 				.then(r => r.data)
 				.catch(e => console.error('fallo suscribirse', e))
 			console.log('Respuesta', respuesta)
+			this.idUsuario = respuesta.id
 			if (!respuesta) {
 				this.visible = false
 			} else {
@@ -252,6 +336,7 @@ export default {
 			console.log(e)
 			this.visible = false
 			this.tyc = false
+			this.tipoDeAporte = null
 		}
 	}
 }
@@ -298,8 +383,42 @@ export default {
 	.primero
 		font-weight: 400
 
-.modal
-	height: 200px
+	// height: 200px
+.activateOpciones
+	width: 100%
+	padding: .5em
+	display: flex
+	flex-flow: row wrap
+	justify-content: center
+	.activate
+		display: flex
+		flex-flow: column nowrap
+		background-color: rgb(200, 200, 200)
+		margin: 1em
+		height: 230px
+		width: 190px
+		text-align: center
+		justify-content: center
+		border-radius: 5px
+		padding: .5em
+		transition: 1s all ease
+.describeTuTalento
+	display: flex
+	flex-flow: column nowrap
+	justify-content: space-between
+	padding: .5em
+	height: 100%
+	transition: 1s all ease
+
+.boton
+	background-color: $verde3
+	color: $verde1
+	height: 30px
+	padding: .45em 1em 0 1em
+.tipo
+	padding-bottom: 1em
+.textArea
+	width: 100%
 
 .rootParticipa
 	text-align: left
@@ -313,7 +432,15 @@ export default {
 	.has-error .ant-form-explain,
 	.has-error .ant-form-split
 		color: #fff
+
 .modal::v-deep
+	.ant-modal
+		width: 80vw !important
+		max-width: 700px !important
+	.ant-modal-content
+		// width: 80vw
+		// max-width: 800px
+		// overflow: hidden
 	.ant-modal-header
 		text-align: center
 		padding-top: 3em
@@ -336,6 +463,38 @@ export default {
 			font-size: 1.2em
 	.ant-modal-mask
 		backdrop-filter: blur(4px)
+
+.describeTuTalento
+	// min-height: 70v
+	padding: 2em 2em 1em 2em
+	.titulo
+		font-weight: 700
+		font-size: 1.5rem
+		padding-bottom: 1em
+		color: #19CBB5
+	.textArea
+		margin: 1em 0
+	>.boton
+		background-color: $verde3
+		color: $verde1
+		padding: 0.4rem 0 0 0
+		margin: 0
+		line-height: 2rem
+		font-size: 1.3rem
+
+.modalTalentos::v-deep
+	.ant-modal
+		width: 50vw !important
+		max-width: 300px !important
+	.ant-modal-body
+		text-align: center
+		padding: 2em 1em
+		// background-color: $verde1
+		color: #fff
+		max-height: 60vh
+		overflow: auto
+		p
+			font-size: 1.2em
 
 +compu
 
