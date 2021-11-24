@@ -318,6 +318,9 @@ export default {
 		describirTalento (v) {
 			this.quieroAportarConTalento = !this.quieroAportarConTalento
 			this.tipoDeAporte = v
+			if (v === 'terreno') {
+				this.Ayudar(v)
+			}
 		},
 		defineDistrito (d) {
 			this.formulario.distrito = d
