@@ -95,6 +95,10 @@
 							.btn.bold MÁS INFORMACIÓN
 					.lado.lado2
 						.portadaPlaylist
+						a.portadaPlaylist(
+							href="https://open.spotify.com/playlist/4uKpFyC9PIeafFy80RAWS1?si=ad935434a243417a",
+							target="_blank"
+						)
 							img(src="/gif/portadaPlaylist.webp", alt="")
 
 		section.seccionaporta
