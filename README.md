@@ -1,6 +1,6 @@
 # Gabriel Boric Presidente
 
-Boricpresidente.cl nace de la convicción de un chile mejor, es un desarrollo de código abierto en el cual puedes aportar con tus propias ideas y mejoras.
+Boricpresidente.cl nace de la convicción de un Chile mejor, es un desarrollo de código abierto en el cual puedes aportar con tus propias ideas y mejoras.
 
 Te invitamos a revisar nuestro repositorio y realizar tus propios desarrollos sobre el mismo.
 
