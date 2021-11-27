@@ -2,20 +2,80 @@
 .root
 	section.destacadas Seccion actividades destacadas
 	.filtros
-		.filtroRegion
-		.filtroComuna
-		.filtroFecha
-		.filtroHorario
+		.contenedorTitulo
+			.tituloF Filtros de busqueda
+		.contenedorFiltros
+			.filtroRegion
+				a-select.input(
+					aria-label="Región",
+					@change="handleChange",
+					placeholder="Región"
+				)
+					a-select-option(
+						v-for="region in regiones",
+						:key="`region-${region.value}`",
+						:value="region.reg"
+					) {{ region.label }}
+
+			.filtroComuna
+				a-select.input(
+					v-if="!actividadesFiltradas",
+					aria-label="Comuna",
+					placeholder="Comuna",
+					@change="handleComuna"
+				)
+					a-select-option(
+						v-for="a in actividades",
+						:key="`comuna-${a._id}`",
+						:value="a.Comuna"
+					) {{ a.Comuna }}
+
+				a-select.input(
+					v-else,
+					aria-label="Comuna",
+					placeholder="Comuna",
+					@change="handleComuna"
+				)
+					a-select-option(
+						v-for="a in actividadesFiltradas",
+						:key="`comuna-${a._id}`",
+						:value="a.Comuna"
+					) {{ a.Comuna }}
+
+			.filtroFecha fecha
+			.filtroHorario horario
 	section.act
-		.contenedorActividades
+		.contenedorActividades(v-if="!actividadesFiltradas")
 			.cajaActividad(
 				v-for="a in actividades",
 				:key="a._id",
 				@click="verActividad(a)"
 			)
 				.cajaInterior(:style="`background-image: url(${a.Imagen_principal.url})`")
-					.fondo
-					.titulo {{ a.Titulo }}
+					.contendorTitulo
+						.fondo
+						.titulo {{ a.Titulo }}
+					.fondoHover
+						.contenido
+							.titulo {{ a.Titulo }}
+							.descripcion
+								.ql-editor.contenidoHTML(v-html="a.Descripcion")
+							.contenedorFecha
+								.fecha {{ a.Fecha_del_evento }}
+								.hora {{ a.hora_del_evento }}
+
+				.lugar {{ a.Lugar_del_evento }}
+
+		.contenedorActividades(v-else)
+			.cajaActividad(
+				v-for="a in actividadesFiltradas",
+				:key="a._id",
+				@click="verActividad(a)"
+			)
+				.cajaInterior(:style="`background-image: url(${a.Imagen_principal.url})`")
+					.contendorTitulo
+						.fondo
+						.titulo {{ a.Titulo }}
 					.fondoHover
 						.contenido
 							.titulo {{ a.Titulo }}
@@ -42,24 +102,66 @@
 					.lugar {{ actividadSolicitada.Lugar_del_evento }}
 					.direccion {{ actividadSolicitada.Direccion }}
 						| | {{ actividadSolicitada.Comuna }}
-					.region {{ actividadSolicitada.Region }}
+					.region {{ actividadSolicitada.Regiones }}
 				.contenedorFecha
 					.fecha {{ actividadSolicitada.Fecha_del_evento }}
 					.hora {{ actividadSolicitada.hora_del_evento }}
 			.lado
 </template>
 <script>
+import regionesComunas from '../regiones/regioneschile'
+
 export default {
 	data () {
 		return {
 			actividadSolicitada: null,
-			visible: false
+			visible: false,
+			regionseleccionada: null,
+			comunaSeleccionada: null,
+			region: undefined,
+			comuna: undefined
 		}
 	},
 	computed: {
 		actividades () {
 			const a = this.$store.state.actividades
 			return a
+		},
+		regiones () {
+			const re = regionesComunas.regionesComunas
+			// const arrayregiones = this._.map(re, 'label')
+			return re
+		},
+		comunas () {
+			const re = this.regiones
+			const com = this._.filter(re, ['reg', this.regionseleccionada])
+			const comunas = com[0].children
+			if (this.regionseleccionada) {
+				// console.log(this.regionseleccionada)
+				// console.log('comunas', comunas)
+				// console.log('formulario', this.formulario)
+			}
+			return comunas
+		},
+		comunasSelect () {
+			const actividades = this._.cloneDeep(this.actividades)
+
+			return actividades
+		},
+		actividadesFiltradas () {
+			const _ = this._
+			const actividades = this._.cloneDeep(this.actividades)
+			// console.log('actividades', actividades)
+			const reg = this.regionseleccionada
+			const pf = _.filter(actividades, { Regiones: reg })
+
+			const com = this.comunaSeleccionada
+			const cf = _.filter(actividades, { Comuna: com })
+			console.log('cf', cf)
+			const filtradas = pf.concat(cf)
+			if (!filtradas[0]) return null
+
+			return filtradas
 		}
 	},
 	methods: {
@@ -74,6 +176,15 @@ export default {
 			setTimeout(() => {
 				this.actividadSolicitada = null
 			}, 200)
+		},
+		handleChange (value) {
+			this.regionseleccionada = value
+			// console.log('valor', value)
+			console.log('actividadesFiltradas', this.actividadesFiltradas)
+		},
+		handleComuna (value) {
+			this.comunaSeleccionada = value
+			console.log('handleComuna', value)
 		}
 	}
 }
@@ -86,6 +197,21 @@ section
 	min-height: 20vh
 	width: 100%
 
+.filtros
+	border: 1px solid red
+	padding: 1em
+	.contenedorTitulo
+		text-align: center
+		width: 100%
+	.contenedorFiltros
+		display: flex
+		justify-content: space-evenly
+		.input
+			width: 120px
+			border-radius: 2px
+			margin-bottom: .1em
+			&::placeholder
+				font-size: 1.1rem
 .act
 	margin-bottom: 3em
 	.contenedorActividades
@@ -107,31 +233,38 @@ section
 				position: relative
 				border-radius: 4px
 				transition: .3s all ease
-				.fondo
-					position: absolute
-					// border: 1px solid #fff
-					background: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.7))
-					top: 0
-					bottom: 0
-					left: 0
-					right: 0
-					overflow: hidden
-					z-index: 2
-					border-radius: 4px
-					img
+				.contendorTitulo
+					.fondo
+						margin-top: -2em
+						display: flex
+						align-items: center
+						position: absolute
+						background-color: transparentize(black, .6)
+						mask-image: linear-gradient(transparent, rgba(0, 0, 0, 1))
+						top: 75%
+						bottom: 0
+						left: 0
+						right: 0
+						z-index: 2
 						border-radius: 4px
-						height: 100%
+						backdrop-filter: blur(3px)
+					.titulo
+						position: relative
+						padding-left: .5em
+						z-index: 3
+						text-transform: capitalize
+						font-size: 1.3rem
 				.fondoHover
 					height: 0
 					overflow: hidden
 					position: absolute
-
+					color: #000
 					// top: 0
 					bottom: 0
 					left: 0
 					right: 0
 					border-radius: 4px
-					background-color: rgba(255, 255, 255, 0.8)
+					background-color: rgba(240, 240, 240, 0.85)
 					z-index: 6
 					transition: .5s all ease
 					box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
@@ -142,19 +275,20 @@ section
 						display: flex
 						flex-flow: column nowrap
 						justify-content: space-between
-				.titulo
-					z-index: 3
-					text-transform: capitalize
-					font-size: 1.3rem
+						padding: .5em
+						opacity: 0
+						transition: .5s all ease
+
 				&:hover
 					transform: scale(1.1)
 					.fondoHover
 						height: 100%
 						box-shadow: unset
+						backdrop-filter: blur(2px)
 						>.contenido
-							padding: .5em
 							z-index: 6
 							color: #000
+							opacity: 1
 							.descripcion
 								max-height: 33%
 								overflow: hidden
