@@ -1,6 +1,27 @@
 <template lang="pug">
 .root
-	section.destacadas Seccion actividades destacadas
+	section.destacadas
+		.contenedorActividades(v-if="!actividadesFiltradas")
+			.cajaActividad(
+				v-for="a in actividades",
+				:key="a._id",
+				@click="verActividad(a)"
+			)
+				.cajaInterior(:style="`background-image: url(${a.Imagen_principal.url})`")
+					.contendorTitulo
+						.fondo
+						.titulo {{ a.Titulo }}
+					.fondoHover
+						.contenido
+							.titulo {{ a.Titulo }}
+							.descripcion
+								.ql-editor.contenidoHTML(v-html="a.Descripcion")
+							.contenedorFecha
+								.fecha {{ a.Fecha_del_evento }}
+								.hora {{ a.hora_del_evento }}
+
+				.lugar {{ a.Lugar_del_evento }}
+
 	.filtros
 		.contenedorTitulo
 			.tituloF Filtros de busqueda
@@ -42,9 +63,14 @@
 						:value="a.Comuna"
 					) {{ a.Comuna }}
 
-			.filtroFecha fecha
-				a-calendar(:fullscreen="false", @select="onPanelChange")
-			.filtroHorario horario
+			.filtroFecha
+				.nombre.boton(@click="abrirCalendario = !abrirCalendario") fecha
+				transition(:duration="300")
+					.calendario(v-if="abrirCalendario")
+						a-calendar(:fullscreen="false", @select="onPanelChange")
+			//- .filtroHorario
+			//- 	.nombre.boton horario
+
 	section.act
 		.contenedorActividades(v-if="!actividadesFiltradas")
 			.cajaActividad(
@@ -124,7 +150,8 @@ export default {
 			comuna: undefined,
 			hoy: null,
 			hora: null,
-			momentoSeleccionado: null
+			momentoSeleccionado: null,
+			abrirCalendario: null
 		}
 	},
 	computed: {
@@ -157,7 +184,6 @@ export default {
 			const cf = _.filter(actividades, { Comuna: com })
 
 			const mS = this.momentoSeleccionado
-
 			const monFormat = moment(mS).format('YYYY-MM-DD')
 			const mF = _.filter(actividades, { Fecha_del_evento: monFormat })
 
@@ -171,7 +197,6 @@ export default {
 	methods: {
 		verActividad (a) {
 			this.actividadSolicitada = a
-			this.hoyMetodo()
 			this.visible = true
 		},
 		handleOk (e) {
@@ -215,6 +240,30 @@ section
 			margin-bottom: .1em
 			&::placeholder
 				font-size: 1.1rem
+		.filtroFecha
+			position: relative
+			.nombre
+				cursor: pointer
+				border: 1px solid $petroleo1
+				padding: .5em 2em .2em 2em
+				border-radius: 4px
+				background-color: $verde3
+				color: $verde1
+			.calendario
+				position: absolute
+				top: 100%
+				left: -128px
+				z-index: 5
+				border-radius: 4px
+				width: 300px
+				transition: .3s all ease
+				background-color: #d9d9d9
+				+salir
+					opacity: 0
+					max-height: 0
+				+saliendo
+					max-height: 100vh
+					overflow: hidden
 .act
 	margin-bottom: 3em
 	.contenedorActividades
