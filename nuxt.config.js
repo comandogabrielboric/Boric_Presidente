@@ -73,6 +73,7 @@ const nuxtConfig = {
 		'@/plugins/axios',
 		'@/plugins/tagManager',
 		'@/plugins/seo',
+		'@/plugins/sanitizador',
 		'@/plugins/lodash'
 	],
 	// Auto import components: https://go.nuxtjs.dev/config-components
@@ -109,8 +110,6 @@ const nuxtConfig = {
 		// preconnect: true
 	}
 }
-
-nuxtConfig.plugins.push('@/plugins/sanitizador')
 
 
 // Tag Manager
