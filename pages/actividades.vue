@@ -43,6 +43,7 @@
 					) {{ a.Comuna }}
 
 			.filtroFecha fecha
+				a-calendar(:fullscreen="false", @select="onPanelChange")
 			.filtroHorario horario
 	section.act
 		.contenedorActividades(v-if="!actividadesFiltradas")
@@ -109,6 +110,7 @@
 			.lado
 </template>
 <script>
+import moment from 'moment-timezone'
 import regionesComunas from '../regiones/regioneschile'
 
 export default {
@@ -119,7 +121,10 @@ export default {
 			regionseleccionada: null,
 			comunaSeleccionada: null,
 			region: undefined,
-			comuna: undefined
+			comuna: undefined,
+			hoy: null,
+			hora: null,
+			momentoSeleccionado: null
 		}
 	},
 	computed: {
@@ -136,29 +141,28 @@ export default {
 			const re = this.regiones
 			const com = this._.filter(re, ['reg', this.regionseleccionada])
 			const comunas = com[0].children
-			if (this.regionseleccionada) {
-				// console.log(this.regionseleccionada)
-				// console.log('comunas', comunas)
-				// console.log('formulario', this.formulario)
-			}
 			return comunas
 		},
 		comunasSelect () {
 			const actividades = this._.cloneDeep(this.actividades)
-
 			return actividades
 		},
 		actividadesFiltradas () {
 			const _ = this._
 			const actividades = this._.cloneDeep(this.actividades)
-			// console.log('actividades', actividades)
 			const reg = this.regionseleccionada
 			const pf = _.filter(actividades, { Regiones: reg })
 
 			const com = this.comunaSeleccionada
 			const cf = _.filter(actividades, { Comuna: com })
-			console.log('cf', cf)
-			const filtradas = pf.concat(cf)
+
+			const mS = this.momentoSeleccionado
+
+			const monFormat = moment(mS).format('YYYY-MM-DD')
+			const mF = _.filter(actividades, { Fecha_del_evento: monFormat })
+
+			const filtradas = _.concat(pf, cf, mF)
+
 			if (!filtradas[0]) return null
 
 			return filtradas
@@ -167,11 +171,10 @@ export default {
 	methods: {
 		verActividad (a) {
 			this.actividadSolicitada = a
-			// console.log(this.actividadSolicitada)
+			this.hoyMetodo()
 			this.visible = true
 		},
 		handleOk (e) {
-			// console.log(e)
 			this.visible = false
 			setTimeout(() => {
 				this.actividadSolicitada = null
@@ -179,12 +182,12 @@ export default {
 		},
 		handleChange (value) {
 			this.regionseleccionada = value
-			// console.log('valor', value)
-			console.log('actividadesFiltradas', this.actividadesFiltradas)
 		},
 		handleComuna (value) {
 			this.comunaSeleccionada = value
-			console.log('handleComuna', value)
+		},
+		onPanelChange (value, mode) {
+			this.momentoSeleccionado = value._d
 		}
 	}
 }
