@@ -1,6 +1,8 @@
 <template lang="pug">
 .root
 	section.destacadas
+		.cabecera
+			.titulo Proximas actividades
 		.contenedorActividades(v-if="!actividadesFiltradas")
 			.cajaActividad(
 				v-for="a in actividades",
@@ -225,6 +227,22 @@ section
 	min-height: 20vh
 	width: 100%
 
+.destacadas
+	.cabecera
+		width: 100%
+		.titulo
+			padding: .5em 1em 0 1em
+			font-size: 2.5rem
+	>.contenedorActividades
+		border: 1px solid red
+		margin: 2em
+		padding: 1em
+		overflow: hidden
+		border-radius: 20px
+		background-color: $petroleo1
+		display: flex
+		flex-flow: row nowrap
+
 .filtros
 	border: 1px solid red
 	padding: 1em
@@ -272,82 +290,82 @@ section
 		padding: 1em
 		display: flex
 		flex-flow: row wrap
-		.cajaActividad
-			margin: .5em
-			.cajaInterior
-				width: 150px
-				height: 200px
-				margin: 1em
-				padding: 1em
+.cajaActividad
+	margin: .5em
+	.cajaInterior
+		width: 150px
+		height: 200px
+		margin: 1em
+		padding: 1em
+		display: flex
+		flex-flow: column nowrap
+		justify-content: flex-end
+		position: relative
+		border-radius: 4px
+		transition: .3s all ease
+		.contendorTitulo
+			.fondo
+				margin-top: -2em
+				display: flex
+				align-items: center
+				position: absolute
+				background-color: transparentize(black, .6)
+				mask-image: linear-gradient(transparent, rgba(0, 0, 0, 1))
+				top: 75%
+				bottom: 0
+				left: 0
+				right: 0
+				z-index: 2
+				border-radius: 4px
+				backdrop-filter: blur(3px)
+			.titulo
+				position: relative
+				padding-left: .5em
+				z-index: 3
+				text-transform: capitalize
+				font-size: 1.3rem
+		.fondoHover
+			height: 0
+			overflow: hidden
+			position: absolute
+			color: #000
+			// top: 0
+			bottom: 0
+			left: 0
+			right: 0
+			border-radius: 4px
+			background-color: rgba(240, 240, 240, 0.85)
+			z-index: 6
+			transition: .5s all ease
+			box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
+			box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
+			box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
+			.contenido
+				height: 100%
 				display: flex
 				flex-flow: column nowrap
-				justify-content: flex-end
-				position: relative
-				border-radius: 4px
-				transition: .3s all ease
-				.contendorTitulo
-					.fondo
-						margin-top: -2em
-						display: flex
-						align-items: center
-						position: absolute
-						background-color: transparentize(black, .6)
-						mask-image: linear-gradient(transparent, rgba(0, 0, 0, 1))
-						top: 75%
-						bottom: 0
-						left: 0
-						right: 0
-						z-index: 2
-						border-radius: 4px
-						backdrop-filter: blur(3px)
-					.titulo
-						position: relative
-						padding-left: .5em
-						z-index: 3
-						text-transform: capitalize
-						font-size: 1.3rem
-				.fondoHover
-					height: 0
-					overflow: hidden
-					position: absolute
-					color: #000
-					// top: 0
-					bottom: 0
-					left: 0
-					right: 0
-					border-radius: 4px
-					background-color: rgba(240, 240, 240, 0.85)
-					z-index: 6
-					transition: .5s all ease
-					box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
-					box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
-					box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
-					.contenido
-						height: 100%
-						display: flex
-						flex-flow: column nowrap
-						justify-content: space-between
-						padding: .5em
-						opacity: 0
-						transition: .5s all ease
+				justify-content: space-between
+				padding: .5em
+				opacity: 0
+				transition: .5s all ease
 
-				&:hover
-					transform: scale(1.1)
-					.fondoHover
-						height: 100%
-						box-shadow: unset
-						backdrop-filter: blur(2px)
-						>.contenido
-							z-index: 6
-							color: #000
-							opacity: 1
-							.descripcion
-								max-height: 33%
-								overflow: hidden
-			.lugar
-				font-style: italic
-				font-style: 1rem
-				padding: 0 1em
-				max-width: 150px
-				text-transform: lowercase
+		&:hover
+			transform: scale(1.1)
+			.fondoHover
+				height: 100%
+				box-shadow: unset
+				backdrop-filter: blur(2px)
+				>.contenido
+					z-index: 6
+					color: #000
+					opacity: 1
+					.descripcion
+						max-height: 33%
+						overflow: hidden
+	.lugar
+		font-style: italic
+		font-style: 1rem
+		padding: 0 1em
+		max-width: 150px
+		text-transform: lowercase
 </style>
