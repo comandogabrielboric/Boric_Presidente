@@ -35,7 +35,7 @@ export default {
 	},
 	data () {
 		return {
-			zoom: 13,
+			zoom: 6,
 			centroActivo: null,
 			montado: false
 		}

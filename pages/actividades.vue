@@ -4,25 +4,7 @@
 		.cabecera
 			.titulo Proximas actividades
 		.contenedorActividades(v-if="!actividadesFiltradas")
-			.cajaActividad(
-				v-for="a in actividades",
-				:key="a._id",
-				@click="verActividad(a)"
-			)
-				.cajaInterior(:style="`background-image: url(${a.Imagen_principal.url})`")
-					.contendorTitulo
-						.fondo
-						.titulo {{ a.Titulo }}
-					.fondoHover
-						.contenido
-							.titulo {{ a.Titulo }}
-							.descripcion
-								.ql-editor.contenidoHTML(v-html="a.Descripcion")
-							.contenedorFecha
-								.fecha {{ a.Fecha_del_evento }}
-								.hora {{ a.hora_del_evento }}
-
-				.lugar {{ a.Lugar_del_evento }}
+			mapa(:marcadores="marcadores" controles)
 
 	.filtros
 		.contenedorTitulo
@@ -157,15 +139,19 @@ export default {
 		}
 	},
 	computed: {
-		actividades () {
-			const a = this.$store.state.actividades
-			return a
+		actividades () { return this.$store.state.actividades },
+		marcadores () {
+			// [{ id: 'a', imagen: false, latlon: [-33.429413, -70.627576] }, { id: 'b', imagen: false, latlon: [-33.425555, -70.620127] }]
+			return this._.map(this.actividades, a => {
+				const latlon = this._.map(a.coordenadas_geograficas.split(', '), l => Number(l))
+				return {
+					id: a._id,
+					latlon,
+					imagen: this._.get(a, ['Imagen_principal', 'url'])
+				}
+			})
 		},
-		regiones () {
-			const re = regionesComunas.regionesComunas
-			// const arrayregiones = this._.map(re, 'label')
-			return re
-		},
+		regiones () { return regionesComunas.regionesComunas },
 		comunas () {
 			const re = this.regiones
 			const com = this._.filter(re, ['reg', this.regionseleccionada])
@@ -233,15 +219,18 @@ section
 		.titulo
 			padding: .5em 1em 0 1em
 			font-size: 2.5rem
-	>.contenedorActividades
+	.contenedorActividades
 		border: 1px solid red
 		margin: 2em
-		padding: 1em
+		// padding: 1em
 		overflow: hidden
 		border-radius: 20px
 		background-color: $petroleo1
-		display: flex
-		flex-flow: row nowrap
+		// display: flex
+		// flex-flow: row nowrap
+		.mapa
+			width: 100%
+			height: 300px
 
 .filtros
 	border: 1px solid red
