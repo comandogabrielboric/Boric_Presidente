@@ -1,15 +1,14 @@
 <template lang="pug">
 .root
 	.titulo
-			h1 Únete a este compromiso
-			p Hoy nos unimos por los cambios que Chile necesita. Hoy nos unimos por Boric, y te invitamos a unirte a ti también
+		h1 Únete a este compromiso
+		p Hoy nos unimos por los cambios que Chile necesita. Hoy nos unimos por Boric, y te invitamos a unirte a ti también
 	.contenido
 		.contenedorCarta
-			.ql-editor.contenidoHTML(v-html='carta')
+			.ql-editor.contenidoHTML(v-html="carta")
 		.contenedorfirmas
 			formulario
 			firmantes
-
 </template>
 <script>
 import formulario from './unete/formulario.vue'
@@ -19,7 +18,9 @@ export default {
 	components: { formulario },
 
 	async asyncData ({ app }) {
-		const textos = await app.$olicitar(`${process.env.cmsURL}/carta-nos-unimos-con-boric`)
+		const textos = await app.$olicitar(
+			`${process.env.cmsURL}/carta-nos-unimos-con-boric`
+		)
 		const carta = app.$sanitizar(textos.Carta)
 		const textoIntroductorio = app.$sanitizar(textos.Texto_introductorio)
 		const textoModal = app.$sanitizar(textos.Texto_modal)
@@ -40,7 +41,8 @@ export default {
 	},
 	head () {
 		const titulo = 'Unete'
-		const descripcion = 'El cambio lo realizamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia'
+		const descripcion =
+			'El cambio lo realizamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia'
 		const imagen = '/imagenes/portadaMovil.webp'
 		const url = 'https://boricpresidente.cl/unete'
 		const obj = this.$eo({
@@ -51,7 +53,6 @@ export default {
 		})
 		return obj
 	}
-
 }
 </script>
 <style lang="sass" scoped>
@@ -80,7 +81,7 @@ export default {
 	.contenedorCarta
 		max-width: 740px
 		height: 90vh
-		max-height:800px
+		max-height: 800px
 		overflow: auto
 		background: #fff
 		pading-bottom: 2em
@@ -96,9 +97,6 @@ export default {
 		justify-content: space-evenly
 	+movil
 		padding: 0 .5em
-
-
-
 
 .contenidoHTML
 	width: 900px

@@ -1,13 +1,10 @@
 <template lang="pug">
 .rootParticipa
-	a-form-model.suscribirse(
-		ref="formulario",
-		:model="formulario",
-		:rules="rules"
-	)
+	a-form-model.suscribirse(ref="formulario", :model="formulario", :rules="rules")
 		a-form-model-item(has-feedback, prop="nombre")
 			a-input.input(
 				v-model="formulario.nombre",
+				aria-label="Nombre",
 				type="nombre",
 				placeholder="Nombre"
 			)
@@ -15,6 +12,7 @@
 		a-form-model-item(has-feedback, prop="email")
 			a-input.input(
 				v-model="formulario.email",
+				aria-label="Email",
 				type="email",
 				placeholder="Email"
 			)
@@ -22,6 +20,7 @@
 		a-form-model-item(has-feedback, prop="telefono")
 			a-input.input(
 				v-model="formulario.telefono",
+				aria-label="Teléfono",
 				type="tel",
 				placeholder="+56 x xxxx xxxx"
 			)
@@ -29,10 +28,11 @@
 		a-form-model-item(has-feedback, prop="region")
 			a-select.input(
 				v-model="formulario.region",
+				aria-label="Región",
 				@change="handleChange",
 				placeholder="Región"
 			)
-				a-select-option.option(
+				a-select-option(
 					v-for="region in regiones",
 					:key="region.label",
 					:value="region.label"
@@ -41,6 +41,7 @@
 		a-form-model-item(v-if="regionseleccionada", has-feedback="", prop="comuna")
 			a-select.input(
 				v-model="formulario.comuna",
+				aria-label="Comuna",
 				placeholder="Comuna",
 				@change="handleComuna"
 			)
@@ -51,14 +52,18 @@
 				) {{ comuna.label }}
 
 		a-form-model-item.contenedorbtn(:wrapper-col="{ span: 14, offset: 4 }")
-			a-button.suscribirme(type="primary", @click="submitForm('formulario')")
+			a-button.suscribirme(
+				type="primary",
+				aria-label="Seguimos",
+				@click="submitForm('formulario')"
+			)
 				| SEGUIMOS
 
 		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
 
 	a-modal.modal(
 		v-model="visible",
-		title="Muchas gracias !!",
+		title="Bienvenide !!",
 		centered,
 		@ok="handleOk",
 		:footer="null"
@@ -89,11 +94,11 @@ export default {
 		// let checkPending
 		const validaTelefono = (rule, value, callback) => {
 			if (!value) {
-				return callback(new Error('Ingresa tu telefono'))
+				return callback(new Error('Ingresa tu teléfono'))
 			}
 			if (!phone(value).isValid) {
 				console.log('telefono', phone(value))
-				callback(new Error('Utiliza formato +56 xxxxxxxxx'))
+				callback(new Error('Utiliza el formato +56 xxxxxxxxx'))
 			} else {
 				console.log('telefono ok', phone(value))
 				callback()
@@ -108,21 +113,21 @@ export default {
 		}
 		const validaEmail = (rule, value, callback) => {
 			if (!isEmail(value)) {
-				callback(new Error('Debes ingresar un E mail valido'))
+				callback(new Error('Debes ingresar un Email válido'))
 			} else {
 				callback()
 			}
 		}
 		const validaRegion = (rule, value, callback) => {
 			if (this._.isEmpty(value)) {
-				callback(new Error('Ingresa tu region'))
+				callback(new Error('Ingresa tu región'))
 			} else {
 				callback()
 			}
 		}
 		const validaComuna = (rule, value, callback) => {
 			if (value === '') {
-				callback(new Error('Ingresa tu region'))
+				callback(new Error('Ingresa tu región'))
 			} else {
 				callback()
 			}
