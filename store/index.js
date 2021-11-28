@@ -1,23 +1,11 @@
 import axios from 'axios'
-// import * as sanitizeHtml from 'sanitize-html'
 import _ from 'lodash'
-import sanitizar from './sanitizador'
+import { sanitizar } from '../plugins/sanitizador'
 
 export const state = () => {
 	return {
-		propuestas: []
-	}
-}
-
-
-
-export const actions = {
-	async nuxtServerInit ({ commit }) {
-		console.log('get propuestas')
-		const p = await axios.get(`${process.env.cmsURL}/programa`)
-		const propuestas = p.data // Array
-		commit('sanitizado', propuestas)
-		// return propuestas
+		propuestas: [],
+		actividades: []
 	}
 }
 
@@ -25,15 +13,29 @@ export const mutations = {
 	propuestas (state, value) {
 		state.propuestas = value.propuestas
 	},
-	sanitizado (state, value) {
-		const propuestas = value.propuestas
-		// console.log('p', propuestas)
-		const html = _.map(propuestas, pr => {
+	actividades (state, value) {
+		state.actividades = value.actividades
+	},
+	sanitizarYGuardar (state, { propuestas, actividades }) {
+		state.propuestas = _.map(propuestas, pr => {
 			pr.contenido = sanitizar(pr.contenido)
 			return pr
 		})
-		// console.log('propuestas sanitizador', html)
-		state.propuestas = html
+		state.actividades = _.map(actividades, pr => {
+			pr.Descripcion = sanitizar(pr.Descripcion)
+			return pr
+		})
 	}
 }
 
+export const actions = {
+	async nuxtServerInit ({ commit }) {
+		const propuestas = await axios.get(`${process.env.cmsURL}/programa`).then(r => r.data)
+
+		const actividades = await axios.get(`${process.env.cmsURL}/actividades-en-terrenos`).then(r => r.data)
+		commit('sanitizarYGuardar', { propuestas: propuestas.propuestas, actividades })
+	}
+}
+
+export const getters = {
+}

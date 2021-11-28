@@ -15,7 +15,7 @@ function titleTemplate (tituloLocal) {
 	return tituloLocal ? `${tituloLocal} | Boric Presidente` : 'Boric Presidente'
 }
 
-const config = {
+const nuxtConfig = {
 	env: {
 		cmsURL: (dev && !remoto) ? 'http://localhost:1337' : 'https://gbcms.crishadad.cl',
 		apiURL: (dev && !remoto) ? 'http://localhost:3001' : 'https://bpapi.crishadad.cl'
@@ -58,13 +58,7 @@ const config = {
 			{ hid: 'canonical', rel: 'canonical', href: url	},
 
 			{ hid: 'icon', rel: 'icon', href: '/favicon.svg' },
-			{ hid: 'mask-icon', rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' },
-			{ hid: 'analytics', rel: 'dns-prefetch', href: 'https://www.google-analytics.com' },
-			{ hid: 'tagManager', rel: 'dns-prefetch', href: 'https://www.googletagmanager.com' },
-			{ hid: 'analytics', href: 'https://www.google-analytics.com', rel: 'preconnect' },
-			{ hid: 'tagManager', href: 'https://www.googletagmanager.com', rel: 'preconnect' }
-
-			// { hid: 'tkfonts', rel: 'stylesheet', href: 'https://use.typekit.net/jem8rnn.css' }
+			{ hid: 'mask-icon', rel: 'mask-icon', color: '#3D895B', href: '/favicon.svg' }
 		]
 	},
 
@@ -77,7 +71,9 @@ const config = {
 	plugins: [
 		'@/plugins/antd-ui',
 		'@/plugins/axios',
+		'@/plugins/tagManager',
 		'@/plugins/seo',
+		'@/plugins/sanitizador',
 		'@/plugins/lodash'
 	],
 	// Auto import components: https://go.nuxtjs.dev/config-components
@@ -86,15 +82,11 @@ const config = {
 	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
 	buildModules: [
 		'@nuxtjs/eslint-module',
-		'@nuxtjs/svg',
 		'nuxt-font-loader'
 	],
 
 	// Modules: https://go.nuxtjs.dev/config-modules
-	modules: [
-		'nuxt-svg-loader',
-		'@nuxtjs/gtm'
-	],
+	modules: [],
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {
@@ -116,35 +108,34 @@ const config = {
 		url: 'https://use.typekit.net/jem8rnn.css'
 		// prefetch: true,
 		// preconnect: true
-	},
-	gtm: {
-		enabled: true,
-		id: 'GTM-TG9JT2J',
-		pageTracking: true,
-		pageViewEventName: 'nuxtRoute',
-		scriptId: 'gtm-script',
-		scriptDefer: false,
-		scriptURL: 'https://www.googletagmanager.com/gtm.js',
-		crossOrigin: false,
-
-		noscript: true,
-		noscriptId: 'gtm-noscript',
-		noscriptURL: 'https://www.googletagmanager.com/ns.html'
 	}
 }
 
-config.plugins.push('@/plugins/sanitizador')
-// if (dev) {
-// 	config.plugins.push('@/plugins/sanitizador')
-// } else {
-// 	config.plugins.push({ src: '@/plugins/sanitizador', mode: 'server' })
-// }
 
-// if (dev) {
-// 	// config.dev = true
-// }
-config.devtools = true
-config.generate = { devtools: true }
+// Tag Manager
+const gTagManager = 'GTM-TG9JT2J'
+if (gTagManager) {
+	nuxtConfig.head.script = nuxtConfig.head.script || []
+	nuxtConfig.head.script.push(
+		{ hid: 'gtm', async: true, src: `https://www.googletagmanager.com/gtm.js?id=${gTagManager}`, body: true }
+	)
+	nuxtConfig.head.script.push(
+		{ hid: 'gtmJS', pbody: true, innerHTML: "window.dataLayer = window.dataLayer || [];window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })", body: true }
+	)
+	nuxtConfig.head.noscript = nuxtConfig.head.noscript || []
+	nuxtConfig.head.noscript.push(
+		{ hid: 'gtmNoScript', pbody: true, innerHTML: `<iframe src="https://www.googletagmanager.com/ns.html?id=${gTagManager}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`, body: true }
+	)
+	nuxtConfig.head.__dangerouslyDisableSanitizersByTagID = {
+		gtmJS: ['innerHTML'],
+		gtmNoScript: ['innerHTML']
+	}
+}
 
 
-export default config
+
+nuxtConfig.devtools = true
+nuxtConfig.generate = { devtools: true }
+
+
+export default nuxtConfig
