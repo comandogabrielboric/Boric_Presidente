@@ -148,7 +148,20 @@ export default {
 	},
 	computed: {
 		actividades () {
-			return this.$store.state.actividades
+			const act = this._.cloneDeep(this.$store.state.actividades)
+			const activi = this._.map(act, a => {
+				a.Fecha_del_evento = moment(a.Fecha_del_evento).format('DD-MM-YYYY')
+				return a
+			})
+			const actividad = this._.map(activi, a => {
+				a.hora_del_evento = a.hora_del_evento.slice(0, 5)
+				return a
+			})
+			// const actividades = this._.map(activi, a => {
+			// 	a.hora_del_evento = moment(a.hora_del_evento)
+			// 	return a
+			// })
+			return actividad
 		},
 		marcadores () {
 			// [{ id: 'a', imagen: false, latlon: [-33.429413, -70.627576] }, { id: 'b', imagen: false, latlon: [-33.425555, -70.620127] }]
@@ -199,6 +212,7 @@ export default {
 	methods: {
 		verActividad (a) {
 			this.marcadorSeleccionado = this._.find(this.marcadores, { id: a._id })
+			console.log(a.hora_del_evento)
 
 			this.actividadSolicitada = a
 			this.visible = true

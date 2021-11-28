@@ -1,7 +1,7 @@
 import Vue from 'vue'
 // import _ from 'lodash'
-import { isEmpty, map, get, filter, find, reverse, mapValues, words, pickBy, includes, forEach, findIndex, lowerCase, isString, slice, pad, cloneDeep, concat } from 'lodash'
-const _ = { isEmpty, map, get, filter, find, reverse, mapValues, words, pickBy, includes, forEach, findIndex, lowerCase, isString, slice, pad, cloneDeep, concat }
+import { isEmpty, map, get, filter, find, reverse, mapValues, words, pickBy, includes, forEach, findIndex, lowerCase, isString, slice, pad, cloneDeep, concat, split } from 'lodash'
+const _ = { isEmpty, map, get, filter, find, reverse, mapValues, words, pickBy, includes, forEach, findIndex, lowerCase, isString, slice, pad, cloneDeep, concat, split }
 
 Vue.prototype._ = _
 
