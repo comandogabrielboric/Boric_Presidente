@@ -120,8 +120,9 @@
 
 			.lado
 				mapa(
-					:marcadores="marcadores",
+					:marcadores="[marcadorSeleccionado]",
 					controles,
+					:centro="marcadorSeleccionado.latlon",
 					@clickMarcador="clickEnMarcador"
 				)
 </template>
@@ -141,7 +142,8 @@ export default {
 			hoy: null,
 			hora: null,
 			momentoSeleccionado: null,
-			abrirCalendario: null
+			abrirCalendario: null,
+			marcadorSeleccionado: null
 		}
 	},
 	computed: {
@@ -196,9 +198,10 @@ export default {
 	},
 	methods: {
 		verActividad (a) {
+			this.marcadorSeleccionado = this._.find(this.marcadores, { id: a._id })
+
 			this.actividadSolicitada = a
 			this.visible = true
-			console.log(this.actividadSolicitada)
 		},
 		clickEnMarcador ({ id }) {
 			const act = this._.find(this.actividades, { _id: id })
