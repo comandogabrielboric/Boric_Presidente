@@ -3,57 +3,56 @@
 	section.destacadas
 		.cabecera
 			.titulo Proximas actividades
-		.contenedorActividades(v-if="!actividadesFiltradas")
-			mapa(:marcadores="marcadores" controles)
+		.contenedorActividades
+			mapa(:marcadores="marcadores", controles)
 
 	.filtros
-		.contenedorTitulo
-			.tituloF Filtros de busqueda
-		.contenedorFiltros
-			.filtroRegion
-				a-select.input(
-					aria-label="Región",
-					@change="handleChange",
-					placeholder="Región"
-				)
-					a-select-option(
-						v-for="region in regiones",
-						:key="`region-${region.value}`",
-						:value="region.reg"
-					) {{ region.label }}
+		.contenedorPrimario
+			.contenedorFiltros
+				.filtroRegion
+					a-select.input(
+						aria-label="Región",
+						@change="handleChange",
+						placeholder="Región"
+					)
+						a-select-option(
+							v-for="region in regiones",
+							:key="`region-${region.value}`",
+							:value="region.reg"
+						) {{ region.label }}
 
-			.filtroComuna
-				a-select.input(
-					v-if="!actividadesFiltradas",
-					aria-label="Comuna",
-					placeholder="Comuna",
-					@change="handleComuna"
-				)
-					a-select-option(
-						v-for="a in actividades",
-						:key="`comuna-${a._id}`",
-						:value="a.Comuna"
-					) {{ a.Comuna }}
+				.filtroComuna
+					a-select.input(
+						v-if="!actividadesFiltradas",
+						aria-label="Comuna",
+						placeholder="Comuna",
+						@change="handleComuna"
+					)
+						a-select-option(
+							v-for="a in actividades",
+							:key="`comuna-${a._id}`",
+							:value="a.Comuna"
+						) {{ a.Comuna }}
 
-				a-select.input(
-					v-else,
-					aria-label="Comuna",
-					placeholder="Comuna",
-					@change="handleComuna"
-				)
-					a-select-option(
-						v-for="a in actividadesFiltradas",
-						:key="`comuna-${a._id}`",
-						:value="a.Comuna"
-					) {{ a.Comuna }}
+					a-select.input(
+						v-else,
+						aria-label="Comuna",
+						placeholder="Comuna",
+						@change="handleComuna"
+					)
+						a-select-option(
+							v-for="a in actividadesFiltradas",
+							:key="`comuna-${a._id}`",
+							:value="a.Comuna"
+						) {{ a.Comuna }}
 
-			.filtroFecha
-				.nombre.boton(@click="abrirCalendario = !abrirCalendario") fecha
-				transition(:duration="300")
-					.calendario(v-if="abrirCalendario")
-						a-calendar(:fullscreen="false", @select="onPanelChange")
-			//- .filtroHorario
-			//- 	.nombre.boton horario
+				.filtroFecha
+					.nombre.boton(@click="abrirCalendario = !abrirCalendario") fecha
+					transition(:duration="300")
+						.calendario(v-if="abrirCalendario")
+							a-calendar(:fullscreen="false", @select="onPanelChange")
+				//- .filtroHorario
+				//- 	.nombre.boton horario
 
 	section.act
 		.contenedorActividades(v-if="!actividadesFiltradas")
@@ -139,11 +138,15 @@ export default {
 		}
 	},
 	computed: {
-		actividades () { return this.$store.state.actividades },
+		actividades () {
+			return this.$store.state.actividades
+		},
 		marcadores () {
 			// [{ id: 'a', imagen: false, latlon: [-33.429413, -70.627576] }, { id: 'b', imagen: false, latlon: [-33.425555, -70.620127] }]
 			return this._.map(this.actividades, a => {
-				const latlon = this._.map(a.coordenadas_geograficas.split(', '), l => Number(l))
+				const latlon = this._.map(a.coordenadas_geograficas.split(', '), l =>
+					Number(l)
+				)
 				return {
 					id: a._id,
 					latlon,
@@ -151,7 +154,9 @@ export default {
 				}
 			})
 		},
-		regiones () { return regionesComunas.regionesComunas },
+		regiones () {
+			return regionesComunas.regionesComunas
+		},
 		comunas () {
 			const re = this.regiones
 			const com = this._.filter(re, ['reg', this.regionseleccionada])
@@ -208,7 +213,8 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/paleta'
 @import '~/estilos/utils'
-
+.root
+	background-color: $verde1
 section
 	min-height: 20vh
 	width: 100%
@@ -220,12 +226,12 @@ section
 			padding: .5em 1em 0 1em
 			font-size: 2.5rem
 	.contenedorActividades
-		border: 1px solid red
 		margin: 2em
 		// padding: 1em
 		overflow: hidden
 		border-radius: 20px
 		background-color: $petroleo1
+		box-shadow: -1px 9px 25px -5px rgba(0,0,0,0.62)
 		// display: flex
 		// flex-flow: row nowrap
 		.mapa
@@ -233,44 +239,65 @@ section
 			height: 300px
 
 .filtros
-	border: 1px solid red
-	padding: 1em
-	.contenedorTitulo
-		text-align: center
-		width: 100%
-	.contenedorFiltros
-		display: flex
-		justify-content: space-evenly
-		.input
-			width: 120px
-			border-radius: 2px
-			margin-bottom: .1em
-			&::placeholder
-				font-size: 1.1rem
-		.filtroFecha
-			position: relative
-			.nombre
-				cursor: pointer
-				border: 1px solid $petroleo1
-				padding: .5em 2em .2em 2em
-				border-radius: 4px
-				background-color: $verde3
-				color: $verde1
-			.calendario
-				position: absolute
-				top: 100%
-				left: -128px
-				z-index: 5
-				border-radius: 4px
-				width: 300px
-				transition: .3s all ease
-				background-color: #d9d9d9
-				+salir
-					opacity: 0
-					max-height: 0
-				+saliendo
-					max-height: 100vh
-					overflow: hidden
+
+	display: flex
+	justify-content: center
+	position: relative
+	.contenedorPrimario
+		position: absolute
+		top: -3.5em
+		width: 80%
+		border-radius: 50px
+		padding: .5em
+		background-color: #fff
+		box-shadow: -1px 9px 25px -5px rgba(0,0,0,0.62)
+		.contenedorTitulo
+			text-align: center
+			width: 100%
+		.contenedorFiltros
+			display: flex
+			justify-content: space-evenly
+			.filtroRegion,
+			.filtroComuna,
+			.filtroFecha
+				padding: 0 .3em
+				width: 33.3%
+				display: flex
+				justify-content: center
+			.input
+				border-color: blue
+				width: 100%
+				border-radius: 2px
+				margin-bottom: .1em
+				&::placeholder
+					font-size: 1.1rem
+			.filtroFecha
+				position: relative
+				.nombre
+					cursor: pointer
+					border: 1px solid rgba(0, 0, 0, 0.25)
+					width: 100%
+					height: 32px
+					padding: .47em 0 0 .5em
+					border-radius: 4px
+					background-color: #fff
+					text-align: left
+					color: $verde1
+				.calendario
+					position: absolute
+					top: 100%
+					left: -128px
+					z-index: 5
+					border-radius: 4px
+					width: 300px
+					transition: .3s all ease
+					background-color: #d9d9d9
+					+salir
+						opacity: 0
+						max-height: 0
+					+saliendo
+						max-height: 100vh
+						overflow: hidden
 .act
 	margin-bottom: 3em
 	.contenedorActividades
