@@ -4,55 +4,55 @@
 		.cabecera
 			.titulo Proximas actividades
 		.contenedorActividades
-			mapa(:marcadores="marcadores", controles)
+			mapa(:marcadores="marcadores", controles, @clickMarcador="clickEnMarcador")
 
-	.filtros
-		.contenedorPrimario
-			.contenedorFiltros
-				.filtroRegion
-					a-select.input(
-						aria-label="Región",
-						@change="handleChange",
-						placeholder="Región"
-					)
-						a-select-option(
-							v-for="region in regiones",
-							:key="`region-${region.value}`",
-							:value="region.reg"
-						) {{ region.label }}
+		.filtros
+			.contenedorPrimario
+				.contenedorFiltros
+					.filtroRegion
+						a-select.input(
+							aria-label="Región",
+							@change="handleChange",
+							placeholder="Región"
+						)
+							a-select-option(
+								v-for="region in regiones",
+								:key="`region-${region.value}`",
+								:value="region.reg"
+							) {{ region.label }}
 
-				.filtroComuna
-					a-select.input(
-						v-if="!actividadesFiltradas",
-						aria-label="Comuna",
-						placeholder="Comuna",
-						@change="handleComuna"
-					)
-						a-select-option(
-							v-for="a in actividades",
-							:key="`comuna-${a._id}`",
-							:value="a.Comuna"
-						) {{ a.Comuna }}
+					.filtroComuna
+						a-select.input(
+							v-if="!actividadesFiltradas",
+							aria-label="Comuna",
+							placeholder="Comuna",
+							@change="handleComuna"
+						)
+							a-select-option(
+								v-for="a in actividades",
+								:key="`comuna-${a._id}`",
+								:value="a.Comuna"
+							) {{ a.Comuna }}
 
-					a-select.input(
-						v-else,
-						aria-label="Comuna",
-						placeholder="Comuna",
-						@change="handleComuna"
-					)
-						a-select-option(
-							v-for="a in actividadesFiltradas",
-							:key="`comuna-${a._id}`",
-							:value="a.Comuna"
-						) {{ a.Comuna }}
+						a-select.input(
+							v-else,
+							aria-label="Comuna",
+							placeholder="Comuna",
+							@change="handleComuna"
+						)
+							a-select-option(
+								v-for="a in actividadesFiltradas",
+								:key="`comuna-${a._id}`",
+								:value="a.Comuna"
+							) {{ a.Comuna }}
 
-				.filtroFecha
-					.nombre.boton(@click="abrirCalendario = !abrirCalendario") fecha
-					transition(:duration="300")
-						.calendario(v-if="abrirCalendario")
-							a-calendar(:fullscreen="false", @select="onPanelChange")
-				//- .filtroHorario
-				//- 	.nombre.boton horario
+					.filtroFecha
+						.nombre.boton(@click="abrirCalendario = !abrirCalendario") fecha
+						transition(:duration="300")
+							.calendario(v-if="abrirCalendario")
+								a-calendar(:fullscreen="false", @select="onPanelChange")
+					//- .filtroHorario
+					//- 	.nombre.boton horario
 
 	section.act
 		.contenedorActividades(v-if="!actividadesFiltradas")
@@ -105,18 +105,25 @@
 	)
 		.contenidoModal(v-if="actividadSolicitada")
 			.lado
-				.titulo {{ actividadSolicitada.Titulo }}
-				.descripcion
-					.ql-editor.contenidoHTML(v-html="actividadSolicitada.Descripcion")
-				.ubicacion
-					.lugar {{ actividadSolicitada.Lugar_del_evento }}
-					.direccion {{ actividadSolicitada.Direccion }}
-						| | {{ actividadSolicitada.Comuna }}
-					.region {{ actividadSolicitada.Regiones }}
-				.contenedorFecha
-					.fecha {{ actividadSolicitada.Fecha_del_evento }}
-					.hora {{ actividadSolicitada.hora_del_evento }}
+				.cima
+					.principio
+						.titulo {{ actividadSolicitada.Titulo }}
+						.descripcion
+							.ql-editor.contenidoHTML(v-html="actividadSolicitada.Descripcion")
+					.contenedorFecha
+						.fecha {{ actividadSolicitada.Fecha_del_evento }}
+						.hora {{ actividadSolicitada.hora_del_evento }}
+				.cima
+					.tipo {{ actividadSolicitada.Lugar_del_evento }}
+					.tipo {{ actividadSolicitada.Direccion }}, {{ actividadSolicitada.Comuna }}
+					.tipo Región {{ actividadSolicitada.Regiones }}
+
 			.lado
+				mapa(
+					:marcadores="marcadores",
+					controles,
+					@clickMarcador="clickEnMarcador"
+				)
 </template>
 <script>
 import moment from 'moment-timezone'
@@ -191,6 +198,11 @@ export default {
 		verActividad (a) {
 			this.actividadSolicitada = a
 			this.visible = true
+			console.log(this.actividadSolicitada)
+		},
+		clickEnMarcador ({ id }) {
+			const act = this._.find(this.actividades, { _id: id })
+			this.verActividad(act)
 		},
 		handleOk (e) {
 			this.visible = false
@@ -237,9 +249,12 @@ section
 		.mapa
 			width: 100%
 			height: 300px
+		+movil
+			height: 420px
+			.mapa
+				height: 420px
 
 .filtros
-
 	display: flex
 	justify-content: center
 	position: relative
@@ -282,7 +297,7 @@ section
 					border-radius: 4px
 					background-color: #fff
 					text-align: left
-					color: $verde1
+					color: rgba(0, 0, 0, 0.25)
 				.calendario
 					position: absolute
 					top: 100%
@@ -298,6 +313,7 @@ section
 					+saliendo
 						max-height: 100vh
 						overflow: hidden
+
 .act
 	margin-bottom: 3em
 	.contenedorActividades
@@ -306,82 +322,129 @@ section
 		padding: 1em
 		display: flex
 		flex-flow: row wrap
-.cajaActividad
-	margin: .5em
-	.cajaInterior
-		width: 150px
-		height: 200px
-		margin: 1em
-		padding: 1em
-		display: flex
-		flex-flow: column nowrap
-		justify-content: flex-end
-		position: relative
-		border-radius: 4px
-		transition: .3s all ease
-		.contendorTitulo
-			.fondo
-				margin-top: -2em
-				display: flex
-				align-items: center
+	.cajaActividad
+		margin: .5em
+		.cajaInterior
+			width: 150px
+			height: 200px
+			margin: 1em
+			padding: 1em
+			display: flex
+			flex-flow: column nowrap
+			justify-content: flex-end
+			position: relative
+			border-radius: 4px
+			transition: .3s all ease
+			box-shadow: -1px 9px 25px -5px rgba(0,0,0,0.62)
+			.contendorTitulo
+				.fondo
+					margin-top: -2em
+					display: flex
+					align-items: center
+					position: absolute
+					background-color: transparentize(black, .6)
+					mask-image: linear-gradient(transparent, rgba(0, 0, 	0, 1))
+					top: 75%
+					bottom: 0
+					left: 0
+					right: 0
+					z-index: 2
+					border-radius: 4px
+					backdrop-filter: blur(3px)
+				.titulo
+					position: relative
+					padding-left: .5em
+					z-index: 3
+					text-transform: capitalize
+					font-size: 1.3rem
+			.fondoHover
+				height: 0
+				overflow: hidden
 				position: absolute
-				background-color: transparentize(black, .6)
-				mask-image: linear-gradient(transparent, rgba(0, 0, 0, 1))
-				top: 75%
+				color: #000
+				// top: 0
 				bottom: 0
 				left: 0
 				right: 0
-				z-index: 2
 				border-radius: 4px
-				backdrop-filter: blur(3px)
-			.titulo
-				position: relative
-				padding-left: .5em
-				z-index: 3
-				text-transform: capitalize
-				font-size: 1.3rem
-		.fondoHover
-			height: 0
-			overflow: hidden
-			position: absolute
-			color: #000
-			// top: 0
-			bottom: 0
-			left: 0
-			right: 0
-			border-radius: 4px
-			background-color: rgba(240, 240, 240, 0.85)
-			z-index: 6
-			transition: .5s all ease
-			box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
-			box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
-			box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
-			.contenido
-				height: 100%
+				background-color: rgba(240, 240, 240, 0.85)
+				z-index: 6
+				transition: .5s all ease
+				box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
+				box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
+				box-shadow: -1px -5px 8px 0px rgba(255,255,255,0.75)
+				.contenido
+					height: 100%
+					display: flex
+					flex-flow: column nowrap
+					justify-content: space-between
+					padding: .5em
+					opacity: 0
+					transition: .5s all ease
+
+			&:hover
+				transform: scale(1.1)
+				.fondoHover
+					height: 100%
+					box-shadow: unset
+					backdrop-filter: blur(2px)
+					>.contenido
+						z-index: 6
+						color: #000
+						opacity: 1
+						.descripcion
+							max-height: 33%
+							overflow: hidden
+		.lugar
+			font-style: italic
+			font-style: 1rem
+			padding: 0 1em
+			max-width: 150px
+			text-transform: lowercase
+
+.modal
+	.contenidoModal
+		display: flex
+		flex-flow: column nowrap
+		// height: 50vh
+		.lado
+			width: 100%
+			padding: 1em
+			display: flex
+			flex-flow: column nowrap
+			justify-content: space-between
+			>.mapa
+				width: 100%
+				height: 350px
+			.cima
 				display: flex
 				flex-flow: column nowrap
 				justify-content: space-between
-				padding: .5em
-				opacity: 0
-				transition: .5s all ease
-
-		&:hover
-			transform: scale(1.1)
-			.fondoHover
-				height: 100%
-				box-shadow: unset
-				backdrop-filter: blur(2px)
-				>.contenido
-					z-index: 6
-					color: #000
-					opacity: 1
+				width: 100%
+				.principio
+					.titulo
+						font-size: 1.7rem
+						color: $verde2
+						&::first-letter
+							text-transform: capitalize
 					.descripcion
-						max-height: 33%
-						overflow: hidden
-	.lugar
-		font-style: italic
-		font-style: 1rem
-		padding: 0 1em
-		max-width: 150px
-		text-transform: lowercase
+						font-size: 1.1rem
+				.contenedorFecha,
+				.tipo
+					font-size: 1.1rem
+					padding: .2em 0
+					&::first-letter
+						text-transform: capitalize
+			+compu
+				.cima
+					flex-flow: row nowrap
+					justify-content: space-between
+					&:first-child
+						padding-bottom: 1em
+					.principio
+						.descripcion
+							padding-right: 2em
+					.tipo:nth-child(2)
+						padding: 0 .2em
+						margin: 0 .2em
 </style>
