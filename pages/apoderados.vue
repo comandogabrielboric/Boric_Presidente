@@ -67,6 +67,12 @@
 				type="local",
 				placeholder="Local de votacion"
 			)
+		a-form-model-item(has-feedback, prop="Mesa")
+			a-input.input(
+				v-model="formulario.mesa",
+				type="mesa",
+				placeholder="Mesa de votacion"
+			)
 
 		a-form-model-item.pre ¿has sido vocal de mesa antes? #[span]
 			a-switch(v-model="formulario.hazSidoVocalAntes")
@@ -200,7 +206,8 @@ export default {
 				region: undefined,
 				distrito: undefined,
 				hazSidoVocalAntes: false,
-				local: undefined
+				local: undefined,
+				mesa: undefined
 			},
 			rules: {
 				nombre: [{ validator: validaNombre, trigger: 'change' }],
