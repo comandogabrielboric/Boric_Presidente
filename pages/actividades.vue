@@ -8,6 +8,7 @@
 
 		.filtros
 			.contenedorPrimario
+				img.noCompu(src="/svg/filtro.svg")
 				.contenedorFiltros
 					.filtroRegion
 						a-select.input(
@@ -464,4 +465,16 @@ section
 					.tipo:nth-child(2)
 						padding: 0 .2em
 						margin: 0 .2em
+
++movil
+	.filtros
+		.contenedorPrimario
+			width: 50px
+			height: 50px
+			left: 3em
+			img
+				width: 35px
+				height: 35px
+			.contenedorFiltros
+				display: none
 </style>
