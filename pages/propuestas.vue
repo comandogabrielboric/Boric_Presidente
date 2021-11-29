@@ -212,7 +212,7 @@ export default {
 	display: flex
 	justify-content: center
 	max-height: calc(100vh - 5em)
-	background-image: url('/imagenes/header-propuestas-movil-boric.webp')
+	background-image: url('/imagenes/foto-cabecera-movil-06 1.jpg')
 	background-size: cover
 	background-repeat: no-repeat
 	img
