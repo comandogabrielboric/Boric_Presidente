@@ -7,8 +7,8 @@
 			mapa(:marcadores="marcadores", controles, @clickMarcador="clickEnMarcador")
 
 		.filtros
-			.contenedorPrimario
-				img.noCompu(src="/svg/filtro.svg")
+			.contenedorPrimario(:class="Verfiltros ? 'mostrandoFiltros' : 'no'")
+				img.noCompu(src="/svg/filtro.svg", @click="Verfiltros = !Verfiltros")
 				.contenedorFiltros
 					.filtroRegion
 						a-select.input(
@@ -21,7 +21,6 @@
 								:key="`region-${region.value}`",
 								:value="region.reg"
 							) {{ region.label }}
-
 					.filtroComuna
 						a-select.input(
 							v-if="!actividadesFiltradas",
@@ -43,23 +42,28 @@
 						)
 							a-select-option(
 								v-for="a in actividadesFiltradas",
-								:key="`comuna-${a._id}`",
+								:key="`comuna2-${a._id}`",
 								:value="a.Comuna"
 							) {{ a.Comuna }}
-
 					.filtroFecha
 						.nombre.boton(@click="abrirCalendario = !abrirCalendario") fecha
 						transition(:duration="300")
 							.calendario(v-if="abrirCalendario")
-								a-calendar(:fullscreen="false", @select="onPanelChange")
+								a-calendar(
+									:fullscreen="false",
+									@select="onPanelChange",
+									valueFormat="DD-MM-YYYY"
+								)
 					//- .filtroHorario
 					//- 	.nombre.boton horario
+			.reset
+				.ResetarFiltro(@click="resetFiltros") Resetear filtros
 
 	section.act
 		.contenedorActividades(v-if="!actividadesFiltradas")
 			.cajaActividad(
 				v-for="a in actividades",
-				:key="a._id",
+				:key="`actividades-${a._id}`",
 				@click="verActividad(a)"
 			)
 				.cajaInterior(:style="`background-image: url(${a.Imagen_principal.url})`")
@@ -80,7 +84,7 @@
 		.contenedorActividades(v-else)
 			.cajaActividad(
 				v-for="a in actividadesFiltradas",
-				:key="a._id",
+				:key="`actividadesFiltradas-${a._id}`",
 				@click="verActividad(a)"
 			)
 				.cajaInterior(:style="`background-image: url(${a.Imagen_principal.url})`")
@@ -144,7 +148,9 @@ export default {
 			hora: null,
 			momentoSeleccionado: null,
 			abrirCalendario: null,
-			marcadorSeleccionado: null
+			marcadorSeleccionado: null,
+			Verfiltros: null,
+			fechaSel: null
 		}
 	},
 	computed: {
@@ -200,9 +206,10 @@ export default {
 			const cf = _.filter(actividades, { Comuna: com })
 
 			const mS = this.momentoSeleccionado
-			const monFormat = moment(mS).format('YYYY-MM-DD')
+			const monFormat = moment(mS).format('DD-MM-YYYY')
 			const mF = _.filter(actividades, { Fecha_del_evento: monFormat })
 
+			console.log('mF', mF)
 			const filtradas = _.concat(pf, cf, mF)
 
 			if (!filtradas[0]) return null
@@ -222,6 +229,13 @@ export default {
 			const act = this._.find(this.actividades, { _id: id })
 			this.verActividad(act)
 		},
+		resetFiltros () {
+			this.regionseleccionada = null
+			this.comunaSeleccionada = null
+			this.momentoSeleccionado = null
+			this.region = undefined
+			this.comuna = undefined
+		},
 		handleOk (e) {
 			this.visible = false
 			setTimeout(() => {
@@ -235,7 +249,10 @@ export default {
 			this.comunaSeleccionada = value
 		},
 		onPanelChange (value, mode) {
+			console.log(value)
 			this.momentoSeleccionado = value._d
+			this.abrirCalendario = !this.abrirCalendario
+			this.fechaSel = true
 		}
 	}
 }
@@ -331,6 +348,13 @@ section
 					+saliendo
 						max-height: 100vh
 						overflow: hidden
+	.reset
+		display: flex
+		width: 100%
+		justify-content: center
+		padding-top: .5em
+		.ResetarFiltro
+			color: #d9d9d9
 
 .act
 	margin-bottom: 3em
@@ -472,9 +496,28 @@ section
 			width: 50px
 			height: 50px
 			left: 3em
+			transition: all .3s ease
+			overflow: hidden
 			img
+				padding: 5px
 				width: 35px
-				height: 35px
 			.contenedorFiltros
 				display: none
+			&.mostrandoFiltros
+				height: 220px
+				top: -220px
+				width: 250px
+				border-radius: 10px
+				img
+					width: 35px
+				.contenedorFiltros
+					display: flex
+					flex-flow: column nowrap
+					width: 100%
+					overflow: hidden
+					.filtroRegion,
+					.filtroComuna,
+					.filtroFecha
+						width: 100%
+						padding: .5em
 </style>
