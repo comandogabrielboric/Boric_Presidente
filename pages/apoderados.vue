@@ -88,7 +88,7 @@
 				target="_blank",
 				href="https://docs.google.com/forms/d/e/1FAIpQLSe3bTgWo9CWLZGSQcYMSW625ssbK6TmL0WcuO49cx48rqY24Q/viewform"
 			)
-				| Inscríbete aquí
+				| Voto en el extranjero
 
 		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
 
