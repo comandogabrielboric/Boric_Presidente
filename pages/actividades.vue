@@ -164,11 +164,16 @@ export default {
 				a.hora_del_evento = a.hora_del_evento.slice(0, 5)
 				return a
 			})
+			const sortedArray = actividad.sort(
+				(a, b) =>
+					moment(a.Fecha_del_evento, 'DD-MM').unix() -
+					moment(b.Fecha_del_evento, 'DD-MM').unix()
+			)
 			// const actividades = this._.map(activi, a => {
 			// 	a.hora_del_evento = moment(a.hora_del_evento)
 			// 	return a
 			// })
-			return actividad
+			return sortedArray
 		},
 		marcadores () {
 			// [{ id: 'a', imagen: false, latlon: [-33.429413, -70.627576] }, { id: 'b', imagen: false, latlon: [-33.425555, -70.620127] }]
@@ -209,7 +214,6 @@ export default {
 			const monFormat = moment(mS).format('DD-MM-YYYY')
 			const mF = _.filter(actividades, { Fecha_del_evento: monFormat })
 
-			console.log('mF', mF)
 			const filtradas = _.concat(pf, cf, mF)
 
 			if (!filtradas[0]) return null
@@ -508,16 +512,19 @@ section
 				top: -220px
 				width: 250px
 				border-radius: 10px
+				overflow: unset
 				img
 					width: 35px
 				.contenedorFiltros
 					display: flex
 					flex-flow: column nowrap
 					width: 100%
-					overflow: hidden
+					overflow: unset
 					.filtroRegion,
 					.filtroComuna,
 					.filtroFecha
 						width: 100%
 						padding: .5em
+					.calendario
+						left: 0
 </style>
