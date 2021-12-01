@@ -2,7 +2,7 @@
 .root
 	section.destacadas
 		.cabecera
-			.titulo Proximas actividades
+			.titulo.noCompu Proximas actividades
 			.contenedorActividades
 				mapa.mapa(
 					:marcadores="marcadores",
@@ -64,6 +64,7 @@
 					.ResetarFiltro(@click="resetFiltros") Resetear filtros
 
 	section.act
+		.titulo.noMovil Proximas actividades
 		.contenedorActividades(v-if="!actividadesFiltradas")
 			.cajaActividad(
 				v-for="a in actividades",
@@ -217,6 +218,7 @@ export default {
 			const mS = this.momentoSeleccionado
 			const monFormat = moment(mS).format('DD-MM-YYYY')
 			const mF = _.filter(actividades, { Fecha_del_evento: monFormat })
+			console.log(mF)
 
 			const filtradas = _.concat(pf, cf, mF)
 
@@ -259,7 +261,8 @@ export default {
 		onPanelChange (value, mode) {
 			console.log(value)
 			this.momentoSeleccionado = value._d
-			this.abrirCalendario = !this.abrirCalendario
+			this.fechaSel = true
+			this.abrirCalendario = null
 			this.fechaSel = true
 		}
 	}
@@ -401,7 +404,7 @@ section
 					z-index: 2
 					border-radius: 4px
 					backdrop-filter: blur(3px)
-				.titulo
+				>.titulo
 					position: relative
 					padding-left: .5em
 					z-index: 3
@@ -532,23 +535,28 @@ section
 					.calendario
 						left: 0
 
-+wide
-.root
-	display: flex
-	flex-flow: row nowrap
-	.destacadas
-		height: 80vh
-		max-width: 40vw
-		.cabecera
-			height: 65vh
-			>.contenedorActividades
-				height: 100%
-				.mapa
-					width: 100%
++compu
+	.root
+		display: flex
+		flex-flow: row nowrap
+		.destacadas
+			padding-top: 2em
+			height: 90vh
+			max-width: 40vw
+			.cabecera
+				height: 75vh
+				>.contenedorActividades
 					height: 100%
-	.act
-		.contenedorActividades
-			padding-top: 4em
-			height: 100vh
-			overflow: auto
+					.mapa
+						width: 100%
+						height: 100%
+		.act
+			>.titulo
+				font-size: 3rem
+				text-align: right
+				padding: .5em 2em 0 0
+			.contenedorActividades
+				padding-top: 0
+				height: 100vh
+				overflow: auto
 </style>
