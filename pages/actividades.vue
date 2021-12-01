@@ -3,61 +3,65 @@
 	section.destacadas
 		.cabecera
 			.titulo Proximas actividades
-		.contenedorActividades
-			mapa(:marcadores="marcadores", controles, @clickMarcador="clickEnMarcador")
+			.contenedorActividades
+				mapa.mapa(
+					:marcadores="marcadores",
+					controles,
+					@clickMarcador="clickEnMarcador"
+				)
 
-		.filtros
-			.contenedorPrimario(:class="Verfiltros ? 'mostrandoFiltros' : 'no'")
-				img.noCompu(src="/svg/filtro.svg", @click="Verfiltros = !Verfiltros")
-				.contenedorFiltros
-					.filtroRegion
-						a-select.input(
-							aria-label="Región",
-							@change="handleChange",
-							placeholder="Región"
-						)
-							a-select-option(
-								v-for="region in regiones",
-								:key="`region-${region.value}`",
-								:value="region.reg"
-							) {{ region.label }}
-					.filtroComuna
-						a-select.input(
-							v-if="!actividadesFiltradas",
-							aria-label="Comuna",
-							placeholder="Comuna",
-							@change="handleComuna"
-						)
-							a-select-option(
-								v-for="a in actividades",
-								:key="`comuna-${a._id}`",
-								:value="a.Comuna"
-							) {{ a.Comuna }}
+			.filtros
+				.contenedorPrimario(:class="Verfiltros ? 'mostrandoFiltros' : 'no'")
+					img.noCompu(src="/svg/filtro.svg", @click="Verfiltros = !Verfiltros")
+					.contenedorFiltros
+						.filtroRegion
+							a-select.input(
+								aria-label="Región",
+								@change="handleChange",
+								placeholder="Región"
+							)
+								a-select-option(
+									v-for="region in regiones",
+									:key="`region-${region.value}`",
+									:value="region.reg"
+								) {{ region.label }}
+						.filtroComuna
+							a-select.input(
+								v-if="!actividadesFiltradas",
+								aria-label="Comuna",
+								placeholder="Comuna",
+								@change="handleComuna"
+							)
+								a-select-option(
+									v-for="a in actividades",
+									:key="`comuna-${a._id}`",
+									:value="a.Comuna"
+								) {{ a.Comuna }}
 
-						a-select.input(
-							v-else,
-							aria-label="Comuna",
-							placeholder="Comuna",
-							@change="handleComuna"
-						)
-							a-select-option(
-								v-for="a in actividadesFiltradas",
-								:key="`comuna2-${a._id}`",
-								:value="a.Comuna"
-							) {{ a.Comuna }}
-					.filtroFecha
-						.nombre.boton(@click="abrirCalendario = !abrirCalendario") fecha
-						transition(:duration="300")
-							.calendario(v-if="abrirCalendario")
-								a-calendar(
-									:fullscreen="false",
-									@select="onPanelChange",
-									valueFormat="DD-MM-YYYY"
-								)
-					//- .filtroHorario
-					//- 	.nombre.boton horario
-			.reset
-				.ResetarFiltro(@click="resetFiltros") Resetear filtros
+							a-select.input(
+								v-else,
+								aria-label="Comuna",
+								placeholder="Comuna",
+								@change="handleComuna"
+							)
+								a-select-option(
+									v-for="a in actividadesFiltradas",
+									:key="`comuna2-${a._id}`",
+									:value="a.Comuna"
+								) {{ a.Comuna }}
+						.filtroFecha
+							.nombre.boton(@click="abrirCalendario = !abrirCalendario") fecha
+							transition(:duration="300")
+								.calendario(v-if="abrirCalendario")
+									a-calendar(
+										:fullscreen="false",
+										@select="onPanelChange",
+										valueFormat="DD-MM-YYYY"
+									)
+						//- .filtroHorario
+						//- 	.nombre.boton horario
+				.reset
+					.ResetarFiltro(@click="resetFiltros") Resetear filtros
 
 	section.act
 		.contenedorActividades(v-if="!actividadesFiltradas")
@@ -527,4 +531,24 @@ section
 						padding: .5em
 					.calendario
 						left: 0
+
++wide
+.root
+	display: flex
+	flex-flow: row nowrap
+	.destacadas
+		height: 80vh
+		max-width: 40vw
+		.cabecera
+			height: 65vh
+			>.contenedorActividades
+				height: 100%
+				.mapa
+					width: 100%
+					height: 100%
+	.act
+		.contenedorActividades
+			padding-top: 4em
+			height: 100vh
+			overflow: auto
 </style>
