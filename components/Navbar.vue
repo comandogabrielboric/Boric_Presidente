@@ -15,10 +15,11 @@
 
 		mixin links
 			.links.contenedor-links.link-interno
-				nuxt-link.link.bold.destacado(
-					to="/apoderados",
-					@click.native="tag('nav apoderados')"
-				) Apoderados
+				.contenedorLink
+					nuxt-link.link.bold.destacado(
+						to="/apoderados",
+						@click.native="tag('nav apoderados')"
+					) Apoderados
 				nuxt-link.link.bold(to="/aporta", @click.native="tag('nav aporta')") aporta
 				.link.bold(@click="unete") unete
 				//- nuxt-link.link.bold(to="/cultura", @click.native="tag('nav cultura')") Cultura
@@ -152,6 +153,14 @@ $alturaMenu: 5em
 				font-size: 1.4em
 
 	.links
+		.contenedorLink
+			background-color: $verde3
+			border-radius: 3px
+			margin-right: 1em
+			padding: .4em
+			padding-bottom: .5em
+			margin-top: -.2em
+
 		.link
 			text-transform: uppercase
 			margin: 0 .3em
@@ -159,11 +168,13 @@ $alturaMenu: 5em
 			&.nuxt-link-active
 				color: $colorPrincipalC3
 		.destacado
-			background-color: $verde3
+			// background-color: $verde3
+			transform: translateY(2px)
+			line-height: 1
 			color: $azul1
-			margin-top: -.3em
-			padding-top: .2em
-			border-radius: 2px
+			// margin-top: -.3em
+			// padding-top: .2em
+			// border-radius: 2px
 
 	.menuCompu
 		flex: auto 1 1
