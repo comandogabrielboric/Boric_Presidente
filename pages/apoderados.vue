@@ -93,7 +93,10 @@
 		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
 
 	.imgFooter
-		img(src="/imagenes/apoderadosFooter.webp", alt="grupo")
+		img(
+			src="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/apoderadosFooter.webp",
+			alt="grupo"
+		)
 
 	a-modal.modal(
 		v-model="visible",
