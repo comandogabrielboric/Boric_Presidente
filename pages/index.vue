@@ -72,35 +72,6 @@
 			img.noMovil.imgP(src="/imagenes/participa.webp", alt="Participa")
 			img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
 
-		section.elArbol
-			.curva.curvaSuperior
-			.noCompu
-				.titulo #[span.primero Sé parte de la]
-					div Playlist
-					.segundo El Árbol
-				.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
-				.portadaPlaylist
-					img(src="/gif/portadaPlaylist.webp", alt="")
-
-				nuxt-link.boton(to="/playlist")
-					.btn.bold MÁS INFORMACIÓN
-			.noMovil
-				.contenido
-					.lado.lado1
-						.titulo #[span.primero Sé parte de la]
-							.segundo Playlist El Árbol
-
-						.texto Súmate enviando tu canción o maqueta y sé parte de la playlist El Árbol, de Apruebo Dignidad.
-						nuxt-link.boton(to="/playlist")
-							.btn.bold MÁS INFORMACIÓN
-					.lado.lado2
-						.portadaPlaylist
-						a.portadaPlaylist(
-							href="https://open.spotify.com/playlist/4uKpFyC9PIeafFy80RAWS1?si=ad935434a243417a",
-							target="_blank"
-						)
-							img(src="/gif/portadaPlaylist.webp", alt="")
-
 		section.seccionaporta
 			mixin linkServel
 				.linkservel
@@ -308,105 +279,6 @@ section
 					width: 290px
 					font-size: 1.4rem
 
-.elArbol
-	margin-top: -5em
-	background-color: $petroleo1
-	.curva
-		background-color: inherit
-
-	.titulo
-		font-style: italic
-		text-align: center
-		line-height: 1.1
-		padding: 0 .5em
-		.segundo
-			color: $verde3
-			font-weight: 900
-	.texto
-		text-align: center
-		font-style: italic
-		padding: .5em 1em
-	.portadaPlaylist
-		display: flex
-		justify-content: center
-		img
-			width: 300px
-	.boton
-		display: flex
-		justify-content: center
-		background-color: inherit
-		padding-bottom: 4em
-		.btn
-			display: flex
-			justify-content: center
-			align-items: center
-			width: 250px
-			border-radius: 4px
-			color: $azul2
-			background-color: $verde3
-			font-size: 1.1rem
-			padding: .4em 1.5em
-	+compu
-		img
-			z-index: 50
-		.contenido
-			// padding-bottom: 3em
-			display: flex
-			flex-flow: row
-			flex-wrap: nowrap
-			justify-content: center
-		.lado
-			z-index: 5
-			align-items: center
-			img
-				width: 400px
-		.lado1
-			display: flex
-			flex-flow: column
-			justify-content: center
-			.titulo
-				width: 100%
-				text-align: left
-			.texto
-				text-align: left
-				padding-right: 2em
-			.boton
-				padding-left: 2em
-				width: 100%
-				display: flex
-				justify-content: flex-start
-		.lado2
-			display: flex
-			justify-content: center
-			align-items: center
-			.portadaPlaylist
-				flex: 600px 0 1
-				img
-					z-index: 5
-				// height: 100%
-	+wide
-		.boton
-			padding-left: 4em
-		.lado
-			img
-				width: 550px
-		.texto
-			padding-right: 6em
-			line-height: 1.2
-		.boton
-			padding-top: 1em
-			.btn
-				font-size: 1.5rem
-				width: 350px
-				padding: .7em 1em .4em
-
-	+ultra
-		.boton
-			margin-left: 1em
-		.lado
-			img
-				width: 800px
-
 .precarga
 	height: 100vh
 	width: 100vw
@@ -474,7 +346,7 @@ section
 	align-items: center
 	position: relative
 	justify-content: center
-	padding-bottom: 3em
+	// padding-bottom: 3em
 	.curva
 		background-color: $petroleo2
 	.contenido

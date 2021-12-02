@@ -22,7 +22,6 @@ export default {
 		}
 	},
 	mounted () {
-		window.vm = this
 		this.solicitarFirmas()
 	},
 	methods: {

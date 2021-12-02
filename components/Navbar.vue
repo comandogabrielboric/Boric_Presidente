@@ -1,5 +1,7 @@
 <template lang="pug">
 .root
+	//- .listaSpotify
+	//- 	spotify
 	.navbar
 		nuxt-link.alHome.zonaLogo(
 			to="/",
@@ -13,17 +15,22 @@
 
 		mixin links
 			.links.contenedor-links.link-interno
-				nuxt-link.link.bold(to="/aporta", @click.native="tag('nav aporta')") aporta
-				a.link.bold(@click="unete") unete
-				//- nuxt-link.link.bold(to="/cultura", @click.native="tag('nav cultura')") Cultura
-				nuxt-link.link.bold(
+				nuxt-link.link.bold.destacado(
 					to="/apoderados",
 					@click.native="tag('nav apoderados')"
 				) Apoderados
+				nuxt-link.link.bold(to="/aporta", @click.native="tag('nav aporta')") aporta
+				a.link.bold(@click="unete") unete
+				//- nuxt-link.link.bold(to="/cultura", @click.native="tag('nav cultura')") Cultura
+
 				nuxt-link.link.bold(
 					to="/propuestas",
 					@click.native="tag('nav propuestas')"
 				) Propuestas
+				nuxt-link.link.bold(
+					to="/municipios",
+					@click.native="tag('nav municipios')"
+				) municipios
 				//- nuxt-link.link.bold(to="/programa", @click.native="tag('nav programa')") Programa
 
 				//- nuxt-link.link.bold(to="/playlist", @click.native="tag('nav playlist')") playlist
@@ -69,6 +76,11 @@ export default {
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
 
+.listaSpotify
+	position: fixed
+	z-index: 100
+	top: 7em
+	width: 100px
 $alturaMenu: 5em
 .relleno
 	width: 100vw
@@ -140,12 +152,28 @@ $alturaMenu: 5em
 				font-size: 1.4em
 
 	.links
+		// font-family: "Roboto Slab"
+
 		.link
 			text-transform: uppercase
 			margin: 0 .3em
 			padding: 0 .7em
 			&.nuxt-link-active
 				color: $colorPrincipalC3
+		.destacado
+			margin-right: 1em
+			background-color: $verde3
+			display: flex
+			align-items: center
+			justify-content: center
+			+fwbb
+			text-decoration: none
+			line-height: 1
+			color: $azul1
+			padding: 0.4em
+			// margin-top: -.3em
+			// padding-top: .2em
+			border-radius: 2px
 
 	.menuCompu
 		flex: auto 1 1

@@ -67,6 +67,12 @@
 				type="local",
 				placeholder="Local de votacion"
 			)
+		a-form-model-item(has-feedback, prop="Mesa")
+			a-input.input(
+				v-model="formulario.mesa",
+				type="mesa",
+				placeholder="Mesa de votacion"
+			)
 
 		a-form-model-item.pre ¿has sido vocal de mesa antes? #[span]
 			a-switch(v-model="formulario.hazSidoVocalAntes")
@@ -82,12 +88,15 @@
 				target="_blank",
 				href="https://docs.google.com/forms/d/e/1FAIpQLSe3bTgWo9CWLZGSQcYMSW625ssbK6TmL0WcuO49cx48rqY24Q/viewform"
 			)
-				| Inscríbete aquí
+				| Voto en el extranjero
 
 		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
 
 	.imgFooter
-		img(src="/imagenes/apoderadosFooter.webp", alt="grupo")
+		img(
+			src="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/apoderadosFooter.webp",
+			alt="grupo"
+		)
 
 	a-modal.modal(
 		v-model="visible",
@@ -200,7 +209,8 @@ export default {
 				region: undefined,
 				distrito: undefined,
 				hazSidoVocalAntes: false,
-				local: undefined
+				local: undefined,
+				mesa: undefined
 			},
 			rules: {
 				nombre: [{ validator: validaNombre, trigger: 'change' }],
