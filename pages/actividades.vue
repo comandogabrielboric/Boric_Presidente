@@ -208,7 +208,7 @@ export default {
 		},
 		actividadesFiltradas () {
 			const _ = this._
-			const actividades = this._.cloneDeep(this.actividades)
+			const actividades = this.actividades
 			const reg = this.regionseleccionada
 			const pf = _.filter(actividades, { Regiones: reg })
 
@@ -217,10 +217,17 @@ export default {
 
 			const mS = this.momentoSeleccionado
 			const monFormat = moment(mS).format('DD-MM-YYYY')
-			const mF = _.filter(actividades, { Fecha_del_evento: monFormat })
-			console.log(mF)
+			// eslint-disable-next-line camelcase
+			const momentoFiltrado = _.pickBy(actividades, Fecha_del_evento =>
+				moment(Fecha_del_evento).isSameOrAfter(monFormat)
+			)
+			const ordenado = _.map(momentoFiltrado, mon => {
+				return mon
+			})
+			console.log('ordenado', ordenado)
 
-			const filtradas = _.concat(pf, cf, mF)
+			const filtradas = _.concat(pf, cf, ordenado)
+			console.log('filtradas', filtradas)
 
 			if (!filtradas[0]) return null
 
@@ -260,6 +267,9 @@ export default {
 		},
 		onPanelChange (value, mode) {
 			console.log(value)
+			if (this.momentoSeleccionado) {
+				this.momentoSeleccionado = false
+			}
 			this.momentoSeleccionado = value._d
 			this.fechaSel = true
 			this.abrirCalendario = null
