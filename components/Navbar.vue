@@ -27,10 +27,7 @@
 					to="/propuestas",
 					@click.native="tag('nav propuestas')"
 				) Propuestas
-				nuxt-link.link.bold(
-					to="/municipios",
-					@click.native="tag('nav municipios')"
-				) alcaldias
+				nuxt-link.link.bold(to="/alcaldias", @click.native="tag('nav municipios')") alcaldias
 				//- nuxt-link.link.bold(to="/programa", @click.native="tag('nav programa')") Programa
 
 				//- nuxt-link.link.bold(to="/playlist", @click.native="tag('nav playlist')") playlist
