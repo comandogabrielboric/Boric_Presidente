@@ -28,7 +28,7 @@
 	.firmantes
 		.texto Han firmado {{ numeroFirmas }} Alcaldes
 			ul.firmas
-				li.nombres(v-for="alcalde in alcaldesFirmantes") {{ alcalde.Nombre }} {{ alcalde.Apellido }} {{ alcalde.Apellido2 }}, {{ alcalde.Comuna }}
+				li.nombres(v-for="alcalde in alcaldesSorted") {{ alcalde.Nombre }} {{ alcalde.Apellido }} {{ alcalde.Apellido2 }}, {{ alcalde.Comuna }}
 
 	.plantas
 		.lado.derecha
@@ -76,6 +76,11 @@ export default {
 	computed: {
 		numeroFirmas () {
 			return alcaldesFirmantes.length
+		},
+		alcaldesSorted () {
+			const as = this._.orderBy(alcaldesFirmantes, a => a.Apellido)
+			console.log(as)
+			return as
 		}
 	}
 }
