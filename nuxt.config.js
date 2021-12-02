@@ -81,12 +81,6 @@ const nuxtConfig = {
 	// Auto import components: https://go.nuxtjs.dev/config-components
 	components: true,
 
-	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-	buildModules: [
-		'@nuxtjs/eslint-module',
-		'nuxt-font-loader'
-	],
-
 	// Modules: https://go.nuxtjs.dev/config-modules
 	modules: [],
 
@@ -106,10 +100,27 @@ const nuxtConfig = {
 		}
 	},
 
+
+	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+	buildModules: [
+		'@nuxtjs/eslint-module',
+		'nuxt-font-loader',
+		'@nuxtjs/google-fonts'
+	],
+
 	fontLoader: {
 		url: 'https://use.typekit.net/jem8rnn.css',
 		prefetch: true,
 		preconnect: true
+	},
+	googleFonts: {
+		donwload: true,
+		families: {
+			'Roboto+Slab': {
+				wght: [300, 400, 700, 900],
+				ital: [300, 400, 700, 900]
+			}
+		}
 	}
 }
 

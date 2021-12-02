@@ -9,9 +9,10 @@
 *
 	margin: 0
 	padding: 0
-	font-family: "lexia", "Roboto Slab"
-	font-display: swap
 body
+	// font-family: "lexia", "Roboto Slab"
+	font-family: "lexia"
+	// font-family: "Roboto Slab"
 	min-height: 100vh
 	color: $colorBody
 	background-color: $fondoBody
@@ -36,12 +37,14 @@ a
 	+compu
 		display: none
 
-.normal
-	font-weight: normal
-.bold
-	font-weight: 900
 .light
-	font-weight: light
+	+fwl
+.normal
+	+fwn
+.bold
+	+fwb
+.black
+	+fwbb
 
 .boton
 	display: block
