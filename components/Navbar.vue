@@ -1,5 +1,7 @@
 <template lang="pug">
 .root
+	//- .listaSpotify
+	//- 	spotify
 	.navbar
 		nuxt-link.alHome.zonaLogo(
 			to="/",
@@ -70,6 +72,11 @@ export default {
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
 
+.listaSpotify
+	position: fixed
+	z-index: 100
+	top: 7em
+	width: 100px
 $alturaMenu: 5em
 .relleno
 	width: 100vw
