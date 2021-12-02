@@ -103,8 +103,7 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
-.cabecera
-	background-image: url('/imagenes/textura.webp')
+
 .contenidoHTML
 	width: 900px
 	max-width: 100%
@@ -112,6 +111,7 @@ export default {
 	background-color: #fff
 	padding: 4rem
 	+movil
+		width: 100vw
 		padding: 1rem
 		font-size: .889em
 	text-align: justify
@@ -151,40 +151,14 @@ export default {
 		a
 			all: revert
 
-.modalPropuesta
-	::v-deep
-		.ant-modal-mask
-			backdrop-filter: blur(.5em)
-		.ant-modal
-			width: auto
-			max-width: 100%
-			margin: 0
-			// color: inherit
-			.ant-modal-content
-				height: 80vh
-				background-color: transparent
-				+movil
-					height: 100vh
-				// background-color: red
-				display: flex
-				flex-flow: column nowrap
-				.ant-modal-body
-					flex: auto 1 1
-					max-height: 100%
-					overflow-y: auto
-					padding: 0
-					display: flex
-					flex-flow: column nowrap
-					width: 900px
-					max-width: 100%
-
 .cabecera
 	flex: auto 0 0
 	padding: 2em
 	background-color: transparentize($fondoBody, .2)
 	backdrop-filter: blur(1em)
 	width: 900px
-	background-color: #19CBB5
+	background-image: url('/imagenes/textura.webp')
+
 	.pretitulo
 		color: rgba(219, 248, 123, 1)
 		font-weight: 900
