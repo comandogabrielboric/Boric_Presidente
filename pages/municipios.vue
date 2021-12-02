@@ -25,21 +25,8 @@
 			height="100%"
 		)
 
-	//- .contenedorbtn
-		a.button.boton(
-			href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(1).pdf",
-			target="_blank",
-			@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
-			download
-		)
-			.p DESCARGAR PROGRAMA
-	//- .contenedorbtn
-		a.button.boton(
-			href="https://drive.google.com/file/d/1kKP7eIUIM_4KJMvsL4VZv8l2lp89PXlX/view?usp=sharing",
-			target="_blank",
-			@click="$gtm.push({ event: 'link-home', hacia: 'Link informe Proceso Participativo' })",
-			download
-		) Informe proceso participativo
+	alcaldesFirmantes
+
 	.plantas
 		.lado.derecha
 			img(src="/svg/plantas-09.svg")

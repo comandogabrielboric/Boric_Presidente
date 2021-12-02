@@ -152,7 +152,7 @@ $alturaMenu: 5em
 				font-size: 1.4em
 
 	.links
-		font-family: "Roboto Slab"
+		// font-family: "Roboto Slab"
 
 		.link
 			text-transform: uppercase
@@ -161,6 +161,7 @@ $alturaMenu: 5em
 			&.nuxt-link-active
 				color: $colorPrincipalC3
 		.destacado
+			margin-right: 1em
 			background-color: $verde3
 			display: flex
 			align-items: center
