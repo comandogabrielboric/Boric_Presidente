@@ -18,7 +18,8 @@
 				.ql-editor.contenidoHTML(v-html="propuestaMostrada.html")
 
 			.pdf(v-show="modoVisualizacion === 'pdf'", key="pdf")
-				iframe(v-if="propuestaMostrada.pdfURL"
+				iframe(
+					v-if="propuestaMostrada.pdfURL",
 					:src="`https://docs.google.com/viewer?url=${propuestaMostrada.pdfURL}&embedded=true`",
 					frameborder="0",
 					height="500px",
@@ -27,10 +28,14 @@
 </template>
 <script>
 export default {
+	scrollToTop: true,
 	data () {
 		const propuestaSlug = this.$route.params.propuestaSlug
 		const setPropuestas = this.$store.state.propuestas
-		const propuestaBruta = propuestaSlug && setPropuestas && this._.find(setPropuestas, p => p.Slug === propuestaSlug)
+		const propuestaBruta =
+			propuestaSlug &&
+			setPropuestas &&
+			this._.find(setPropuestas, p => p.Slug === propuestaSlug)
 		const casiDescripcion = propuestaBruta.contenido.split('</h1>')[0]
 		const descripcion = this._.replace(casiDescripcion, /<[^>]*>/g, '')
 		const propuestaMostrada = {
@@ -60,10 +65,20 @@ export default {
 	},
 	head () {
 		// if (!this.seo) return {}
-		const titulo = this._.get(this.propuestaMostrada, ['titulo'], 'Propuesta Programática')
-		const descripcion = this._.get(this.propuestaMostrada, ['descripcion'], 'Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera. ¿Quieres conocer parte de nuestras propuestas?')
+		const titulo = this._.get(
+			this.propuestaMostrada,
+			['titulo'],
+			'Propuesta Programática'
+		)
+		const descripcion = this._.get(
+			this.propuestaMostrada,
+			['descripcion'],
+			'Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera. ¿Quieres conocer parte de nuestras propuestas?'
+		)
 		const imagen = this._.get(this.propuestaMostrada, ['imagen', 'url'])
-		const url = this.propuestaSlug ? `https://boricpresidente.cl/propuestas/${this.propuestaSlug}` : 'https://boricpresidente.cl/propuestas'
+		const url = this.propuestaSlug
+			? `https://boricpresidente.cl/propuestas/${this.propuestaSlug}`
+			: 'https://boricpresidente.cl/propuestas'
 		const obj = this.$eo({
 			titulo,
 			descripcion,
@@ -88,8 +103,8 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
-
-
+.cabecera
+	background-image: url('/imagenes/textura.webp')
 .contenidoHTML
 	width: 900px
 	max-width: 100%
@@ -136,7 +151,6 @@ export default {
 		a
 			all: revert
 
-
 .modalPropuesta
 	::v-deep
 		.ant-modal-mask
@@ -163,8 +177,6 @@ export default {
 					flex-flow: column nowrap
 					width: 900px
 					max-width: 100%
-
-
 
 .cabecera
 	flex: auto 0 0
@@ -207,7 +219,6 @@ export default {
 		.titulo
 			font-size: 1em
 
-
 .cuerpoPropuesta
 	margin-bottom: 14em
 	&,
@@ -222,5 +233,4 @@ export default {
 	flex: auto 1 1
 	width: 900px
 	max-width: 100%
-
 </style>
