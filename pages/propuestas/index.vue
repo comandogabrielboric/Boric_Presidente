@@ -20,9 +20,9 @@
 
 		.caja-propuestas
 			n-link.propuesta(
-				v-for="propuesta in setPropuestas"
-				:key="propuesta.id"
-				:alt="`Propuestas - ${propuesta.titulo}`"
+				v-for="propuesta in setPropuestas",
+				:key="propuesta.id",
+				:alt="`Propuestas - ${propuesta.titulo}`",
 				:to="`/propuestas/${propuesta.Slug}/${$route.hash}`"
 			)
 				.prop
@@ -32,8 +32,6 @@
 						:alt="propuesta.textoAlternativoImagen"
 					)
 					h2.tituloPropuesta {{ propuesta.titulo }}
-
-
 
 	.contenedorbtn
 		a.button.boton(
@@ -64,7 +62,7 @@ export default {
 			return { titulo, slug }
 		})
 		return {
-			propuestas: [],
+			propuestas: null,
 
 			seo: null,
 			links,
@@ -80,7 +78,8 @@ export default {
 	head () {
 		// if (!this.seo) return {}
 		const titulo = 'Propuesta Programática'
-		const descripcion = 'Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera. ¿Quieres conocer parte de nuestras propuestas?'
+		const descripcion =
+			'Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera. ¿Quieres conocer parte de nuestras propuestas?'
 		const imagen = '/imagenes/portadaMovil.web'
 		const url = 'https://boricpresidente.cl/propuestas'
 		const obj = this.$eo({
@@ -94,9 +93,13 @@ export default {
 
 	computed: {
 		setPropuestas () {
-			const props = this.$store.state.propuestas
+			const props = this._.cloneDeep(this.$store.state.propuestas)
 			// console.log('propscc 1', props)
-			return props
+			const sortedPropuestas = props.sort(
+				(a, b) => a.pag_ubicacion - b.pag_ubicacion
+			)
+			console.log('sortedPropuestas', sortedPropuestas)
+			return sortedPropuestas
 		}
 	}
 }
@@ -205,7 +208,6 @@ section
 	width: 100vw
 	height: 7em
 
-
 .contenedorbtn
 	padding: 1.5em 1em
 	display: flex
@@ -295,6 +297,5 @@ section
 			+saliendo
 				max-height: 100vh
 				overflow: hidden
-
 </style>
 
