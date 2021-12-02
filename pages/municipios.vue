@@ -98,6 +98,7 @@ export default {
 	display: flex
 	align-items: center
 	flex-flow: column
+	padding-bottom: 6em
 .relleno
 	width: 100vw
 	height: 7em
@@ -149,6 +150,7 @@ export default {
 	.encabezado
 		max-width: 1200px
 		display: flex
+		padding-bottom: 2em
 	.titulo
 		// font-size: 3.2rem
 	.programaBook
