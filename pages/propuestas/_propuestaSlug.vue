@@ -1,7 +1,7 @@
 <template lang="pug">
 .rootPropuestaID(v-if="propuestaMostrada")
 	.cabecera
-		.pretitulo Propuestas programáticas
+		nuxt-link.pretitulo(to="/propuestas") Propuestas programáticas
 		.titulo {{ propuestaMostrada && propuestaMostrada.titulo }}
 		.modoVisualizacion
 			a.modo(
@@ -13,18 +13,10 @@
 			//- .modo(@click="modoVisualizacion = 'pdf'" :class="{activo: modoVisualizacion === 'pdf'}") Ver en PDF
 			//- a.modo(:href="propuestaMostrada.pdfURL" download target="_blank" rel="noreferer noopener") Descargar PDF
 	.cuerpoPropuesta
-		transition-group(mode="out-in")
-			.html(v-show="modoVisualizacion === 'html'", key="html")
-				.ql-editor.contenidoHTML(v-html="propuestaMostrada.html")
-
-			.pdf(v-show="modoVisualizacion === 'pdf'", key="pdf")
-				iframe(
-					v-if="propuestaMostrada.pdfURL",
-					:src="`https://docs.google.com/viewer?url=${propuestaMostrada.pdfURL}&embedded=true`",
-					frameborder="0",
-					height="500px",
-					width="100%"
-				)
+		.html(v-show="modoVisualizacion === 'html'", key="html")
+			.ql-editor.contenidoHTML(v-html="propuestaMostrada.html")
+	.contendorBoton
+		nuxt-link.boton(to="/propuestas") Volver a ver todas las propuestas
 </template>
 <script>
 export default {
@@ -103,6 +95,12 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
+.rootPropuestaID
+	width: 100vw
+	display: flex
+	flex-flow: column nowrap
+	align-items: center
+	padding-bottom: 7em
 
 .contenidoHTML
 	width: 900px
@@ -152,18 +150,19 @@ export default {
 			all: revert
 
 .cabecera
-	flex: auto 0 0
 	padding: 2em
 	background-color: transparentize($fondoBody, .2)
 	backdrop-filter: blur(1em)
-	width: 900px
+	width: 100%
+	max-width: 900px
 	background-image: url('/imagenes/textura.webp')
-
 	.pretitulo
 		color: rgba(219, 248, 123, 1)
+		font-size: 1rem
 		font-weight: 900
 		margin-bottom: .5em
 		color: #0E6B8B
+		text-decoration: none
 	.titulo
 		color: #fff
 		font-weight: 900
@@ -194,7 +193,6 @@ export default {
 			font-size: 1em
 
 .cuerpoPropuesta
-	margin-bottom: 14em
 	&,
 	& > span,
 	& > span > div,
@@ -207,4 +205,13 @@ export default {
 	flex: auto 1 1
 	width: 900px
 	max-width: 100%
+
+.contendorBoton
+	padding: 2em .5em
+	text-align: center
+	.boton
+		background-color: $verde3
+		color: $petroleo1
+		font-size: 1.2rem
+		padding-top: .9em
 </style>
