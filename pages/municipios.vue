@@ -1,7 +1,7 @@
 <template lang="pug">
 .propuestasRoot
 	.encabezado
-		h1.titulo Municipios x Boric
+		h1.titulo Alcaldesas y alcaldes por Boric
 	//- .programaBook.noMovil
 		a.fbo-embed(
 			href="https://online.flippingbook.com/view/447789273/",
