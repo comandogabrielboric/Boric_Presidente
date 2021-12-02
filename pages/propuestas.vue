@@ -1,6 +1,13 @@
 <template lang="pug">
 .propuestasRoot
-	n-child(@montado="verSiHayQueAbrirUnaPropuesta")
+	n-child(@montado="abrirPropuestaDeChild")
+	code propuestaIdMostrada {{propuestaIdMostrada}}
+	code mostrandoPropuesta {{mostrandoPropuesta}}
+	code propuestaBruta.length {{propuestaBruta.length}}
+	code {{propuestaBruta}}
+	//- p {{propuestaBruta}}
+	//- .links
+		n-link(v-for="({titulo, slug}) in links" :key="`link-${slug}`" :to="`/propuestas/${slug}/${$route.hash}`") {{titulo}}
 	.storytelling
 		.filtroBlur
 			img.noMovil(
@@ -20,10 +27,11 @@
 		.curva.curvaSuperior
 
 		.caja-propuestas
-			.propuesta(
-				v-for="propuesta in setPropuestas",
-				:key="propuesta.id",
-				@click="abrirPropuesta(propuesta.id, propuesta.Slug)"
+			n-link.propuesta(
+				v-for="propuesta in setPropuestas"
+				:key="propuesta.id"
+				:alt="`Propuestas - ${propuesta.titulo}`"
+				:to="`/propuestas/${propuesta.Slug}/${$route.hash}`"
 			)
 				.prop
 					img.imagenDePropuesta(
@@ -34,7 +42,7 @@
 					h2.tituloPropuesta {{ propuesta.titulo }}
 
 			a-modal.modalPropuesta(
-				:visible="mostrandoPropuesta",
+				:visible="true",
 				:footer="null",
 				@close="mostrandoPropuesta = false",
 				@cancel="mostrandoPropuesta = false",
@@ -56,7 +64,7 @@
 				.cuerpoPropuesta(v-if="propuestaMostrada")
 					transition-group(mode="out-in")
 						.pdf(v-show="modoVisualizacion === 'pdf'", key="pdf")
-							iframe(
+							iframe(v-if="propuestaMostrada.pdfURL"
 								:src="`https://docs.google.com/viewer?url=${propuestaMostrada.pdfURL}&embedded=true`",
 								frameborder="0",
 								height="500px",
@@ -87,18 +95,33 @@
 <script>
 export default {
 	data () {
+		const propuestaSlug = this.$route.params.propuestaSlug
+		const setPropuestas = this.$store.state.propuestas
+		const propuestaBruta = propuestaSlug && setPropuestas && this._.find(setPropuestas, p => p.Slug === propuestaSlug)
+		const mostrandoPropuesta = !!(propuestaSlug && setPropuestas && propuestaBruta)
+
+		console.log('propuestaSlug', propuestaSlug)
+		console.log('this.$route.params.propuestaSlug', this.$route.params.propuestaSlug)
+		console.log('setPropuestas', setPropuestas.length)
+		console.log('propuestaBruta', propuestaBruta)
+		const links = this._.map(setPropuestas, p => {
+			const { titulo, Slug: slug } = p
+			return { titulo, slug }
+		})
 		return {
 			propuestas: [],
 
 			seo: null,
+			links,
 
 			imagen: null,
 			altImg: null,
 			// pilares: null,
 			programaArchivo: null,
 
-			propuestaIdMostrada: this.propuestaSlug,
-			mostrandoPropuesta: null,
+			propuestaIdMostrada: propuestaSlug || null,
+			propuestaBruta,
+			mostrandoPropuesta,
 			modoVisualizacion: 'html'
 		}
 	},
@@ -133,9 +156,7 @@ export default {
 	},
 
 	computed: {
-		propuestaSlug () {
-			return this.$route.params.propuestaSlug
-		},
+		propuestaSlug () { return this.$route.params.propuestaSlug },
 		setPropuestas () {
 			const props = this.$store.state.propuestas
 			// console.log('propscc 1', props)
@@ -155,6 +176,12 @@ export default {
 				pdfURL: this._.get(propuestaBruta, ['archivoPDF', 'url'])
 			}
 		}
+		// propuestaAbierta () {
+		// 	const propuestaSlug = this.propuestaSlug
+		// 	const propuestas = this.setPropuestas
+		// 	const matches = this._.filter(propuestas, ['Slug', propuestaSlug])
+		// 	return matches[0] && matches[0]._id
+		// }
 	},
 	watch: {
 		mostrandoPropuesta (v) {
@@ -175,7 +202,8 @@ export default {
 	},
 	methods: {
 		abrirPropuesta (propuestaID, slug) {
-			console.log(this.prop)
+			console.log('abrirPropuesta', propuestaID, slug)
+			if (propuestaID === this.propuestaIdMostrada) return
 			this.propuestaIdMostrada = propuestaID
 			this.$nextTick(() => {
 				// console.log('ruta', this.$route)
@@ -184,13 +212,10 @@ export default {
 				}
 			})
 		},
-		verSiHayQueAbrirUnaPropuesta ({ propuestaSlug }) {
+		abrirPropuestaDeChild ({ propuestaSlug }) {
 			const propuestas = this.setPropuestas
-			const propuestaParaAbrir = this._.filter(propuestas, [
-				'Slug',
-				propuestaSlug
-			])
-			// console.log('prop a abrir', propuestaParaAbrir, propuestas)
+			const propuestaParaAbrir = this._.filter(propuestas, ['Slug', propuestaSlug])
+			console.log('prop a abrir', propuestaParaAbrir, propuestas)
 			if (propuestaSlug) {
 				const propuestaID = propuestaParaAbrir[0]._id
 				this.abrirPropuesta(propuestaID, propuestaSlug)
