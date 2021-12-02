@@ -57,15 +57,8 @@
 <script>
 export default {
 	data () {
-		const propuestaSlug = this.$route.params.propuestaSlug
 		const setPropuestas = this.$store.state.propuestas
-		const propuestaBruta = propuestaSlug && setPropuestas && this._.find(setPropuestas, p => p.Slug === propuestaSlug)
-		const mostrandoPropuesta = !!(propuestaSlug && setPropuestas && propuestaBruta)
 
-		console.log('propuestaSlug', propuestaSlug)
-		console.log('this.$route.params.propuestaSlug', this.$route.params.propuestaSlug)
-		console.log('setPropuestas', setPropuestas.length)
-		console.log('propuestaBruta', propuestaBruta)
 		const links = this._.map(setPropuestas, p => {
 			const { titulo, Slug: slug } = p
 			return { titulo, slug }
@@ -80,26 +73,14 @@ export default {
 			altImg: null,
 			// pilares: null,
 			programaArchivo: null,
-
-			propuestaIdMostrada: propuestaSlug || null,
-			propuestaBruta,
-			mostrandoPropuesta,
 			modoVisualizacion: 'html'
 		}
 	},
 	// solicita info a cms
 	head () {
 		// if (!this.seo) return {}
-		const titulo = this._.get(
-			this.seo,
-			['titulo_pag'],
-			'Propuesta Programática'
-		)
-		const descripcion = this._.get(
-			this.seo,
-			['descripcion_pag'],
-			'Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera. ¿Quieres conocer parte de nuestras propuestas?'
-		)
+		const titulo = 'Propuesta Programática'
+		const descripcion = 'Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera. ¿Quieres conocer parte de nuestras propuestas?'
 		const imagen = '/imagenes/portadaMovil.web'
 		const url = 'https://boricpresidente.cl/propuestas'
 		const obj = this.$eo({
@@ -108,80 +89,14 @@ export default {
 			imagen,
 			url
 		})
-		obj.link = obj.link || []
-		obj.link.push({
-			hid: 'quill',
-			rel: 'stylesheet',
-			href: 'https://cdn.quilljs.com/1.0.0/quill.snow.css'
-		})
 		return obj
 	},
 
 	computed: {
-		propuestaSlug () { return this.$route.params.propuestaSlug },
 		setPropuestas () {
 			const props = this.$store.state.propuestas
 			// console.log('propscc 1', props)
 			return props
-		},
-		propuestaMostrada () {
-			if (!this.propuestaIdMostrada) return null
-			const propuestaBruta = this._.find(
-				this.setPropuestas,
-				p => p.id === this.propuestaIdMostrada
-			)
-			if (!propuestaBruta) return null
-
-			return {
-				titulo: propuestaBruta.titulo,
-				html: propuestaBruta.contenido,
-				pdfURL: this._.get(propuestaBruta, ['archivoPDF', 'url'])
-			}
-		}
-		// propuestaAbierta () {
-		// 	const propuestaSlug = this.propuestaSlug
-		// 	const propuestas = this.setPropuestas
-		// 	const matches = this._.filter(propuestas, ['Slug', propuestaSlug])
-		// 	return matches[0] && matches[0]._id
-		// }
-	},
-	watch: {
-		mostrandoPropuesta (v) {
-			if (!v) {
-				if (this.propuestaMostrada) this.$router.push('/propuestas')
-				setTimeout(() => {
-					this.propuestaIdMostrada = false
-					this.modoVisualizacion = 'html'
-				}, 400)
-			}
-		},
-		propuestaIdMostrada (v) {
-			if (v) this.mostrandoPropuesta = true
-		}
-	},
-	mounted () {
-		window.setPropuestas = this
-	},
-	methods: {
-		abrirPropuesta (propuestaID, slug) {
-			console.log('abrirPropuesta', propuestaID, slug)
-			if (propuestaID === this.propuestaIdMostrada) return
-			this.propuestaIdMostrada = propuestaID
-			this.$nextTick(() => {
-				// console.log('ruta', this.$route)
-				if (this.propuestaMostrada) {
-					this.$router.push(`/propuestas/${slug}/${this.$route.hash}`)
-				}
-			})
-		},
-		abrirPropuestaDeChild ({ propuestaSlug }) {
-			const propuestas = this.setPropuestas
-			const propuestaParaAbrir = this._.filter(propuestas, ['Slug', propuestaSlug])
-			console.log('prop a abrir', propuestaParaAbrir, propuestas)
-			if (propuestaSlug) {
-				const propuestaID = propuestaParaAbrir[0]._id
-				this.abrirPropuesta(propuestaID, propuestaSlug)
-			}
 		}
 	}
 }

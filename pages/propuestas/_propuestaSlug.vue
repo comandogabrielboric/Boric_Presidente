@@ -15,7 +15,7 @@
 	.cuerpoPropuesta
 		transition-group(mode="out-in")
 			.html(v-show="modoVisualizacion === 'html'", key="html")
-				.ql-editor.contenidoHTML(v-html="propuestaMostrada.html") {{propuestaMostrada.html}}
+				.ql-editor.contenidoHTML(v-html="propuestaMostrada.html")
 
 			.pdf(v-show="modoVisualizacion === 'pdf'", key="pdf")
 				iframe(v-if="propuestaMostrada.pdfURL"
@@ -82,18 +82,6 @@ export default {
 		propuestaSlug () {
 			return this.$route.params.propuestaSlug
 		}
-	},
-	watch: {
-		'$route.params.propuestaSlug' (v, h) {
-			this.$emit('montado', { propuestaSlug: v })
-		}
-	},
-	mounted () {
-		this.$emit('montado', {
-			propuestaSlug: this.$route.params.propuestaSlug
-		})
-		// console.log('montado slug', this.$route)
-		window.pSlug = this
 	}
 }
 </script>

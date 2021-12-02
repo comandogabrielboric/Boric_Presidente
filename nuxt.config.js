@@ -71,6 +71,7 @@ const nuxtConfig = {
 	plugins: [
 		'@/plugins/antd-ui',
 		'@/plugins/axios',
+		'@/plugins/consolo',
 		{ src: '@/plugins/leaflet', mode: 'client' },
 		'@/plugins/lodash',
 		'@/plugins/sanitizador',
