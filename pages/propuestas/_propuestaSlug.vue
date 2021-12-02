@@ -130,6 +130,8 @@ export default {
 			font-weight: 900
 			font-style: italic
 			color: #094C67
+		p
+			color: #000
 		h1 + p
 			margin-top: 2rem
 		p,

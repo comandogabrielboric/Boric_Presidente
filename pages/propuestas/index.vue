@@ -98,7 +98,7 @@ export default {
 			const sortedPropuestas = props.sort(
 				(a, b) => a.pag_ubicacion - b.pag_ubicacion
 			)
-			console.log('sortedPropuestas', sortedPropuestas)
+			// console.log('sortedPropuestas', sortedPropuestas)
 			return sortedPropuestas
 		}
 	}
