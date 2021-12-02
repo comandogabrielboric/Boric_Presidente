@@ -30,7 +30,7 @@
 				nuxt-link.link.bold(
 					to="/municipios",
 					@click.native="tag('nav municipios')"
-				) municipios
+				) alcaldias
 				//- nuxt-link.link.bold(to="/programa", @click.native="tag('nav programa')") Programa
 
 				//- nuxt-link.link.bold(to="/playlist", @click.native="tag('nav playlist')") playlist
