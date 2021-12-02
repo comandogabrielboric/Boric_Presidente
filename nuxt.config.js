@@ -107,9 +107,9 @@ const nuxtConfig = {
 	},
 
 	fontLoader: {
-		url: 'https://use.typekit.net/jem8rnn.css'
-		// prefetch: true,
-		// preconnect: true
+		url: 'https://use.typekit.net/jem8rnn.css',
+		prefetch: true,
+		preconnect: true
 	}
 }
 
@@ -133,11 +133,5 @@ if (gTagManager) {
 		gtmNoScript: ['innerHTML']
 	}
 }
-
-
-
-nuxtConfig.devtools = true
-nuxtConfig.generate = { devtools: true }
-
 
 export default nuxtConfig
