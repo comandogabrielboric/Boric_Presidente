@@ -155,8 +155,11 @@ export default {
 		// font-size: 3.2rem
 	.programaBook
 		max-width: 1000px
-		height: 1200px
+		// max-height: 100vh
+		height: 800px
 		padding: 1em 6em
+		+wide
+			height: 1200px
 	.contenedorbtn
 		.boton
 			font-size: 1.3rem
