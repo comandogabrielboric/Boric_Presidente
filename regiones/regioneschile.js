@@ -5,6 +5,7 @@ const chile = [
 		nombreCompleto: 'Región de Arica y Parinacota',
 		prefijo: 'Región de',
 		nombre: 'Arica y Parinacota',
+		regex: 'Arica_y_Parinacota',
 		romano: 'XV',
 		numero: '15',
 		iso_3166_2: 'CL-AP',
@@ -45,6 +46,7 @@ const chile = [
 		nombreCompleto: 'Región de Tarapacá',
 		prefijo: 'Región de',
 		nombre: 'Tarapacá',
+		regex: 'Tarapaca',
 		romano: 'I',
 		numero: '1',
 		iso_3166_2: 'CL-TA',
@@ -100,6 +102,7 @@ const chile = [
 		nombreCompleto: 'Región de Antofagasta',
 		prefijo: 'Región de',
 		nombre: 'Antofagasta',
+		regex: 'Antofagasta',
 		romano: 'II',
 		numero: '2',
 		iso_3166_2: 'CL-AN',
@@ -170,6 +173,7 @@ const chile = [
 		nombreCompleto: 'Región de Atacama',
 		prefijo: 'Región de',
 		nombre: 'Atacama',
+		regex: 'Atacama',
 		romano: 'III',
 		numero: '3',
 		iso_3166_2: 'CL-AT',
@@ -240,6 +244,7 @@ const chile = [
 		nombreCompleto: 'Región de Coquimbo',
 		prefijo: 'Región de',
 		nombre: 'Coquimbo',
+		regex: 'Coquimbo',
 		romano: 'IV',
 		numero: '4',
 		iso_3166_2: 'CL-CO',
@@ -339,6 +344,7 @@ const chile = [
 		nombreCompleto: 'Región de Valparaíso',
 		prefijo: 'Región de',
 		nombre: 'Valparaíso',
+		regex: 'Valparaiso',
 		romano: 'V',
 		numero: '5',
 		iso_3166_2: 'CL-VS',
@@ -579,6 +585,7 @@ const chile = [
 		nombreCompleto: 'Región Metropolitana de Santiago',
 		prefijo: 'Región',
 		nombre: 'Metropolitana',
+		regex: 'Metropolitana',
 		romano: 'XIII',
 		numero: '13',
 		iso_3166_2: 'CL-RM',
@@ -879,6 +886,7 @@ const chile = [
 		nombreCompleto: 'Región Libertador Bernardo O\'Higgins',
 		prefijo: 'Región de',
 		nombre: 'O\'Higgins',
+		regex: 'OHiggins',
 		romano: 'VI',
 		numero: '6',
 		iso_3166_2: 'CL-LI',
@@ -1069,6 +1077,7 @@ const chile = [
 		nombreCompleto: 'Región del Maule',
 		prefijo: 'Región del',
 		nombre: 'Maule',
+		regex: 'Maule',
 		romano: 'VII',
 		numero: '7',
 		iso_3166_2: 'CL-ML',
@@ -1249,6 +1258,7 @@ const chile = [
 		nombreCompleto: 'Región de Ñuble',
 		prefijo: 'Región de',
 		nombre: 'Ñuble',
+		regex: 'Nuble',
 		romano: 'XVI',
 		numero: '16',
 		iso_3166_2: 'CL-NU',
@@ -1379,6 +1389,7 @@ const chile = [
 		nombreCompleto: 'Región del Bío-Bío',
 		prefijo: 'Región del',
 		nombre: 'Bío-Bío',
+		regex: 'Bio_Bio',
 		romano: 'VIII',
 		numero: '8',
 		iso_3166_2: 'CL-BI',
@@ -1569,6 +1580,7 @@ const chile = [
 		nombreCompleto: 'Región de la Araucanía',
 		prefijo: 'Región de la',
 		nombre: 'Araucanía',
+		regex: 'Araucania',
 		romano: 'IX',
 		numero: '9',
 		iso_3166_2: 'CL-AR',
@@ -1749,6 +1761,7 @@ const chile = [
 		nombreCompleto: 'Región de Los Ríos',
 		prefijo: 'Región de',
 		nombre: 'Los Ríos',
+		regex: 'Los_Rios',
 		romano: 'XIV',
 		numero: '14',
 		iso_3166_2: 'CL-LR',
@@ -1829,6 +1842,7 @@ const chile = [
 		nombreCompleto: 'Región de Los Lagos',
 		prefijo: 'Región de',
 		nombre: 'Los Lagos',
+		regex: 'Los_Lagos',
 		romano: 'X',
 		numero: '10',
 		iso_3166_2: 'CL-LL',
@@ -2009,6 +2023,7 @@ const chile = [
 		nombreCompleto: 'Región de Aysén',
 		prefijo: 'Región de',
 		nombre: 'Aysén',
+		regex: 'Aysen',
 		romano: 'XI',
 		numero: '11',
 		iso_3166_2: 'CL-AI',
@@ -2089,6 +2104,7 @@ const chile = [
 		nombreCompleto: 'Región de Magallanes y Antártica',
 		prefijo: 'Región de',
 		nombre: 'Magallanes',
+		regex: 'Magallanes',
 		romano: 'XII',
 		numero: '12',
 		iso_3166_2: 'CL-MA',
@@ -2174,8 +2190,9 @@ const chile = [
 
 const regionesProvinciasComunas = _.map(chile, regionData => {
 	return {
-		value: regionData.nombre,
+		value: regionData.romano,
 		label: regionData.nombre,
+		reg: regionData.regex,
 		children: _.map(regionData.provincias, provincia => {
 			return {
 				value: provincia.nombre,
@@ -2195,7 +2212,8 @@ const regionesProvinciasComunas = _.map(chile, regionData => {
 const regionesComunas = _.map(chile, regionData => {
 	const region = {
 		value: regionData.nombre,
-		label: regionData.nombre
+		label: regionData.nombre,
+		reg: regionData.regex
 	}
 	const comunasEnprovincias = _.map(regionData.provincias, provincia => _.map(provincia.comunas, comuna => {
 		return {

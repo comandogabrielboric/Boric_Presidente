@@ -76,7 +76,6 @@ export default {
 		return obj
 	},
 	mounted () {
-		window.vm = this
 		console.log(this.instrucciones)
 	}
 }

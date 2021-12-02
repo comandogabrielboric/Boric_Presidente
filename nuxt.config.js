@@ -71,10 +71,12 @@ const nuxtConfig = {
 	plugins: [
 		'@/plugins/antd-ui',
 		'@/plugins/axios',
-		'@/plugins/tagManager',
-		'@/plugins/seo',
+		'@/plugins/consolo',
+		{ src: '@/plugins/leaflet', mode: 'client' },
+		'@/plugins/lodash',
 		'@/plugins/sanitizador',
-		'@/plugins/lodash'
+		'@/plugins/seo',
+		'@/plugins/tagManager'
 	],
 	// Auto import components: https://go.nuxtjs.dev/config-components
 	components: true,
