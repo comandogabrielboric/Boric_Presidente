@@ -135,7 +135,7 @@
 							)
 							.textoError(v-if="errorRecibido") {{ errorRecibido }}
 
-					.boton(@click="executeCaptchaAyudar()") enviar
+					.boton(@click="executeCaptchaAyudar('')") enviar
 					vue-recaptcha(
 						ref="invisibleRecaptchaAyudar"
 						sitekey="6LffuXQdAAAAAD5YAkWMEOlWDZU4505ZRcVE0Zup",
@@ -307,7 +307,7 @@ export default {
 		},
 		onCaptchaAyudarVerified (captchaResponse) {
 			this.formulario.captcha = captchaResponse
-			this.Ayudar('talento')
+			this.Ayudar()
 		},
 		submitForm (formName) {
 			// console.log(this.formulario)
@@ -325,11 +325,11 @@ export default {
 				}
 			})
 		},
-		async Ayudar (tipo) {
+		async Ayudar () {
 			this.spinning = true
 			const solicitud = {
 				descripcion: this.talento.texto,
-				tipo,
+				tipo: this.tipoDeAporte,
 				usuario: this.formulario
 			}
 			console.log(solicitud)
@@ -359,7 +359,7 @@ export default {
 			this.quieroAportarConTalento = true
 			this.tipoDeAporte = v
 			if (v === 'terreno') {
-				this.Ayudar(v)
+				executeCaptchaAyudar()
 			}
 		},
 		defineDistrito (d) {
