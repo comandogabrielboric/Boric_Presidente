@@ -64,7 +64,7 @@
           :key="comuna.label",
           :value="comuna.label"
         ) {{ comuna.label }}
-    a-form-model-item(v-if="comunaSeleccionada", has-feedback, prop="local")
+    a-form-model-item(v-if="comunaSeleccionada && !otroLocalVisible", has-feedback, prop="local")
       a-select.input(
 		show-search=""
         v-model="formulario.local",
@@ -80,8 +80,16 @@
                 @mousedown="e=>e.preventDefault"
                 @click="otroLocal"
             )
-                b Otro local
+                b Mi local no aparece
         a-select-option(v-for="local in locales", :key="local", :value="local") {{ local }}
+
+    a-form-model-item(v-if="otroLocalVisible", has-feedback, prop="Mesa")
+      a-input.input(
+        v-model="formulario.local",
+        type="mesa",
+        placeholder="Local de Votación"
+      )
+
 
     a-form-model-item(has-feedback, prop="Mesa")
       a-input.input(
@@ -156,7 +164,13 @@ import { phone } from 'phone'
 import { validate, format, clean } from 'rut.js'
 import regionesComunasLocales from '../regiones/regioneschile'
 export default {
-	components: { VueRecaptcha },
+	components: {
+		VueRecaptcha,
+		VNodes: {
+			functional: true,
+			render: (h, ctx) => ctx.props.vnodes
+		}
+	},
 	data () {
 		// let checkPending
 		const validaTelefono = (rule, value, callback) => {
@@ -250,6 +264,7 @@ export default {
 				labelCol: { span: 4 },
 				wrapperCol: { span: 14 }
 			},
+			otroLocalVisible: false,
 			visible: false,
 			tyc: false,
 			regionseleccionada: null,
@@ -300,27 +315,24 @@ export default {
 	},
 	methods: {
 		otroLocal () {
+			this.otroLocalVisible = true
 			console.log('otro!')
 		},
 		executeCaptcha () {
-			this.$refs.invisibleRecaptcha.execute()
-		},
-		onCaptchaVerified (captchaResponse) {
-			console.log('verificado')
-			this.formulario.captcha = captchaResponse
-			this.submitForm('formulario')
-		},
-		submitForm (formName) {
-			// console.log(this.formulario)
-			this.$refs[formName].validate(valid => {
+			this.$refs.formulario.validate(valid => {
 				if (valid) {
-					this.suscribirse()
 					// this.$gtm.push({ event: 'Registro_mailing', nombre: 'Registro en Mailchimp', estado: 'completo' })
+					this.$refs.invisibleRecaptcha.execute()
 				} else {
 					console.log('error submit!!')
 					return false
 				}
 			})
+		},
+		onCaptchaVerified (captchaResponse) {
+			console.log('verificado')
+			this.formulario.captcha = captchaResponse
+			this.suscribirse()
 		},
 		defineDistrito (d) {
 			this.formulario.distrito = d

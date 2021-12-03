@@ -170,7 +170,9 @@ import { phone } from 'phone'
 import regionesComunas from '../regiones/regioneschile'
 
 export default {
-	components: { VueRecaptcha },
+	components: {
+		VueRecaptcha
+	},
 	data () {
 		// let checkPending
 		const validaTelefono = (rule, value, callback) => {
@@ -296,33 +298,33 @@ export default {
 	},
 	methods: {
 		executeCaptcha () {
-			this.$refs.invisibleRecaptcha.execute()
+			this.$refs.formulario.validate(valid => {
+				if (valid) {
+					this.$refs.invisibleRecaptcha.execute()
+				} else {
+					console.log('error submit!!')
+					return false
+				}
+			})
 		},
 		executeCaptchaAyudar () {
 			this.$refs.invisibleRecaptchaAyudar.execute()
 		},
 		onCaptchaVerified (captchaResponse) {
 			this.formulario.captcha = captchaResponse
-			this.submitForm('formulario')
+			this.submitForm()
 		},
 		onCaptchaAyudarVerified (captchaResponse) {
 			this.formulario.captcha = captchaResponse
 			this.Ayudar()
 		},
-		submitForm (formName) {
+		submitForm () {
 			// console.log(this.formulario)
-			this.$refs[formName].validate(valid => {
-				if (valid) {
-					this.suscribirse()
-					this.$gtm.push({
-						event: 'Registro_mailing',
-						nombre: 'Registro en Mailchimp',
-						estado: 'completo'
-					})
-				} else {
-					console.log('error submit!!')
-					return false
-				}
+			this.suscribirse()
+			this.$gtm.push({
+				event: 'Registro_mailing',
+				nombre: 'Registro en Mailchimp',
+				estado: 'completo'
 			})
 		},
 		async Ayudar () {
