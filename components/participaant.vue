@@ -59,11 +59,19 @@
 			a-button.suscribirme(
 				type="primary",
 				aria-label="Seguimos",
-				@click="submitForm('formulario')"
+				@click="executeCaptcha()"
 			)
 				| SEGUIMOS
 
 		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
+		vue-recaptcha(
+			ref="invisibleRecaptcha",
+			sitekey="6LffuXQdAAAAAD5YAkWMEOlWDZU4505ZRcVE0Zup",
+			badge="bottomright",
+			size="invisible",
+			@verify="onCaptchaVerified",
+			:loadRecaptchaScript="true"
+		)
 
 	a-modal.modal.modalBienvenido(
 		v-model="visible",
@@ -90,8 +98,16 @@
 			)
 				.texto Súmate a los grupos de whatsapp
 
-			.activate.aportaEnTerreno(@click="describirTalento('terreno')")
+			.activate.aportaEnTerreno(@click="executeCaptchaAyudarterreno()")
 				.texto Quiero ayudar en terreno
+				vue-recaptcha(
+					ref="executeCaptchaAyudarterreno",
+					sitekey="6LffuXQdAAAAAD5YAkWMEOlWDZU4505ZRcVE0Zup",
+					badge="bottomright",
+					size="invisible",
+					@verify="onCaptchaAyudarterrenoVerified",
+					:loadRecaptchaScript="true"
+				)
 
 			.activate.aportaTalento(@click="describirTalento('talento')")
 				.texto Tengo un talento que quiero poner a disposición
@@ -127,7 +143,15 @@
 							)
 							.textoError(v-if="errorRecibido") {{ errorRecibido }}
 
-					.boton(@click="Ayudar('talento')") enviar
+					.boton(@click="executeCaptchaAyudar()") enviar
+					vue-recaptcha(
+						ref="invisibleRecaptchaAyudar",
+						sitekey="6LffuXQdAAAAAD5YAkWMEOlWDZU4505ZRcVE0Zup",
+						badge="bottomright",
+						size="invisible",
+						@verify="onCaptchaAyudarVerified",
+						:loadRecaptchaScript="true"
+					)
 
 		.describeTuTalento(v-if="tipoDeAporte === 'terreno'")
 			a-spin(:spinning="spinning", :delay="delayTime")
@@ -148,11 +172,15 @@
 </template>
 
 <script>
+import VueRecaptcha from 'vue-recaptcha'
 import isEmail from 'validator/lib/isEmail'
 import { phone } from 'phone'
 import regionesComunas from '../regiones/regioneschile'
 
 export default {
+	components: {
+		VueRecaptcha
+	},
 	data () {
 		// let checkPending
 		const validaTelefono = (rule, value, callback) => {
@@ -213,7 +241,8 @@ export default {
 				telefono: undefined,
 				comuna: undefined,
 				region: undefined,
-				distrito: undefined
+				distrito: undefined,
+				captcha: undefined
 			},
 			rules: {
 				nombre: [{ validator: validaNombre, trigger: 'change' }],
@@ -276,27 +305,49 @@ export default {
 		}
 	},
 	methods: {
-		submitForm (formName) {
-			// console.log(this.formulario)
-			this.$refs[formName].validate(valid => {
+		executeCaptcha () {
+			this.$refs.formulario.validate(valid => {
 				if (valid) {
-					this.suscribirse()
-					this.$gtm.push({
-						event: 'Registro_mailing',
-						nombre: 'Registro en Mailchimp',
-						estado: 'completo'
-					})
+					this.$refs.invisibleRecaptcha.execute()
 				} else {
 					console.log('error submit!!')
 					return false
 				}
 			})
 		},
-		async Ayudar (tipo) {
+		executeCaptchaAyudar () {
+			this.$refs.invisibleRecaptchaAyudar.execute()
+		},
+		executeCaptchaAyudarterreno () {
+			this.tipoDeAporte = 'terreno'
+			this.$refs.executeCaptchaAyudarterreno.execute()
+		},
+		onCaptchaVerified (captchaResponse) {
+			this.formulario.captcha = captchaResponse
+			this.submitForm()
+		},
+		onCaptchaAyudarVerified (captchaResponse) {
+			this.formulario.captcha = captchaResponse
+			this.Ayudar()
+		},
+		onCaptchaAyudarterrenoVerified (captchaResponse) {
+			this.formulario.captcha = captchaResponse
+			this.Ayudar()
+		},
+		submitForm (formName) {
+			// console.log(this.formulario)
+			this.suscribirse()
+			this.$gtm.push({
+				event: 'Registro_mailing',
+				nombre: 'Registro en Mailchimp',
+				estado: 'completo'
+			})
+		},
+		async Ayudar () {
 			this.spinning = true
 			const solicitud = {
 				descripcion: this.talento.texto,
-				tipo,
+				tipo: this.tipoDeAporte,
 				usuario: this.formulario
 			}
 			console.log(solicitud)
@@ -314,6 +365,7 @@ export default {
 					this.quieroAportarConTalento = null
 					this.completado = null
 					this.talento.texto = null
+					this.formulario.captcha = null
 				}, 2000)
 			}
 			if (respuesta.error) {
@@ -324,9 +376,6 @@ export default {
 		describirTalento (v) {
 			this.quieroAportarConTalento = true
 			this.tipoDeAporte = v
-			if (v === 'terreno') {
-				this.Ayudar(v)
-			}
 		},
 		defineDistrito (d) {
 			this.formulario.distrito = d
@@ -357,6 +406,7 @@ export default {
 				this.visible = false
 			} else {
 				this.visible = true
+				this.formulario.captcha = null
 			}
 			console.log('suscrito', this.visible)
 		},

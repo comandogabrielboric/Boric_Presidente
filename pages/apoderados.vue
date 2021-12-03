@@ -1,138 +1,176 @@
 <template lang="pug">
 .rootParticipa
-	.titulo Inscripciones Apoderados de mesa
-	.texto Para defender estos cambios, necesitamos much@s apoderad@s de mesa que velen por nuestra democracia el día de las elecciones. ¡Súmate!
+  .titulo Inscripciones Apoderados de mesa
+  .texto Para defender estos cambios, necesitamos much@s apoderad@s de mesa que velen por nuestra democracia el día de las elecciones. ¡Súmate!
 
-	a-form-model.suscribirse(
-		ref="formulario",
-		:model="formulario",
-		:rules="rules"
-	)
-		a-form-model-item(has-feedback, prop="nombre")
-			a-input.input(
-				v-model="formulario.nombre",
-				type="nombre",
-				placeholder="Nombre"
-			)
-		a-form-model-item(has-feedback, prop="apellido")
-			a-input.input(
-				v-model="formulario.apellido",
-				type="apellido",
-				placeholder="Apellido"
-			)
-		a-form-model-item(has-feedback, prop="rut")
-			a-input.input(v-model="formulario.rut", type="rut", placeholder="Rut")
-		a-form-model-item(has-feedback, prop="email")
-			a-input.input(
-				v-model="formulario.email",
-				type="email",
-				placeholder="Email"
-			)
+  a-form-model.suscribirse(
+    ref="formulario",
+    :model="formulario",
+    :rules="rules"
+  )
+    a-form-model-item(has-feedback, prop="nombre")
+      a-input.input(
+        v-model="formulario.nombre",
+        type="nombre",
+        placeholder="Nombre"
+      )
+    a-form-model-item(has-feedback, prop="apellido")
+      a-input.input(
+        v-model="formulario.apellido",
+        type="apellido",
+        placeholder="Apellido"
+      )
+    a-form-model-item(has-feedback, prop="rut")
+      a-input.input(v-model="formulario.rut", type="rut", placeholder="Rut")
+    a-form-model-item(has-feedback, prop="email")
+      a-input.input(
+        v-model="formulario.email",
+        type="email",
+        placeholder="Email"
+      )
 
-		a-form-model-item(has-feedback, prop="telefono")
-			a-input.input(
-				v-model="formulario.telefono",
-				type="tel",
-				placeholder="+56 x xxxx xxxx"
-			)
+    a-form-model-item(has-feedback, prop="telefono")
+      a-input.input(
+        v-model="formulario.telefono",
+        type="tel",
+        placeholder="+56 x xxxx xxxx"
+      )
 
-		.texto En que comuna deseas participar?
-		a-form-model-item(has-feedback, prop="region")
-			a-select.input(
-				v-model="formulario.region",
-				@change="handleChange",
-				placeholder="Región"
-			)
-				a-select-option(
-					v-for="region in regiones",
-					:key="region.label",
-					:value="region.label"
-				) {{ region.label }}
+    .texto En que comuna deseas participar?
+    a-form-model-item(has-feedback, prop="region")
+      a-select.input(
+        v-model="formulario.region",
+        @change="handleChange",
+        placeholder="Región"
+      )
+        a-select-option(
+          v-for="region in regiones",
+          :key="region.label",
+          :value="region.label"
+        ) {{ region.label }}
 
-		a-form-model-item(v-if="regionseleccionada", has-feedback="", prop="comuna")
-			a-select.input(
-				v-model="formulario.comuna",
-				placeholder="Comuna",
-				@change="handleComuna"
-			)
-				a-select-option(
-					v-for="comuna in comunas",
-					:key="comuna.label",
-					:value="comuna.label"
-				) {{ comuna.label }}
+    a-form-model-item(
+      v-if="regionseleccionada",
+      has-feedback="",
+      prop="comuna"
+    )
+      a-select.input(
+        v-model="formulario.comuna",
+        placeholder="Comuna",
+        @change="handleComuna"
+      )
+        a-select-option(
+          v-for="comuna in comunas",
+          :key="comuna.label",
+          :value="comuna.label"
+        ) {{ comuna.label }}
+    a-form-model-item(v-if="comunaSeleccionada && !otroLocalVisible", has-feedback, prop="local")
+      a-select.input(
+		show-search=""
+        v-model="formulario.local",
+        type="local",
+        placeholder="Local de Votación",
+        @change="handleLocal"
+      )
+        div(slot="dropdownRender" slot-scope="menu")
+            v-nodes(:vnodes="menu")
+            a-divider(style="margin: 4px 0;")
+            div(
+                style="padding: 4px 8px; cursor:pointer"
+                @mousedown="e=>e.preventDefault"
+                @click="otroLocal"
+            )
+                b Mi local no aparece
+        a-select-option(v-for="local in locales", :key="local", :value="local") {{ local }}
 
-		a-form-model-item(has-feedback, prop="local")
-			a-input.input(
-				v-model="formulario.local",
-				type="local",
-				placeholder="Local de votacion"
-			)
-		a-form-model-item(has-feedback, prop="Mesa")
-			a-input.input(
-				v-model="formulario.mesa",
-				type="mesa",
-				placeholder="Mesa de votacion"
-			)
+    a-form-model-item(v-if="otroLocalVisible", has-feedback, prop="Mesa")
+      a-input.input(
+        v-model="formulario.local",
+        type="mesa",
+        placeholder="Local de Votación"
+      )
 
-		a-form-model-item.pre ¿has sido vocal de mesa antes? #[span]
-			a-switch(v-model="formulario.hazSidoVocalAntes")
-		//- a-form-model-item(has-feedback prop='militancia')
-		//- 	a-input(v-model='formulario.milita' type='checkbox').input
-		//- 	div eres militante?
-		a-form-model-item.contenedorbtn(:wrapper-col="{ span: 14, offset: 4 }")
-			a-button.suscribirme(type="primary", @click="submitForm('formulario')")
-				| INSCRIBIRME
-		.contenedorBoton
-			a.boton.votoExtranjero(
-				type="primary",
-				target="_blank",
-				href="https://docs.google.com/forms/d/e/1FAIpQLSe3bTgWo9CWLZGSQcYMSW625ssbK6TmL0WcuO49cx48rqY24Q/viewform"
-			)
-				| Voto en el extranjero
 
-		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
+    a-form-model-item(has-feedback, prop="Mesa")
+      a-input.input(
+        v-model="formulario.mesa",
+        type="mesa",
+        placeholder="Mesa de votacion"
+      )
 
-	.imgFooter
-		img(
-			src="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/apoderadosFooter.webp",
-			alt="grupo"
-		)
+    a-form-model-item.pre ¿has sido vocal de mesa antes? #[span]
+      a-switch(v-model="formulario.hazSidoVocalAntes")
+    //- a-form-model-item(has-feedback prop='militancia')
+    //- 	a-input(v-model='formulario.milita' type='checkbox').input
+    //- 	div eres militante?
+    a-form-model-item.contenedorbtn(:wrapper-col="{ span: 14, offset: 4 }")
+      a-button.suscribirme(type="primary", @click="executeCaptcha()")
+        | INSCRIBIRME
+    .contenedorBoton
+      a.boton.votoExtranjero(
+        type="primary",
+        target="_blank",
+        href="https://docs.google.com/forms/d/e/1FAIpQLSe3bTgWo9CWLZGSQcYMSW625ssbK6TmL0WcuO49cx48rqY24Q/viewform"
+      )
+        | Voto en el extranjero
 
-	a-modal.modal(
-		v-model="visible",
-		title="Muchas gracias !!",
-		centered,
-		@ok="handleOk",
-		:footer="null"
-	)
-		.procesando(v-if="!procesado")
-			a-spin(size="large")
-		.procusandoCompleto(v-if="procesado")
-			p Pronto recibiras noticias
+    p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
+    vue-recaptcha(
+      ref="invisibleRecaptcha",
+      sitekey="6LffuXQdAAAAAD5YAkWMEOlWDZU4505ZRcVE0Zup",
+      badge="bottomright",
+      size="invisible",
+      @verify="onCaptchaVerified",
+      :loadRecaptchaScript="true"
+    )
+  .imgFooter
+    img(
+      src="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/apoderadosFooter.webp",
+      alt="grupo"
+    )
 
-	a-modal.modal(
-		:visible="tyc",
-		title="Terminos y Condiciones",
-		@ok="handleOk",
-		@cancel="tyc = false",
-		:footer="null"
-	)
-		p El/la usuaria/o declara aceptar el uso de los datos solicitados para la campaña presidencial de Gabriel Boric en el marco de la Ley N° 19.628. Sólo podrán ser usados estos datos para los fines específicos que el usuario autorice, esto es, para la entrega de información de la campaña presidencial respectiva y de la difusión de sus actividades propias. Para estos efectos el usuario autoriza a que lo contacten a través de medios digitales tales como email, Facebook, mensajes de texto (SMS), WhatsApp u otras plataformas similares con las finalidades señaladas, a la casilla de correo electrónico y número de teléfono que haya indicado.
+  a-modal.modal(
+    v-model="visible",
+    title="Muchas gracias !!",
+    centered,
+    @ok="handleOk",
+    :footer="null"
+  )
+    .procesando(v-if="!procesado")
+      a-spin(size="large")
+    .procusandoCompleto(v-if="procesado")
+      p Pronto recibiras noticias
 
-		p La permanencia en estas bases de datos tendrá siempre la posibilidad de que la/el usuaria/o pueda darse de baja o solicitar dejar de estar registrado en las mismas, pudiendo al efecto revocar su autorización, y disponiendo, en todo caso, de los derechos que confiere la Ley N° 19.628.
+  a-modal.modal(
+    :visible="tyc",
+    title="Terminos y Condiciones",
+    @ok="handleOk",
+    @cancel="tyc = false",
+    :footer="null"
+  )
+    p El/la usuaria/o declara aceptar el uso de los datos solicitados para la campaña presidencial de Gabriel Boric en el marco de la Ley N° 19.628. Sólo podrán ser usados estos datos para los fines específicos que el usuario autorice, esto es, para la entrega de información de la campaña presidencial respectiva y de la difusión de sus actividades propias. Para estos efectos el usuario autoriza a que lo contacten a través de medios digitales tales como email, Facebook, mensajes de texto (SMS), WhatsApp u otras plataformas similares con las finalidades señaladas, a la casilla de correo electrónico y número de teléfono que haya indicado.
 
-		p La campaña presidencial de Gabriel Boric no podrá, bajo ningún concepto, ceder o transferir dichas bases de datos a terceros sin contar con el consentimiento expreso del usuario titular de los datos privados.
+    p La permanencia en estas bases de datos tendrá siempre la posibilidad de que la/el usuaria/o pueda darse de baja o solicitar dejar de estar registrado en las mismas, pudiendo al efecto revocar su autorización, y disponiendo, en todo caso, de los derechos que confiere la Ley N° 19.628.
 
-	.relleno
+    p La campaña presidencial de Gabriel Boric no podrá, bajo ningún concepto, ceder o transferir dichas bases de datos a terceros sin contar con el consentimiento expreso del usuario titular de los datos privados.
+
+  .relleno
 </template>
 
 <script>
+import VueRecaptcha from 'vue-recaptcha'
 import isEmail from 'validator/lib/isEmail'
 import { phone } from 'phone'
 import { validate, format, clean } from 'rut.js'
-import regionesComunas from '../regiones/regioneschile'
-
+import regionesComunasLocales from '../regiones/regioneschile'
 export default {
+	components: {
+		VueRecaptcha,
+		VNodes: {
+			functional: true,
+			render: (h, ctx) => ctx.props.vnodes
+		}
+	},
 	data () {
 		// let checkPending
 		const validaTelefono = (rule, value, callback) => {
@@ -210,7 +248,8 @@ export default {
 				distrito: undefined,
 				hazSidoVocalAntes: false,
 				local: undefined,
-				mesa: undefined
+				mesa: undefined,
+				captcha: undefined
 			},
 			rules: {
 				nombre: [{ validator: validaNombre, trigger: 'change' }],
@@ -225,6 +264,7 @@ export default {
 				labelCol: { span: 4 },
 				wrapperCol: { span: 14 }
 			},
+			otroLocalVisible: false,
 			visible: false,
 			tyc: false,
 			regionseleccionada: null,
@@ -235,7 +275,7 @@ export default {
 	},
 	computed: {
 		regiones () {
-			const re = regionesComunas.regionesComunas
+			const re = regionesComunasLocales.regionesComunasLocales
 			// const arrayregiones = this._.map(re, 'label')
 			return re
 		},
@@ -249,6 +289,16 @@ export default {
 				// console.log('formulario', this.formulario)
 			}
 			return comunas
+		},
+		locales () {
+			const re = this.comunas
+			if (this.comunaSeleccionada) {
+				const com = this._.filter(re, ['value', this.comunaSeleccionada])
+				if (com.length > 0) {
+					return com[0].locales
+				}
+			}
+			return null
 		},
 		distrito () {
 			const comunaSeleccionada = this.comunaSeleccionada
@@ -264,17 +314,25 @@ export default {
 		}
 	},
 	methods: {
-		submitForm (formName) {
-			// console.log(this.formulario)
-			this.$refs[formName].validate(valid => {
+		otroLocal () {
+			this.otroLocalVisible = true
+			console.log('otro!')
+		},
+		executeCaptcha () {
+			this.$refs.formulario.validate(valid => {
 				if (valid) {
-					this.suscribirse()
 					// this.$gtm.push({ event: 'Registro_mailing', nombre: 'Registro en Mailchimp', estado: 'completo' })
+					this.$refs.invisibleRecaptcha.execute()
 				} else {
 					console.log('error submit!!')
 					return false
 				}
 			})
+		},
+		onCaptchaVerified (captchaResponse) {
+			console.log('verificado')
+			this.formulario.captcha = captchaResponse
+			this.suscribirse()
 		},
 		defineDistrito (d) {
 			this.formulario.distrito = d
@@ -282,12 +340,18 @@ export default {
 		handleChange (value) {
 			console.log(`Selectedd: ${value}`)
 			this.regionseleccionada = value
+			this.comunaSeleccionada = null
+			this.local = null
 			console.log('seleccion', this.regionseleccionada)
 		},
 		handleComuna (value) {
 			console.log(`Selected: ${value}`)
 			this.comunaSeleccionada = value
-			console.log('distri', this.distrito)
+			this.local = null
+		},
+		handleLocal (value) {
+			console.log(`Selected: ${value}`)
+			this.local = value
 		},
 		async suscribirse () {
 			// const { nombre, email, telefono, comuna } = this
@@ -311,7 +375,8 @@ export default {
 					comuna: undefined,
 					region: undefined,
 					distrito: undefined,
-					milita: null
+					milita: null,
+					captcha: undefined
 				}
 			}
 			console.log('suscrito', this.visible)
