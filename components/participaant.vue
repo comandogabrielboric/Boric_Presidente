@@ -135,7 +135,7 @@
 							)
 							.textoError(v-if="errorRecibido") {{ errorRecibido }}
 
-					.boton(@click="executeCaptchaAyudar('')") enviar
+					.boton(@click="executeCaptchaAyudar()") enviar
 					vue-recaptcha(
 						ref="invisibleRecaptchaAyudar"
 						sitekey="6LffuXQdAAAAAD5YAkWMEOlWDZU4505ZRcVE0Zup",
@@ -359,7 +359,7 @@ export default {
 			this.quieroAportarConTalento = true
 			this.tipoDeAporte = v
 			if (v === 'terreno') {
-				executeCaptchaAyudar()
+				this.executeCaptchaAyudar()
 			}
 		},
 		defineDistrito (d) {

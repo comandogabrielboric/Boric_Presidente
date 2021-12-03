@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Button, Input, FormModel, Select, Modal, Progress, AutoComplete, Spin, Switch, Radio, Calendar } from 'ant-design-vue'
+import { Button, Input, FormModel, Select, Modal, Progress, AutoComplete, Spin, Switch, Radio, Calendar, Divider, Icon } from 'ant-design-vue'
 // import Antd from 'ant-design-vue/lib'
 
 // import 'ant-design-vue/lib/button/style'
@@ -18,5 +18,9 @@ Vue.use(Input)
 Vue.use(FormModel)
 Vue.use(Select)
 Vue.use(Modal)
+Vue.use(AutoComplete)
+Vue.use(Icon)
+Vue.use(Divider)
+Vue.use(AutoComplete)
 Vue.use(AutoComplete)
 
