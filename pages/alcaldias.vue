@@ -39,12 +39,12 @@
 </template>
 
 <script>
-import alcaldesFirmantes from '../static/csv/alcaldesFirmantes.json'
+import alcaldes from '../alcaldes/alcaldes'
 
 export default {
 	data () {
 		return {
-			alcaldesFirmantes,
+			alcaldes,
 			nFirmas: null
 		}
 	},
@@ -75,10 +75,10 @@ export default {
 	},
 	computed: {
 		numeroFirmas () {
-			return alcaldesFirmantes.length
+			return alcaldes.length
 		},
 		alcaldesSorted () {
-			const as = this._.orderBy(alcaldesFirmantes, a => a.Apellido)
+			const as = this._.orderBy(alcaldes, a => a.Apellido)
 			console.log(as)
 			return as
 		}
