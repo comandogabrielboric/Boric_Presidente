@@ -80,7 +80,7 @@
 		//- 	a-input(v-model='formulario.milita' type='checkbox').input
 		//- 	div eres militante?
 		a-form-model-item.contenedorbtn(:wrapper-col="{ span: 14, offset: 4 }")
-			a-button.suscribirme(type="primary", @click="submitForm('formulario')")
+			a-button.suscribirme(type="primary", @click="executeCaptcha()")
 				| INSCRIBIRME
 		.contenedorBoton
 			a.boton.votoExtranjero(
@@ -91,7 +91,14 @@
 				| Voto en el extranjero
 
 		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
-
+		vue-recaptcha(
+			ref="invisibleRecaptcha"
+			sitekey="6LffuXQdAAAAAD5YAkWMEOlWDZU4505ZRcVE0Zup",
+			badge="bottomright",
+			size="invisible",
+			@verify="onCaptchaVerified"
+			:loadRecaptchaScript="true"
+		)
 	.imgFooter
 		img(
 			src="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/apoderadosFooter.webp",
@@ -127,12 +134,13 @@
 </template>
 
 <script>
+import VueRecaptcha from 'vue-recaptcha'
 import isEmail from 'validator/lib/isEmail'
 import { phone } from 'phone'
 import { validate, format, clean } from 'rut.js'
 import regionesComunas from '../regiones/regioneschile'
-
 export default {
+	components: { VueRecaptcha },
 	data () {
 		// let checkPending
 		const validaTelefono = (rule, value, callback) => {
@@ -210,7 +218,8 @@ export default {
 				distrito: undefined,
 				hazSidoVocalAntes: false,
 				local: undefined,
-				mesa: undefined
+				mesa: undefined,
+				captcha: undefined
 			},
 			rules: {
 				nombre: [{ validator: validaNombre, trigger: 'change' }],
@@ -264,6 +273,14 @@ export default {
 		}
 	},
 	methods: {
+		executeCaptcha () {
+			this.$refs.invisibleRecaptcha.execute()
+		},
+		onCaptchaVerified (captchaResponse) {
+			console.log('verificado')
+			this.formulario.captcha = captchaResponse
+			this.submitForm('formulario')
+		},
 		submitForm (formName) {
 			// console.log(this.formulario)
 			this.$refs[formName].validate(valid => {
@@ -311,7 +328,8 @@ export default {
 					comuna: undefined,
 					region: undefined,
 					distrito: undefined,
-					milita: null
+					milita: null,
+					captcha: undefined
 				}
 			}
 			console.log('suscrito', this.visible)
