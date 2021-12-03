@@ -196,7 +196,7 @@
 		"Comuna": "Purranque"
 	},
 	{
-		"Nombre": "Claudio",
+		"Nombre": "Rafael",
 		"Apellido": "Cumsille",
 		"Apellido2": "",
 		"Cargo": "alcalde",
@@ -448,6 +448,13 @@
 		"Comuna": "San Joaquín"
 	},
 	{
+		"Nombre": "Carlos",
+		"Apellido": "Leal",
+		"Apellido2": "",
+		"Cargo": "alcalde",
+		"Comuna": "Contulmo"
+	},
+	{
 		"Nombre": "Carolina",
 		"Apellido": "Leitao",
 		"Apellido2": "",
@@ -484,7 +491,7 @@
 	},
 	{
 		"Nombre": "Erika",
-		"Apellido": "Marambio",
+		"Apellido": "Martínez",
 		"Apellido2": "Osorio",
 		"Cargo": "alcaldesa",
 		"Comuna": "San Miguel"
@@ -528,7 +535,7 @@
 		"Nombre": "Felipe",
 		"Apellido": "Muñoz",
 		"Apellido2": "Heredia",
-		"Cargo": "alcalde ",
+		"Cargo": "alcalde",
 		"Comuna": "Padre Hurtado"
 	},
 	{
