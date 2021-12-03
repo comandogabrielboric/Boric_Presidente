@@ -65,11 +65,11 @@
 
 		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
 		vue-recaptcha(
-			ref="invisibleRecaptcha"
+			ref="invisibleRecaptcha",
 			sitekey="6LffuXQdAAAAAD5YAkWMEOlWDZU4505ZRcVE0Zup",
 			badge="bottomright",
 			size="invisible",
-			@verify="onCaptchaVerified"
+			@verify="onCaptchaVerified",
 			:loadRecaptchaScript="true"
 		)
 
@@ -98,8 +98,16 @@
 			)
 				.texto Súmate a los grupos de whatsapp
 
-			.activate.aportaEnTerreno(@click="describirTalento('terreno')")
+			.activate.aportaEnTerreno(@click="executeCaptchaAyudarterreno()")
 				.texto Quiero ayudar en terreno
+				vue-recaptcha(
+					ref="executeCaptchaAyudarterreno",
+					sitekey="6LffuXQdAAAAAD5YAkWMEOlWDZU4505ZRcVE0Zup",
+					badge="bottomright",
+					size="invisible",
+					@verify="onCaptchaAyudarterrenoVerified",
+					:loadRecaptchaScript="true"
+				)
 
 			.activate.aportaTalento(@click="describirTalento('talento')")
 				.texto Tengo un talento que quiero poner a disposición
@@ -137,11 +145,11 @@
 
 					.boton(@click="executeCaptchaAyudar()") enviar
 					vue-recaptcha(
-						ref="invisibleRecaptchaAyudar"
+						ref="invisibleRecaptchaAyudar",
 						sitekey="6LffuXQdAAAAAD5YAkWMEOlWDZU4505ZRcVE0Zup",
 						badge="bottomright",
 						size="invisible",
-						@verify="onCaptchaAyudarVerified"
+						@verify="onCaptchaAyudarVerified",
 						:loadRecaptchaScript="true"
 					)
 
@@ -310,6 +318,10 @@ export default {
 		executeCaptchaAyudar () {
 			this.$refs.invisibleRecaptchaAyudar.execute()
 		},
+		executeCaptchaAyudarterreno () {
+			this.tipoDeAporte = 'terreno'
+			this.$refs.executeCaptchaAyudarterreno.execute()
+		},
 		onCaptchaVerified (captchaResponse) {
 			this.formulario.captcha = captchaResponse
 			this.submitForm()
@@ -318,7 +330,11 @@ export default {
 			this.formulario.captcha = captchaResponse
 			this.Ayudar()
 		},
-		submitForm () {
+		onCaptchaAyudarterrenoVerified (captchaResponse) {
+			this.formulario.captcha = captchaResponse
+			this.Ayudar()
+		},
+		submitForm (formName) {
 			// console.log(this.formulario)
 			this.suscribirse()
 			this.$gtm.push({
@@ -360,9 +376,6 @@ export default {
 		describirTalento (v) {
 			this.quieroAportarConTalento = true
 			this.tipoDeAporte = v
-			if (v === 'terreno') {
-				this.executeCaptchaAyudar()
-			}
 		},
 		defineDistrito (d) {
 			this.formulario.distrito = d
