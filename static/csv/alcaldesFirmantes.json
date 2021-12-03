@@ -1,12 +1,5 @@
 [
 	{
-		"Nombre": "Aldo",
-		"Apellido": "Retamal",
-		"Apellido2": "",
-		"Cargo": "alcalde",
-		"Comuna": "Los Lagos"
-	},
-	{
 		"Nombre": "Juan",
 		"Apellido": "Abarca",
 		"Apellido2": "",
@@ -56,6 +49,13 @@
 		"Comuna": "Llanquihue"
 	},
 	{
+		"Nombre": "Carlos",
+		"Apellido": "Araya",
+		"Apellido2": "",
+		"Cargo": "alcalde",
+		"Comuna": "Punitaqui"
+	},
+	{
 		"Nombre": "Luis",
 		"Apellido": "Astudillo",
 		"Apellido2": "",
@@ -98,6 +98,13 @@
 		"Comuna": "Curanilahue"
 	},
 	{
+		"Nombre": "Jorge",
+		"Apellido": "Calderón",
+		"Apellido2": "",
+		"Cargo": "alcalde",
+		"Comuna": "Cochrane"
+	},
+	{
 		"Nombre": "Bernardo",
 		"Apellido": "Candia",
 		"Apellido2": "",
@@ -131,6 +138,13 @@
 		"Apellido2": "Gerli",
 		"Cargo": "alcaldesa",
 		"Comuna": "Molina"
+	},
+	{
+		"Nombre": "Pedro",
+		"Apellido": "Castillo",
+		"Apellido2": "",
+		"Cargo": "alcalde",
+		"Comuna": "Combarbalá"
 	},
 	{
 		"Nombre": "Claudio",
@@ -259,6 +273,13 @@
 		"Comuna": "Cabo de Hornos"
 	},
 	{
+		"Nombre": "Patricio",
+		"Apellido": "Ferreira",
+		"Apellido2": "",
+		"Cargo": "alcalde",
+		"Comuna": "Alto Hospicio"
+	},
+	{
 		"Nombre": "Armando",
 		"Apellido": "Flores",
 		"Apellido2": "Jiménez",
@@ -292,6 +313,13 @@
 		"Apellido2": "",
 		"Cargo": "alcalde",
 		"Comuna": "Mostazal"
+	},
+	{
+		"Nombre": "René",
+		"Apellido": "Garces",
+		"Apellido2": "",
+		"Cargo": "alcalde",
+		"Comuna": "Quinchao"
 	},
 	{
 		"Nombre": "Rodrigo",
@@ -385,6 +413,13 @@
 		"Comuna": "Frutillar"
 	},
 	{
+		"Nombre": "Roberto",
+		"Apellido": "Jacob",
+		"Apellido2": "",
+		"Cargo": "alcalde",
+		"Comuna": "La Serena"
+	},
+	{
 		"Nombre": "Daniel",
 		"Apellido": "Jadue",
 		"Apellido2": "",
@@ -449,7 +484,7 @@
 	},
 	{
 		"Nombre": "Erika",
-		"Apellido": "Martínez",
+		"Apellido": "Marambio",
 		"Apellido2": "Osorio",
 		"Cargo": "alcaldesa",
 		"Comuna": "San Miguel"
@@ -581,6 +616,20 @@
 		"Comuna": "Palmilla"
 	},
 	{
+		"Nombre": "Alfredo",
+		"Apellido": "Peña",
+		"Apellido2": "",
+		"Cargo": "alcalde",
+		"Comuna": "Negrete"
+	},
+	{
+		"Nombre": "Cristián",
+		"Apellido": "Peña",
+		"Apellido2": "",
+		"Cargo": "alcalde",
+		"Comuna": "Lebu"
+	},
+	{
 		"Nombre": "Fabián",
 		"Apellido": "Pérez",
 		"Apellido2": "",
@@ -621,6 +670,13 @@
 		"Apellido2": "",
 		"Cargo": "alcalde",
 		"Comuna": "Renaico"
+	},
+	{
+		"Nombre": "Aldo",
+		"Apellido": "Retamal",
+		"Apellido2": "",
+		"Cargo": "alcalde",
+		"Comuna": "Los Lagos"
 	},
 	{
 		"Nombre": "Javiera",
@@ -812,6 +868,13 @@
 		"Comuna": "Queilen"
 	},
 	{
+		"Nombre": "Rafael",
+		"Apellido": "Vera",
+		"Apellido2": "",
+		"Cargo": "alcalde",
+		"Comuna": "Vicuña"
+	},
+	{
 		"Nombre": "Carlos",
 		"Apellido": "Vergara",
 		"Apellido2": "Zerega",
@@ -854,6 +917,13 @@
 		"Comuna": "San Bernardo"
 	},
 	{
+		"Nombre": "Javiera",
+		"Apellido": "Yañez",
+		"Apellido2": "",
+		"Cargo": "alcaldesa",
+		"Comuna": "Curaco de Velez"
+	},
+	{
 		"Nombre": "Cristián",
 		"Apellido": "Zavala",
 		"Apellido2": "",
@@ -873,26 +943,5 @@
 		"Apellido2": "",
 		"Cargo": "alcalde",
 		"Comuna": "El Bosque"
-	},
-	{
-		"Nombre": "Alfredo",
-		"Apellido": "Peña",
-		"Apellido2": "",
-		"Cargo": "alcalde",
-		"Comuna": "Negrete"
-	},
-	{
-		"Nombre": "Cristián",
-		"Apellido": "Peña",
-		"Apellido2": "",
-		"Cargo": "alcalde",
-		"Comuna": "Lebu"
-	},
-	{
-		"Nombre": "Patricio",
-		"Apellido": "Ferreira",
-		"Apellido2": "",
-		"Cargo": "alcalde",
-		"Comuna": "Alto Hospicio"
 	}
 ]
