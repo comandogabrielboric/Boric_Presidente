@@ -1,7 +1,7 @@
 <template lang="pug">
 .propuestasRoot
 	.encabezado
-		h1.titulo Alcaldesas y alcaldes por Boric
+		h1.titulo Programa en fácil
 
 	.programaBook
 		iframe(
