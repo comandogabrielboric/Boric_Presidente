@@ -189,6 +189,7 @@ export default {
 				event: 'link-home',
 				hacia: 'Buscar propuesta'
 			})
+			this.$root.$emit('buscaPropuesta')
 			this.$router.push(`/propuestas/${p.Slug}#:~:text=${aDestacar}`)
 			this.$nuxt.refresh()
 			this.matchPropuesta = null

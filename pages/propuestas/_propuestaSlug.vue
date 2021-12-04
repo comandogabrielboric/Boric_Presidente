@@ -14,9 +14,7 @@
 			//- a.modo(:href="propuestaMostrada.pdfURL" download target="_blank" rel="noreferer noopener") Descargar PDF
 	.cuerpoPropuesta
 		.html(v-show="modoVisualizacion === 'html'", key="html")
-			.ql-editor.contenidoHTML(
-				v-html="propuestaDestacadaHTML",
-			)
+			.ql-editor.contenidoHTML(v-html="propuestaDestacadaHTML")
 	.contendorBoton
 		nuxt-link.boton(to="/propuestas") Volver a ver todas las propuestas
 </template>
@@ -24,8 +22,7 @@
 import Mark from 'mark.js'
 
 export default {
-	components: {
-	},
+	components: {},
 	scrollToTop: true,
 	data () {
 		const propuestaSlug = this.$route.params.propuestaSlug
@@ -128,6 +125,9 @@ export default {
 		}
 	},
 	mounted () {
+		this.$root.$on('buscaPropuesta', () => {
+			this.destacarTextoBuscado(this.$route)
+		})
 		this.destacarTextoBuscado(this.$route)
 	},
 	methods: {
@@ -140,7 +140,7 @@ export default {
 				}
 			})
 			if (queries.length > 0) {
-				const id = 'id' + (new Date()).getTime()
+				const id = 'id' + new Date().getTime()
 				const doc = document.createElement('div')
 				const body = document.getElementsByTagName('html')[0]
 				doc.id = id
@@ -171,7 +171,6 @@ export default {
 			}
 		}
 	}
-
 }
 </script>
 <style lang="sass" scoped>
@@ -304,5 +303,4 @@ export default {
 		padding-top: .9em
 .hidden
 	display: none
-
 </style>
