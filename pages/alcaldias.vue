@@ -55,7 +55,7 @@ export default {
 		const descripcion = this._.get(
 			this.seo,
 			['descripcion_pag'],
-			'18FtiXWZ18jtkEmm1F_7a4fGzLkKJd2fH'
+			'Alcaldesas y alcaldes por Boric'
 		)
 		const imagen = '/imagenes/WEB-BANDERA.webp'
 		const url = 'https://boricpresidente.cl/municipios'
