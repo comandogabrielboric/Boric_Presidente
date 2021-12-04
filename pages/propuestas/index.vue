@@ -15,6 +15,15 @@
 				.tit #[span.light un] nuevo Chile
 				.sub Cambios para vivir mejor
 
+				buscador
+					template(
+						v-slot:default="slotProps"
+					)
+						.contenedorbtn
+							.button.boton(@click="slotProps.abrirBuscador")
+								.oicono.lupa-linea
+								.p(style="padding-left:10px") ¿Buscas una propuesta?
+
 	section.propuestas(v-if="setPropuestas")
 		.curva.curvaSuperior
 
