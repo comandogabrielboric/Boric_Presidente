@@ -1,7 +1,11 @@
 <template lang="pug">
 .root
-	.buscador(@click="abrirBuscador")
-		.oicono.lupa-linea
+	slot(v-bind:abrirBuscador="abrirBuscador"
+)
+		.buscador(
+			@click="abrirBuscador",
+		)
+			.oicono.lupa-linea
 
 	a-modal.modalBusqueda(
 		:visible="buscar",
@@ -356,7 +360,9 @@ $anchoMaximo: 800px
 					padding: 1rem 3rem
 					color: $azul2
 					.destacado
-						color: $verde2
+						background-color: $verde2
+						border-radius: 3px
+						color: $blanco
 					+ .coincidencia
 						position: relative
 						&::before
