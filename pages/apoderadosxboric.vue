@@ -24,9 +24,25 @@
 					.texto Nos pusimos el desafío de abrir un millón de puertas para #[span.bold conversar con personas de todas las regiones de Chile,] escuchar sus deseos para un construir un Chile que nos incluya a todos. No te quedes fuera y haz campaña.
 
 	section.seccionHacerCampana
-		img(src="/svg/curvalanding.svg")
+		.fondo
+			img(src="/svg/curvalanding.svg")
 		.cajaHerramientas
 			img(src="/imagenes/cajaHerramientas.webp")
+		.contenedortitulo
+			.titulo ¿Cómo puedo hacer campaña?
+		.contenedorPasos
+			.imagen
+				img(src="/imagenes/landingCampaña/Group 40.webp")
+			.imagen
+				img(src="/imagenes/landingCampaña/Group 41.webp")
+			.imagen
+				img(src="/imagenes/landingCampaña/Group 42.webp")
+			.imagen
+				img(src="/imagenes/landingCampaña/Group 43.webp")
+			.imagen
+				img(src="/imagenes/landingCampaña/Group 44.webp")
+			.contenedorTexto
+				.texto Comparte y difunde la campaña con el hashtag #[span.bold #1MillondePuertasxBoric]
 </template>
 
 <script>
@@ -236,14 +252,54 @@ section
 
 .seccionHacerCampana
 	background-image: url('/imagenes/textura.webp')
-	> img
+	// position: absolute
+	.fondo
 		position: absolute
-		width: 100%
+		> img
+			width: 100%
 	.cajaHerramientas
 		position: relative
 		top: -5em
 		left: calc( 50% - 100px )
 		width: 200px
+		> img
+			width: 200px
+	.contenedortitulo
+		position: relative
+		text-align: center
+		top: -2.5em
+		color: $verde3
+		z-index: 10
+		display: flex
+		justify-content: center
+		width: 100%
+		.titulo
+			max-width: 600px
+	.contenedorPasos
+		background-color: $azul2
+		position: relative
+		width: 100%
+		border: 1px solid red
+		// height: 500px
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		display: flex
+		flex-flow: row wrap
+		justify-content: center
+		.imagen
+			img
+				padding: 1em
+				width: 220px
+		.contenedorTexto
+			padding: 1em 0
+			width: 100vw
+			display: flex
+			justify-content: center
+			.texto
+				text-align: center
+				max-width: 600px
 </style>
 
 
