@@ -5,7 +5,7 @@
 		.titulo {{ propuestaMostrada && propuestaMostrada.titulo }}
 		.modoVisualizacion
 			a.modo(
-				href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(1).pdf",
+				href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(2).pdf",
 				target="_blank",
 				@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
 				download

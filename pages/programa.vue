@@ -21,14 +21,14 @@
 
 	.programaBook
 		iframe(
-			src="https://docs.google.com/viewer?srcid=1dyxLh6kl6-gS60lW1CPjHf7LV_QSOOr_&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
+			src="https://docs.google.com/viewer?srcid=1ArdibCv2MhSiPz0qHyPD5OVO4WBRcmfk&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
 			width="100%",
 			height="100%"
 		)
 
 	.contenedorbtn
 		a.button.boton(
-			href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(1).pdf",
+			href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(2).pdf",
 			target="_blank",
 			@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
 			download

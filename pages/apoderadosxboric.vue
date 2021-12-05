@@ -230,6 +230,7 @@ section
 			padding: .5em 0
 			font-style: italic
 			line-height: 1.2
+			text-align: center
 			.bold
 				font-weight: 700
 

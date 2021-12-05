@@ -16,13 +16,11 @@
 				.sub Cambios para vivir mejor
 
 				buscador
-					template(
-						v-slot:default="slotProps"
-					)
+					template(v-slot:default="slotProps")
 						.contenedorbtn
 							.button.boton(@click="slotProps.abrirBuscador")
 								.oicono.lupa-linea
-								.p(style="padding-left:10px") ¿Buscas una propuesta?
+								.p(style="padding-left: 10px") ¿Buscas una propuesta?
 
 	section.propuestas(v-if="setPropuestas")
 		.curva.curvaSuperior
@@ -44,7 +42,7 @@
 
 	.contenedorbtn
 		a.button.boton(
-			href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(1).pdf",
+			href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(2).pdf",
 			target="_blank",
 			@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
 			download
