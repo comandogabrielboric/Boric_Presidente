@@ -30,19 +30,51 @@
 			img(src="/imagenes/cajaHerramientas.webp")
 		.contenedortitulo
 			.titulo ¿Cómo puedo hacer campaña?
-		.contenedorPasos
-			.imagen
-				img(src="/imagenes/landingCampaña/Group 40.webp")
-			.imagen
-				img(src="/imagenes/landingCampaña/Group 41.webp")
-			.imagen
-				img(src="/imagenes/landingCampaña/Group 42.webp")
-			.imagen
-				img(src="/imagenes/landingCampaña/Group 43.webp")
-			.imagen
-				img(src="/imagenes/landingCampaña/Group 44.webp")
-			.contenedorTexto
-				.texto Comparte y difunde la campaña con el hashtag #[span.bold #1MillondePuertasxBoric]
+		.contenedor
+			.contenedorPasos
+				.imagen
+					img(src="/imagenes/landingCampaña/Group 40.webp")
+				.imagen
+					img(src="/imagenes/landingCampaña/Group 41.webp")
+				.imagen
+					img(src="/imagenes/landingCampaña/Group 42.webp")
+				.imagen
+					img(src="/imagenes/landingCampaña/Group 43.webp")
+				.imagen
+					img(src="/imagenes/landingCampaña/Group 44.webp")
+				.contenedorTexto
+					.texto Comparte y difunde la campaña con el hashtag #[span.bold #1MillondePuertasxBoric]
+					.contenedorBoton
+						a.boton(
+							href="https://drive.google.com/drive/folders/		1vwqqSnxHIyv9wI617h8pUers1OudaBo0",
+							target="_blank",
+							rel="noreferer noopener",
+							@click="$gtm.push({ event: 'link-home', hacia: 'Decarga 	Kit grafico' })"
+						) DESCARGAR KIT COMPLETO
+
+	section.seccionCuna
+		.curva.curvaSuperior
+		.contenido
+			.titulo Este 19 de diciembre te necesitamos
+				.bold Apoderades x Boric
+			.contenedorBoton
+				nuxt-link.boton(
+					to="/apoderados",
+					@click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico' })"
+				) INSCRÍBETE AQUÍ
+
+	section.seccionSumate
+		.curva.curvaSuperior
+		.contenido
+			Chanchito2.chan
+			.titulo Súmate #[span.segundo y Aporta]
+			.contenedorBoton
+				a.boton(
+					href="https://aportes.servel.cl/servel-aportes/inicio.xhtml",
+					target="_blank",
+					rel="noreferer noopener",
+					@click="$gtm.push({ event: 'link-home', hacia: 'Aportes servel' })"
+				) HAZ TU DONACIÓN
 </template>
 
 <script>
@@ -146,6 +178,15 @@ section
 		flex: 700px 0 1
 	+ultra
 		flex: 800px 0 1
+.bold
+	font-weight: 900
+.boton
+	font-size: 1rem
+	+compu
+		font-size: 1.5rem
+	+wide
+		font-size: 2rem
+
 .imgP
 	margin-top: 3em
 	width: 100%
@@ -255,8 +296,10 @@ section
 	// position: absolute
 	.fondo
 		position: absolute
+		overflow: hidden
+		height: 100%
 		> img
-			width: 100%
+			width: 100vw
 	.cajaHerramientas
 		position: relative
 		top: -5em
@@ -264,6 +307,10 @@ section
 		width: 200px
 		> img
 			width: 200px
+			+compu
+				width: 300px
+			+wide
+				width: 400px
 	.contenedortitulo
 		position: relative
 		text-align: center
@@ -274,32 +321,99 @@ section
 		justify-content: center
 		width: 100%
 		.titulo
-			max-width: 600px
-	.contenedorPasos
-		background-color: $azul2
-		position: relative
+			max-width: 800px
+	.contenedor
 		width: 100%
-		border: 1px solid red
-		// height: 500px
-		top: 0
-		left: 0
-		right: 0
-		bottom: 0
 		display: flex
-		flex-flow: row wrap
-		justify-content: center
-		.imagen
-			img
-				padding: 1em
-				width: 220px
-		.contenedorTexto
-			padding: 1em 0
-			width: 100vw
+		flex-flow: column nowrap
+		align-items: center
+		.contenedorPasos
+			background-color: $azul2
+			position: relative
+			max-width: 1300px
+			// height: 500px
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
 			display: flex
+			flex-flow: row wrap
 			justify-content: center
-			.texto
-				text-align: center
-				max-width: 600px
+			.imagen
+				img
+					padding: 1em
+					width: 300px
+					+compu
+						width: 300px
+					+wide
+						width: 400px
+			.contenedorTexto
+				padding: 1em 0
+				padding-bottom: 4em
+				width: 100vw
+				display: flex
+				flex-flow: column
+				align-items: center
+				.texto
+					text-align: center
+					max-width: 800px
+					padding: 1em 0
+					+wide
+						padding: 2em 0
+				.contenedorBoton
+					padding: 1em
+					text-align: center
+					+compu
+						padding: 2em 1em
+
+					.boton
+						background-color: $verde3
+						color: $azul2
+
+.seccionCuna
+	// min-height: 400px
+	background-color: rgba(112, 231, 211, 1)
+	.curva
+		background-color: rgba(112, 231, 211, 1)
+	.contenido
+		display: flex
+		flex-flow: column nowrap
+		align-items: center
+		text-align: center
+		padding: 2em 1em
+		+compu
+			padding: 3em 1em
+		+wide
+			padding: 4em 1em
+		.titulo
+			color: rgba(86, 55, 137, 1)
+		.contenedorBoton
+			padding: 2em
+			text-align: center
+			.boton
+				background-color: $verde3
+				color: $azul2
+
+.seccionSumate
+	background-color: rgba(25, 203, 181, 1)
+	min-height: 400px
+	.curva
+		background-color: rgba(25, 203, 181, 1)
+	.contenido
+		padding: 2em 1em 6em 1em
+		display: flex
+		flex-flow: column nowrap
+		align-items: center
+		.titulo
+			padding: 1em 0
+			color: $verde3
+			font-style: italic
+			.segundo
+				color: #fff
+		.contenedorBoton
+			.boton
+				background: $verde3
+				color: $azul2
 </style>
 
 
