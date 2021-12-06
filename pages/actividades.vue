@@ -49,7 +49,7 @@
 									:key="`comuna2-${a._id}`",
 									:value="a.Comuna"
 								) {{ a.Comuna }}
-						.filtroFecha
+						//- .filtroFecha
 							.nombre.boton(@click="abrirCalendario = !abrirCalendario") fecha
 							transition(:duration="300")
 								.calendario(v-if="abrirCalendario")
@@ -215,18 +215,18 @@ export default {
 			const com = this.comunaSeleccionada
 			const cf = _.filter(actividades, { Comuna: com })
 
-			const mS = this.momentoSeleccionado
-			const monFormat = moment(mS).format('DD-MM-YYYY')
-			// eslint-disable-next-line camelcase
-			const momentoFiltrado = _.pickBy(actividades, Fecha_del_evento =>
-				moment(Fecha_del_evento).isSameOrAfter(monFormat)
-			)
-			const ordenado = _.map(momentoFiltrado, mon => {
-				return mon
-			})
-			console.log('ordenado', ordenado)
+			// const mS = this.momentoSeleccionado
+			// const monFormat = moment(mS).format('DD-MM-YYYY')
+			// // eslint-disable-next-line camelcase
+			// const momentoFiltrado = _.pickBy(actividades, Fecha_del_evento =>
+			// 	moment(Fecha_del_evento).isSameOrAfter(monFormat)
+			// )
+			// const ordenado = _.map(momentoFiltrado, mon => {
+			// 	return mon
+			// })
+			// console.log('ordenado', ordenado)
 
-			const filtradas = _.concat(pf, cf, ordenado)
+			const filtradas = _.concat(pf, cf)
 			console.log('filtradas', filtradas)
 
 			if (!filtradas[0]) return null
