@@ -10,7 +10,7 @@
 					@clickMarcador="clickEnMarcador"
 				)
 
-			.filtros
+			//- .filtros
 				.contenedorPrimario(:class="Verfiltros ? 'mostrandoFiltros' : 'no'")
 					img.noCompu(src="/svg/filtro.svg", @click="Verfiltros = !Verfiltros")
 					.contenedorFiltros
