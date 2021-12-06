@@ -22,21 +22,21 @@
 				.suscribirse
 					participaant
 
-		img.noMovil.imgSaludo(
-			src="/imagenes/diversidad.webp",
+		img.imgSaludo(
+			src="/imagenes/Foto-tercera-Seccio204129n.webp",
 			alt="Diversidad",
 			v-if="cargado"
 		)
-		img.noCompu.imgSaludo(
-			src="/imagenes/diversidadMovil.webp",
-			alt="Diversidad",
-			v-if="cargado"
-		)
-		img.imgTiny.imgSaludo(
-			src="/imagenes/diversidadMovilTiny.webp",
-			alt="Diversidad",
-			v-if="!cargado"
-		)
+		//- img.noCompu.imgSaludo(
+		//- 	src="/imagenes/diversidadMovil.webp",
+		//- 	alt="Diversidad",
+		//- 	v-if="cargado"
+		//- )
+		//- img.imgTiny.imgSaludo(
+		//- 	src="/imagenes/diversidadMovilTiny.webp",
+		//- 	alt="Diversidad",
+		//- 	v-if="!cargado"
+		//- )
 
 	.precarga(v-if="!cargado")
 	.postcarga(v-if="cargado")
@@ -69,7 +69,7 @@
 			.noCompu
 				+linkDescarga
 
-			img.imgP(src="/imagenes/Foto-tercera-Seccio204129n.webp", alt="Participa")
+			img.imgP(src="/imagenes/diversidad.webp", alt="Participa")
 			//- img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
 
 		section.seccionaporta
