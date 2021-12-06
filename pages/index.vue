@@ -69,7 +69,10 @@
 			.noCompu
 				+linkDescarga
 
-			img.imgP(src="/imagenes/diversidad.webp", alt="Participa")
+			img.imgP(
+				src="/imagenes/FOTO-GABRIEL-WEB-3-SECCION (1).webp",
+				alt="Participa"
+			)
 			//- img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
 
 		section.seccionaporta
