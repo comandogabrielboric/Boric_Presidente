@@ -4,7 +4,7 @@
 		.filtroBlur
 			img(
 				@click="unete",
-				src="/imagenes/WEB-BANDERA.webp",
+				src="/imagenes/Foto-Primera-Seccio204129n.webp",
 				alt="Súmate a cambiar Chile"
 			)
 
@@ -69,8 +69,8 @@
 			.noCompu
 				+linkDescarga
 
-			img.noMovil.imgP(src="/imagenes/participa.webp", alt="Participa")
-			img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
+			img.imgP(src="/imagenes/Foto-tercera-Seccio204129n.webp", alt="Participa")
+			//- img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
 
 		section.seccionaporta
 			mixin linkServel
@@ -282,13 +282,13 @@ section
 .precarga
 	height: 100vh
 	width: 100vw
-	background-color: $verde2
+	background-color: #1488b2
 .seccionParticipa
 	position: relative
-	background-color: $verde2
+	background-color: #1488b2
 	color: white
 	.curva
-		background-color: $verde2
+		background-color: #1488b2
 	.contenido
 		position: relative
 		z-index: 3
@@ -340,7 +340,7 @@ section
 			padding-bottom: 3em
 
 .seccionArmaTuCampana
-	background-color: $petroleo2
+	background-color: #60ad6a
 	display: flex
 	flex-flow: column
 	align-items: center
@@ -348,7 +348,7 @@ section
 	justify-content: center
 	// padding-bottom: 3em
 	.curva
-		background-color: $petroleo2
+		background-color: #60ad6a
 	.contenido
 		text-align: center
 
@@ -391,7 +391,7 @@ section
 			bottom: 0
 			width: $lado
 			height: $lado
-			background: $petroleo3
+			background: $azul1
 			border-radius: 50%
 			transform: translate(-25%, -50%) scale(.9)
 		+compu
