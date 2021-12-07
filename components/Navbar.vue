@@ -20,14 +20,14 @@
 					@click.native="tag('nav apoderados')"
 				) Apoderados
 				nuxt-link.link.bold(to="/aporta", @click.native="tag('nav aporta')") aporta
-				.link.bold(@click="unete") unete
+				.link.bold(@click="unete") únete
 				//- nuxt-link.link.bold(to="/cultura", @click.native="tag('nav cultura')") Cultura
 
 				nuxt-link.link.bold(
 					to="/propuestas",
 					@click.native="tag('nav propuestas')"
 				) Propuestas
-				nuxt-link.link.bold(to="/alcaldias", @click.native="tag('nav municipios')") alcaldias
+				nuxt-link.link.bold(to="/alcaldias", @click.native="tag('nav municipios')") alcaldías
 				//- nuxt-link.link.bold(to="/programa", @click.native="tag('nav programa')") Programa
 
 				//- nuxt-link.link.bold(to="/playlist", @click.native="tag('nav playlist')") playlist
