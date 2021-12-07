@@ -52,6 +52,13 @@
 						rel="noreferer noopener",
 						@click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico' })"
 					) KIT GRÁFICO AQUÍ
+				.kitGrafico
+					a.boton(
+						href="https://drive.google.com/drive/folders/1Y_c8X0tCuK5hzUeyLeY_fif_YlWU5a6I",
+						target="_blank",
+						rel="noreferer noopener",
+						@click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico' })"
+					) APORTES CIUDADANOS
 
 			.contenido
 				.lado.ladotitutlo
@@ -444,7 +451,7 @@ section
 					// line-height: 1.3
 			.kitGrafico
 				display: block
-				width: 300px
+				width: 350px
 				.texto
 					margin-top: -.8em
 					text-align: left
@@ -462,7 +469,7 @@ section
 				&.ladotitutlo
 					z-index: 5
 			.kitGrafico
-				width: 300px
+				width: 350px
 				.boton
 					font-size: 1.5rem
 					padding: 12px 0 .1em 0

@@ -90,13 +90,13 @@
 			)
 				.texto Comparte en tus redes sociales
 
-			a.activate.gruposW(
+			//- a.activate.gruposW(
 				href="https://activate.boricpresidente.cl",
 				target="_blank",
 				rel="noreferer noopener",
 				@click="$gtm.push({ event: 'link-home', hacia: 'link 	activate' })"
-			)
-				.texto Súmate a los grupos de whatsapp
+			//- )
+				//- .texto Súmate a los grupos de whatsapp
 
 			.activate.aportaEnTerreno(@click="executeCaptchaAyudarterreno()")
 				.texto Quiero ayudar en terreno
