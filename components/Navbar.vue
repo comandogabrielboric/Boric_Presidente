@@ -30,7 +30,7 @@
 				nuxt-link.link.bold(
 					to="/implementacion",
 					@click.native="tag('nav implementación')"
-				) implementación
+				) Acuerdo
 				//- nuxt-link.link.bold(to="/programa", @click.native="tag('nav programa')") Programa
 
 				//- nuxt-link.link.bold(to="/playlist", @click.native="tag('nav playlist')") playlist
