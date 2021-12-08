@@ -5,7 +5,7 @@
 
 	.programaBook
 		iframe(
-			src="https://docs.google.com/viewer?srcid=13m1gpqRoISNS6n--60W7RrJGLtPLPfxS&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
+			src="https://docs.google.com/viewer?srcid=12CnFFoIt7q5Jdu89FT4WUv-nbncd7LIm&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
 			width="100%",
 			height="100%"
 		)
@@ -19,15 +19,7 @@
 </template>
 
 <script>
-import alcaldes from '../alcaldes/alcaldes'
-
 export default {
-	data () {
-		return {
-			alcaldes,
-			nFirmas: null
-		}
-	},
 	// solicita info a cms
 	head () {
 		// if (!this.seo) return {}
@@ -63,22 +55,6 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
-
-.firmantes
-	font-size: 1.1em
-	z-index: 100
-	.texto
-		padding: .5em
-		color: $azul1
-	.firmas
-		height: 300px
-		width: 300px
-		padding: 1em
-		text-transform: capitalize
-		background-color: #fff
-		overflow: auto
-		.nombres
-			list-style: none
 
 .titulo
 	+movil

@@ -49,7 +49,7 @@
 		)
 			.p DESCARGAR PROGRAMA
 	.contenedorbtn
-		nuxt-link.boton(to="/implementacion", @click.native="tag('nav municipios')") Implementación del programa
+		nuxt-link.boton(to="/propuestas/implementacion") Implementación del programa
 
 	//- .contenedorbtn
 		a.button.boton(
