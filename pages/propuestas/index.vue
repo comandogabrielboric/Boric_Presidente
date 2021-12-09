@@ -49,7 +49,9 @@
 		)
 			.p DESCARGAR PROGRAMA
 	.contenedorbtn
-		nuxt-link.boton(to="/propuestas/implementacion") Implementación del programa
+		nuxt-link.boton(to="/propuestas/implementacion") Acuerdos implementación programática
+	.contenedorbtn
+		nuxt-link.boton(to="/propuestas/crecimiento") Propuestas para el crecicmiento
 
 	//- .contenedorbtn
 		a.button.boton(
