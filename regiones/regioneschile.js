@@ -15,6 +15,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Arica',
+						regex: 'Arica',
 						distrito: '1',
 						codigo: '15101',
 						locales: [
@@ -66,6 +67,7 @@ const chile = [
 					},
 					{
 						nombre: 'Camarones',
+						regex: 'Camarones',
 						distrito: '1',
 						codigo: '15102',
 						locales: [
@@ -80,6 +82,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Putre',
+						regex: 'Putre',
 						distrito: '1',
 						codigo: '15201',
 						locales: [
@@ -89,6 +92,7 @@ const chile = [
 					},
 					{
 						nombre: 'General Lagos',
+						regex: 'General_Lagos',
 						distrito: '1',
 						codigo: '15202',
 						locales: [
@@ -113,6 +117,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Iquique',
+						regex: 'Iquique',
 						distrito: '2',
 						codigo: '01101',
 						locales: [
@@ -152,6 +157,7 @@ const chile = [
 					},
 					{
 						nombre: 'Alto Hospicio',
+						regex: 'Alto_Hospicio',
 						distrito: '2',
 						codigo: '01102',
 						locales: [
@@ -173,6 +179,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Pozo Almonte',
+						regex: 'Pozo_Almonte',
 						distrito: '2',
 						codigo: '01201',
 						locales: [
@@ -185,6 +192,7 @@ const chile = [
 					},
 					{
 						nombre: 'Camiña',
+						regex: 'Camina',
 						distrito: '2',
 						codigo: '01402',
 						locales: [
@@ -193,6 +201,7 @@ const chile = [
 					},
 					{
 						nombre: 'Colchane',
+						regex: 'Colchane',
 						distrito: '2',
 						codigo: '01403',
 						locales: [
@@ -201,6 +210,7 @@ const chile = [
 					},
 					{
 						nombre: 'Huara',
+						regex: 'Huara',
 						distrito: '2',
 						codigo: '01404',
 						locales: [
@@ -213,6 +223,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pica',
+						regex: 'Pica',
 						distrito: '2',
 						codigo: '01405',
 						locales: [
@@ -238,6 +249,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Antofagasta',
+						regex: 'Antofagasta',
 						distrito: '3',
 						codigo: '02101',
 						locales: [
@@ -287,6 +299,7 @@ const chile = [
 					},
 					{
 						nombre: 'Mejillones',
+						regex: 'Mejillones',
 						distrito: '3',
 						codigo: '02102',
 						locales: [
@@ -296,6 +309,7 @@ const chile = [
 					},
 					{
 						nombre: 'Sierra Gorda',
+						regex: 'Sierra_Gorda',
 						distrito: '3',
 						codigo: '02103',
 						locales: [
@@ -305,6 +319,7 @@ const chile = [
 					},
 					{
 						nombre: 'Taltal',
+						regex: 'Taltal',
 						distrito: '3',
 						codigo: '02104',
 						locales: [
@@ -319,6 +334,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Calama',
+						regex: 'Calama',
 						distrito: '3',
 						codigo: '02201',
 						locales: [
@@ -347,6 +363,7 @@ const chile = [
 					},
 					{
 						nombre: 'Ollagüe',
+						regex: 'Ollagüe',
 						distrito: '3',
 						codigo: '02202',
 						locales: [
@@ -355,6 +372,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Pedro de Atacama',
+						regex: 'San_Pedro_de_Atacama',
 						distrito: '3',
 						codigo: '02203',
 						locales: [
@@ -369,6 +387,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Tocopilla',
+						regex: 'Tocopilla',
 						distrito: '3',
 						codigo: '02301',
 						locales: [
@@ -379,6 +398,7 @@ const chile = [
 					},
 					{
 						nombre: 'María Elena',
+						regex: 'Maria_Elena',
 						distrito: '3',
 						codigo: '02302',
 						locales: [
@@ -405,6 +425,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Copiapó',
+						regex: 'Copiapo',
 						distrito: '4',
 						codigo: '03101',
 						locales: [
@@ -429,6 +450,7 @@ const chile = [
 					},
 					{
 						nombre: 'Caldera',
+						regex: 'Caldera',
 						distrito: '4',
 						codigo: '03102',
 						locales: [
@@ -438,6 +460,7 @@ const chile = [
 					},
 					{
 						nombre: 'Tierra Amarilla',
+						regex: 'Tierra_Amarilla',
 						distrito: '4',
 						codigo: '03103',
 						locales: [
@@ -452,6 +475,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Chañaral',
+						regex: 'Chanaral',
 						distrito: '4',
 						codigo: '03201',
 						locales: [
@@ -461,6 +485,7 @@ const chile = [
 					},
 					{
 						nombre: 'Diego de Almagro',
+						regex: 'Diego_de_Almagro',
 						distrito: '4',
 						codigo: '03202',
 						locales: [
@@ -475,6 +500,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Vallenar',
+						regex: 'Vallenar',
 						distrito: '4',
 						codigo: '03301',
 						locales: [
@@ -488,6 +514,7 @@ const chile = [
 					},
 					{
 						nombre: 'Alto del Carmen',
+						regex: 'Alto_del_Carmen',
 						distrito: '4',
 						codigo: '03302',
 						locales: [
@@ -498,6 +525,7 @@ const chile = [
 					},
 					{
 						nombre: 'Freirina',
+						regex: 'Freirina',
 						distrito: '4',
 						codigo: '03303',
 						locales: [
@@ -506,6 +534,7 @@ const chile = [
 					},
 					{
 						nombre: 'Huasco',
+						regex: 'Huasco',
 						distrito: '4',
 						codigo: '03304',
 						locales: [
@@ -530,6 +559,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'La Serena',
+						regex: 'La_Serena',
 						distrito: '5',
 						codigo: '04101',
 						locales: [
@@ -557,6 +587,7 @@ const chile = [
 					},
 					{
 						nombre: 'Coquimbo',
+						regex: 'Coquimbo',
 						distrito: '5',
 						codigo: '04102',
 						locales: [
@@ -584,6 +615,7 @@ const chile = [
 					},
 					{
 						nombre: 'Andacollo',
+						regex: 'Andacollo',
 						distrito: '5',
 						codigo: '04103',
 						locales: [
@@ -600,6 +632,7 @@ const chile = [
 					},
 					{
 						nombre: 'Paiguano',
+						regex: 'Paiguano',
 						distrito: '5',
 						codigo: '04105',
 						locales: [
@@ -608,6 +641,7 @@ const chile = [
 					},
 					{
 						nombre: 'Vicuña',
+						regex: 'Vicuna',
 						distrito: '5',
 						codigo: '04106',
 						locales: [
@@ -623,6 +657,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Illapel',
+						regex: 'Illapel',
 						distrito: '5',
 						codigo: '04201',
 						locales: [
@@ -635,6 +670,7 @@ const chile = [
 					},
 					{
 						nombre: 'Canela',
+						regex: 'Canela',
 						distrito: '5',
 						codigo: '04202',
 						locales: [
@@ -644,6 +680,7 @@ const chile = [
 					},
 					{
 						nombre: 'Los Vilos',
+						regex: 'Los_Vilos',
 						distrito: '5',
 						codigo: '04203',
 						locales: [
@@ -655,6 +692,7 @@ const chile = [
 					},
 					{
 						nombre: 'Salamanca',
+						regex: 'Salamanca',
 						distrito: '5',
 						codigo: '04204',
 						locales: [
@@ -671,6 +709,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Ovalle',
+						regex: 'Ovalle',
 						distrito: '5',
 						codigo: '04301',
 						locales: [
@@ -692,6 +731,7 @@ const chile = [
 					},
 					{
 						nombre: 'Combarbalá',
+						regex: 'Combarbalá',
 						distrito: '5',
 						codigo: '04302',
 						locales: [
@@ -701,6 +741,7 @@ const chile = [
 					},
 					{
 						nombre: 'Monte Patria',
+						regex: 'Monte_Patria',
 						distrito: '5',
 						codigo: '04303',
 						locales: [
@@ -715,6 +756,7 @@ const chile = [
 					},
 					{
 						nombre: 'Punitaqui',
+						regex: 'Punitaqui',
 						distrito: '5',
 						codigo: '04304',
 						locales: [
@@ -724,6 +766,7 @@ const chile = [
 					},
 					{
 						nombre: 'Río Hurtado',
+						regex: 'Rio_Hurtado',
 						distrito: '5',
 						codigo: '04305',
 						locales: [
@@ -749,6 +792,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Valparaíso',
+						regex: 'Valparaiso',
 						distrito: '7',
 						codigo: '05101',
 						locales: [
@@ -812,6 +856,7 @@ const chile = [
 					},
 					{
 						nombre: 'Casablanca',
+						regex: 'Casablanca',
 						distrito: '7',
 						codigo: '05102',
 						locales: [
@@ -823,6 +868,7 @@ const chile = [
 					},
 					{
 						nombre: 'Concón',
+						regex: 'Concon',
 						distrito: '7',
 						codigo: '05103',
 						locales: [
@@ -837,6 +883,7 @@ const chile = [
 					},
 					{
 						nombre: 'Juan Fernández',
+						regex: 'Juan_Fernandez',
 						distrito: '7',
 						codigo: '05104',
 						locales: [
@@ -845,6 +892,7 @@ const chile = [
 					},
 					{
 						nombre: 'Puchuncaví',
+						regex: 'Puchuncaví',
 						distrito: '6',
 						codigo: '05105',
 						locales: [
@@ -857,6 +905,7 @@ const chile = [
 					},
 					{
 						nombre: 'Quintero',
+						regex: 'Quintero',
 						distrito: '6',
 						codigo: '05107',
 						locales: [
@@ -867,6 +916,7 @@ const chile = [
 					},
 					{
 						nombre: 'Viña del Mar',
+						regex: 'Vina_del_Mar',
 						distrito: '7',
 						codigo: '05109',
 						locales: [
@@ -923,6 +973,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Isla de Pascua',
+						regex: 'Isla_de_Pascua',
 						distrito: '7',
 						codigo: '05201',
 						locales: [
@@ -936,6 +987,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Los Andes',
+						regex: 'Los_Andes',
 						distrito: '6',
 						codigo: '05301',
 						locales: [
@@ -951,6 +1003,7 @@ const chile = [
 					},
 					{
 						nombre: 'Calle Larga',
+						regex: 'Calle_Larga',
 						distrito: '6',
 						codigo: '05302',
 						locales: [
@@ -960,6 +1013,7 @@ const chile = [
 					},
 					{
 						nombre: 'Rinconada',
+						regex: 'Rinconada',
 						distrito: '6',
 						codigo: '05303',
 						locales: [
@@ -970,6 +1024,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Esteban',
+						regex: 'San_Esteban',
 						distrito: '6',
 						codigo: '05304',
 						locales: [
@@ -986,6 +1041,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'La Ligua',
+						regex: 'La_Ligua',
 						distrito: '6',
 						codigo: '05401',
 						locales: [
@@ -998,6 +1054,7 @@ const chile = [
 					},
 					{
 						nombre: 'Cabildo',
+						regex: 'Cabildo',
 						distrito: '6',
 						codigo: '05402',
 						locales: [
@@ -1008,6 +1065,7 @@ const chile = [
 					},
 					{
 						nombre: 'Papudo',
+						regex: 'Papudo',
 						distrito: '6',
 						codigo: '05403',
 						locales: [
@@ -1017,6 +1075,7 @@ const chile = [
 					},
 					{
 						nombre: 'Petorca',
+						regex: 'Petorca',
 						distrito: '6',
 						codigo: '05404',
 						locales: [
@@ -1026,6 +1085,7 @@ const chile = [
 					},
 					{
 						nombre: 'Zapallar',
+						regex: 'Zapallar',
 						distrito: '6',
 						codigo: '05405',
 						locales: [
@@ -1040,6 +1100,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Quillota',
+						regex: 'Quillota',
 						distrito: '6',
 						codigo: '05501',
 						locales: [
@@ -1060,6 +1121,7 @@ const chile = [
 					},
 					{
 						nombre: 'La Calera',
+						regex: 'La_Calera',
 						distrito: '6',
 						codigo: '05502',
 						locales: [
@@ -1075,6 +1137,7 @@ const chile = [
 					},
 					{
 						nombre: 'Hijuelas',
+						regex: 'Hijuelas',
 						distrito: '6',
 						codigo: '05503',
 						locales: [
@@ -1084,6 +1147,7 @@ const chile = [
 					},
 					{
 						nombre: 'La Cruz',
+						regex: 'La_Cruz',
 						distrito: '6',
 						codigo: '05504',
 						locales: [
@@ -1095,6 +1159,7 @@ const chile = [
 					},
 					{
 						nombre: 'Nogales',
+						regex: 'Nogales',
 						distrito: '6',
 						codigo: '05506',
 						locales: [
@@ -1110,6 +1175,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'San Antonio',
+						regex: 'San_Antonio',
 						distrito: '7',
 						codigo: '05601',
 						locales: [
@@ -1130,6 +1196,7 @@ const chile = [
 					},
 					{
 						nombre: 'Algarrobo',
+						regex: 'Algarrobo',
 						distrito: '7',
 						codigo: '05602',
 						locales: [
@@ -1140,6 +1207,7 @@ const chile = [
 					},
 					{
 						nombre: 'Cartagena',
+						regex: 'Cartagena',
 						distrito: '7',
 						codigo: '05603',
 						locales: [
@@ -1150,6 +1218,7 @@ const chile = [
 					},
 					{
 						nombre: 'El Quisco',
+						regex: 'El_Quisco',
 						distrito: '7',
 						codigo: '05604',
 						locales: [
@@ -1159,6 +1228,7 @@ const chile = [
 					},
 					{
 						nombre: 'El Tabo',
+						regex: 'El_Tabo',
 						distrito: '7',
 						codigo: '05605',
 						locales: [
@@ -1168,6 +1238,7 @@ const chile = [
 					},
 					{
 						nombre: 'Santo Domingo',
+						regex: 'Santo_Domingo',
 						distrito: '7',
 						codigo: '05606',
 						locales: [
@@ -1182,6 +1253,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'San Felipe',
+						regex: 'San_Felipe',
 						distrito: '6',
 						codigo: '05701',
 						locales: [
@@ -1198,6 +1270,7 @@ const chile = [
 					},
 					{
 						nombre: 'Catemu',
+						regex: 'Catemu',
 						distrito: '6',
 						codigo: '05702',
 						locales: [
@@ -1207,6 +1280,7 @@ const chile = [
 					},
 					{
 						nombre: 'Llaillay',
+						regex: 'Llaillay',
 						distrito: '6',
 						codigo: '05703',
 						locales: [
@@ -1217,6 +1291,7 @@ const chile = [
 					},
 					{
 						nombre: 'Panquehue',
+						regex: 'Panquehue',
 						distrito: '6',
 						codigo: '05704',
 						locales: [
@@ -1225,6 +1300,7 @@ const chile = [
 					},
 					{
 						nombre: 'Putaendo',
+						regex: 'Putaendo',
 						distrito: '6',
 						codigo: '05705',
 						locales: [
@@ -1234,6 +1310,7 @@ const chile = [
 					},
 					{
 						nombre: 'Santa María',
+						regex: 'Santa_María',
 						distrito: '6',
 						codigo: '05706',
 						locales: [
@@ -1248,6 +1325,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Quilpué',
+						regex: 'Quilpue',
 						distrito: '6',
 						codigo: '05801',
 						locales: [
@@ -1274,6 +1352,7 @@ const chile = [
 					},
 					{
 						nombre: 'Limache',
+						regex: 'Limache',
 						distrito: '6',
 						codigo: '05802',
 						locales: [
@@ -1286,6 +1365,7 @@ const chile = [
 					},
 					{
 						nombre: 'Olmué',
+						regex: 'Olmue',
 						distrito: '6',
 						codigo: '05803',
 						locales: [
@@ -1296,6 +1376,7 @@ const chile = [
 					},
 					{
 						nombre: 'Villa Alemana',
+						regex: 'Villa_Alemana',
 						distrito: '6',
 						codigo: '05804',
 						locales: [
@@ -1330,6 +1411,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Santiago',
+						regex: 'Santiago',
 						distrito: '10',
 						codigo: '13101',
 						locales: [
@@ -1397,6 +1479,7 @@ const chile = [
 					},
 					{
 						nombre: 'Cerrillos',
+						regex: 'Cerrillos',
 						distrito: '8',
 						codigo: '13102',
 						locales: [
@@ -1416,6 +1499,7 @@ const chile = [
 					},
 					{
 						nombre: 'Cerro Navia',
+						regex: 'Cerro_Navia',
 						distrito: '9',
 						codigo: '13103',
 						locales: [
@@ -1441,6 +1525,7 @@ const chile = [
 					},
 					{
 						nombre: 'Conchalí',
+						regex: 'Conchalí',
 						distrito: '9',
 						codigo: '13104',
 						locales: [
@@ -1468,6 +1553,7 @@ const chile = [
 					},
 					{
 						nombre: 'El Bosque',
+						regex: 'El_Bosque',
 						distrito: '13',
 						codigo: '13105',
 						locales: [
@@ -1499,6 +1585,7 @@ const chile = [
 					},
 					{
 						nombre: 'Estación Central',
+						regex: 'Estacion_Central',
 						distrito: '8',
 						codigo: '13106',
 						locales: [
@@ -1528,6 +1615,7 @@ const chile = [
 					},
 					{
 						nombre: 'Huechuraba',
+						regex: 'Huechuraba',
 						distrito: '9',
 						codigo: '13107',
 						locales: [
@@ -1548,6 +1636,7 @@ const chile = [
 					},
 					{
 						nombre: 'Independencia',
+						regex: 'Independencia',
 						distrito: '9',
 						codigo: '13108',
 						locales: [
@@ -1567,6 +1656,7 @@ const chile = [
 					},
 					{
 						nombre: 'La Cisterna',
+						regex: 'La_Cisterna',
 						distrito: '9',
 						codigo: '13109',
 						locales: [
@@ -1587,6 +1677,7 @@ const chile = [
 					},
 					{
 						nombre: 'La Florida',
+						regex: 'La_Florida',
 						distrito: '12',
 						codigo: '13110',
 						locales: [
@@ -1642,6 +1733,7 @@ const chile = [
 					},
 					{
 						nombre: 'La Granja',
+						regex: 'La_Granja',
 						distrito: '10',
 						codigo: '13111',
 						locales: [
@@ -1666,6 +1758,7 @@ const chile = [
 					},
 					{
 						nombre: 'La Pintana',
+						regex: 'La_Pintana',
 						distrito: '12',
 						codigo: '13112',
 						locales: [
@@ -1693,6 +1786,7 @@ const chile = [
 					},
 					{
 						nombre: 'La Reina',
+						regex: 'La_Reina',
 						distrito: '11',
 						codigo: '13113',
 						locales: [
@@ -1715,6 +1809,7 @@ const chile = [
 					},
 					{
 						nombre: 'Las Condes',
+						regex: 'La_Condes',
 						distrito: '11',
 						codigo: '13114',
 						locales: [
@@ -1763,6 +1858,7 @@ const chile = [
 					},
 					{
 						nombre: 'Lo Barnechea',
+						regex: 'Lo_Barnechea',
 						distrito: '11',
 						codigo: '13115',
 						locales: [
@@ -1783,6 +1879,7 @@ const chile = [
 					},
 					{
 						nombre: 'Lo Espejo',
+						regex: 'Lo_Espejo',
 						distrito: '13',
 						codigo: '13116',
 						locales: [
@@ -1805,6 +1902,7 @@ const chile = [
 					},
 					{
 						nombre: 'Lo Prado',
+						regex: 'Lo_Prado',
 						distrito: '9',
 						codigo: '13117',
 						locales: [
@@ -1826,6 +1924,7 @@ const chile = [
 					},
 					{
 						nombre: 'Macul',
+						regex: 'Macul',
 						distrito: '10',
 						codigo: '13118',
 						locales: [
@@ -1854,6 +1953,7 @@ const chile = [
 					},
 					{
 						nombre: 'Maipú',
+						regex: 'Maipu',
 						distrito: '8',
 						codigo: '13119',
 						locales: [
@@ -1925,6 +2025,7 @@ const chile = [
 					},
 					{
 						nombre: 'Ñuñoa',
+						regex: 'Nunoa',
 						distrito: '10',
 						codigo: '13120',
 						locales: [
@@ -1964,6 +2065,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pedro Aguirre Cerda',
+						regex: 'Pedro_Aguirre_Cerda',
 						distrito: '13',
 						codigo: '13121',
 						locales: [
@@ -1991,6 +2093,7 @@ const chile = [
 					},
 					{
 						nombre: 'Peñalolén',
+						regex: 'Penalolen',
 						distrito: '11',
 						codigo: '13122',
 						locales: [
@@ -2028,6 +2131,7 @@ const chile = [
 					},
 					{
 						nombre: 'Providencia',
+						regex: 'Providencia',
 						distrito: '10',
 						codigo: '13123',
 						locales: [
@@ -2060,6 +2164,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pudahuel',
+						regex: 'Pudahuel',
 						distrito: '8',
 						codigo: '13124',
 						locales: [
@@ -2094,6 +2199,7 @@ const chile = [
 					},
 					{
 						nombre: 'Quilicura',
+						regex: 'Quilicura',
 						distrito: '8',
 						codigo: '13125',
 						locales: [
@@ -2124,6 +2230,7 @@ const chile = [
 					},
 					{
 						nombre: 'Quinta Normal',
+						regex: 'Quinta_Normal',
 						distrito: '9',
 						codigo: '13126',
 						locales: [
@@ -2150,6 +2257,7 @@ const chile = [
 					},
 					{
 						nombre: 'Recoleta',
+						regex: 'Recoleta',
 						distrito: '9',
 						codigo: '13127',
 						locales: [
@@ -2183,6 +2291,7 @@ const chile = [
 					},
 					{
 						nombre: 'Renca',
+						regex: 'Renca',
 						distrito: '9',
 						codigo: '13128',
 						locales: [
@@ -2210,6 +2319,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Joaquín',
+						regex: 'San_Joaquin',
 						distrito: '10',
 						codigo: '13129',
 						locales: [
@@ -2232,6 +2342,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Miguel',
+						regex: 'San_Miguel',
 						distrito: '13',
 						codigo: '13130',
 						locales: [
@@ -2257,6 +2368,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Ramón',
+						regex: 'San_Ramon',
 						distrito: '13',
 						codigo: '13131',
 						locales: [
@@ -2279,6 +2391,7 @@ const chile = [
 					},
 					{
 						nombre: 'Vitacura',
+						regex: 'Vitacura',
 						distrito: '11',
 						codigo: '13132',
 						locales: [
@@ -2302,6 +2415,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Puente Alto',
+						regex: 'Puente_Alto',
 						distrito: '12',
 						codigo: '13201',
 						locales: [
@@ -2386,6 +2500,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pirque',
+						regex: 'Pirque',
 						distrito: '12',
 						codigo: '13202',
 						locales: [
@@ -2397,6 +2512,7 @@ const chile = [
 					},
 					{
 						nombre: 'San José de Maipo',
+						regex: 'San_Jose_de_Maipo',
 						distrito: '12',
 						codigo: '13203',
 						locales: [
@@ -2412,6 +2528,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Colina',
+						regex: 'Colina',
 						distrito: '8',
 						codigo: '13301',
 						locales: [
@@ -2437,6 +2554,7 @@ const chile = [
 					},
 					{
 						nombre: 'Lampa',
+						regex: 'Lampa',
 						distrito: '8',
 						codigo: '13302',
 						locales: [
@@ -2457,6 +2575,7 @@ const chile = [
 					},
 					{
 						nombre: 'Tiltil',
+						regex: 'Tiltil',
 						distrito: '8',
 						codigo: '13303',
 						locales: [
@@ -2473,6 +2592,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'San Bernardo',
+						regex: 'San_Bernardo',
 						distrito: '14',
 						codigo: '13401',
 						locales: [
@@ -2515,6 +2635,7 @@ const chile = [
 					},
 					{
 						nombre: 'Buin',
+						regex: 'Buin',
 						distrito: '14',
 						codigo: '13402',
 						locales: [
@@ -2537,6 +2658,7 @@ const chile = [
 					},
 					{
 						nombre: 'Calera de Tango',
+						regex: 'Calera_de_Tango',
 						distrito: '14',
 						codigo: '13403',
 						locales: [
@@ -2547,6 +2669,7 @@ const chile = [
 					},
 					{
 						nombre: 'Paine',
+						regex: 'Paine',
 						distrito: '14',
 						codigo: '13404',
 						locales: [
@@ -2568,6 +2691,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Melipilla',
+						regex: 'Melipilla',
 						distrito: '14',
 						codigo: '13501',
 						locales: [
@@ -2588,6 +2712,7 @@ const chile = [
 					},
 					{
 						nombre: 'Alhué',
+						regex: 'Alhue',
 						distrito: '14',
 						codigo: '13502',
 						locales: [
@@ -2596,6 +2721,7 @@ const chile = [
 					},
 					{
 						nombre: 'Curacaví',
+						regex: 'Curacavi',
 						distrito: '14',
 						codigo: '13503',
 						locales: [
@@ -2607,6 +2733,7 @@ const chile = [
 					},
 					{
 						nombre: 'María Pinto',
+						regex: 'Maria_Pinto',
 						distrito: '14',
 						codigo: '13504',
 						locales: [
@@ -2616,6 +2743,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Pedro',
+						regex: 'San_Pedro',
 						distrito: '14',
 						codigo: '13505',
 						locales: [
@@ -2630,6 +2758,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Talagante',
+						regex: 'Talagante',
 						distrito: '14',
 						codigo: '13601',
 						locales: [
@@ -2646,6 +2775,7 @@ const chile = [
 					},
 					{
 						nombre: 'El Monte',
+						regex: 'El_Monte',
 						distrito: '14',
 						codigo: '13602',
 						locales: [
@@ -2659,6 +2789,7 @@ const chile = [
 					},
 					{
 						nombre: 'Isla de Maipo',
+						regex: 'Isla_de_Maipo',
 						distrito: '14',
 						codigo: '13603',
 						locales: [
@@ -2671,6 +2802,7 @@ const chile = [
 					},
 					{
 						nombre: 'Padre Hurtado',
+						regex: 'Padre_Hurtado',
 						distrito: '14',
 						codigo: '13604',
 						locales: [
@@ -2687,6 +2819,7 @@ const chile = [
 					},
 					{
 						nombre: 'Peñaflor',
+						regex: 'Peñaflor',
 						distrito: '14',
 						codigo: '13605',
 						locales: [
@@ -2721,6 +2854,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Rancagua',
+						regex: 'Rancagua',
 						distrito: '15',
 						codigo: '06101',
 						locales: [
@@ -2758,6 +2892,7 @@ const chile = [
 					},
 					{
 						nombre: 'Codegua',
+						regex: 'Codegua',
 						distrito: '15',
 						codigo: '06102',
 						locales: [
@@ -2767,6 +2902,7 @@ const chile = [
 					},
 					{
 						nombre: 'Coinco',
+						regex: 'Coinco',
 						distrito: '15',
 						codigo: '06103',
 						locales: [
@@ -2776,6 +2912,7 @@ const chile = [
 					},
 					{
 						nombre: 'Coltauco',
+						regex: 'Coltauco',
 						distrito: '15',
 						codigo: '06104',
 						locales: [
@@ -2786,6 +2923,7 @@ const chile = [
 					},
 					{
 						nombre: 'Doñihue',
+						regex: 'Donihue',
 						distrito: '15',
 						codigo: '06105',
 						locales: [
@@ -2796,6 +2934,7 @@ const chile = [
 					},
 					{
 						nombre: 'Graneros',
+						regex: 'Graneros',
 						distrito: '15',
 						codigo: '06106',
 						locales: [
@@ -2807,6 +2946,7 @@ const chile = [
 					},
 					{
 						nombre: 'Las Cabras',
+						regex: 'Las_Cabras',
 						distrito: '16',
 						codigo: '06107',
 						locales: [
@@ -2817,6 +2957,7 @@ const chile = [
 					},
 					{
 						nombre: 'Machalí',
+						regex: 'Machali',
 						distrito: '15',
 						codigo: '06108',
 						locales: [
@@ -2831,6 +2972,7 @@ const chile = [
 					},
 					{
 						nombre: 'Malloa',
+						regex: 'Malloa',
 						distrito: '15',
 						codigo: '06109',
 						locales: [
@@ -2841,6 +2983,7 @@ const chile = [
 					},
 					{
 						nombre: 'Mostazal',
+						regex: 'Mostazal',
 						distrito: '15',
 						codigo: '06110',
 						locales: [
@@ -2850,6 +2993,7 @@ const chile = [
 					},
 					{
 						nombre: 'Olivar',
+						regex: 'Olivar',
 						distrito: '15',
 						codigo: '06111',
 						locales: [
@@ -2860,6 +3004,7 @@ const chile = [
 					},
 					{
 						nombre: 'Peumo',
+						regex: 'Peumo',
 						distrito: '16',
 						codigo: '06112',
 						locales: [
@@ -2869,6 +3014,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pichidegua',
+						regex: 'Pichidegua',
 						distrito: '16',
 						codigo: '06113',
 						locales: [
@@ -2879,6 +3025,7 @@ const chile = [
 					},
 					{
 						nombre: 'Quinta de Tilcoco',
+						regex: 'Quinta_de_Tilcoco',
 						distrito: '15',
 						codigo: '06114',
 						locales: [
@@ -2887,6 +3034,7 @@ const chile = [
 					},
 					{
 						nombre: 'Rengo',
+						regex: 'Rengo',
 						distrito: '15',
 						codigo: '06115',
 						locales: [
@@ -2904,6 +3052,7 @@ const chile = [
 					},
 					{
 						nombre: 'Requínoa',
+						regex: 'Requinoa',
 						distrito: '15',
 						codigo: '06116',
 						locales: [
@@ -2915,6 +3064,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Vicente',
+						regex: 'San_Vicente',
 						distrito: '16',
 						codigo: '06117',
 						locales: [
@@ -2932,6 +3082,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Pichilemu',
+						regex: 'Pichilemu',
 						distrito: '16',
 						codigo: '06201',
 						locales: [
@@ -2942,6 +3093,7 @@ const chile = [
 					},
 					{
 						nombre: 'La Estrella',
+						regex: 'La_Estrella',
 						distrito: '16',
 						codigo: '06202',
 						locales: [
@@ -2951,6 +3103,7 @@ const chile = [
 					},
 					{
 						nombre: 'Litueche',
+						regex: 'Litueche',
 						distrito: '16',
 						codigo: '06203',
 						locales: [
@@ -2960,6 +3113,7 @@ const chile = [
 					},
 					{
 						nombre: 'Marichihue',
+						regex: 'Marichihue',
 						distrito: '16',
 						codigo: '06204',
 						locales: [
@@ -2969,6 +3123,7 @@ const chile = [
 					},
 					{
 						nombre: 'Navidad',
+						regex: 'Navidad',
 						distrito: '16',
 						codigo: '06205',
 						locales: [
@@ -2978,6 +3133,7 @@ const chile = [
 					},
 					{
 						nombre: 'Paredones',
+						regex: 'Paredones',
 						distrito: '16',
 						codigo: '06206',
 						locales: [
@@ -2994,6 +3150,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'San Fernando',
+						regex: 'San_Fernando',
 						distrito: '16',
 						codigo: '06301',
 						locales: [
@@ -3013,6 +3170,7 @@ const chile = [
 					},
 					{
 						nombre: 'Chépica',
+						regex: 'Chepica',
 						distrito: '16',
 						codigo: '06302',
 						locales: [
@@ -3022,6 +3180,7 @@ const chile = [
 					},
 					{
 						nombre: 'Chimbarongo',
+						regex: 'Chimbarongo',
 						distrito: '16',
 						codigo: '06303',
 						locales: [
@@ -3033,6 +3192,7 @@ const chile = [
 					},
 					{
 						nombre: 'Lolol',
+						regex: 'Lolol',
 						distrito: '16',
 						codigo: '06304',
 						locales: [
@@ -3042,6 +3202,7 @@ const chile = [
 					},
 					{
 						nombre: 'Nancagua',
+						regex: 'Nancagua',
 						distrito: '16',
 						codigo: '06305',
 						locales: [
@@ -3051,6 +3212,7 @@ const chile = [
 					},
 					{
 						nombre: 'Palmilla',
+						regex: 'Palmilla',
 						distrito: '16',
 						codigo: '06306',
 						locales: [
@@ -3060,6 +3222,7 @@ const chile = [
 					},
 					{
 						nombre: 'Peralillo',
+						regex: 'Peralillo',
 						distrito: '16',
 						codigo: '06307',
 						locales: [
@@ -3069,6 +3232,7 @@ const chile = [
 					},
 					{
 						nombre: 'Placilla',
+						regex: 'Placilla',
 						distrito: '16',
 						codigo: '06308',
 						locales: [
@@ -3077,6 +3241,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pumanque',
+						regex: 'Pumanque',
 						distrito: '16',
 						codigo: '06309',
 						locales: [
@@ -3085,6 +3250,7 @@ const chile = [
 					},
 					{
 						nombre: 'Santa Cruz',
+						regex: 'Santa_Cruz',
 						distrito: '16',
 						codigo: '06310',
 						locales: [
@@ -3114,6 +3280,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Talca',
+						regex: 'Talca',
 						distrito: '17',
 						codigo: '07101',
 						locales: [
@@ -3143,6 +3310,7 @@ const chile = [
 					},
 					{
 						nombre: 'Constitución',
+						regex: 'Constitucion',
 						distrito: '17',
 						codigo: '07102',
 						locales: [
@@ -3158,6 +3326,7 @@ const chile = [
 					},
 					{
 						nombre: 'Curepto',
+						regex: 'Curepto',
 						distrito: '17',
 						codigo: '07103',
 						locales: [
@@ -3168,6 +3337,7 @@ const chile = [
 					},
 					{
 						nombre: 'Empedrado',
+						regex: 'Empedrado',
 						distrito: '17',
 						codigo: '07104',
 						locales: [
@@ -3176,6 +3346,7 @@ const chile = [
 					},
 					{
 						nombre: 'Maule',
+						regex: 'Maule',
 						distrito: '17',
 						codigo: '07105',
 						locales: [
@@ -3188,6 +3359,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pelarco',
+						regex: 'Pelarco',
 						distrito: '17',
 						codigo: '07106',
 						locales: [
@@ -3196,6 +3368,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pencahue',
+						regex: 'Pencahue',
 						distrito: '17',
 						codigo: '07107',
 						locales: [
@@ -3207,6 +3380,7 @@ const chile = [
 					},
 					{
 						nombre: 'Río Claro',
+						regex: 'Rio_Claro',
 						distrito: '17',
 						codigo: '07108',
 						locales: [
@@ -3215,6 +3389,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Clemente',
+						regex: 'San_Clemente',
 						distrito: '17',
 						codigo: '07109',
 						locales: [
@@ -3228,6 +3403,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Rafael',
+						regex: 'San_Rafael',
 						distrito: '17',
 						codigo: '07110',
 						locales: [
@@ -3241,6 +3417,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Cauquenes',
+						regex: 'Cauquenes',
 						distrito: '18',
 						codigo: '07201',
 						locales: [
@@ -3256,6 +3433,7 @@ const chile = [
 					},
 					{
 						nombre: 'Chanco',
+						regex: 'Chanco',
 						distrito: '18',
 						codigo: '07202',
 						locales: [
@@ -3265,6 +3443,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pelluhue',
+						regex: 'Pelluhue',
 						distrito: '18',
 						codigo: '07203',
 						locales: [
@@ -3278,6 +3457,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Curicó',
+						regex: 'Curico',
 						distrito: '17',
 						codigo: '07301',
 						locales: [
@@ -3303,6 +3483,7 @@ const chile = [
 					},
 					{
 						nombre: 'Hualañé',
+						regex: 'Hualane',
 						distrito: '17',
 						codigo: '07302',
 						locales: [
@@ -3313,6 +3494,7 @@ const chile = [
 					},
 					{
 						nombre: 'Licantén',
+						regex: 'Licanten',
 						distrito: '17',
 						codigo: '07303',
 						locales: [
@@ -3322,6 +3504,7 @@ const chile = [
 					},
 					{
 						nombre: 'Molina',
+						regex: 'Molina',
 						distrito: '17',
 						codigo: '07304',
 						locales: [
@@ -3336,6 +3519,7 @@ const chile = [
 					},
 					{
 						nombre: 'Rauco',
+						regex: 'Rauco',
 						distrito: '17',
 						codigo: '07305',
 						locales: [
@@ -3345,6 +3529,7 @@ const chile = [
 					},
 					{
 						nombre: 'Romeral',
+						regex: 'Romeral',
 						distrito: '17',
 						codigo: '07306',
 						locales: [
@@ -3354,6 +3539,7 @@ const chile = [
 					},
 					{
 						nombre: 'Sagrada Familia',
+						regex: 'Sagrada_Familia',
 						distrito: '17',
 						codigo: '07307',
 						locales: [
@@ -3364,6 +3550,7 @@ const chile = [
 					},
 					{
 						nombre: 'Teno',
+						regex: 'Teno',
 						distrito: '17',
 						codigo: '07308',
 						locales: [
@@ -3374,6 +3561,7 @@ const chile = [
 					},
 					{
 						nombre: 'Vichuquén',
+						regex: 'Vichuquen',
 						distrito: '17',
 						codigo: '07309',
 						locales: [
@@ -3388,6 +3576,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Linares',
+						regex: 'Linares',
 						distrito: '18',
 						codigo: '07401',
 						locales: [
@@ -3405,6 +3594,7 @@ const chile = [
 					},
 					{
 						nombre: 'Colbún',
+						regex: 'Colbun',
 						distrito: '18',
 						codigo: '07402',
 						locales: [
@@ -3414,6 +3604,7 @@ const chile = [
 					},
 					{
 						nombre: 'Longaví',
+						regex: 'Longavi',
 						distrito: '18',
 						codigo: '07403',
 						locales: [
@@ -3423,6 +3614,7 @@ const chile = [
 					},
 					{
 						nombre: 'Parral',
+						regex: 'Parral',
 						distrito: '18',
 						codigo: '07404',
 						locales: [
@@ -3439,6 +3631,7 @@ const chile = [
 					},
 					{
 						nombre: 'Retiro',
+						regex: 'Retiro',
 						distrito: '18',
 						codigo: '07405',
 						locales: [
@@ -3448,6 +3641,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Javier',
+						regex: 'San_Javier',
 						distrito: '18',
 						codigo: '07406',
 						locales: [
@@ -3462,6 +3656,7 @@ const chile = [
 					},
 					{
 						nombre: 'Villa Alegre',
+						regex: 'Villa_Alegre',
 						distrito: '18',
 						codigo: '07407',
 						locales: [
@@ -3471,6 +3666,7 @@ const chile = [
 					},
 					{
 						nombre: 'Yerbas Buenas',
+						regex: 'Yerbas_Buenas',
 						distrito: '18',
 						codigo: '07408',
 						locales: [
@@ -3498,6 +3694,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Cobquecura',
+						regex: 'Cobquecura',
 						distrito: '19',
 						codigo: '08403',
 						locales: [
@@ -3507,6 +3704,7 @@ const chile = [
 					},
 					{
 						nombre: 'Coelemu',
+						regex: 'Coelemu',
 						distrito: '19',
 						codigo: '08404',
 						locales: [
@@ -3518,6 +3716,7 @@ const chile = [
 					},
 					{
 						nombre: 'Ninhue',
+						regex: 'Ninhue',
 						distrito: '19',
 						codigo: '08408',
 						locales: [
@@ -3526,6 +3725,7 @@ const chile = [
 					},
 					{
 						nombre: 'Portezuelo',
+						regex: 'Portezuelo',
 						distrito: '19',
 						codigo: '08412',
 						locales: [
@@ -3535,6 +3735,7 @@ const chile = [
 					},
 					{
 						nombre: 'Quirihue',
+						regex: 'Quirihue',
 						distrito: '19',
 						codigo: '08414',
 						locales: [
@@ -3544,6 +3745,7 @@ const chile = [
 					},
 					{
 						nombre: 'Ránquil',
+						regex: 'Quirihue',
 						distrito: '19',
 						codigo: '08415',
 						locales: [
@@ -3552,6 +3754,7 @@ const chile = [
 					},
 					{
 						nombre: 'Treguaco',
+						regex: 'Treguaco',
 						distrito: '19',
 						codigo: '08420',
 						locales: [
@@ -3566,6 +3769,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Bulnes',
+						regex: 'Bulnes',
 						distrito: '19',
 						codigo: '08402',
 						locales: [
@@ -3577,6 +3781,7 @@ const chile = [
 					},
 					{
 						nombre: 'Chillán Viejo',
+						regex: 'Chillan_Viejo',
 						distrito: '19',
 						codigo: '08406',
 						locales: [
@@ -3587,6 +3792,7 @@ const chile = [
 					},
 					{
 						nombre: 'Chillán',
+						regex: 'Chillan',
 						distrito: '19',
 						codigo: '08401',
 						locales: [
@@ -3618,6 +3824,7 @@ const chile = [
 					},
 					{
 						nombre: 'El Carmen',
+						regex: 'El_Carmen',
 						distrito: '19',
 						codigo: '08407',
 						locales: [
@@ -3627,6 +3834,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pemuco',
+						regex: 'Pemuco',
 						distrito: '19',
 						codigo: '08410',
 						locales: [
@@ -3637,6 +3845,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pinto',
+						regex: 'Pinto',
 						distrito: '19',
 						codigo: '08411',
 						locales: [
@@ -3647,6 +3856,7 @@ const chile = [
 					},
 					{
 						nombre: 'Quillón',
+						regex: 'Quillon',
 						distrito: '19',
 						codigo: '08413',
 						locales: [
@@ -3657,6 +3867,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Ignacio',
+						regex: 'San_Ignacio',
 						distrito: '19',
 						codigo: '08418',
 						locales: [
@@ -3667,6 +3878,7 @@ const chile = [
 					},
 					{
 						nombre: 'Yungay',
+						regex: 'Yungay',
 						distrito: '19',
 						codigo: '08421',
 						locales: [
@@ -3682,6 +3894,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Coihueco',
+						regex: 'Coihueco',
 						distrito: '19',
 						codigo: '08405',
 						locales: [
@@ -3693,6 +3906,7 @@ const chile = [
 					},
 					{
 						nombre: 'Ñiquén',
+						regex: 'Ñiquen',
 						distrito: '19',
 						codigo: '08409',
 						locales: [
@@ -3701,6 +3915,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Carlos',
+						regex: 'San_Carlos',
 						distrito: '19',
 						codigo: '08416',
 						locales: [
@@ -3716,6 +3931,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Fabián',
+						regex: 'San_Fabian',
 						distrito: '19',
 						codigo: '08417',
 						locales: [
@@ -3724,6 +3940,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Nicolás',
+						regex: 'San_Nicolas',
 						distrito: '19',
 						codigo: '08419',
 						locales: [
@@ -3749,6 +3966,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Concepción',
+						regex: 'Concepcion',
 						distrito: '20',
 						codigo: '08101',
 						locales: [
@@ -3789,6 +4007,7 @@ const chile = [
 					},
 					{
 						nombre: 'Coronel',
+						regex: 'Coronel',
 						distrito: '20',
 						codigo: '08102',
 						locales: [
@@ -3816,6 +4035,7 @@ const chile = [
 					},
 					{
 						nombre: 'Chiguayante',
+						regex: 'Chiguayante',
 						distrito: '20',
 						codigo: '08103',
 						locales: [
@@ -3831,6 +4051,7 @@ const chile = [
 					},
 					{
 						nombre: 'Florida',
+						regex: 'Florida',
 						distrito: '20',
 						codigo: '08104',
 						locales: [
@@ -3841,6 +4062,7 @@ const chile = [
 					},
 					{
 						nombre: 'Hualqui',
+						regex: 'Hualqui',
 						distrito: '20',
 						codigo: '08105',
 						locales: [
@@ -3853,6 +4075,7 @@ const chile = [
 					},
 					{
 						nombre: 'Lota',
+						regex: 'Lota',
 						distrito: '21',
 						codigo: '08106',
 						locales: [
@@ -3870,6 +4093,7 @@ const chile = [
 					},
 					{
 						nombre: 'Penco',
+						regex: 'Penco',
 						distrito: '20',
 						codigo: '08107',
 						locales: [
@@ -3883,6 +4107,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Pedro de la Paz',
+						regex: 'San_Pedro_de_la_Paz',
 						distrito: '20',
 						codigo: '08108',
 						locales: [
@@ -3904,6 +4129,7 @@ const chile = [
 					},
 					{
 						nombre: 'Santa Juana',
+						regex: 'Santa_Juana',
 						distrito: '20',
 						codigo: '08109',
 						locales: [
@@ -3914,6 +4140,7 @@ const chile = [
 					},
 					{
 						nombre: 'Talcahuano',
+						regex: 'Talcahuano',
 						distrito: '20',
 						codigo: '08110',
 						locales: [
@@ -3945,6 +4172,7 @@ const chile = [
 					},
 					{
 						nombre: 'Tomé',
+						regex: 'Tome',
 						distrito: '20',
 						codigo: '08111',
 						locales: [
@@ -3961,6 +4189,7 @@ const chile = [
 					},
 					{
 						nombre: 'Hualpén',
+						regex: 'Hualpen',
 						distrito: '20',
 						codigo: '08112',
 						locales: [
@@ -3987,6 +4216,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Lebu',
+						regex: 'Lebu',
 						distrito: '21',
 						codigo: '08201',
 						locales: [
@@ -4000,6 +4230,7 @@ const chile = [
 					},
 					{
 						nombre: 'Arauco',
+						regex: 'Arauco',
 						distrito: '21',
 						codigo: '08202',
 						locales: [
@@ -4019,6 +4250,7 @@ const chile = [
 					},
 					{
 						nombre: 'Cañete',
+						regex: 'Canete',
 						distrito: '21',
 						codigo: '08203',
 						locales: [
@@ -4029,6 +4261,7 @@ const chile = [
 					},
 					{
 						nombre: 'Contulmo',
+						regex: 'Contulmo',
 						distrito: '21',
 						codigo: '08204',
 						locales: [
@@ -4038,6 +4271,7 @@ const chile = [
 					},
 					{
 						nombre: 'Curanilahue',
+						regex: 'Curanilahue',
 						distrito: '21',
 						codigo: '08205',
 						locales: [
@@ -4049,6 +4283,7 @@ const chile = [
 					},
 					{
 						nombre: 'Los Álamos',
+						regex: 'Los_alamos',
 						distrito: '21',
 						codigo: '08206',
 						locales: [
@@ -4060,6 +4295,7 @@ const chile = [
 					},
 					{
 						nombre: 'Tirúa',
+						regex: 'Tirua',
 						distrito: '21',
 						codigo: '08207',
 						locales: [
@@ -4074,6 +4310,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Los Ángeles',
+						regex: 'Los_Angeles',
 						distrito: '21',
 						codigo: '08301',
 						locales: [
@@ -4110,6 +4347,7 @@ const chile = [
 					},
 					{
 						nombre: 'Antuco',
+						regex: 'Antuco',
 						distrito: '21',
 						codigo: '08302',
 						locales: [
@@ -4118,6 +4356,7 @@ const chile = [
 					},
 					{
 						nombre: 'Cabrero',
+						regex: 'Cabrero',
 						distrito: '21',
 						codigo: '08303',
 						locales: [
@@ -4130,6 +4369,7 @@ const chile = [
 					},
 					{
 						nombre: 'Laja',
+						regex: 'Laja',
 						distrito: '21',
 						codigo: '08304',
 						locales: [
@@ -4141,6 +4381,7 @@ const chile = [
 					},
 					{
 						nombre: 'Mulchén',
+						regex: 'Mulchen',
 						distrito: '21',
 						codigo: '08305',
 						locales: [
@@ -4152,6 +4393,7 @@ const chile = [
 					},
 					{
 						nombre: 'Nacimiento',
+						regex: 'Nacimiento',
 						distrito: '21',
 						codigo: '08306',
 						locales: [
@@ -4163,6 +4405,7 @@ const chile = [
 					},
 					{
 						nombre: 'Negrete',
+						regex: 'Negrete',
 						distrito: '21',
 						codigo: '08307',
 						locales: [
@@ -4172,6 +4415,7 @@ const chile = [
 					},
 					{
 						nombre: 'Quilaco',
+						regex: 'Quilaco',
 						distrito: '21',
 						codigo: '08308',
 						locales: [
@@ -4180,6 +4424,7 @@ const chile = [
 					},
 					{
 						nombre: 'Quilleco',
+						regex: 'Quilleco',
 						distrito: '21',
 						codigo: '08309',
 						locales: [
@@ -4189,6 +4434,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Rosendo',
+						regex: 'San_Rosendo',
 						distrito: '21',
 						codigo: '08310',
 						locales: [
@@ -4197,6 +4443,7 @@ const chile = [
 					},
 					{
 						nombre: 'Santa Bárbara',
+						regex: 'Santa_Barbara',
 						distrito: '21',
 						codigo: '08311',
 						locales: [
@@ -4207,6 +4454,7 @@ const chile = [
 					},
 					{
 						nombre: 'Tucapel',
+						regex: 'Tucapel',
 						distrito: '21',
 						codigo: '08312',
 						locales: [
@@ -4219,6 +4467,7 @@ const chile = [
 					},
 					{
 						nombre: 'Yumbel',
+						regex: 'Yumbel',
 						distrito: '21',
 						codigo: '08313',
 						locales: [
@@ -4233,6 +4482,7 @@ const chile = [
 					},
 					{
 						nombre: 'Alto Biobío',
+						regex: 'Alto_Biobío',
 						distrito: '21',
 						codigo: '08314',
 						locales: [
@@ -4259,6 +4509,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Temuco',
+						regex: 'Temuco',
 						distrito: '23',
 						codigo: '09101',
 						locales: [
@@ -4312,6 +4563,7 @@ const chile = [
 					},
 					{
 						nombre: 'Carahue',
+						regex: 'Carahue',
 						distrito: '23',
 						codigo: '09102',
 						locales: [
@@ -4325,6 +4577,7 @@ const chile = [
 					},
 					{
 						nombre: 'Cunco',
+						regex: 'Cunco',
 						distrito: '23',
 						codigo: '09103',
 						locales: [
@@ -4336,6 +4589,7 @@ const chile = [
 					},
 					{
 						nombre: 'Curarrehue',
+						regex: 'Curarrehue',
 						distrito: '23',
 						codigo: '09104',
 						locales: [
@@ -4345,6 +4599,7 @@ const chile = [
 					},
 					{
 						nombre: 'Freire',
+						regex: 'Freire',
 						distrito: '23',
 						codigo: '09105',
 						locales: [
@@ -4358,6 +4613,7 @@ const chile = [
 					},
 					{
 						nombre: 'Galvarino',
+						regex: 'Galvarino',
 						distrito: '22',
 						codigo: '09106',
 						locales: [
@@ -4367,6 +4623,7 @@ const chile = [
 					},
 					{
 						nombre: 'Gorbea',
+						regex: 'Gorbea',
 						distrito: '23',
 						codigo: '09107',
 						locales: [
@@ -4379,6 +4636,7 @@ const chile = [
 					},
 					{
 						nombre: 'Lautaro',
+						regex: 'Lautaro',
 						distrito: '22',
 						codigo: '09108',
 						locales: [
@@ -4394,6 +4652,7 @@ const chile = [
 					},
 					{
 						nombre: 'Loncoche',
+						regex: 'Loncoche',
 						distrito: '23',
 						codigo: '09109',
 						locales: [
@@ -4406,6 +4665,7 @@ const chile = [
 					},
 					{
 						nombre: 'Melipeuco',
+						regex: 'Melipeuco',
 						distrito: '22',
 						codigo: '09110',
 						locales: [
@@ -4415,6 +4675,7 @@ const chile = [
 					},
 					{
 						nombre: 'Nueva Imperial',
+						regex: 'Nueva_Imperial',
 						distrito: '23',
 						codigo: '09111',
 						locales: [
@@ -4428,6 +4689,7 @@ const chile = [
 					},
 					{
 						nombre: 'Padre las Casas',
+						regex: 'Padre_las_Casas',
 						distrito: '23',
 						codigo: '09112',
 						locales: [
@@ -4448,6 +4710,7 @@ const chile = [
 					},
 					{
 						nombre: 'Perquenco',
+						regex: 'Perquenco',
 						distrito: '22',
 						codigo: '09113',
 						locales: [
@@ -4457,6 +4720,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pitrufquén',
+						regex: 'Pitrufquen',
 						distrito: '23',
 						codigo: '09114',
 						locales: [
@@ -4469,6 +4733,7 @@ const chile = [
 					},
 					{
 						nombre: 'Pucón',
+						regex: 'Pucon',
 						distrito: '23',
 						codigo: '09115',
 						locales: [
@@ -4481,6 +4746,7 @@ const chile = [
 					},
 					{
 						nombre: 'Saavedra',
+						regex: 'Saavedra',
 						distrito: '23',
 						codigo: '09116',
 						locales: [
@@ -4491,6 +4757,7 @@ const chile = [
 					},
 					{
 						nombre: 'Teodoro Schmidt',
+						regex: 'Teodoro_Schmidt',
 						distrito: '23',
 						codigo: '09117',
 						locales: [
@@ -4502,6 +4769,7 @@ const chile = [
 					},
 					{
 						nombre: 'Toltén',
+						regex: 'Tolten',
 						distrito: '23',
 						codigo: '09118',
 						locales: [
@@ -4512,6 +4780,7 @@ const chile = [
 					},
 					{
 						nombre: 'Vilcún',
+						regex: 'Vilcun',
 						distrito: '22',
 						codigo: '09119',
 						locales: [
@@ -4523,6 +4792,7 @@ const chile = [
 					},
 					{
 						nombre: 'Villarrica',
+						regex: 'Villarrica',
 						distrito: '23',
 						codigo: '09120',
 						locales: [
@@ -4541,6 +4811,7 @@ const chile = [
 					},
 					{
 						nombre: 'Cholchol',
+						regex: 'Cholchol',
 						distrito: '23',
 						codigo: '09121',
 						locales: [
@@ -4555,6 +4826,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Angol',
+						regex: 'Angol',
 						distrito: '22',
 						codigo: '09201',
 						locales: [
@@ -4572,6 +4844,7 @@ const chile = [
 					},
 					{
 						nombre: 'Collipulli',
+						regex: 'Collipulli',
 						distrito: '22',
 						codigo: '09202',
 						locales: [
@@ -4584,6 +4857,7 @@ const chile = [
 					},
 					{
 						nombre: 'Curacautín',
+						regex: 'Curacautin',
 						distrito: '22',
 						codigo: '09203',
 						locales: [
@@ -4596,6 +4870,7 @@ const chile = [
 					},
 					{
 						nombre: 'Ercilla',
+						regex: 'Ercilla',
 						distrito: '22',
 						codigo: '09204',
 						locales: [
@@ -4606,6 +4881,7 @@ const chile = [
 					},
 					{
 						nombre: 'Lonquimay',
+						regex: 'Lonquimay',
 						distrito: '22',
 						codigo: '09205',
 						locales: [
@@ -4618,6 +4894,7 @@ const chile = [
 					},
 					{
 						nombre: 'Los Sauces',
+						regex: 'Los_Sauces',
 						distrito: '22',
 						codigo: '09206',
 						locales: [
@@ -4627,6 +4904,7 @@ const chile = [
 					},
 					{
 						nombre: 'Lumaco',
+						regex: 'Lumaco',
 						distrito: '22',
 						codigo: '09207',
 						locales: [
@@ -4637,6 +4915,7 @@ const chile = [
 					},
 					{
 						nombre: 'Purén',
+						regex: 'Puren',
 						distrito: '22',
 						codigo: '09208',
 						locales: [
@@ -4647,6 +4926,7 @@ const chile = [
 					},
 					{
 						nombre: 'Renaico',
+						regex: 'Renaico',
 						distrito: '22',
 						codigo: '09209',
 						locales: [
@@ -4657,6 +4937,7 @@ const chile = [
 					},
 					{
 						nombre: 'Traiguén',
+						regex: 'Traiguen',
 						distrito: '22',
 						codigo: '09210',
 						locales: [
@@ -4669,6 +4950,7 @@ const chile = [
 					},
 					{
 						nombre: 'Victoria',
+						regex: 'Victoria',
 						distrito: '22',
 						codigo: '09211',
 						locales: [
@@ -4699,6 +4981,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Valdivia',
+						regex: 'Valdivia',
 						distrito: '24',
 						codigo: '14101',
 						locales: [
@@ -4736,6 +5019,7 @@ const chile = [
 					},
 					{
 						nombre: 'Corral',
+						regex: 'Corral',
 						distrito: '24',
 						codigo: '14102',
 						locales: [
@@ -4745,6 +5029,7 @@ const chile = [
 					},
 					{
 						nombre: 'Lanco',
+						regex: 'Lanco',
 						distrito: '24',
 						codigo: '14103',
 						locales: [
@@ -4756,6 +5041,7 @@ const chile = [
 					},
 					{
 						nombre: 'Los Lagos',
+						regex: 'Los_Lagos',
 						distrito: '24',
 						codigo: '14104',
 						locales: [
@@ -4769,6 +5055,7 @@ const chile = [
 					},
 					{
 						nombre: 'Máfil',
+						regex: 'Mafil',
 						distrito: '24',
 						codigo: '14105',
 						locales: [
@@ -4777,6 +5064,7 @@ const chile = [
 					},
 					{
 						nombre: 'Mariquina',
+						regex: 'Mariquina',
 						distrito: '24',
 						codigo: '14106',
 						locales: [
@@ -4790,6 +5078,7 @@ const chile = [
 					},
 					{
 						nombre: 'Paillaco',
+						regex: 'Paillaco',
 						distrito: '24',
 						codigo: '14107',
 						locales: [
@@ -4803,6 +5092,7 @@ const chile = [
 					},
 					{
 						nombre: 'Panguipulli',
+						regex: 'Panguipulli',
 						distrito: '24',
 						codigo: '14108',
 						locales: [
@@ -4826,6 +5116,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'La Unión',
+						regex: 'La_Union',
 						distrito: '24',
 						codigo: '14201',
 						locales: [
@@ -4843,6 +5134,7 @@ const chile = [
 					},
 					{
 						nombre: 'Futrono',
+						regex: 'Futrono',
 						distrito: '24',
 						codigo: '14202',
 						locales: [
@@ -4855,6 +5147,7 @@ const chile = [
 					},
 					{
 						nombre: 'Lago Ranco',
+						regex: 'Lago_Ranco',
 						distrito: '24',
 						codigo: '14203',
 						locales: [
@@ -4865,6 +5158,7 @@ const chile = [
 					},
 					{
 						nombre: 'Río Bueno',
+						regex: 'Rio_Bueno',
 						distrito: '24',
 						codigo: '14204',
 						locales: [
@@ -4895,6 +5189,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Puerto Montt',
+						regex: 'Puerto_Montt',
 						distrito: '26',
 						codigo: '10101',
 						locales: [
@@ -4931,6 +5226,7 @@ const chile = [
 					},
 					{
 						nombre: 'Calbuco',
+						regex: 'Calbuco',
 						distrito: '26',
 						codigo: '10102',
 						locales: [
@@ -4945,6 +5241,7 @@ const chile = [
 					},
 					{
 						nombre: 'Cochamó',
+						regex: 'Cochamo',
 						distrito: '26',
 						codigo: '10103',
 						locales: [
@@ -4955,6 +5252,7 @@ const chile = [
 					},
 					{
 						nombre: 'Fresia',
+						regex: 'Fresia',
 						distrito: '25',
 						codigo: '10104',
 						locales: [
@@ -4965,6 +5263,7 @@ const chile = [
 					},
 					{
 						nombre: 'Frutillar',
+						regex: 'Frutillar',
 						distrito: '25',
 						codigo: '10105',
 						locales: [
@@ -4974,6 +5273,7 @@ const chile = [
 					},
 					{
 						nombre: 'Los Muermos',
+						regex: 'Los_Muermos',
 						distrito: '25',
 						codigo: '10106',
 						locales: [
@@ -4985,6 +5285,7 @@ const chile = [
 					},
 					{
 						nombre: 'Llanquihue',
+						regex: 'Llanquihue',
 						distrito: '25',
 						codigo: '10107',
 						locales: [
@@ -4995,6 +5296,7 @@ const chile = [
 					},
 					{
 						nombre: 'Maullín',
+						regex: 'Maullin',
 						distrito: '26',
 						codigo: '10108',
 						locales: [
@@ -5006,7 +5308,8 @@ const chile = [
 						]
 					},
 					{
-						nombre: 'Puerto Varas',
+						nombre: 'Puerto_Varas',
+						regex: 'Maullin',
 						distrito: '25',
 						codigo: '10109',
 						locales: [
@@ -5028,6 +5331,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Castro',
+						regex: 'Castro',
 						distrito: '26',
 						codigo: '10201',
 						locales: [
@@ -5043,6 +5347,7 @@ const chile = [
 					},
 					{
 						nombre: 'Ancud',
+						regex: 'Ancud',
 						distrito: '26',
 						codigo: '10202',
 						locales: [
@@ -5058,6 +5363,7 @@ const chile = [
 					},
 					{
 						nombre: 'Chonchi',
+						regex: 'Chonchi',
 						distrito: '26',
 						codigo: '10203',
 						locales: [
@@ -5068,6 +5374,7 @@ const chile = [
 					},
 					{
 						nombre: 'Curaco de Vélez',
+						regex: 'Curaco_de_Velez',
 						distrito: '26',
 						codigo: '10204',
 						locales: [
@@ -5076,6 +5383,7 @@ const chile = [
 					},
 					{
 						nombre: 'Dalcahue',
+						regex: 'Dalcahue',
 						distrito: '26',
 						codigo: '10205',
 						locales: [
@@ -5086,6 +5394,7 @@ const chile = [
 					},
 					{
 						nombre: 'Puqueldón',
+						regex: 'Puqueldon',
 						distrito: '26',
 						codigo: '10206',
 						locales: [
@@ -5094,6 +5403,7 @@ const chile = [
 					},
 					{
 						nombre: 'Queilén',
+						regex: 'Queilen',
 						distrito: '26',
 						codigo: '10207',
 						locales: [
@@ -5102,6 +5412,7 @@ const chile = [
 					},
 					{
 						nombre: 'Quellón',
+						regex: 'Quellon',
 						distrito: '26',
 						codigo: '10208',
 						locales: [
@@ -5113,6 +5424,7 @@ const chile = [
 					},
 					{
 						nombre: 'Quemchi',
+						regex: 'Quemchi',
 						distrito: '26',
 						codigo: '10209',
 						locales: [
@@ -5126,6 +5438,7 @@ const chile = [
 					},
 					{
 						nombre: 'Quinchao',
+						regex: 'Quinchao',
 						distrito: '26',
 						codigo: '10210',
 						locales: [
@@ -5144,6 +5457,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Osorno',
+						regex: 'Osorno',
 						distrito: '25',
 						codigo: '10301',
 						locales: [
@@ -5171,6 +5485,7 @@ const chile = [
 					},
 					{
 						nombre: 'Puerto Octay',
+						regex: 'Puerto_Octay',
 						distrito: '25',
 						codigo: '10302',
 						locales: [
@@ -5181,6 +5496,7 @@ const chile = [
 					},
 					{
 						nombre: 'Purranque',
+						regex: 'Purranque',
 						distrito: '25',
 						codigo: '10303',
 						locales: [
@@ -5195,6 +5511,7 @@ const chile = [
 					},
 					{
 						nombre: 'Puyehue',
+						regex: 'Puyehue',
 						distrito: '2',
 						codigo: '10304',
 						locales: [
@@ -5204,6 +5521,7 @@ const chile = [
 					},
 					{
 						nombre: 'Río Negro',
+						regex: 'Rio_Negro',
 						distrito: '2',
 						codigo: '10305',
 						locales: [
@@ -5215,6 +5533,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Juan de la Costa',
+						regex: 'San_Juan_de_la_Costa',
 						distrito: '2',
 						codigo: '10306',
 						locales: [
@@ -5225,6 +5544,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Pablo',
+						regex: 'San_Pablo',
 						distrito: '2',
 						codigo: '10307',
 						locales: [
@@ -5240,6 +5560,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Chaitén',
+						regex: 'Chaiten',
 						distrito: '26',
 						codigo: '10401',
 						locales: [
@@ -5250,6 +5571,7 @@ const chile = [
 					},
 					{
 						nombre: 'Futaleufú',
+						regex: 'Futaleufú',
 						distrito: '26',
 						codigo: '10402',
 						locales: [
@@ -5258,6 +5580,7 @@ const chile = [
 					},
 					{
 						nombre: 'Hualaihué',
+						regex: 'Hualaihue',
 						distrito: '26',
 						codigo: '10403',
 						locales: [
@@ -5269,6 +5592,7 @@ const chile = [
 					},
 					{
 						nombre: 'Palena',
+						regex: 'Palena',
 						distrito: '26',
 						codigo: '10404',
 						locales: [
@@ -5293,6 +5617,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Coyhaique',
+						regex: 'Coyhaique',
 						distrito: '27',
 						codigo: '11101',
 						locales: [
@@ -5312,6 +5637,7 @@ const chile = [
 					},
 					{
 						nombre: 'Lago Verde',
+						regex: 'Lago_Verde',
 						distrito: '27',
 						codigo: '11102',
 						locales: [
@@ -5327,6 +5653,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Aisén',
+						regex: 'Aisen',
 						distrito: '27',
 						codigo: '11201',
 						locales: [
@@ -5341,6 +5668,7 @@ const chile = [
 					},
 					{
 						nombre: 'Cisnes',
+						regex: 'Cisnes',
 						distrito: '27',
 						codigo: '11202',
 						locales: [
@@ -5352,6 +5680,7 @@ const chile = [
 					},
 					{
 						nombre: 'Guaitecas',
+						regex: 'Guaitecas',
 						distrito: '27',
 						codigo: '11203',
 						locales: [
@@ -5365,6 +5694,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Cochrane',
+						regex: 'Cochrane',
 						distrito: '27',
 						codigo: '11301',
 						locales: [
@@ -5373,6 +5703,7 @@ const chile = [
 					},
 					{
 						nombre: 'O’Higgins',
+						regex: 'OHiggins',
 						distrito: '27',
 						codigo: '11302',
 						locales: [
@@ -5381,6 +5712,7 @@ const chile = [
 					},
 					{
 						nombre: 'Tortel',
+						regex: 'Tortel',
 						distrito: '27',
 						codigo: '11303',
 						locales: [
@@ -5394,6 +5726,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Chile Chico',
+						regex: 'Chile_Chico',
 						distrito: '27',
 						codigo: '11401',
 						locales: [
@@ -5403,6 +5736,7 @@ const chile = [
 					},
 					{
 						nombre: 'Río Ibáñez',
+						regex: 'Rio_Ibanez',
 						distrito: '27',
 						codigo: '11402',
 						locales: [
@@ -5429,6 +5763,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Punta Arenas',
+						regex: 'Punta_Arenas',
 						distrito: '28',
 						codigo: '12101',
 						locales: [
@@ -5461,11 +5796,13 @@ const chile = [
 					},
 					{
 						nombre: 'Laguna Blanca',
+						regex: 'Laguna_Blanca',
 						distrito: '28',
 						codigo: '12102'
 					},
 					{
 						nombre: 'Río Verde',
+						regex: 'Rio_Verde',
 						distrito: '28',
 						codigo: '12103',
 						locales: [
@@ -5474,6 +5811,7 @@ const chile = [
 					},
 					{
 						nombre: 'San Gregorio',
+						regex: 'San_Gregorio',
 						distrito: '28',
 						codigo: '12104',
 						locales: [
@@ -5487,6 +5825,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Cabo de Hornos (Ex. Navarino)',
+						regex: 'Cabo_de_Hornos',
 						distrito: '28',
 						codigo: '12201',
 						locales: [
@@ -5495,6 +5834,7 @@ const chile = [
 					},
 					{
 						nombre: 'Antártica',
+						regex: 'Antartica',
 						distrito: '28',
 						codigo: '12202',
 						locales: [
@@ -5508,6 +5848,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Porvenir',
+						regex: 'Porvenir',
 						distrito: '28',
 						codigo: '12301',
 						locales: [
@@ -5516,6 +5857,7 @@ const chile = [
 					},
 					{
 						nombre: 'Primavera',
+						regex: 'Primavera',
 						distrito: '28',
 						codigo: '12302',
 						locales: [
@@ -5524,6 +5866,7 @@ const chile = [
 					},
 					{
 						nombre: 'Timaukel',
+						regex: 'Timaukel',
 						distrito: '28',
 						codigo: '12303'
 					}
@@ -5534,6 +5877,7 @@ const chile = [
 				comunas: [
 					{
 						nombre: 'Natales',
+						regex: 'Natales',
 						distrito: '28',
 						codigo: '12401',
 						locales: [
@@ -5545,6 +5889,7 @@ const chile = [
 					},
 					{
 						nombre: 'Torres del Paine',
+						regex: 'Torres_del_Paine',
 						distrito: '28',
 						codigo: '12402',
 						locales: [
@@ -5570,7 +5915,9 @@ const regionesProvinciasComunas = _.map(chile, regionData => {
 					return {
 						value: comuna.nombre,
 						label: comuna.nombre,
-						distrito: comuna.distrito
+						distrito: comuna.distrito,
+						reg: comuna.regex
+
 					}
 				})
 			}
@@ -5588,7 +5935,9 @@ const regionesComunas = _.map(chile, regionData => {
 		return {
 			value: comuna.nombre,
 			label: comuna.nombre,
-			distrito: comuna.distrito
+			distrito: comuna.distrito,
+			reg: comuna.regex
+
 		}
 	}))
 	region.children = _.flatten(comunasEnprovincias)
