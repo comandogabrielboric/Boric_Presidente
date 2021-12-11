@@ -187,12 +187,12 @@ export default {
 			})
 		},
 		confirmarImagen () {
-			this.$consolo.log('confirmarImagen')
+			console.log('confirmarImagen')
 			if (!this.canvas) return console.error('No hay canvas')
 			this.$emit('AwsReq', this)
 		},
 		descargarImagen () {
-			this.$consolo.log('descargarImagen')
+			this.$console.log('descargarImagen')
 			return this.blobear().then(blob => {
 				this.$downBlob(blob, 'imagen.jpg')
 			})

@@ -41,22 +41,30 @@
 				type="medio",
 				placeholder="Medio"
 			)
+		a-form-model-item(has-feedback, prop="cargo")
+			a-input.input(
+				v-model="formulario.cargo",
+				type="cargo",
+				placeholder="Cargo"
+			)
 
-		a-form-model-item(has-feedback, prop="pase")
+		a-form-model-item(v-if="formulario.nombre && formulario.apellido && formulario.medio" has-feedback, prop="pase")
 			.label Compartenos un screenshot de tu pase de movilidad
 			.cargadorImagen
-				cargaImagenS3.zonaCarga.mt-xs(:altura="750" :anchura="350"
+				cargaImagenS3.zonaCarga.mt-xs(:altura="700" :anchura="350"
 					ref="cargadorImagen"
-					:archivo="`${formulario.nombre}-${formulario.apellido}-${formulario.medio}.jpg`"
+					:archivo="`prensa/${formulario.nombre}-${formulario.apellido}-${formulario.medio}.jpg`"
 					value="PMprensa"
 					:firmarCarga="firmarCarga"
 					:modificandoAvatar="modificandoAvatar"
-					@subido="guardarUrlAvatar($event)")
+					@subido="guardarUrl($event)")
 					.interior(slot-scope="{ value, cargar }")
-						a-button.cambioImagen(@click="cargar" title="") Cargar pase de movilidad
+						a-button.cambioImagen(@click="cargar" :disabled="bloquearBoton" title="")
+							div(v-if="!bloquearBoton") Cargar pase de movilidad
+							div(v-else) Pase cargado correctamente
 
 		a-form-model-item.contenedorbtn(:wrapper-col="{ span: 14, offset: 4 }")
-			a-button.suscribirme(type="primary", @click="executeCaptcha()")
+			a-button.suscribirme(type="primary", @click="executeCaptcha()" :disabled="Bloaquealo")
 				| INSCRIBIRME
 
 		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
@@ -80,7 +88,8 @@
 			a-spin(size="large")
 			p Estamos Procesando tu solicitud
 		.procusandoCompleto(v-if="procesado")
-			p Gracias, te haz registrado correctamente
+			p(v-if="!errorMensaje") Gracias, te has registrado correctamente
+			p(v-else) {{ errorMensaje }}
 
 	a-modal.modal(
 		:visible="tyc",
@@ -133,8 +142,15 @@ export default {
 				callback()
 			}
 		}
+		const validaCargo = (rule, value, callback) => {
+			if (!value) {
+				callback(new Error('Ingresa tu cargo'))
+			} else {
+				callback()
+			}
+		}
 		const validaPase = (rule, value, callback) => {
-			if (!this.formulario.urlPaseDeMovilidad) {
+			if (!this.bloquearBoton) {
 				callback(new Error('Debes subir tu pase de movilidad registrarte'))
 			} else {
 				callback()
@@ -148,13 +164,7 @@ export default {
 				callback()
 			}
 		}
-		const validaCargo = (rule, value, callback) => {
-			if (!value) {
-				callback(new Error('Ingresa tu Cargo'))
-			} else {
-				callback()
-			}
-		}
+
 		const validaEmail = (rule, value, callback) => {
 			if (!isEmail(value)) {
 				callback(new Error('Debes ingresar un E mail valido'))
@@ -217,7 +227,12 @@ export default {
 			regionseleccionada: null,
 			procesado: null,
 
-			modificandoAvatar: undefined
+			modificandoAvatar: undefined,
+
+			bloquearBoton: null,
+			Bloaquealo: null,
+
+			errorMensaje: null
 
 			// regiones: this.re
 		}
@@ -237,7 +252,10 @@ export default {
 		},
 
 		guardarUrl (url) {
-			this.urlPaseDeMovilidad = url
+			this.formulario.urlPaseDeMovilidad = url
+			this.bloquearBoton = true
+			this.$refs.cargadorImagen.$emit('guardado')
+			console.log('guardarUrl', this.formulario.urlPaseDeMovilidad)
 		},
 
 		executeCaptcha () {
@@ -254,7 +272,7 @@ export default {
 		onCaptchaVerified (captchaResponse) {
 			console.log('verificado')
 			this.formulario.captcha = captchaResponse
-			this.suscribirse()
+			this.enviarDatos()
 		},
 
 		async enviarDatos () {
@@ -263,14 +281,17 @@ export default {
 
 			this.visible = true
 			const config = {}
+			console.log('formulario', this.formulario)
 			const respuesta = await this.$axios
 				.post(`${process.env.apiURL}/registroPrensa`, this.formulario, config)
 				.then(r => r.data)
 				.catch(e => console.error('fallo suscribirse', e))
 			console.log('Respuesta', respuesta)
-			if (!respuesta) {
-				this.visible = false
+			if (!respuesta || !respuesta.ok) {
+				this.errorMensaje = respuesta.error
+				this.procesado = true
 			} else {
+				this.Bloaquealo = true
 				this.procesado = true
 				this.formulario = {
 					nombre: undefined,
