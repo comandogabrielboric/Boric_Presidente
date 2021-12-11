@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"devLocal": "MODO=dev nuxt",
+		"devSemi": "MODO=dev SEMIREMOTO=1 nuxt",
 		"dev": "REMOTO=1 MODO=dev nuxt",
 		"a": "nuxt build -a",
 		"build": "nuxt build",
@@ -19,6 +20,7 @@
 	"dependencies": {
 		"ant-design-vue": "^1.7.8",
 		"axios": "^0.21.4",
+		"cropperjs": "^1.5.12",
 		"gsap": "^3.8.0",
 		"leaflet": "^1.7.1",
 		"lodash": "^4.17.21",

@@ -4,6 +4,7 @@
 
 const dev = process.env.MODO === 'dev'
 const remoto = !!process.env.REMOTO
+const semiRemoto = !!process.env.SEMIREMOTO
 
 const titulo = 'Boric Presidente'
 const descripcion = 'Súmate a Cambiar Chile junto a Gabriel Boric'
@@ -17,7 +18,7 @@ function titleTemplate (tituloLocal) {
 
 const nuxtConfig = {
 	env: {
-		cmsURL: (dev && !remoto) ? 'http://localhost:1337' : 'https://gbcms.crishadad.cl',
+		cmsURL: semiRemoto ? 'https://gbcms.crishadad.cl' : (dev && !remoto) ? 'http://localhost:1337' : 'https://gbcms.crishadad.cl',
 		apiURL: (dev && !remoto) ? 'http://localhost:3001' : 'https://bpapi.crishadad.cl'
 	},
 	// Target: https://go.nuxtjs.dev/config-target
