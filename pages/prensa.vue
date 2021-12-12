@@ -62,7 +62,7 @@
 		a-form-model-item(v-if="formulario.nombre && formulario.apellido && formulario.medio" has-feedback, prop="pase")
 			.label Compartenos un screenshot de tu pase de movilidad
 			.cargadorImagen
-				cargaImagenS3.zonaCarga.mt-xs(:altura="700" :anchura="350"
+				cargaImagenS3.zonaCarga.mt-xs(:altura="700" :anchura="450"
 					ref="cargadorImagen"
 					:archivo="`prensa/${formulario.nombre}-${formulario.apellido}-${formulario.medio}.jpg`"
 					value="PMprensa"
