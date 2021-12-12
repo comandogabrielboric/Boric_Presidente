@@ -76,11 +76,37 @@
 			.noCompu
 				+linkDescarga
 
-			img.imgP(
-				src="/imagenes/FOTO-GABRIEL-WEB-3-SECCION (1).webp",
-				alt="Participa"
-			)
 			//- img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
+
+		section.seccion1mPuertas
+			.curva.curvaSuperior
+
+			.header
+				img.noMovil(
+					src="/imagenes/landingCampaña/header1mPuertas-web.png",
+					alt="1 millon de puertas x Boric"
+				)
+				img.noCompu(
+					src="/imagenes/landingCampaña/headerMovil.webp",
+					alt="1 millon de puertas x Boric"
+				)
+			.contadorDePuertas
+				.contenido
+					img.noCompu(
+						src="/imagenes/landingCampaña/mapaMovil.webp",
+						alt="1 millon de puertas x Boric"
+					)
+					.contenedor
+						.contenedorContador
+							.conteo 35.000
+						.contenderoTexto
+							.texto puertas abiertas
+							.texto.bold reportadas
+			.footer
+				img(
+					src="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/apoderadosFooter.webp",
+					alt="grupo"
+				)
 
 		section.seccionaporta
 			mixin linkServel
@@ -106,26 +132,10 @@
 					Chanchito.chan
 				.noCompu
 					+linkServel
-
-		//- section.propuestas
-			.ondaonda
-				wave.wave
-			.zonaCombi
-				Combi
-			.curva.curvaSuperior
-
-			.curva.curvaSuperior
-			.contenido
-				.textoseccion
-					h2.titulo Propuesta
-						.segundo Programática
-					p Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera.
-					p ¿Quieres conocer parte de nuestras propuestas?
-				.link
-					nuxt-link.linkpropuestas(
-						to="/propuestas",
-						@click.native="tag('Propuestas')"
-					) VER PROPUESTAS
+			img.imgP(
+				src="/imagenes/FOTO-GABRIEL-WEB-3-SECCION (1).webp",
+				alt="Participa"
+			)
 </template>
 
 <script>
@@ -154,8 +164,18 @@ export default {
 	},
 	mounted () {
 		this.cargado = true
+		// this.cuantasPuertasLlevamos()
 	},
 	methods: {
+		async cuantasPuertasLlevamos () {
+			const respuesta = await this.$axios({
+				method: 'get',
+				url: `${process.env.apiURL}/puertasAbiertas`
+			})
+				.then(r => r.data)
+				.catch(e => console.error('fallo respuesta', e))
+			console.log('Respuesta', respuesta)
+		},
 		unete () {
 			this.$router.replace('/#uneteALaCampaña')
 		},
@@ -356,7 +376,7 @@ section
 	align-items: center
 	position: relative
 	justify-content: center
-	// padding-bottom: 3em
+	padding-bottom: 3em
 	.curva
 		background-color: #60ad6a
 	.contenido
@@ -491,6 +511,63 @@ section
 				width: $lado
 				height: $lado
 				transform: translate(-25%, -50%) scale(.9)
+
+.seccion1mPuertas
+	background: linear-gradient(180deg, #2ABADC 0%, #B2EA91 195.02%)
+	.curva
+		background: rgba(42, 186, 220, 1)
+	.header
+		display: flex
+		justify-content: center
+		padding: 0 8em
+		img
+			width: 100%
+	.contadorDePuertas
+		display: flex
+		padding: 2em
+		.contenido
+			.contenedor
+				display: flex
+				justify-content: center
+				flex-flow: column nowrap
+				align-items: center
+				padding: 1em
+				.contenedorContador
+					background-color: rgba(244, 58, 108, 1)
+					// max-width: 280px
+					text-align: center
+					.conteo
+						padding: .2em .3em 0 .3em
+						font-size: 4rem
+						line-height: 1
+						font-weight: 900
+						font-style: italic
+						+compu
+							font-size: 6rem
+		.contenderoTexto
+			padding: 1em
+	.footer
+		img
+			position: relative
+			width: 100%
+			z-index: 10
+			margin-bottom: -3.5em
+	+movil
+		.header
+			padding: 1em
+		.contadorDePuertas
+			.contenido
+				display: flex
+				flex-flow: row nowrap !important
+				justify-content: center
+				>img
+					width: 40%
+					margin-right: -3em
+				.contenedor
+					.contenedorContador
+						.conteo
+							font-size: 3rem
+
 section.seccionaporta
 	background-color: $azul2
 	position: relative
@@ -526,7 +603,7 @@ section.seccionaporta
 		justify-content: center
 		align-items: center
 		text-align: center
-		padding-bottom: 6em
+		padding-top: 6em
 		.titulo,
 		.segundo
 			margin: 0
@@ -548,7 +625,7 @@ section.seccionaporta
 			flex-flow: row nowrap
 			text-align: left
 			justify-content: center
-			padding-bottom: 14em
+			// padding-bottom: 14em
 		.lado1
 			padding-left: 2em
 		.lado
