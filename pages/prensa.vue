@@ -1,7 +1,7 @@
 <template lang="pug">
 .rootParticipa
 	.titulo Estimadas y estimados,
-	.texto En el siguiente apartado encontrarán el formulario para el proceso de acreditación de cara al próximo 19 de diciembre, día en que tendrá lugar la votación de la segunda vuelta presidencial. #[br] Este espacio estará abierto para que se inscriban #[span.bold hasta el próximo miércoles 15 de diciembre], fecha tras la cual les enviaremos un correo informativo con los detalles del día domingo como los accesos, horarios y cronograma. #[br] ¡Los esperamos!
+	.texto Iniciamos el proceso de acreditación para el comando presidencial del candidato Gabriel Boric, para el 19 de diciembre, día de la segunda vuelta de la elección presidencial de Chile.  #[br] Este proceso quedará abierto a partir de esta noche y  #[span.bold hasta las 23:59 del miércoles 15 de diciembre.]  #[br] Luego de llenar el formulario, recibirán un correo con el instructivo de funcionamiento de ese día. #[br] Las y los invitamos a acreditarse con anticipación, ya que por temas sanitarios tendremos un aforo restringido.#[br] En ese sentido, el pase de movilidad es requisito para cubrir las elecciones en el recinto que dispondremos para el trabajo de la prensa acreditada #[br] Muchas gracias
 
 	a-form-model.suscribirse(
 		ref="formulario",
