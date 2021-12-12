@@ -20,8 +20,19 @@
 				type="apellido",
 				placeholder="Apellido"
 			)
-		a-form-model-item(has-feedback, prop="rut")
+
+		a-form-model-item.contenedorbtn(:wrapper-col="{ span: 14, offset: 4 }")
+			a-button.suscribirme(type="primary", @click="UsarPasaporte = !UsarPasaporte")
+				div(v-if="!UsarPasaporte") Usar pasaporte
+				div(v-else) Usar Rut
+
+		a-form-model-item(v-if="!UsarPasaporte" has-feedback, prop="rut")
 			a-input.input(v-model="formulario.rut", type="rut", placeholder="Rut")
+
+		a-form-model-item(v-else prop="pasaporte")
+			a-input.input(v-model="formulario.pasaporte", type="pasaporte", placeholder="Pasaporte")
+
+
 		a-form-model-item(has-feedback, prop="email")
 			a-input.input(
 				v-model="formulario.email",
@@ -206,6 +217,7 @@ export default {
 				medio: undefined,
 				cargo: undefined,
 				urlPaseDeMovilidad: undefined,
+				pasaporte: undefined,
 				captcha: undefined
 			},
 			rules: {
@@ -226,6 +238,7 @@ export default {
 			tyc: false,
 			regionseleccionada: null,
 			procesado: null,
+			UsarPasaporte: null,
 
 			modificandoAvatar: undefined,
 
