@@ -110,12 +110,14 @@ section
 
 .texto
 	line-height: 1.2
+	font-style: italic
 	+movil
-		font-size: 1.3rem
+		font-size: 1rem
+		font-weight: 300
 	+compu
 		font-size: 1.5rem
 	+wide
-		font-size: 2rem
+		font-size: 1.9rem
 
 .lado
 	+compu
@@ -184,6 +186,7 @@ section
 
 .biografia
 	padding-bottom: 4em
+	background: linear-gradient(0deg, rgba(19,137,148,1) 0%, rgba(13,88,117,1) 100%)
 	.titulo
 		position: relative
 		font-weight: 900
@@ -206,13 +209,13 @@ section
 		position: relative
 		display: flex
 		flex-flow: column nowrap
-		padding: 1em 1em 1em 4em
+		padding: 6em 2em 1em 5em
 		.linea
 			position: absolute
 			height: 100%
 			border-right: 6px dotted rgba(255, 255, 255, 0.5)
-			top: 4em
-			left: 2em
+			top: 9em
+			left: 3em
 		.texto
 			padding-bottom: 3em
 		.foto
@@ -232,7 +235,7 @@ section
 			flex-flow: row-reverse nowrap !important
 		.linea
 			left: 50% !important
-			top: 9em !important
+			top: 14em !important
 		.lado
 			width: 100%
 			flex: 600px 1 1

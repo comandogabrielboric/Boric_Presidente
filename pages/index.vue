@@ -98,13 +98,17 @@
 					)
 					.contenedor
 						.contenedorContador
-							.conteo 35.000
+							.conteo 772.614
 						.contenderoTexto
 							.texto puertas abiertas
 							.texto.bold reportadas
 			.footer
-				img(
+				img.noCompu(
 					src="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/apoderadosFooter.webp",
+					alt="grupo"
+				)
+				img.noMovil(
+					src="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/Component_1_1_.webp",
 					alt="grupo"
 				)
 
@@ -519,7 +523,7 @@ section
 	.header
 		display: flex
 		justify-content: center
-		padding: 0 8em
+		padding: 3em 8em 0
 		img
 			width: 100%
 	.contadorDePuertas
@@ -536,6 +540,7 @@ section
 					background-color: rgba(244, 58, 108, 1)
 					// max-width: 280px
 					text-align: center
+					border-radius: 12px
 					.conteo
 						padding: .2em .3em 0 .3em
 						font-size: 4rem
@@ -543,7 +548,7 @@ section
 						font-weight: 900
 						font-style: italic
 						+compu
-							font-size: 6rem
+							font-size: 9rem
 		.contenderoTexto
 			padding: 1em
 	.footer
