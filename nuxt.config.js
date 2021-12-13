@@ -9,6 +9,7 @@ const semiRemoto = !!process.env.SEMIREMOTO
 const titulo = 'Boric Presidente'
 const descripcion = 'Súmate a Cambiar Chile junto a Gabriel Boric'
 const imagen = '/imagenes/portadaMovil.webp'
+const imagenJpg = '/imagenes/portadaMovil.jpg'
 const url = 'https://boricpresidente.cl'
 
 function titleTemplate (tituloLocal) {
@@ -52,7 +53,7 @@ const nuxtConfig = {
 
 			{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
 			{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
-			{ hid: 'twitter:image', property: 'twitter:image', content: imagen },
+			{ hid: 'twitter:image', property: 'twitter:image', content: imagenJpg },
 			{ hid: 'twitter:site', property: 'twitter:site', content: '@GabrielBoric' }
 		],
 		link: [
