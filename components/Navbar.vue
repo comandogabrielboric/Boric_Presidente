@@ -20,7 +20,7 @@
 					@click.native="tag('nav apoderados')"
 				) Apoderados
 				nuxt-link.link.bold(to="/aporta", @click.native="tag('nav aporta')") aporta
-				.link.bold(@click="unete") únete
+				a.link.bold(@click="unete") únete
 				//- nuxt-link.link.bold(to="/cultura", @click.native="tag('nav cultura')") Cultura
 
 				nuxt-link.link.bold(
