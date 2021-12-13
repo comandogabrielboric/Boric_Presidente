@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"devLocal": "MODO=dev nuxt",
+		"devSemi": "MODO=dev SEMIREMOTO=1 nuxt",
 		"dev": "REMOTO=1 MODO=dev nuxt",
 		"a": "nuxt build -a",
 		"build": "nuxt build",
@@ -19,9 +20,11 @@
 	"dependencies": {
 		"ant-design-vue": "^1.7.8",
 		"axios": "^0.21.4",
+		"cropperjs": "^1.5.12",
 		"gsap": "^3.8.0",
 		"leaflet": "^1.7.1",
 		"lodash": "^4.17.21",
+		"mark.js": "^8.11.1",
 		"moment-timezone": "^0.5.34",
 		"nuxt": "^2.14.0",
 		"phone": "^3.1.7",
@@ -29,6 +32,7 @@
 		"sanitize-html": "^2.5.1",
 		"validator": "^13.6.0",
 		"vue-observe-visibility": "^1.0.0",
+		"vue-recaptcha": "^1.3.0",
 		"vue2-leaflet": "^2.7.1",
 		"webpack": "^4.46.0"
 	},

@@ -1,34 +1,14 @@
 <template lang="pug">
 .propuestasRoot
 	.encabezado
-		h1.titulo Alcaldesas y alcaldes por Boric
-	//- .programaBook.noMovil
-		a.fbo-embed(
-			href="https://online.flippingbook.com/view/447789273/",
-			data-fbo-id="447789273",
-			data-fbo-ratio="16:9",
-			data-fbo-width="100%",
-			data-fbo-height="auto",
-			data-fbo-version="1",
-			style="max-width: 1000px"
-		) Plan de gobierno AD 2022-2026
-			script(
-				async="",
-				defer="",
-				src="https://online.flippingbook.com/EmbedScriptUrl.aspx?m=redir&hid=447789273"
-			)
+		h1.titulo Acuerdo de implementación programática
 
 	.programaBook
 		iframe(
-			src="https://docs.google.com/viewer?srcid=18FtiXWZ18jtkEmm1F_7a4fGzLkKJd2fH&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
+			src="https://docs.google.com/viewer?srcid=12CnFFoIt7q5Jdu89FT4WUv-nbncd7LIm&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
 			width="100%",
 			height="100%"
 		)
-
-	.firmantes
-		.texto Han firmado {{ numeroFirmas }} Alcaldes
-			ul.firmas
-				li.nombres(v-for="alcalde in alcaldesFirmantes") {{ alcalde.Nombre }} {{ alcalde.Apellido }} {{ alcalde.Apellido2 }}, {{ alcalde.Comuna }}
 
 	.plantas
 		.lado.derecha
@@ -39,23 +19,19 @@
 </template>
 
 <script>
-import alcaldesFirmantes from '../static/csv/alcaldesFirmantes.json'
-
 export default {
-	data () {
-		return {
-			alcaldesFirmantes,
-			nFirmas: null
-		}
-	},
 	// solicita info a cms
 	head () {
 		// if (!this.seo) return {}
-		const titulo = this._.get(this.seo, ['titulo_pag'], 'Municipios x Boric')
+		const titulo = this._.get(
+			this.seo,
+			['titulo_pag'],
+			'implementación programática'
+		)
 		const descripcion = this._.get(
 			this.seo,
 			['descripcion_pag'],
-			'18FtiXWZ18jtkEmm1F_7a4fGzLkKJd2fH'
+			'implementación programática'
 		)
 		const imagen = '/imagenes/WEB-BANDERA.webp'
 		const url = 'https://boricpresidente.cl/municipios'
@@ -72,11 +48,6 @@ export default {
 			href: 'https://cdn.quilljs.com/1.0.0/quill.snow.css'
 		})
 		return obj
-	},
-	computed: {
-		numeroFirmas () {
-			return alcaldesFirmantes.length
-		}
 	}
 }
 </script>
@@ -84,21 +55,6 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
-
-.firmantes
-	font-size: 1.1em
-	.texto
-		padding: .5em
-		color: $azul1
-	.firmas
-		height: 300px
-		width: 300px
-		padding: 1em
-		text-transform: capitalize
-		background-color: #fff
-		overflow: auto
-		.nombres
-			list-style: none
 
 .titulo
 	+movil

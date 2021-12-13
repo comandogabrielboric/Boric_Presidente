@@ -1,8 +1,7 @@
 <template lang="pug">
 .propuestasRoot
 	.encabezado
-		h1.titulo Programa para un nuevo Chile
-			.sub Cambios para vivir mejor
+		h1.titulo Alcaldesas y alcaldes por Boric
 	//- .programaBook.noMovil
 		a.fbo-embed(
 			href="https://online.flippingbook.com/view/447789273/",
@@ -21,26 +20,16 @@
 
 	.programaBook
 		iframe(
-			src="https://docs.google.com/viewer?srcid=1ArdibCv2MhSiPz0qHyPD5OVO4WBRcmfk&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
+			src="https://docs.google.com/viewer?srcid=18FtiXWZ18jtkEmm1F_7a4fGzLkKJd2fH&pid=explorer&efh=false&a=v&chrome=false&embedded=true",
 			width="100%",
 			height="100%"
 		)
 
-	.contenedorbtn
-		a.button.boton(
-			href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(2).pdf",
-			target="_blank",
-			@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
-			download
-		)
-			.p DESCARGAR PROGRAMA
-	//- .contenedorbtn
-		a.button.boton(
-			href="https://drive.google.com/file/d/1kKP7eIUIM_4KJMvsL4VZv8l2lp89PXlX/view?usp=sharing",
-			target="_blank",
-			@click="$gtm.push({ event: 'link-home', hacia: 'Link informe Proceso Participativo' })",
-			download
-		) Informe proceso participativo
+	.firmantes
+		.texto Han firmado {{ numeroFirmas }} Alcaldes
+			ul.firmas
+				li.nombres(v-for="alcalde in alcaldesSorted") {{ alcalde.Nombre }} {{ alcalde.Apellido }} {{ alcalde.Apellido2 }}, {{ alcalde.Comuna }}
+
 	.plantas
 		.lado.derecha
 			img(src="/svg/plantas-09.svg")
@@ -50,25 +39,26 @@
 </template>
 
 <script>
+import alcaldes from '../alcaldes/alcaldes'
+
 export default {
 	data () {
-		return {}
+		return {
+			alcaldes,
+			nFirmas: null
+		}
 	},
 	// solicita info a cms
 	head () {
 		// if (!this.seo) return {}
-		const titulo = this._.get(
-			this.seo,
-			['titulo_pag'],
-			'Propuesta Programática'
-		)
+		const titulo = this._.get(this.seo, ['titulo_pag'], 'Alcaldias x Boric')
 		const descripcion = this._.get(
 			this.seo,
 			['descripcion_pag'],
-			'Nuestro Gobierno impulsará grandes cambios, paso a paso, sin dejar a nadie fuera. ¿Quieres conocer parte de nuestras propuestas?'
+			'Alcaldesas y alcaldes por Boric'
 		)
-		const imagen = '/imagenes/portadaMovil.web'
-		const url = 'https://boricpresidente.cl/propuestas'
+		const imagen = '/imagenes/WEB-BANDERA.webp'
+		const url = 'https://boricpresidente.cl/municipios'
 		const obj = this.$eo({
 			titulo,
 			descripcion,
@@ -82,6 +72,16 @@ export default {
 			href: 'https://cdn.quilljs.com/1.0.0/quill.snow.css'
 		})
 		return obj
+	},
+	computed: {
+		numeroFirmas () {
+			return alcaldes.length
+		},
+		alcaldesSorted () {
+			const as = this._.orderBy(alcaldes, a => a.Apellido)
+			console.log(as)
+			return as
+		}
 	}
 }
 </script>
@@ -89,6 +89,23 @@ export default {
 <style lang="sass" scoped>
 @import '~/estilos/utils'
 @import '~/estilos/paleta'
+
+.firmantes
+	font-size: 1.1em
+	z-index: 100
+	.texto
+		padding: .5em
+		color: $azul1
+	.firmas
+		height: 300px
+		width: 300px
+		padding: 1em
+		text-transform: capitalize
+		background-color: #fff
+		overflow: auto
+		.nombres
+			list-style: none
+
 .titulo
 	+movil
 		font-size: 2rem
@@ -103,6 +120,7 @@ export default {
 	display: flex
 	align-items: center
 	flex-flow: column
+	padding-bottom: 6em
 .relleno
 	width: 100vw
 	height: 7em
@@ -154,12 +172,16 @@ export default {
 	.encabezado
 		max-width: 1200px
 		display: flex
+		padding-bottom: 2em
 	.titulo
 		// font-size: 3.2rem
 	.programaBook
 		max-width: 1000px
-		height: 95vh
+		// max-height: 100vh
+		height: 800px
 		padding: 1em 6em
+		+wide
+			height: 1200px
 	.contenedorbtn
 		.boton
 			font-size: 1.3rem

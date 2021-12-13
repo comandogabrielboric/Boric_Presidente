@@ -15,6 +15,13 @@
 				.tit #[span.light un] nuevo Chile
 				.sub Cambios para vivir mejor
 
+				buscador
+					template(v-slot:default="slotProps")
+						.contenedorbtn
+							.button.boton(@click="slotProps.abrirBuscador")
+								.oicono.lupa-linea
+								.p(style="padding-left: 10px") ¿Buscas una propuesta?
+
 	section.propuestas(v-if="setPropuestas")
 		.curva.curvaSuperior
 
@@ -35,12 +42,17 @@
 
 	.contenedorbtn
 		a.button.boton(
-			href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(1).pdf",
+			href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(2).pdf",
 			target="_blank",
 			@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
 			download
 		)
 			.p DESCARGAR PROGRAMA
+	.contenedorbtn
+		nuxt-link.boton(to="/propuestas/implementacion") Acuerdos implementación programática
+	.contenedorbtn
+		nuxt-link.boton(to="/propuestas/crecimiento") Propuestas para el crecimiento
+
 	//- .contenedorbtn
 		a.button.boton(
 			href="https://drive.google.com/file/d/1kKP7eIUIM_4KJMvsL4VZv8l2lp89PXlX/view?usp=sharing",

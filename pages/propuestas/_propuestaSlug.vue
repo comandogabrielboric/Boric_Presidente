@@ -5,7 +5,7 @@
 		.titulo {{ propuestaMostrada && propuestaMostrada.titulo }}
 		.modoVisualizacion
 			a.modo(
-				href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(1).pdf",
+				href="https://s3.amazonaws.com/cdn.boricpresidente.cl/web/programa/Plan+de+gobierno+AD+2022-2026+(2).pdf",
 				target="_blank",
 				@click="$gtm.push({ event: 'link-home', hacia: 'descargar programa' })",
 				download
@@ -14,12 +14,15 @@
 			//- a.modo(:href="propuestaMostrada.pdfURL" download target="_blank" rel="noreferer noopener") Descargar PDF
 	.cuerpoPropuesta
 		.html(v-show="modoVisualizacion === 'html'", key="html")
-			.ql-editor.contenidoHTML(v-html="propuestaMostrada.html")
+			.ql-editor.contenidoHTML(v-html="propuestaDestacadaHTML")
 	.contendorBoton
 		nuxt-link.boton(to="/propuestas") Volver a ver todas las propuestas
 </template>
 <script>
+import Mark from 'mark.js'
+
 export default {
+	components: {},
 	scrollToTop: true,
 	data () {
 		const propuestaSlug = this.$route.params.propuestaSlug
@@ -52,7 +55,8 @@ export default {
 			links,
 			propuestaBruta,
 			modoVisualizacion: 'html',
-			propuestaMostrada
+			propuestaMostrada,
+			propuestaDestacadaHTML: propuestaMostrada.html
 		}
 	},
 	head () {
@@ -88,6 +92,83 @@ export default {
 	computed: {
 		propuestaSlug () {
 			return this.$route.params.propuestaSlug
+		}
+	},
+	watch: {
+		$route (to, from) {
+			// Fix revisit of template:
+			const propuestaSlug = this.$route.params.propuestaSlug
+			this.setPropuestas = this.$store.state.propuestas
+			this.propuestaBruta =
+				propuestaSlug &&
+				this.setPropuestas &&
+				this._.find(this.setPropuestas, p => p.Slug === propuestaSlug)
+			this.casiDescripcion = this.propuestaBruta.contenido.split('</h1>')[0]
+			this.descripcion = this._.replace(this.casiDescripcion, /<[^>]*>/g, '')
+			this.propuestaMostrada = {
+				titulo: this.propuestaBruta.titulo,
+				html: this.propuestaBruta.contenido,
+				pdfURL: this._.get(this.propuestaBruta, ['archivoPDF', 'url']),
+				imagen: this.propuestaBruta.imagen,
+				descripcion: this.descripcion
+			}
+
+			this.links = this._.map(this.setPropuestas, p => {
+				const { titulo, Slug: slug } = p
+				return { titulo, slug }
+			})
+
+			this.destacarTextoBuscado(to)
+		},
+		propuestaDestacadaHTML () {
+			window.setTimeout(this.saltarAPrimerElementoDestacado, 500) // Ugly Hack, but it works!
+		}
+	},
+	mounted () {
+		this.$root.$on('buscaPropuesta', () => {
+			this.destacarTextoBuscado(this.$route)
+		})
+		this.destacarTextoBuscado(this.$route)
+	},
+	methods: {
+		destacarTextoBuscado (url) {
+			let queries = []
+			url.hash.split(':').forEach(item => {
+				const kv = item.split('=')
+				if (kv.length >= 2 && kv[0] === 'text') {
+					queries = decodeURIComponent(kv.slice(1).join('=')).split(' ')
+				}
+			})
+			if (queries.length > 0) {
+				const id = 'id' + new Date().getTime()
+				const doc = document.createElement('div')
+				const body = document.getElementsByTagName('html')[0]
+				doc.id = id
+				doc.classList.add('hidden')
+				doc.innerHTML = this.propuestaMostrada.html
+				body.appendChild(doc)
+				const markInstance = new Mark('#' + id)
+				markInstance.markRegExp(new RegExp(queries, 'gmi'), {
+					done: () => {
+						this.propuestaDestacadaHTML = document.getElementById(id).innerHTML
+						body.removeChild(body.lastChild)
+					},
+					acrossElements: true,
+					diacritics: false,
+					ignoreJoiners: true,
+					ignorePunctuation: '\':;.,-–—‒_(){}[]!"+='.split(''),
+					className: 'highlighted'
+				})
+			}
+		},
+		saltarAPrimerElementoDestacado () {
+			const destacados = document.getElementsByClassName('highlighted')
+			if (destacados.length > 0) {
+				window.scrollTo({
+					top: destacados[0].offsetTop,
+					behavior: 'smooth'
+				})
+			}
 		}
 	}
 }
@@ -150,6 +231,10 @@ export default {
 			margin: 2em 0
 		a
 			all: revert
+		mark
+			color: $blanco
+			background-color: $verde2
+			border-radius: 3px
 
 .cabecera
 	padding: 2em
@@ -216,4 +301,6 @@ export default {
 		color: $petroleo1
 		font-size: 1.2rem
 		padding-top: .9em
+.hidden
+	display: none
 </style>

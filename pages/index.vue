@@ -4,7 +4,7 @@
 		.filtroBlur
 			img(
 				@click="unete",
-				src="/imagenes/WEB-BANDERA.webp",
+				src="/imagenes/Foto-Primera-Seccio204129n.webp",
 				alt="Súmate a cambiar Chile"
 			)
 
@@ -22,21 +22,21 @@
 				.suscribirse
 					participaant
 
-		img.noMovil.imgSaludo(
-			src="/imagenes/diversidad.webp",
+		img.imgSaludo(
+			src="/imagenes/Foto-tercera-Seccio204129n.webp",
 			alt="Diversidad",
 			v-if="cargado"
 		)
-		img.noCompu.imgSaludo(
-			src="/imagenes/diversidadMovil.webp",
-			alt="Diversidad",
-			v-if="cargado"
-		)
-		img.imgTiny.imgSaludo(
-			src="/imagenes/diversidadMovilTiny.webp",
-			alt="Diversidad",
-			v-if="!cargado"
-		)
+		//- img.noCompu.imgSaludo(
+		//- 	src="/imagenes/diversidadMovil.webp",
+		//- 	alt="Diversidad",
+		//- 	v-if="cargado"
+		//- )
+		//- img.imgTiny.imgSaludo(
+		//- 	src="/imagenes/diversidadMovilTiny.webp",
+		//- 	alt="Diversidad",
+		//- 	v-if="!cargado"
+		//- )
 
 	.precarga(v-if="!cargado")
 	.postcarga(v-if="cargado")
@@ -52,6 +52,13 @@
 						rel="noreferer noopener",
 						@click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico' })"
 					) KIT GRÁFICO AQUÍ
+				.kitGrafico
+					a.boton(
+						href="https://drive.google.com/drive/folders/1Y_c8X0tCuK5hzUeyLeY_fif_YlWU5a6I",
+						target="_blank",
+						rel="noreferer noopener",
+						@click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico' })"
+					) APORTES CIUDADANOS
 
 			.contenido
 				.lado.ladotitutlo
@@ -69,8 +76,11 @@
 			.noCompu
 				+linkDescarga
 
-			img.noMovil.imgP(src="/imagenes/participa.webp", alt="Participa")
-			img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
+			img.imgP(
+				src="/imagenes/FOTO-GABRIEL-WEB-3-SECCION (1).webp",
+				alt="Participa"
+			)
+			//- img.noCompu.imgP(src="/imagenes/participaMovil.webp", alt="Participa")
 
 		section.seccionaporta
 			mixin linkServel
@@ -282,13 +292,13 @@ section
 .precarga
 	height: 100vh
 	width: 100vw
-	background-color: $verde2
+	background-color: #1488b2
 .seccionParticipa
 	position: relative
-	background-color: $verde2
+	background-color: #1488b2
 	color: white
 	.curva
-		background-color: $verde2
+		background-color: #1488b2
 	.contenido
 		position: relative
 		z-index: 3
@@ -340,7 +350,7 @@ section
 			padding-bottom: 3em
 
 .seccionArmaTuCampana
-	background-color: $petroleo2
+	background-color: #60ad6a
 	display: flex
 	flex-flow: column
 	align-items: center
@@ -348,7 +358,7 @@ section
 	justify-content: center
 	// padding-bottom: 3em
 	.curva
-		background-color: $petroleo2
+		background-color: #60ad6a
 	.contenido
 		text-align: center
 
@@ -391,7 +401,7 @@ section
 			bottom: 0
 			width: $lado
 			height: $lado
-			background: $petroleo3
+			background: $azul1
 			border-radius: 50%
 			transform: translate(-25%, -50%) scale(.9)
 		+compu
@@ -441,7 +451,7 @@ section
 					// line-height: 1.3
 			.kitGrafico
 				display: block
-				width: 300px
+				width: 350px
 				.texto
 					margin-top: -.8em
 					text-align: left
@@ -459,7 +469,7 @@ section
 				&.ladotitutlo
 					z-index: 5
 			.kitGrafico
-				width: 300px
+				width: 350px
 				.boton
 					font-size: 1.5rem
 					padding: 12px 0 .1em 0

@@ -13,6 +13,14 @@
 				placeholder="Nombre"
 			)
 
+		a-form-model-item(has-feedback, prop="rut")
+			a-input.input(
+				v-model="formulario.rut",
+				aria-label="rut",
+				type="rut",
+				placeholder="Rut"
+			)
+
 		a-form-model-item(has-feedback, prop="email")
 			a-input.input(
 				v-model="formulario.email",
@@ -59,80 +67,34 @@
 			a-button.suscribirme(
 				type="primary",
 				aria-label="Seguimos",
-				@click="submitForm('formulario')"
+				:loading="visible",
+				:disabled="completado",
+				@click="executeCaptcha()"
 			)
 				| SEGUIMOS
 
 		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
+		vue-recaptcha(
+			ref="invisibleRecaptcha",
+			sitekey="6LffuXQdAAAAAD5YAkWMEOlWDZU4505ZRcVE0Zup",
+			badge="bottomright",
+			size="invisible",
+			@verify="onCaptchaVerified",
+			:loadRecaptchaScript="true"
+		)
 
 	a-modal.modal.modalBienvenido(
 		v-model="visible",
-		title="Bienvenido, ahora actívate",
 		@ok="handleOk",
 		:footer="null",
 		centered
 	)
-		p Actívate, es ahora, es urgente
-		.activateOpciones
-			a.activate.rrss(
-				href="https://drive.google.com/drive/folders/		1vwqqSnxHIyv9wI617h8pUers1OudaBo0",
-				target="_blank",
-				rel="noreferer noopener",
-				@click="$gtm.push({ event: 'link-home', hacia: 'Decarga 	Kit grafico' })"
-			)
-				.texto Comparte en tus redes sociales
-
-			a.activate.gruposW(
-				href="https://activate.boricpresidente.cl",
-				target="_blank",
-				rel="noreferer noopener",
-				@click="$gtm.push({ event: 'link-home', hacia: 'link 	activate' })"
-			)
-				.texto Súmate a los grupos de whatsapp
-
-			.activate.aportaEnTerreno(@click="describirTalento('terreno')")
-				.texto Quiero ayudar en terreno
-
-			.activate.aportaTalento(@click="describirTalento('talento')")
-				.texto Tengo un talento que quiero poner a disposición
-
-			nuxt-link.activate.dona(to="/aporta", target="_blank")
-				.texto Aporta
-
-	a-modal.modalTalentos(
-		v-model="quieroAportarConTalento",
-		@ok="handleOk",
-		:footer="null",
-		centered
-	)
-		.describeTuTalento(v-if="tipoDeAporte === 'talento'")
-			a-spin(:spinning="spinning", :delay="delayTime")
+		.contenidoModal
+			a-spin.spin(:spinning="spinning", :delay="delayTime", size="large")
+				.titulo "Bienvenido"
 				.exito(v-if="completado")
-					.titulo te has registrado exitosamente, pronto te contactaremos
-				.spin-content(v-else)
-					a-form-model.AporteTalento(
-						ref="Talent",
-						:model="talento",
-						:rules="rules"
-					)
-						.titulo Describe tu talento en 70 caracteres
-						a-form-model-item(has-feedback, prop="Talento")
-							a-textarea.textArea(
-								v-model="talento.texto",
-								aria-label="Talento",
-								type="Talento",
-								placeholder="Describe en que puedes aportar",
-								:maxLength="70",
-								:auto-size="{ minRows: 3 }"
-							)
-							.textoError(v-if="errorRecibido") {{ errorRecibido }}
+					.titulo Te has registrado exitosamente, pronto te contactaremos
 
-					.boton(@click="Ayudar('talento')") enviar
-
-		.describeTuTalento(v-if="tipoDeAporte === 'terreno'")
-			a-spin(:spinning="spinning", :delay="delayTime")
-				.spin-content
-					.titulo Gracias por inscribirte, pronto te contactaremos
 	a-modal.modal(
 		:visible="tyc",
 		title="Terminos y Condiciones",
@@ -148,13 +110,41 @@
 </template>
 
 <script>
+import VueRecaptcha from 'vue-recaptcha'
 import isEmail from 'validator/lib/isEmail'
 import { phone } from 'phone'
+import { validate, format, clean } from 'rut.js'
 import regionesComunas from '../regiones/regioneschile'
 
 export default {
+	components: {
+		VueRecaptcha
+	},
 	data () {
 		// let checkPending
+		const validaRut = (rule, value, callback) => {
+			if (!value) {
+				callback(new Error('Ingresa tu rut'))
+			}
+			if (value.length < 8) {
+				callback(new Error('Ingresa un rut valido'))
+			}
+
+			if (value) {
+				const limpio = clean(value)
+				const rutformateado = format(limpio)
+				const validado = validate(rutformateado)
+				console.log(validado)
+				if (validado) {
+					callback()
+				}
+				if (!validado) {
+					callback(new Error('Ingresa un rut valido'))
+				}
+			} else {
+				callback(new Error('ingresa un rut valido'))
+			}
+		}
 		const validaTelefono = (rule, value, callback) => {
 			if (!value) {
 				return callback(new Error('Ingresa tu teléfono'))
@@ -209,11 +199,13 @@ export default {
 		return {
 			formulario: {
 				nombre: undefined,
+				rut: undefined,
 				email: undefined,
 				telefono: undefined,
 				comuna: undefined,
 				region: undefined,
-				distrito: undefined
+				distrito: undefined,
+				captcha: undefined
 			},
 			rules: {
 				nombre: [{ validator: validaNombre, trigger: 'change' }],
@@ -221,25 +213,21 @@ export default {
 				telefono: [{ validator: validaTelefono, trigger: 'change' }],
 				region: [{ validator: validaRegion }],
 				comuna: [{ validator: validaComuna, trigger: 'change' }],
-				talento: [{ validator: validaTextArea, trigger: 'change' }]
+				talento: [{ validator: validaTextArea, trigger: 'change' }],
+				rut: [{ validator: validaRut, trigger: 'change' }]
 			},
 			layout: {
 				labelCol: { span: 4 },
 				wrapperCol: { span: 14 }
 			},
-			talento: {
-				texto: null
-			},
-			tipoDeAporte: null,
 			visible: false,
 			tyc: false,
 			regionseleccionada: null,
 			comunaSeleccionada: null,
 
-			quieroAportarConTalento: null,
-			spinning: false,
+			spinning: null,
 			delayTime: 200,
-			completado: null,
+			completado: false,
 			errorRecibido: null
 
 			// regiones: this.re
@@ -276,58 +264,45 @@ export default {
 		}
 	},
 	methods: {
-		submitForm (formName) {
-			// console.log(this.formulario)
-			this.$refs[formName].validate(valid => {
+		executeCaptcha () {
+			this.$refs.formulario.validate(valid => {
 				if (valid) {
-					this.suscribirse()
-					this.$gtm.push({
-						event: 'Registro_mailing',
-						nombre: 'Registro en Mailchimp',
-						estado: 'completo'
-					})
+					this.$refs.invisibleRecaptcha.execute()
 				} else {
 					console.log('error submit!!')
 					return false
 				}
 			})
 		},
-		async Ayudar (tipo) {
-			this.spinning = true
-			const solicitud = {
-				descripcion: this.talento.texto,
-				tipo,
-				usuario: this.formulario
-			}
-			console.log(solicitud)
-			const config = {}
-			const respuesta = await this.$axios
-				.post(`${process.env.apiURL}/ayudar`, solicitud, config)
-				.then(r => r.data)
-				.catch(e => console.error('fallo ayudar', e))
-			console.log('Respuesta', respuesta)
-			if (!respuesta.error && respuesta.ok) {
-				this.completado = true
-				this.spinning = false
-				setTimeout(() => {
-					this.tipoDeAporte = null
-					this.quieroAportarConTalento = null
-					this.completado = null
-					this.talento.texto = null
-				}, 2000)
-			}
-			if (respuesta.error) {
-				this.errorRecibido = respuesta.error
-				this.spinning = false
-			}
+		executeCaptchaAyudar () {
+			this.$refs.invisibleRecaptchaAyudar.execute()
 		},
-		describirTalento (v) {
-			this.quieroAportarConTalento = true
-			this.tipoDeAporte = v
-			if (v === 'terreno') {
-				this.Ayudar(v)
-			}
+		executeCaptchaAyudarterreno () {
+			this.tipoDeAporte = 'terreno'
+			this.$refs.executeCaptchaAyudarterreno.execute()
 		},
+		onCaptchaVerified (captchaResponse) {
+			this.formulario.captcha = captchaResponse
+			this.submitForm()
+		},
+		onCaptchaAyudarVerified (captchaResponse) {
+			this.formulario.captcha = captchaResponse
+			this.Ayudar()
+		},
+		onCaptchaAyudarterrenoVerified (captchaResponse) {
+			this.formulario.captcha = captchaResponse
+			this.Ayudar()
+		},
+		submitForm (formName) {
+			// console.log(this.formulario)
+			this.suscribirse()
+			this.$gtm.push({
+				event: 'Registro_mailing',
+				nombre: 'Registro en Mailchimp',
+				estado: 'completo'
+			})
+		},
+
 		defineDistrito (d) {
 			this.formulario.distrito = d
 		},
@@ -345,7 +320,7 @@ export default {
 			// const { nombre, email, telefono, comuna } = this
 			// const data = { nombre, email, telefono, comuna }
 			this.visible = true
-
+			this.spinning = true
 			const config = {}
 			const respuesta = await this.$axios
 				.post(`${process.env.apiURL}/suscribirse`, this.formulario, config)
@@ -357,6 +332,9 @@ export default {
 				this.visible = false
 			} else {
 				this.visible = true
+				this.formulario.captcha = null
+				this.spinning = null
+				this.completado = true
 			}
 			console.log('suscrito', this.visible)
 		},
@@ -470,7 +448,10 @@ export default {
 	.has-error .ant-form-explain,
 	.has-error .ant-form-split
 		color: #fff
-
+.spin::v-deep
+	.ant-spin-dot-item
+		background-color: $verde3
+		transform: scale(1.2)
 .modal::v-deep
 	.ant-modal
 		width: 80vw !important
@@ -482,7 +463,7 @@ export default {
 	.ant-modal-header
 		text-align: center
 		padding-top: 3em
-		background-color: $verde1
+		background-color: #08546d
 	.ant-modal-title
 		color: $verde3
 		font-size: 2.5em
@@ -493,12 +474,17 @@ export default {
 	.ant-modal-body
 		text-align: center
 		padding: 2em 1em
-		background-color: $verde1
+		background-color: #08546d
 		color: #fff
 		max-height: 60vh
+		// height: 00px
 		overflow: auto
 		p
 			font-size: 1.2em
+		.titulo
+			padding: .5em
+			font-size: 2rem
+
 	.ant-modal-mask
 		backdrop-filter: blur(4px)
 
@@ -522,23 +508,6 @@ export default {
 	.textoError
 		margin-top: -.7em
 		line-height: 1.1
-
-.modalTalentos::v-deep
-	.ant-modal
-		width: 50vw !important
-		max-width: 300px !important
-	.ant-modal-body
-		text-align: center
-		padding: 2em 1em
-		// background-color: $verde1
-		color: #fff
-		max-height: 60vh
-		overflow: auto
-		p
-			font-size: 1.2em
-	+movil
-		.ant-modal
-			width: 90vh !important
 
 +compu
 
