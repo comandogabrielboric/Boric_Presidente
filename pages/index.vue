@@ -221,10 +221,12 @@ section
 
 		height: 3em
 		margin-top: -1.2em
-		+compu
-			height: 5em
-			margin-top: -2em
 		z-index: 1
+		+compu
+			height: 10em
+			margin-top: -5em
+			+wide
+			height: 14em
 		+ *,
 		~ .sobreCurva
 			position: relative
@@ -380,7 +382,7 @@ section
 	align-items: center
 	position: relative
 	justify-content: center
-	padding-bottom: 3em
+	padding-bottom: 5em
 	.curva
 		background-color: #60ad6a
 	.contenido
