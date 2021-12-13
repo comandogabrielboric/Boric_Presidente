@@ -19,6 +19,13 @@
 					to="/apoderados",
 					@click.native="tag('nav apoderados')"
 				) Apoderados
+				a-dropdown.link.bold(:trigger="['click']")
+					a-menu(slot="overlay")
+						a-menu-item(key='whatsapp')
+							a.link.bold(:href="difusionWhatsappLink"  target="_blank") Whatsapp
+						a-menu-item(key='telegram')
+							a.link.bold(href="https://t.me/difusiongabrielboric" target="_blank") Telegram
+					a-button(type="link" style="color: inherit").link.bold Grupos Difusión
 				nuxt-link.link.bold(to="/aporta", @click.native="tag('nav aporta')") aporta
 				.link.bold(@click="unete") únete
 				//- nuxt-link.link.bold(to="/cultura", @click.native="tag('nav cultura')") Cultura
@@ -29,7 +36,6 @@
 				) Propuestas
 				nuxt-link.link.bold(to="/alcaldias", @click.native="tag('nav municipios')") alcaldías
 				//- nuxt-link.link.bold(to="/programa", @click.native="tag('nav programa')") Programa
-
 				//- nuxt-link.link.bold(to="/playlist", @click.native="tag('nav playlist')") playlist
 
 		.menuCompu
@@ -47,11 +53,14 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
 	data () {
 		return {
 			activa: null,
-			buscar: null
+			buscar: null,
+			difusionWhatsappLink: ''
 		}
 	},
 	watch: {
@@ -59,7 +68,20 @@ export default {
 			this.activa = false
 		}
 	},
+	mounted () {
+		this.getDifusionWhatsapp()
+	},
 	methods: {
+		getDifusionWhatsapp () {
+			const spreadsheetID = '1-XAmvAJzOI8SdXs3kxuf5RR4AzqQb1EhHCpjkkWYBd8'
+			const tabName = 'Únete'
+			const apiKey = process.env.GOOGLE_SHEETS_API_KEY
+			const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetID}/values/${tabName}/?alt=json&key=${apiKey}`
+			return axios.get(url)
+				.then(res => {
+					this.difusionWhatsappLink = res.data.values[2][2]
+				})
+		},
 		unete () {
 			this.$router.replace('/#uneteALaCampaña')
 		},
