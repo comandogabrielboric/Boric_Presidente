@@ -7,6 +7,7 @@
 				src="/imagenes/Foto-Primera-Seccio204129n.webp",
 				alt="Súmate a cambiar Chile"
 			)
+			n-link.boton(to="/apoderados") Súmate como apoderado
 
 	section.seccionParticipa
 		.curva.curvaSuperior
@@ -294,6 +295,20 @@ section
 				height: 100%
 				max-width: 100%
 				max-height: 100%
+		.boton
+			position: absolute
+			z-index: 10
+			bottom: 20%
+			font-size: .7rem
+			left: 18%
+			background-color: $verde3
+			color: $azul1
+			+compu
+				font-size: .8rem
+			+wide
+				font-size: .9rem
+			+ultra
+				font-size: 1rem
 
 		.contenido
 			display: flex
