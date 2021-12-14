@@ -98,7 +98,7 @@
 					)
 					.contenedor
 						.contenedorContador
-							.conteo 772.614
+							.conteo 864.519
 						.contenderoTexto
 							.texto puertas abiertas
 							.texto.bold reportadas
