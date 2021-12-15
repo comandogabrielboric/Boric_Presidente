@@ -107,7 +107,8 @@ const nuxtConfig = {
 	buildModules: [
 		'@nuxtjs/eslint-module',
 		'nuxt-font-loader',
-		'@nuxtjs/google-fonts'
+		'@nuxtjs/google-fonts',
+		'@nuxtjs/dotenv'
 	],
 
 	fontLoader: {

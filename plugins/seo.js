@@ -1,4 +1,5 @@
 function seo ({ titulo, descripcion, url, imagen }) {
+	const imagenJpg = imagen.slice(-4) === '.jpg' ? imagen : '/imagenes/portadaMovil.jpg'
 	const meta = {
 		title: titulo,
 		description: descripcion,
@@ -23,7 +24,7 @@ function seo ({ titulo, descripcion, url, imagen }) {
 
 			{ hid: 'twitter:title', property: 'twitter:title', content: titulo },
 			{ hid: 'twitter:description', property: 'twitter:description', content: descripcion },
-			{ hid: 'twitter:image', property: 'twitter:image', content: imagen }
+			{ hid: 'twitter:image', property: 'twitter:image', content: imagenJpg }
 		],
 		link: [
 			{ hid: 'canonical', rel: 'canonical', href: url	}
