@@ -52,6 +52,8 @@
 		nuxt-link.boton(to="/propuestas/implementacion") Acuerdos implementación programática
 	.contenedorbtn
 		nuxt-link.boton(to="/propuestas/crecimiento") Propuestas para el crecimiento
+	.contenedorbtn
+		nuxt-link.boton(to="/inclusion") Versión lectura fácil
 
 	//- .contenedorbtn
 		a.button.boton(
