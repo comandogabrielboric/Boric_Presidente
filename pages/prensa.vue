@@ -10,31 +10,34 @@
 	)
 		a-form-model-item(has-feedback, prop="nombre")
 			a-input.input(
-				v-model="formulario.nombre",
+				:disabled="true"
+				v-model="formulario.nombre",,
 				type="nombre",
 				placeholder="Nombre"
 			)
 		a-form-model-item(has-feedback, prop="apellido")
 			a-input.input(
+				:disabled="true",
 				v-model="formulario.apellido",
 				type="apellido",
 				placeholder="Apellido"
 			)
 
 		a-form-model-item.contenedorbtn(:wrapper-col="{ span: 14, offset: 4 }")
-			a-button.suscribirme(type="primary", @click="UsarPasaporte = !UsarPasaporte")
+			a-button.suscribirme(:disabled="true", type="primary", @click="UsarPasaporte = !UsarPasaporte")
 				div(v-if="!UsarPasaporte") Usar pasaporte
 				div(v-else) Usar Rut
 
 		a-form-model-item(v-if="!UsarPasaporte" has-feedback, prop="rut")
-			a-input.input(v-model="formulario.rut", type="rut", placeholder="Rut")
+			a-input.input(:disabled="true", v-model="formulario.rut", type="rut", placeholder="Rut")
 
 		a-form-model-item(v-else prop="pasaporte")
-			a-input.input(v-model="formulario.pasaporte", type="pasaporte", placeholder="Pasaporte")
+			a-input.input(:disabled="true", v-model="formulario.pasaporte", type="pasaporte", placeholder="Pasaporte")
 
 
 		a-form-model-item(has-feedback, prop="email")
 			a-input.input(
+				:disabled="true",
 				v-model="formulario.email",
 				type="email",
 				placeholder="Email"
@@ -42,18 +45,21 @@
 
 		a-form-model-item(has-feedback, prop="telefono")
 			a-input.input(
+				:disabled="true",
 				v-model="formulario.telefono",
 				type="tel",
 				placeholder="+56 x xxxx xxxx"
 			)
 		a-form-model-item(has-feedback, prop="medio")
 			a-input.input(
+				:disabled="true"
 				v-model="formulario.medio",
 				type="medio",
 				placeholder="Medio"
 			)
 		a-form-model-item(has-feedback, prop="cargo")
 			a-input.input(
+				:disabled="true"
 				v-model="formulario.cargo",
 				type="cargo",
 				placeholder="Cargo"
