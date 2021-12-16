@@ -75,7 +75,7 @@
 							div(v-else) Pase cargado correctamente
 
 		a-form-model-item.contenedorbtn(:wrapper-col="{ span: 14, offset: 4 }")
-			a-button.suscribirme(type="primary", @click="executeCaptcha()" :disabled="Bloaquealo")
+			a-button.suscribirme(type="primary", @click="executeCaptcha()" :disabled="true")
 				| INSCRIBIRME
 
 		p.terminosycondiciones(@click="showModal") #[span.primero Acepto] &nbspTérminos y Condiciones
@@ -97,9 +97,9 @@
 	)
 		.procesando(v-if="!procesado")
 			a-spin(size="large")
-			p Estamos Procesando tu solicitud
+			p Lo sentimos, ya se han cerrado las inscripciones
 		.procusandoCompleto(v-if="procesado")
-			p(v-if="!errorMensaje") Gracias, te has registrado correctamente
+			p(v-if="!errorMensaje") Lo sentimos, ya se han cerrado las inscripciones
 			p(v-else) {{ errorMensaje }}
 
 	a-modal.modal(
@@ -288,37 +288,37 @@ export default {
 			this.enviarDatos()
 		},
 
-		async enviarDatos () {
+		enviarDatos () {
 			// const { nombre, email, telefono, comuna } = this
 			// const data = { nombre, email, telefono, comuna }
 
 			this.visible = true
-			const config = {}
-			console.log('formulario', this.formulario)
-			const respuesta = await this.$axios
-				.post(`${process.env.apiURL}/registroPrensa`, this.formulario, config)
-				.then(r => r.data)
-				.catch(e => console.error('fallo suscribirse', e))
-			console.log('Respuesta', respuesta)
-			if (!respuesta || !respuesta.ok) {
-				this.errorMensaje = respuesta.error
-				this.procesado = true
-			} else {
-				this.Bloaquealo = true
-				this.procesado = true
-				this.formulario = {
-					nombre: undefined,
-					apellido: undefined,
-					rut: undefined,
-					email: undefined,
-					telefono: undefined,
-					medio: undefined,
-					cargo: undefined,
-					urlPaseDeMovilidad: undefined,
-					captcha: undefined
-				}
-			}
-			console.log('suscrito', this.visible)
+			// const config = {}
+			// console.log('formulario', this.formulario)
+			// const respuesta = await this.$axios
+			// 	.post(`${process.env.apiURL}/registroPrensa`, this.formulario, config)
+			// 	.then(r => r.data)
+			// 	.catch(e => console.error('fallo suscribirse', e))
+			// console.log('Respuesta', respuesta)
+			// if (!respuesta || !respuesta.ok) {
+			// 	this.errorMensaje = respuesta.error
+			// 	this.procesado = true
+			// } else {
+			// 	this.Bloaquealo = true
+			// 	this.procesado = true
+			// 	this.formulario = {
+			// 		nombre: undefined,
+			// 		apellido: undefined,
+			// 		rut: undefined,
+			// 		email: undefined,
+			// 		telefono: undefined,
+			// 		medio: undefined,
+			// 		cargo: undefined,
+			// 		urlPaseDeMovilidad: undefined,
+			// 		captcha: undefined
+			// 	}
+			// }
+			// console.log('suscrito', this.visible)
 		},
 		showModal () {
 			this.tyc = true
