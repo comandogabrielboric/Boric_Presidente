@@ -139,7 +139,7 @@
     .procesando(v-if="!procesado")
       a-spin(size="large")
     .procusandoCompleto(v-if="procesado")
-      p Pronto recibiras noticias
+      p El proceso de inscripción está cerrado. Gracias por tu interés, pero ya no podemos seguir recibiendo más inscripciones. Recuerda ir a votar mañana y sumar a uno ¡Seguimos!
 
   a-modal.modal(
     :visible="tyc",
