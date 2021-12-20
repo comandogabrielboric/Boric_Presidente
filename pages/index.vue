@@ -4,10 +4,9 @@
 		.filtroBlur
 			img(
 				@click="unete",
-				src="/imagenes/Foto-Primera-Seccio204129n.webp",
+				src="/imagenes/final_WEB-10.webp",
 				alt="Súmate a cambiar Chile"
 			)
-			n-link.boton(to="/apoderados") Súmate como apoderado
 
 	section.seccionParticipa
 		.curva.curvaSuperior
@@ -224,10 +223,9 @@ section
 		margin-top: -1.2em
 		z-index: 1
 		+compu
-			height: 10em
-			margin-top: -5em
-			+wide
-			height: 14em
+			height: 6em
+			margin-top: -3em
+
 		+ *,
 		~ .sobreCurva
 			position: relative
