@@ -4,7 +4,7 @@
 		.filtroBlur
 			img(
 				@click="unete",
-				src="/imagenes/final_WEB-10.webp",
+				src="/imagenes/HEADER-BORIC-PRESIDENTE.webp",
 				alt="Súmate a cambiar Chile"
 			)
 
@@ -12,15 +12,14 @@
 		.curva.curvaSuperior
 		.contenido(id="uneteALaCampaña")
 			.lado.lado1
-				h2.titulo #[span.primero Inscríbete]
-					div Únete a la campaña
 				.texto
-					div Las transformaciones que Chile necesita las hacemos entre todas y todos.
-					div Déjanos tu mail y recibirás más información sobre la campaña.
+					div "Recibo este mandato con humildad. Sé que en los años que vienen se juega el futuro de nuestro país. Por eso les garantizo que seré un presidente que cuide la democracia y no la exponga, que escuche más de lo que habla; que busque la unidad de los acuerdos y que atienda, día a día, a las necesidades de las personas; que combata los privilegios y trabaje cada día por la calidad de vida de tu familia"
+					br
+					div Gabriel Boric
 
-			.lado.lado2
-				.suscribirse
-					participaant
+			//- .lado.lado2
+			//- 	.suscribirse
+			//- 		participaant
 
 		img.imgSaludo(
 			src="/imagenes/Foto-tercera-Seccio204129n.webp",
@@ -45,26 +44,25 @@
 
 			mixin linkDescarga
 				.kitGrafico
-					.texto Descarga tu
-					a.boton(
-						href="https://drive.google.com/drive/folders/	1vwqqSnxHIyv9wI617h8pUers1OudaBo0",
-						target="_blank",
-						rel="noreferer noopener",
-						@click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico' })"
-					) KIT GRÁFICO AQUÍ
-				.kitGrafico
 					a.boton(
 						href="https://drive.google.com/drive/folders/1Y_c8X0tCuK5hzUeyLeY_fif_YlWU5a6I",
 						target="_blank",
 						rel="noreferer noopener",
 						@click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico' })"
 					) APORTES CIUDADANOS
+				.kitGrafico
+					a.boton(
+						href="https://www.elmuraldeboric.cl/",
+						target="_blank",
+						rel="noreferer noopener",
+						@click="$gtm.push({ event: 'link-home', hacia: 'Decarga Kit grafico' })"
+					) elmuraldeboric.cl
 
 			.contenido
 				.lado.ladotitutlo
-					.titulo Arma tu
-						.segundo Campaña
-					.texto Descarga nuestro kit y crea tus propios insumos de campaña. #[br]¡De ti depende!
+					.titulo Aportes
+						.segundo Ciudadanos
+					.texto Puedes ver todos los afiches, fotos, intervenciones y más aquí
 					.noMovil
 						+linkDescarga
 
@@ -112,30 +110,30 @@
 					alt="grupo"
 				)
 
-		section.seccionaporta
-			mixin linkServel
-				.linkservel
-					a.boton(
-						href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml",
-						target="_blank",
-						rel="noreferer noopener",
-						@click="$gtm.push({ event: 'link-home', hacia: 'Home Aportes Servel' })"
-					) QUIERO APORTAR
-					n-link.instrucciones(to="/aporta", @click.native="tag('instrucciones')") Ver instrucciones para donar
+		//- section.seccionaporta
+			//- mixin linkServel
+			//- 	.linkservel
+			//- 		a.boton(
+			//- 			href="https://aportes.servel.cl/servel-aportes/	inicio.xhtml",
+			//- 			target="_blank",
+			//- 			rel="noreferer noopener",
+			//- 			@click="$gtm.push({ event: 'link-home', hacia: 'Home Aportes Servel' })"
+			//- 		) QUIERO APORTAR
+			//- 		n-link.instrucciones(to="/aporta", @click.native="tag('instrucciones')") Ver instrucciones para donar
 
-			.curva.curvaSuperior
+			//- .curva.curvaSuperior
 
-			.contenido
-				.lado.lado1
-					.titulo Súmate
-						.segundo y Aporta
-					.texto El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia.
-					.noMovil
-						+linkServel
-				.lado.ladoImagen
-					Chanchito.chan
-				.noCompu
-					+linkServel
+			//- .contenido
+			//- 	.lado.lado1
+			//- 		.titulo Súmate
+			//- 			.segundo y Aporta
+			//- 		.texto El cambio lo financiamos las personas comunes. Aporta y construyamos un Chile donde el dinero no haga la diferencia.
+			//- 		.noMovil
+			//- 			+linkServel
+			//- 	.lado.ladoImagen
+			//- 		Chanchito.chan
+			//- 	.noCompu
+			//- 		+linkServel
 			img.imgP(
 				src="/imagenes/FOTO-GABRIEL-WEB-3-SECCION (1).webp",
 				alt="Participa"
@@ -269,7 +267,7 @@ section
 	display: flex
 	justify-content: center
 	max-height: calc(100vh - 5em)
-	background-image: url('/imagenes/WEB-BANDERA.webp')
+	// background-image: url('/imagenes/WEB-BANDERA.webp')
 	filter: blur()
 	background-size: cover
 	background-repeat: no-repeat
@@ -343,50 +341,18 @@ section
 		z-index: 3
 		text-align: center
 		// max-width: 1300px
-		.titulo
-			max-width: 100%
-			line-height: 1.2
-			color: #fff
-			font-weight: 400
-			.primero
-				// font-size: 3rem
-				font-weight: 900
-				font-style: italic
-				color: $verde3
-
 		.texto
+			text-align: justify
 			font-style: italic
 			line-height: 1.2
-		.suscribirse
-			padding: 0 .5em
-			display: flex
-			justify-content: center
+
 	img
 		width: 100%
 		height: 51.82%
 	+compu
 		.contenido
 			display: flex
-			flex-flow: row nowrap
-			text-align: left
 			justify-content: center
-			.lado2
-				display: flex
-				align-items: center
-				justify-content: center
-			.lado1
-				padding-left: 2em
-	+wide
-		.contenido
-			.titulo
-				line-height: 1.1
-				// .primero
-					// font-size: 3.4rem
-			.texto
-				padding-right: 1em
-	+ultra
-		.contenido
-			padding-bottom: 3em
 
 .seccionArmaTuCampana
 	background-color: #60ad6a
@@ -571,7 +537,7 @@ section
 			position: relative
 			width: 100%
 			z-index: 10
-			margin-bottom: -3.5em
+			// margin-bottom: -3.5em
 	+movil
 		.header
 			padding: 1em
@@ -589,7 +555,7 @@ section
 							font-size: 3rem
 
 section.seccionaporta
-	background-color: $azul2
+	background: #2ABADC
 	position: relative
 	.curva
 		background-color: $azul2
